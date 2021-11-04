@@ -5,9 +5,10 @@ import SEO from "../components/seo";
 import styles from "../styles/Home.module.css";
 
 export default function Index() {
-    return (
-        <Layout active={0}>
-            <SEO title={"Home"} />
-        </Layout>
-    );
+  return (
+    <Layout active={0}>
+      <SEO title={"Home"} />
+      <h1>Heading 1</h1>
+    </Layout>
+  );
 }
