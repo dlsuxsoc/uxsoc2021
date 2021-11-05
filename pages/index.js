@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 
 export default function Index() {
     const [userList, getUserList] = useState([{ name: "test", gavin: "test" }]);
-    console.log(typeof userList);
 
     async function fetchData() {
         const res = await axios.get("/api/getMembers");
@@ -16,7 +15,6 @@ export default function Index() {
     }
 
     useEffect(() => {
-        //    console.log(getMembers());
         fetchData();
     }, [userList]);
 
