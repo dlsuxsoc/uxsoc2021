@@ -1,3 +1,15 @@
 .container {
-    background-color: red;
+    background-color: #f5f5f5;
+    z-index: 99;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.spacer {
+    height: 74px;
+}
+
+.sidebar {
+    background-color: #f5f5f5;
 }
