@@ -56,6 +56,66 @@ export default function Index() {
                     </p>
                 </div>
             </section>
+
+            {/* Events */}
+            <section className="px-4 sm:px-32 py-2 flex flex-col justify-center items-start h-screen">    
+                {/* Header */}
+                <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
+                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Events</h1>
+                </div>
+
+                {/* Event Posts */}
+                <section className="flex flex-col lg:flex-row">
+                    {/* Post */}
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
+                        <Image
+                            src="https://via.placeholder.com/307x186"
+                            alt="Placeholder-Event"
+                            width={307}
+                            height={186}
+                        />
+
+                        <h2 className="text-black text-base lg:text-xl my-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </h2>
+                        <p className="text-sm lg:text-base mb-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </p>
+                    </div>
+
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
+                        <Image
+                            src="https://via.placeholder.com/307x186"
+                            alt="Placeholder-Event"
+                            width={307}
+                            height={186}
+                        />
+
+                        <h2 className="text-black text-base lg:text-xl my-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </h2>
+                        <p className="text-sm lg:text-base mb-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </p>
+                    </div>
+
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
+                        <Image
+                            src="https://via.placeholder.com/307x186"
+                            alt="Placeholder-Event"
+                            width={307}
+                            height={186}
+                        />
+
+                        <h2 className="text-black text-base lg:text-xl my-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </h2>
+                        <p className="text-sm lg:text-base mb-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </p>
+                    </div>
+                </section>
+            </section>
         </Layout>
     );
 }
