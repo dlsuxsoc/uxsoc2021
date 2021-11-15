@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Home",
+        "link": "/"
+    },
+    {
+        "name": "About Us",
+        "link": "/about"
+    },
+    {
+        "name": "Projects",
+        "link": "/project"
+    },
+    {
+        "name": "Events",
+        "link": "/event"
+    },
+    {
+        "name": "Articles",
+        "link": "/blog"
+    }
+]
