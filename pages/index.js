@@ -9,24 +9,27 @@ import { useEffect, useState } from "react";
 export default function Index() {
     const [userList, getUserList] = useState([{ name: "test", gavin: "test" }]);
 
-    async function fetchData() {
-        const res = await axios.get("/api/getMembers");
-        getUserList(res.data);
-    }
-
-    useEffect(() => {
-        fetchData();
-    }, [userList]);
 
     return (
         <Layout active={0}>
             <SEO title={"Home"} />
-            <h1>Heading 1</h1>
-            <ul>
-                {userList.map((it, index) => (
-                    <li key={index}>{it.name}</li>
-                ))}
-            </ul>
+            <section className="px-4 sm:px-32 py-2 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-screen">    
+                <div className="pr-0 lg:pr-28 pb-2">
+                    <h1 className="text-black text-4xl lg:text-6xl mb-6 lg:mb-12">Lorem Ipsum Dolor sit amet</h1>
+                    <p className="text-base lg:text-3xl">Lorem ipsum dolor sit amet, consectetuer adipiscing el
+                    it, sed</p>
+                </div>
+
+                <div className="pb-3 lg:pb-0">
+                    <Image
+                        src="https://via.placeholder.com/566x319"
+                        alt="Placeholder"
+                        width={566}
+                        height={319}
+                    />
+                </div>
+            </section>
+            
         </Layout>
     );
 }
