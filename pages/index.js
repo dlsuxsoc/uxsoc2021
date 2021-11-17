@@ -67,7 +67,7 @@ export default function Index() {
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Events</h1>
                 </div>
 
-                {/* Event Posts */}
+                {/* Event Posts Container*/}
                 <section className="flex flex-col lg:flex-row">
                     {/* Post */}
                     <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
@@ -114,6 +114,140 @@ export default function Index() {
                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                         </h2>
                         <p className="text-sm lg:text-base mb-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </p>
+                    </div>
+                </section>
+            </section>
+
+            {/* Articles */}
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center items-start h-auto">
+                {/* Header */}
+                <div className="pb-3 lg:pb-0">
+                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Articles</h1>
+                </div>
+
+                {/* Articles Container*/}
+                <section className="flex flex-col lg:flex-row items-center">
+                    {/* Big Article */}
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
+                        <Image
+                            src="https://via.placeholder.com/494x299"
+                            alt="Placeholder-Event"
+                            width={494}
+                            height={299}
+                        />
+
+                        <h2 className="text-black text-base lg:text-xl my-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </h2>
+                        <p className="text-sm lg:text-base mb-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </p>
+                    </div>
+
+                    {/* Small Articles */}
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 flex flex-col items-center">
+                        {/* Article */}
+                        <div className="pb-2 flex flex-row items-center">
+                            <div className="pr-10">
+                                <Image
+                                    src="https://via.placeholder.com/262x158"
+                                    alt="Placeholder-Event"
+                                    width={262}
+                                    height={158}
+                                />
+                            </div>
+
+                            <div className="flex flex-col">
+                                <h2 className="text-black text-base lg:text-xl my-4">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                </h2>
+                                <p className="text-sm lg:text-base mb-4">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Article */}
+                        <div className="pb-2 flex flex-row items-center">
+                            <div className="pr-10">
+                                <Image
+                                    src="https://via.placeholder.com/262x158"
+                                    alt="Placeholder-Event"
+                                    width={262}
+                                    height={158}
+                                />
+                            </div>
+
+                            <div className="flex flex-col">
+                                <h2 className="text-black text-base lg:text-xl my-4">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                </h2>
+                                <p className="text-sm lg:text-base mb-4">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            {/* Projects */}
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center items-start h-auto">    
+                {/* Header */}
+                <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
+                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Projects</h1>
+                </div>
+
+                {/* Projects Container*/}
+                <section className="flex flex-col lg:flex-row justify-center lg:justify-between items-center">
+                    {/* Project */}
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
+                        <Image
+                            className="align-center"
+                            src="https://via.placeholder.com/353x214"
+                            alt="Placeholder-Event"
+                            width={353}
+                            height={214}
+                        />
+
+                        <h2 className="text-center text-black text-base lg:text-xl my-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </h2>
+                        <p className="text-center text-sm lg:text-base mb-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </p>
+                    </div>
+
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
+                        <Image
+                            src="https://via.placeholder.com/353x214"
+                            alt="Placeholder-Event"
+                            width={353}
+                            height={214}
+                        />
+
+                        <h2 className="text-center text-black text-base lg:text-xl my-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </h2>
+                        <p className="text-center text-sm lg:text-base mb-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </p>
+                    </div>
+
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
+                        <Image
+                            src="https://via.placeholder.com/353x214"
+                            alt="Placeholder-Event"
+                            width={353}
+                            height={214}
+                        />
+
+                        <h2 className="text-center text-black text-base lg:text-xl my-4">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        </h2>
+                        <p className="text-center text-sm lg:text-base mb-4">
                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                         </p>
                     </div>
