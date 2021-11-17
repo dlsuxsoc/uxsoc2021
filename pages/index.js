@@ -11,12 +11,15 @@ export default function Index() {
         <Layout active={0}>
             <SEO title={"Home"} />
             {/* Hero */}
-            <section className="px-4 sm:px-32 py-2 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-screen">    
+            <section className="px-4 sm:px-32 py-2 mt-36 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">    
                 {/* Header */}
                 <div className="w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
-                    <h1 className="text-black text-4xl lg:text-6xl mb-6 lg:mb-12">Lorem Ipsum Dolor sit amet</h1>
-                    <p className="text-base lg:text-3xl">Lorem ipsum dolor sit amet, consectetuer adipiscing el
-                    it, sed</p>
+                    <h1 className="text-black text-4xl lg:text-6xl mb-6 lg:mb-12">
+                        Lorem Ipsum Dolor
+                    </h1>
+                    <p className="text-base lg:text-2xl">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                    </p>
                 </div>
 
                 {/* Image */}
@@ -31,7 +34,7 @@ export default function Index() {
             </section>
             
             {/* About UX */}
-            <section className="px-4 sm:px-32 py-2 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-screen">    
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">    
                 {/* Image */}
                 <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20">
                     <Image
@@ -42,7 +45,7 @@ export default function Index() {
                     />
                 </div>
                 
-                {/* Header */}
+                {/* Header and Text */}
                 <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">About UX Society DLSU</h1>
                     <p className="text-base lg:text-xl mb-4">
@@ -58,7 +61,7 @@ export default function Index() {
             </section>
 
             {/* Events */}
-            <section className="px-4 sm:px-32 py-2 flex flex-col justify-center items-start h-screen">    
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center items-start h-auto">    
                 {/* Header */}
                 <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Events</h1>
