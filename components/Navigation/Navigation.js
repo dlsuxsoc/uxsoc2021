@@ -51,7 +51,7 @@ const Navigation = ({ active }) => {
                     ) : null}
                 </div>
             </div>
-            <div className={`${styles.spacer}`}></div>
+            {/* <div className={`${styles.spacer}`}></div> */}
         </>
     );
 };
