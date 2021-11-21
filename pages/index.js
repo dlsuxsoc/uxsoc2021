@@ -5,13 +5,18 @@ import SEO from "../components/seo";
 import axios from "axios";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
+import articlesData from "../data/dummy-articles.json";
+import eventsData from "../data/dummy-events.json";
+import projectsData from "../data/dummy-projects.json";
+import faker from "faker";
 
 export default function Index() {
+
     return (
         <Layout active={0}>
             <SEO title={"Home"} />
             {/* Hero */}
-            <section className="px-4 sm:px-32 py-2 mt-36 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">    
+            <section className="px-4 sm:px-32 py-2 mt-36 lg:mt-0 mb-16 lg:mb-0 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen">    
                 {/* Header */}
                 <div className="w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
                     <h1 className="text-black text-4xl lg:text-6xl mb-6 lg:mb-12">
@@ -23,7 +28,7 @@ export default function Index() {
                 </div>
 
                 {/* Image */}
-                <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
+                <div className="w-full lg:w-1/2 pb-3 lg:pb-0 text-center">
                     <Image
                         src="https://via.placeholder.com/566x319"
                         alt="Placeholder-Hero"
@@ -36,7 +41,7 @@ export default function Index() {
             {/* About UX */}
             <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">    
                 {/* Image */}
-                <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20">
+                <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 text-center">
                     <Image
                         src="https://via.placeholder.com/489x311"
                         alt="Placeholder-About"
@@ -68,55 +73,27 @@ export default function Index() {
                 </div>
 
                 {/* Event Posts Container*/}
-                <section className="flex flex-col lg:flex-row">
+                <section className="flex flex-col lg:flex-row lg:space-x-20 justify-center">
                     {/* Post */}
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            src="https://via.placeholder.com/307x186"
-                            alt="Placeholder-Event"
-                            width={307}
-                            height={186}
-                        />
+                    {eventsData.slice(0,3).map((item,index)=> {
+                        return (
+                            <div className="w-full lg:w-1/2 pb-2 items-center" key={index}>
+                                <Image
+                                    src={item.Images}
+                                    alt="Placeholder-Event"
+                                    width={307}
+                                    height={186}
+                                />
 
-                        <h2 className="text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
-
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            src="https://via.placeholder.com/307x186"
-                            alt="Placeholder-Event"
-                            width={307}
-                            height={186}
-                        />
-
-                        <h2 className="text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
-
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            src="https://via.placeholder.com/307x186"
-                            alt="Placeholder-Event"
-                            width={307}
-                            height={186}
-                        />
-
-                        <h2 className="text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
+                                <h2 className="text-black text-base lg:text-xl my-4">
+                                    {item.Title}
+                                </h2>
+                                <p className="text-sm lg:text-base mb-4">
+                                    {item.Content}
+                                </p>
+                            </div>
+                        )
+                    })}
                 </section>
             </section>
 
@@ -128,129 +105,90 @@ export default function Index() {
                 </div>
 
                 {/* Articles Container*/}
-                <section className="flex flex-col lg:flex-row items-center">
+                <section className="flex flex-col lg:flex-row items-start">
                     {/* Big Article */}
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20">
                         <Image
-                            src="https://via.placeholder.com/494x299"
+                            src={articlesData[0].Images}
                             alt="Placeholder-Event"
                             width={494}
                             height={299}
                         />
 
                         <h2 className="text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                            {articlesData[0].Title}
                         </h2>
                         <p className="text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                            {articlesData[0].Content}
                         </p>
                     </div>
 
                     {/* Small Articles */}
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 flex flex-col items-center">
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 sm:flex hidden flex-col items-start">
                         {/* Article */}
-                        <div className="pb-2 flex flex-row items-center">
-                            <div className="pr-10">
-                                <Image
-                                    src="https://via.placeholder.com/262x158"
-                                    alt="Placeholder-Event"
-                                    width={262}
-                                    height={158}
-                                />
-                            </div>
+                        {articlesData.slice(1,3).map((item,index)=> {
+                            return (
+                                <div className="pb-2 flex flex-row items-center" key={index}>
+                                    <div className="w-1/2 pr-10">
+                                        <Image
+                                            src={item.Images}
+                                            alt="Placeholder-Event"
+                                            width={262}
+                                            height={158}
+                                        />
+                                    </div>
 
-                            <div className="flex flex-col">
-                                <h2 className="text-black text-base lg:text-xl my-4">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </h2>
-                                <p className="text-sm lg:text-base mb-4">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Article */}
-                        <div className="pb-2 flex flex-row items-center">
-                            <div className="pr-10">
-                                <Image
-                                    src="https://via.placeholder.com/262x158"
-                                    alt="Placeholder-Event"
-                                    width={262}
-                                    height={158}
-                                />
-                            </div>
-
-                            <div className="flex flex-col">
-                                <h2 className="text-black text-base lg:text-xl my-4">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </h2>
-                                <p className="text-sm lg:text-base mb-4">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </p>
-                            </div>
-                        </div>
+                                    <div className="w-1/2 flex flex-col">
+                                        <h2 className="text-black text-base lg:text-xl my-4 ">
+                                            {item.Title}
+                                        </h2>
+                                        <p className="text-sm lg:text-base mb-4">
+                                            {item.Content}
+                                        </p>
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
                 </section>
             </section>
 
             {/* Projects */}
-            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center items-start h-auto">    
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">    
                 {/* Header */}
-                <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
+                <div className="pb-3 lg:pb-0">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Projects</h1>
                 </div>
 
                 {/* Projects Container*/}
-                <section className="flex flex-col lg:flex-row justify-center lg:justify-between items-center">
+                <section className="flex flex-col md:flex-row w-full md:justify-between ">
                     {/* Project */}
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            className="align-center"
-                            src="https://via.placeholder.com/353x214"
-                            alt="Placeholder-Event"
-                            width={353}
-                            height={214}
-                        />
+                    
+                    {projectsData.slice(0,3).map((item,index)=> {
+                        return (
+                            //"text-center " + (index > 0 /*&& window.innerWidth < 640*/ ? "lg:hidden": ""
+                            <div className={`text-center ${index > 0 ? "hidden md:block": "block"} w-full md:w-1/3 ${index === 1 ? "mx-8": ""}`} key={index}>
+                                <div className="relative h-48 md:h-36 lg:h-44 2xl:h-72">
+                                    <Image
+                                        src={faker.image.image()}
+                                        alt="Placeholder-Event"
+                                        layout="fill"
+                                        objectFit="cover"
+                                        objectPosition="center"
+                                        
+                                    />
+                                </div>
 
-                        <h2 className="text-center text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-center text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
-
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            src="https://via.placeholder.com/353x214"
-                            alt="Placeholder-Event"
-                            width={353}
-                            height={214}
-                        />
-
-                        <h2 className="text-center text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-center text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
-
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            src="https://via.placeholder.com/353x214"
-                            alt="Placeholder-Event"
-                            width={353}
-                            height={214}
-                        />
-
-                        <h2 className="text-center text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-center text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
+                                {/* Project Text */}
+                                <h2 className="text-black break-normal text-base lg:text-xl my-4">
+                                    {item.Title}
+                                </h2>
+                                <p className="break-normal text-sm lg:text-base mb-4">
+                                    {item.Content}
+                                </p>
+                            </div>
+                        )
+                    })}
                 </section>
             </section>
         </Layout>
