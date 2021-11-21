@@ -66,24 +66,27 @@ export default function Index() {
             </section>
 
             {/* Events */}
-            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center items-start h-auto">    
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center md:items-start h-auto">    
                 {/* Header */}
-                <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
+                <div className="pb-3 lg:pb-0">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Events</h1>
                 </div>
 
                 {/* Event Posts Container*/}
-                <section className="flex flex-col lg:flex-row lg:space-x-20 justify-center">
+                <section className="flex flex-col md:flex-row w-full md:justify-between">
                     {/* Post */}
                     {eventsData.slice(0,3).map((item,index)=> {
                         return (
-                            <div className="w-full lg:w-1/2 pb-2 items-center" key={index}>
-                                <Image
-                                    src={item.Images}
-                                    alt="Placeholder-Event"
-                                    width={307}
-                                    height={186}
-                                />
+                            <div className={`text ${index > 0 ? "hidden md:block" : "block"} w-full md:w-1/3 ${index === 1 ? "mx-8": ""}`} key={index}>
+                                <div className="relative h-48 md:h-36 lg:h-44 2xl:h-72">
+                                    <Image
+                                        src={faker.image.image()}
+                                        alt="Placeholder-Event"
+                                        layout="fill"
+                                        objectFit="cover"
+                                        objectPosition="center"
+                                    />
+                                </div>
 
                                 <h2 className="text-black text-base lg:text-xl my-4">
                                     {item.Title}
@@ -161,13 +164,12 @@ export default function Index() {
                 </div>
 
                 {/* Projects Container*/}
-                <section className="flex flex-col md:flex-row w-full md:justify-between ">
+                <section className="flex flex-col md:flex-row w-full md:justify-between">
                     {/* Project */}
                     
                     {projectsData.slice(0,3).map((item,index)=> {
                         return (
-                            //"text-center " + (index > 0 /*&& window.innerWidth < 640*/ ? "lg:hidden": ""
-                            <div className={`text-center ${index > 0 ? "hidden md:block": "block"} w-full md:w-1/3 ${index === 1 ? "mx-8": ""}`} key={index}>
+                            <div className={`text-center ${index > 0 ? "hidden md:block" : "block"} w-full md:w-1/3 ${index === 1 ? "mx-8": ""}`} key={index}>
                                 <div className="relative h-48 md:h-36 lg:h-44 2xl:h-72">
                                     <Image
                                         src={faker.image.image()}
@@ -175,15 +177,14 @@ export default function Index() {
                                         layout="fill"
                                         objectFit="cover"
                                         objectPosition="center"
-                                        
                                     />
                                 </div>
 
                                 {/* Project Text */}
-                                <h2 className="text-black break-normal text-base lg:text-xl my-4">
+                                <h2 className="text-black text-base lg:text-xl my-4">
                                     {item.Title}
                                 </h2>
-                                <p className="break-normal text-sm lg:text-base mb-4">
+                                <p className="text-sm lg:text-base mb-4">
                                     {item.Content}
                                 </p>
                             </div>
