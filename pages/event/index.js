@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from "next/image";
 import Layout from "../../components/layout";
 import EventItem from '../../components/EventItem/EventItem';
+import DateTabs from '../../components/DateTabs/DateTabs';
 import SEO from "../../components/seo";
 import styles from "../../styles/Home.module.css";
 import eventPicture from '../../public/images/temp-event.png'
@@ -19,20 +20,23 @@ export default function Events() {
                     
                 </div>
             </div> */}
-            <section className="px-4 sm:px-32 py-2 flex flex-wrap sm:flex-column-reverse justify-between">    
-                <div className="">
-                    <Image
-                        src={eventPicture}
-                        alt="Placeholder"
-                        width={560}
-                        height={310}
-                    />
+            <section className="px-4 sm:px-32 py-2 flex flex-col md:flex-row justify-between">    
+                <div className="relative pd">
+                    <div className="w-96 h-72">
+                        <Image
+                                src={eventPicture}
+                                alt="Placeholder"
+                                layout="fill"
+                                objectFit="contain"
+                                objectPosition="center"
+                            />
+                    </div>
                 </div>
                 
-                <div className="w-1/2">
-                    <h1 className="text-black text-6xl mb-8 text-white">Lorem Ipsum Dolor</h1>
-                    <p className="text-3xl mb-8">July 9-12, 2019 · 08:00am - 05:00pm</p>
-                    <p className="text-3xl mb-8 w-3/4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                <div className=" md:pl-16 lg:pl-32">
+                    <h1 className="mb-8 sm:pd-2">Lorem Ipsum Dolor</h1>
+                    <p className="whitespace-nowrap">July 9-12, 2019 · 08:00am - 05:00pm</p>
+                    <p className="pb-8 ">Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
                                                 sed diam nonummy nibh euismod tincidunt ut laoreet dolore
                                                 magna aliquam erat volutpat. Ut wisi </p>
                     <button className="bg-green rounded-md font-bold cursor-pointer py-4 px-20">Learn More</button>
@@ -40,7 +44,11 @@ export default function Events() {
                 
             </section>
 
-            <section className="sm:px-15 p-8 ml-20 flex flex-wrap sm:flex-column-reverse justify-between w-1/2">
+            <section>
+                <DateTabs/>
+            </section>
+
+            <section className="px-4 sm:px-32 flex flex-wrap justify-start w-full md:w-4/5">
                 <EventItem/>
                 <EventItem/>
                 <EventItem/>
@@ -48,6 +56,8 @@ export default function Events() {
                 <EventItem/>
                 <EventItem/>
             </section>
+
+            
         </Layout>
     );
 }
