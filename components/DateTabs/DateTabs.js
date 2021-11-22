@@ -1,12 +1,26 @@
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import styles from "./DateTabs.module.scss";
 
-const DateTabs = () => (
+const DateTabs = ({setEventItems, events}) => (
+
     <div className="App">
-      <Tabs>
+
+      <div>
+        <div className={`${styles.dates}`}onClick={()=>setEventItems(events.year2)}>
+          <p>2022</p>
+        </div>
+        <div onClick={()=>setEventItems(events.year1)}>
+          <p>2021</p>
+        </div>
+        <div onClick={()=>setEventItems([{title: "hello", description: "world"}])}>
+          <p>2020</p>
+        </div>
+        <div onClick={()=>setEventItems([{title: "hello", description: "world"}])}>
+          <p>2019</p>
+        </div>
+      </div>
+      {/* <Tabs>
         <TabList>
           <Tab>
             <p>2022</p>
@@ -42,7 +56,7 @@ const DateTabs = () => (
             <h2>2019 events</h2>
           </div>
         </TabPanel>
-      </Tabs>
+      </Tabs> */}
     </div>
 );
 

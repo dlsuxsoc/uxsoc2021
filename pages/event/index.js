@@ -9,6 +9,13 @@ import eventPicture from '../../public/images/temp-event.png'
 import { useEffect, useState } from "react";
 
 export default function Events() {
+    const events = {
+        year1: [{title: "Gavin", description: "AP Malphite"}, {title: "Tyrone", description: "TJ Sta Maria"}],
+        year2: [{title: "Vince", description: "Esqui"}, {title: "Wilfred", description: "Frederick"}]
+    }
+
+    const [eventItems, setEventItems] = useState(events.year1)
+    
     return (
         <Layout active={3}>
             <SEO title={"Events"} />
@@ -45,16 +52,21 @@ export default function Events() {
             </section>
 
             <section>
-                <DateTabs/>
+                <DateTabs setEventItems={setEventItems} events={events}/>
             </section>
 
+            <button onClick={()=>setEventItems(events.year2)}>HELLO</button>
+
             <section className="px-4 sm:px-32 flex flex-wrap justify-start w-full md:w-4/5">
+                {eventItems.map(({title, description})=>{
+                    return (<EventItem title={title} description={description}/>)
+                    })}
+                {/* <EventItem/>
                 <EventItem/>
                 <EventItem/>
                 <EventItem/>
                 <EventItem/>
-                <EventItem/>
-                <EventItem/>
+                <EventItem/> */}
             </section>
 
             
