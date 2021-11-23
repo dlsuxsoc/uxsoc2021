@@ -7,17 +7,17 @@ const DateTabs = ({setEventItems, events}) => (
     <div className="App">
 
       <div>
-        <div className={`${styles.dates}`}onClick={()=>setEventItems(events.year2)}>
-          <p>2022</p>
+        <div className={`${styles.dates}`} onClick={()=>setEventItems(events.year2)} >
+          <p className={`${styles.date} hover:border-green`} >2022</p>
         </div>
-        <div onClick={()=>setEventItems(events.year1)}>
-          <p>2021</p>
+        <div  className={`${styles.dates}`} onClick={()=>setEventItems(events.year1)}>
+          <p className={`${styles.date} hover:border-green`} >2021</p>
         </div>
-        <div onClick={()=>setEventItems([{title: "hello", description: "world"}])}>
-          <p>2020</p>
+        <div  className={`${styles.dates}`} onClick={()=>setEventItems([{title: "hello", description: "world"}])}>
+          <p className={`${styles.date} hover:border-green`}>2020</p>
         </div>
-        <div onClick={()=>setEventItems([{title: "hello", description: "world"}])}>
-          <p>2019</p>
+        <div className={`${styles.dates}`} onClick={()=>setEventItems([{title: "hello", description: "world"}])}>
+          <p className={`${styles.date} hover:border-green`}>2019</p>
         </div>
       </div>
       {/* <Tabs>
