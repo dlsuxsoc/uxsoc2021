@@ -1,0 +1,42 @@
+# Name of Workflow
+name: Development
+
+# 3ggered at
+on:
+  pull_request:
+    branches:
+      - development
+
+# Jobs to carry out
+jobs:
+  deploy:
+    # OS to be used
+    runs-on: ubuntu-latest
+
+    # Steps
+    steps:
+      # 1. Get code from repository
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      # 2. Install Node 16
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      # 3. Run npm install
+      - run: npm install
+
+      # 4. Run npm build to build the Next.js application
+      - run: npm run build
+
+      # 5. Deploy to Netlify
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=build --prod
+          secrets: '["NETLIFY_AUTH_TOKEN", "DEV_NETLIFY_SITE_ID"]'
