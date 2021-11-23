@@ -12,6 +12,9 @@ module.exports = {
         green: "#41BC9C",
         gray: "#80858B",
       },
+      backgroundColor: {
+        green: "#41BC9C",
+      },
       fontSize: {
         body: "0.875rem",
         h1: "3rem",
