@@ -9,6 +9,7 @@ import articlesData from "../data/dummy-articles.json";
 import eventsData from "../data/dummy-events.json";
 import projectsData from "../data/dummy-projects.json";
 import faker from "faker";
+import Button from "../components/Button/Button";
 
 export default function Index() {
 
@@ -51,7 +52,7 @@ export default function Index() {
                 </div>
                 
                 {/* Header and Text */}
-                <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
+                <div className="w-full lg:w-1/2 pb-3 lg:pb-0 mb-8">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">About UX Society DLSU</h1>
                     <p className="text-base lg:text-xl mb-4">
                         The UX Society - DLSU Chapter is one of the many recognized UX Societies in the same network. 
@@ -62,6 +63,8 @@ export default function Index() {
                         principles, concepts and methodologies in such strategies. We hold workshops, seminars and conferences 
                         to train members about the essentials skills of proper UX discipline and methodologies.
                     </p>
+
+                    <Button to="/about">Learn More</Button>
                 </div>
             </section>
 
@@ -98,6 +101,8 @@ export default function Index() {
                         )
                     })}
                 </section>
+
+                <Button to="/event">Learn More</Button>
             </section>
 
             {/* Articles */}
@@ -154,6 +159,8 @@ export default function Index() {
                         })}
                     </div>
                 </section>
+
+                <Button to="/blog" className="self-end">Learn More</Button>
             </section>
 
             {/* Projects */}
@@ -191,6 +198,8 @@ export default function Index() {
                         )
                     })}
                 </section>
+
+                <Button to="/project">Learn More</Button>
             </section>
         </Layout>
     );
