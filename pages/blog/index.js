@@ -18,7 +18,7 @@ export default function Events() {
                 <DateTabs/>
             </section> */}
 
-            <section className="px-4 sm:px-32 flex flex-wrap justify-start w-full md:w-4/5">
+            <section className="md:flex-row-reverse">
                 <ArticleItem/>
                 <ArticleItem/>
                 <ArticleItem/>
