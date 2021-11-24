@@ -17,7 +17,7 @@ export default function Index() {
         <Layout active={0}>
             <SEO title={"Home"} />
             {/* Hero */}
-            <section className="px-4 sm:px-32 py-2 mt-36 lg:mt-0 mb-16 lg:mb-0 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen">    
+            <section className="px-4 sm:px-32 py-2 mt-36 lg:mt-0 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen">    
                 {/* Header */}
                 <div className="w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
                     <h1 className="text-black text-4xl lg:text-6xl mb-6 lg:mb-12">
@@ -29,12 +29,13 @@ export default function Index() {
                 </div>
 
                 {/* Image */}
-                <div className="w-full lg:w-1/2 pb-3 lg:pb-0 text-center">
+                <div className="w-full lg:w-1/2 relative pb-3 lg:pb-0 h-48 lg:h-screen">
                     <Image
-                        src="https://via.placeholder.com/566x319"
+                        src={faker.image.image()}
                         alt="Placeholder-Hero"
-                        width={566}
-                        height={319}
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="center"
                     />
                 </div>
             </section>
@@ -64,7 +65,7 @@ export default function Index() {
                         to train members about the essentials skills of proper UX discipline and methodologies.
                     </p>
 
-                    <Button to="/about">Learn More</Button>
+                    <Button to="/about" className="align-center lg:self-start">Learn More</Button>
                 </div>
             </section>
 
@@ -80,7 +81,7 @@ export default function Index() {
                     {/* Post */}
                     {eventsData.slice(0,3).map((item,index)=> {
                         return (
-                            <div className={`text ${index > 0 ? "hidden md:block" : "block"} w-full md:w-1/3 ${index === 1 ? "mx-8": ""}`} key={index}>
+                            <div className={`text ${index > 0 ? "hidden lg:block" : "block"} w-full lg:w-1/3 ${index === 1 ? "mx-8": ""}`} key={index}>
                                 <div className="relative h-48 md:h-36 lg:h-44 2xl:h-72">
                                     <Image
                                         src={faker.image.image()}
@@ -91,10 +92,10 @@ export default function Index() {
                                     />
                                 </div>
 
-                                <h2 className="text-black text-base lg:text-xl my-4">
+                                <h2 className="text-black text-center lg:text-left text-base lg:text-xl my-4">
                                     {item.Title}
                                 </h2>
-                                <p className="text-sm lg:text-base mb-4">
+                                <p className="text-center lg:text-left text-sm lg:text-base mb-4">
                                     {item.Content}
                                 </p>
                             </div>
@@ -102,18 +103,18 @@ export default function Index() {
                     })}
                 </section>
 
-                <Button to="/event">Learn More</Button>
+                <Button to="/event" className="self-center lg:self-start">Learn More</Button>
             </section>
 
             {/* Articles */}
-            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center items-start h-auto">
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center md:items-start h-auto">
                 {/* Header */}
                 <div className="pb-3 lg:pb-0">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Articles</h1>
                 </div>
 
                 {/* Articles Container*/}
-                <section className="flex flex-col lg:flex-row items-start">
+                <section className="w-full flex flex-col lg:flex-row items-start">
                     {/* Big Article */}
                     <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20">
                         <Image
@@ -123,16 +124,16 @@ export default function Index() {
                             height={299}
                         />
 
-                        <h2 className="text-black text-base lg:text-xl my-4">
+                        <h2 className="text-black text-center lg:text-left text-base lg:text-xl my-4">
                             {articlesData[0].Title}
                         </h2>
-                        <p className="text-sm lg:text-base mb-4">
+                        <p className="text-center lg:text-left text-sm lg:text-base mb-4">
                             {articlesData[0].Content}
                         </p>
                     </div>
 
                     {/* Small Articles */}
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 sm:flex hidden flex-col items-start">
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 lg:flex hidden flex-col items-start">
                         {/* Article */}
                         {articlesData.slice(1,3).map((item,index)=> {
                             return (
@@ -160,7 +161,7 @@ export default function Index() {
                     </div>
                 </section>
 
-                <Button to="/blog" className="self-end">Learn More</Button>
+                <Button to="/blog" className="self-center lg:self-end">Learn More</Button>
             </section>
 
             {/* Projects */}
@@ -176,7 +177,7 @@ export default function Index() {
                     
                     {projectsData.slice(0,3).map((item,index)=> {
                         return (
-                            <div className={`text-center ${index > 0 ? "hidden md:block" : "block"} w-full md:w-1/3 ${index === 1 ? "mx-8": ""}`} key={index}>
+                            <div className={`text-center ${index > 0 ? "hidden lg:block" : "block"} w-full lg:w-1/3 ${index === 1 ? "mx-8": ""}`} key={index}>
                                 <div className="relative h-48 md:h-36 lg:h-44 2xl:h-72">
                                     <Image
                                         src={faker.image.image()}
