@@ -1,0 +1,36 @@
+.dates {
+  font-weight: bold;
+  font-family: Roboto;
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
+  cursor: pointer;
+}
+
+.date {
+  position: relative;
+
+  &::after {
+    transition: all 0.4s;
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 0%;
+    right: -20px;
+    top: 0px;
+    background-color: #41bc9c;
+  }
+}
+
+.active,
+.date:hover {
+  &::after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 120%;
+    right: -20px;
+    top: 0px;
+
+    background-color: #41bc9c;
+  }
+}
