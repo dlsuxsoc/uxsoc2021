@@ -9,7 +9,7 @@ import styles from "../../styles/Home.module.css";
 import eventPicture from "../../public/images/temp-event.png";
 import { useEffect, useState } from "react";
 
-export default function Events({ active, year }) {
+export default function Events({ active }) {
   const event = {
     year1: [
       {
@@ -108,8 +108,8 @@ export default function Events({ active, year }) {
                         return (<EventItem title={title} description={description} />)
                     })} */}
 
-          {events.map(({ title, description }) => (
-            <EventItem title={title} description={description} />
+          {events.map(({ title, description }, index) => (
+            <EventItem key={index} title={title} description={description} />
           ))}
         </ul>
 
@@ -117,7 +117,7 @@ export default function Events({ active, year }) {
           {/* <DateTabs setEventItems={setEventItems} events={events} /> */}
           {data.map((item, index) => (
             <DateTabs
-              active={index == active}
+              key={index}
               year={item.year}
               active={item.year === year}
               set={setYear}
