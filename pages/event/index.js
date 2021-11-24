@@ -3,14 +3,15 @@ import Image from "next/image";
 import Layout from "../../components/layout";
 import EventItem from '../../components/EventItem/EventItem';
 import DateTabs from '../../components/DateTabs/DateTabs';
+import data from "../../data/dates.json";
 import SEO from "../../components/seo";
 import styles from "../../styles/Home.module.css";
 import eventPicture from '../../public/images/temp-event.png'
 import { useEffect, useState } from "react";
 
-export default function Events() {
+export default function Events({active, year}) {
     const events = {
-        year1: [{ title: "Gavin", description: "AP Malphite" }, { title: "Tyrone", description: "TJ Sta Maria" }],
+        year1: [{ title: "UXSCOC General Assembly", description: "This is UXSOC's first general assembly!" }, { title: "UXSOCxUXPH", description: "Collab event!" }, { title: "Shifting to a UX Career", description: "An event on shifting careers to a career in UX!" }],
         year2: [{ title: "Vince", description: "Esqui" }, { title: "Wilfred", description: "Frederick" }]
     }
 
@@ -51,15 +52,20 @@ export default function Events() {
 
             </section>
 
-            <section className="flex flex-row">
-                <section className="px-4 sm:px-32 flex flex-wrap justify-start w-full md:w-4/5">
+            <section className="flex lg:pr-32 flex-col-reverse lg:flex-row">
+                <ul className="px-4 sm:px-32 flex flex-wrap justify-start w-full md:w-4/5">
                     {eventItems.map(({ title, description }) => {
                         return (<EventItem title={title} description={description} />)
                     })}
-                </section>
+
+                    
+                </ul>
 
                 <section className="w-16 pr-5 pt-8">
-                    <DateTabs setEventItems={setEventItems} events={events} />
+                    {/* <DateTabs setEventItems={setEventItems} events={events} /> */}
+                    {data.map((item, index) => (
+                        <DateTabs active={index == active} year = {item.year}/>
+                    ))}
                 </section>
             </section>
         </Layout>
