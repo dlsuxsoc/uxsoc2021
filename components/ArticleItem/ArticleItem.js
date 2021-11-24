@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./EventItem.module.scss";
+import styles from "./ArticleItem.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import eventPicture from '../../public/images/temp-event.png'
