@@ -1,11 +1,11 @@
 # Name of Workflow
-name: Development
+name: Staging
 
 # 3ggered at
 on:
   pull_request:
     branches:
-      - development
+      - staging
 
 # Jobs to carry out
 jobs:
@@ -31,12 +31,21 @@ jobs:
       # 4. Run npm build to build the Next.js application
       - run: npm run build
 
-      # 5. Deploy to Netlify
+      # 5. Test with the preferred Unit Testing Tool specified in package.json
+      - name: Run jest
+        uses: stefanoeb/jest-action@1.0.3
+        with:
+          build: npm run build
+          start: npm start
+          wait-on: http://localhost:3000
+
+      # 6. Deploy to Netlify
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
         with:
+          # --prod argument deploys to the actual URL
           args: deploy --dir=build --prod
           secrets: '["NETLIFY_AUTH_TOKEN", "DEV_NETLIFY_SITE_ID"]'
