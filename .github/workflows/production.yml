@@ -39,12 +39,16 @@ jobs:
           start: npm start
           wait-on: http://localhost:3000
 
-      # 6. Deploy to Netlify
+      # 6. Integration Testing (NOT YET IMPLEMENTED)
+
+      # 7. Deploy to Netlify
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         env:
+          # get secrets from GitHub Repository Secrets
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.PROD_NETLIFY_SITE_ID }}
         with:
+          # --prod argument deploys to the actual URL
           args: deploy --dir=build --prod
           secrets: '["NETLIFY_AUTH_TOKEN", "PROD_NETLIFY_SITE_ID"]'
