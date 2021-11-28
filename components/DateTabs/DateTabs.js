@@ -17,4 +17,3 @@ const DateTabs = ({ active, year, set }) => {
 
 export default DateTabs;
 
-// onClick={() => setEventItems(events.year2)}
