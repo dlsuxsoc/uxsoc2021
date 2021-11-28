@@ -10,40 +10,55 @@ import eventPicture from "../../public/images/temp-event.png";
 import { useEffect, useState } from "react";
 
 export default function Events({ active }) {
-  const event = {
-    year1: [
-      {
-        title: "UXSCOC General Assembly",
-        description: "This is UXSOC's first general assembly!",
-      },
-      { title: "UXSOCxUXPH", description: "Collab event!" },
-      {
-        title: "Shifting to a UX Career",
-        description: "An event on shifting careers to a career in UX!",
-      },
-    ],
-    year2: [
-      { title: "Vince", description: "Esqui" },
-      { title: "Wilfred", description: "Frederick" },
-    ],
-  };
+  // const event = {
+  //   year1: [
+  //     {
+  //       title: "UXSCOC General Assembly",
+  //       description: "This is UXSOC's first general assembly!",
+  //     },
+  //     { title: "UXSOCxUXPH", description: "Collab event!" },
+  //     {
+  //       title: "Shifting to a UX Career",
+  //       description: "An event on shifting careers to a career in UX!",
+  //     },
+  //   ],
+  //   year2: [
+  //     { title: "Vince", description: "Esqui" },
+  //     { title: "Wilfred", description: "Frederick" },
+  //   ],
+  // };
   //  const [eventItems, setEventItems] = useState(events.year1);
 
   const newEvents = [
     {
-      date: "11/12/2021",
+      date: "11/12/2019",
       title: "UXSCOC General Assembly",
       description: "This is UXSOC's first general assembly!",
     },
     {
-      date: "11/12/2020",
-      title: "I do not associate with any girls",
-      description: "AHHAHAHA",
+      date: "1/28/2022",
+      title: "Accessibility Talks",
+      description: "Learn more about accessbility in UX.",
     },
     {
-      date: "11/12/2019",
-      title: "LMAOOOOOOO",
-      description: "Collab event!",
+      date: "11/12/2021",
+      title: "State of UX Philippines",
+      description: "State of the UX, November 2021 Edition.",
+    },
+    {
+      date: "12/10/2021",
+      title: "Intro to UX",
+      description: "An event for UX beginners.",
+    },
+    {
+      date: "1/24/2020",
+      title: "UX Career Shifting",
+      description: "Learn about switching to a UX Career!",
+    },
+    {
+      date: "6/4/2022",
+      title: "UXSOC Taft - Rebranding Event",
+      description: "DLSU UXSOC is now UXSOC Taft!",
     },
   ];
 
