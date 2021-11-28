@@ -81,7 +81,7 @@ export default function Events({ active }) {
     <Layout active={3}>
       <SEO title={"Events"} />
 
-      <h1 className="pl-32 py-12">Events</h1>
+      <h1 className="pl-32 pt-28 pb-6">Events</h1>
 
       {/* <div className={`${styles.container} `}>
                 <div>
@@ -117,7 +117,7 @@ export default function Events({ active }) {
         </div>
       </section>
 
-      <section className="flex lg:pr-32 flex-col-reverse lg:flex-row">
+      <section className="flex lg:pr-32 pt-28 pb-36 flex-col-reverse lg:flex-row">
         <ul className="px-4 sm:px-32 flex flex-wrap justify-start w-full md:w-4/5">
           {/* {eventItems.map(({ title, description }) => {
                         return (<EventItem title={title} description={description} />)
@@ -128,7 +128,7 @@ export default function Events({ active }) {
           ))}
         </ul>
 
-        <section className="w-16 pr-5 pt-8">
+        <section className="w-16 pr-5">
           {/* <DateTabs setEventItems={setEventItems} events={events} /> */}
           {data.map((item, index) => (
             <DateTabs
