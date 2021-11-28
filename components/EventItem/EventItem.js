@@ -17,7 +17,7 @@ const EventItem = ({title, description}) => {
                     objectFit="cover"
                 />
             </div>
-            <p className="font-bold text-lg w-full text-justify"> {title} </p>
+            <p className="font-bold text-lg w-full text-justify pt-6 pb-2"> {title} </p>
             <p className="text-base w-full text-justify"> {description} </p>
         </div>
     );

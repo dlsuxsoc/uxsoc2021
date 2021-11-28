@@ -10,40 +10,55 @@ import eventPicture from "../../public/images/temp-event.png";
 import { useEffect, useState } from "react";
 
 export default function Events({ active }) {
-  const event = {
-    year1: [
-      {
-        title: "UXSCOC General Assembly",
-        description: "This is UXSOC's first general assembly!",
-      },
-      { title: "UXSOCxUXPH", description: "Collab event!" },
-      {
-        title: "Shifting to a UX Career",
-        description: "An event on shifting careers to a career in UX!",
-      },
-    ],
-    year2: [
-      { title: "Vince", description: "Esqui" },
-      { title: "Wilfred", description: "Frederick" },
-    ],
-  };
+  // const event = {
+  //   year1: [
+  //     {
+  //       title: "UXSCOC General Assembly",
+  //       description: "This is UXSOC's first general assembly!",
+  //     },
+  //     { title: "UXSOCxUXPH", description: "Collab event!" },
+  //     {
+  //       title: "Shifting to a UX Career",
+  //       description: "An event on shifting careers to a career in UX!",
+  //     },
+  //   ],
+  //   year2: [
+  //     { title: "Vince", description: "Esqui" },
+  //     { title: "Wilfred", description: "Frederick" },
+  //   ],
+  // };
   //  const [eventItems, setEventItems] = useState(events.year1);
 
   const newEvents = [
     {
-      date: "11/12/2021",
+      date: "11/12/2019",
       title: "UXSCOC General Assembly",
       description: "This is UXSOC's first general assembly!",
     },
     {
-      date: "11/12/2020",
-      title: "I do not associate with any girls",
-      description: "AHHAHAHA",
+      date: "1/28/2022",
+      title: "Accessibility Talks",
+      description: "Learn more about accessbility in UX.",
     },
     {
-      date: "11/12/2019",
-      title: "LMAOOOOOOO",
-      description: "Collab event!",
+      date: "11/12/2021",
+      title: "State of UX Philippines",
+      description: "State of the UX, November 2021 Edition.",
+    },
+    {
+      date: "12/10/2021",
+      title: "Intro to UX",
+      description: "An event for UX beginners.",
+    },
+    {
+      date: "1/24/2020",
+      title: "UX Career Shifting",
+      description: "Learn about switching to a UX Career!",
+    },
+    {
+      date: "6/4/2022",
+      title: "UXSOC Taft - Rebranding Event",
+      description: "DLSU UXSOC is now UXSOC Taft!",
     },
   ];
 
@@ -66,7 +81,7 @@ export default function Events({ active }) {
     <Layout active={3}>
       <SEO title={"Events"} />
 
-      <h1 className="pl-32 py-12">Events</h1>
+      <h1 className="pl-32 pt-28 pb-6">Events</h1>
 
       {/* <div className={`${styles.container} `}>
                 <div>
@@ -102,7 +117,7 @@ export default function Events({ active }) {
         </div>
       </section>
 
-      <section className="flex lg:pr-32 flex-col-reverse lg:flex-row">
+      <section className="flex lg:pr-32 pt-28 pb-36 flex-col-reverse lg:flex-row">
         <ul className="px-4 sm:px-32 flex flex-wrap justify-start w-full md:w-4/5">
           {/* {eventItems.map(({ title, description }) => {
                         return (<EventItem title={title} description={description} />)
@@ -113,7 +128,7 @@ export default function Events({ active }) {
           ))}
         </ul>
 
-        <section className="w-16 pr-5 pt-8">
+        <section className="w-16 pr-5">
           {/* <DateTabs setEventItems={setEventItems} events={events} /> */}
           {data.map((item, index) => (
             <DateTabs
