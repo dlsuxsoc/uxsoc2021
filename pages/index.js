@@ -5,13 +5,19 @@ import SEO from "../components/seo";
 import axios from "axios";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
+import articlesData from "../data/dummy-articles.json";
+import eventsData from "../data/dummy-events.json";
+import projectsData from "../data/dummy-projects.json";
+import faker from "faker";
+import Button from "../components/Button/Button";
 
 export default function Index() {
+
     return (
         <Layout active={0}>
             <SEO title={"Home"} />
             {/* Hero */}
-            <section className="px-4 sm:px-32 py-2 mt-36 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">    
+            <section className="px-4 sm:px-32 py-2 mt-36 lg:mt-0 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen">    
                 {/* Header */}
                 <div className="w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
                     <h1 className="text-black text-4xl lg:text-6xl mb-6 lg:mb-12">
@@ -23,12 +29,13 @@ export default function Index() {
                 </div>
 
                 {/* Image */}
-                <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
+                <div className="w-full lg:w-1/2 relative pb-3 lg:pb-0 h-48 lg:h-screen">
                     <Image
-                        src="https://via.placeholder.com/566x319"
+                        src={faker.image.image()}
                         alt="Placeholder-Hero"
-                        width={566}
-                        height={319}
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="center"
                     />
                 </div>
             </section>
@@ -36,7 +43,7 @@ export default function Index() {
             {/* About UX */}
             <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">    
                 {/* Image */}
-                <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20">
+                <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 text-center">
                     <Image
                         src="https://via.placeholder.com/489x311"
                         alt="Placeholder-About"
@@ -46,7 +53,7 @@ export default function Index() {
                 </div>
                 
                 {/* Header and Text */}
-                <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
+                <div className="w-full lg:w-1/2 pb-3 lg:pb-0 mb-8">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">About UX Society DLSU</h1>
                     <p className="text-base lg:text-xl mb-4">
                         The UX Society - DLSU Chapter is one of the many recognized UX Societies in the same network. 
@@ -57,201 +64,143 @@ export default function Index() {
                         principles, concepts and methodologies in such strategies. We hold workshops, seminars and conferences 
                         to train members about the essentials skills of proper UX discipline and methodologies.
                     </p>
+
+                    <Button to="/about" className="align-center lg:self-start">Learn More</Button>
                 </div>
             </section>
 
             {/* Events */}
-            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center items-start h-auto">    
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center md:items-start h-auto">    
                 {/* Header */}
-                <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
+                <div className="pb-3 lg:pb-0">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Events</h1>
                 </div>
 
                 {/* Event Posts Container*/}
-                <section className="flex flex-col lg:flex-row">
+                <section className="flex flex-col md:flex-row w-full md:justify-between">
                     {/* Post */}
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            src="https://via.placeholder.com/307x186"
-                            alt="Placeholder-Event"
-                            width={307}
-                            height={186}
-                        />
+                    {eventsData.slice(0,3).map((item,index)=> {
+                        return (
+                            <div className={`text ${index > 0 ? "hidden lg:block" : "block"} w-full lg:w-1/3 ${index === 1 ? "mx-8": ""}`} key={index}>
+                                <div className="relative h-48 md:h-36 lg:h-44 2xl:h-72">
+                                    <Image
+                                        src={faker.image.image()}
+                                        alt="Placeholder-Event"
+                                        layout="fill"
+                                        objectFit="cover"
+                                        objectPosition="center"
+                                    />
+                                </div>
 
-                        <h2 className="text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
-
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            src="https://via.placeholder.com/307x186"
-                            alt="Placeholder-Event"
-                            width={307}
-                            height={186}
-                        />
-
-                        <h2 className="text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
-
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            src="https://via.placeholder.com/307x186"
-                            alt="Placeholder-Event"
-                            width={307}
-                            height={186}
-                        />
-
-                        <h2 className="text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
+                                <h2 className="text-black text-center lg:text-left text-base lg:text-xl my-4">
+                                    {item.Title}
+                                </h2>
+                                <p className="text-center lg:text-left text-sm lg:text-base mb-4">
+                                    {item.Content}
+                                </p>
+                            </div>
+                        )
+                    })}
                 </section>
+
+                <Button to="/event" className="self-center lg:self-start">Learn More</Button>
             </section>
 
             {/* Articles */}
-            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center items-start h-auto">
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center md:items-start h-auto">
                 {/* Header */}
                 <div className="pb-3 lg:pb-0">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Articles</h1>
                 </div>
 
                 {/* Articles Container*/}
-                <section className="flex flex-col lg:flex-row items-center">
+                <section className="w-full flex flex-col lg:flex-row items-start">
                     {/* Big Article */}
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20">
                         <Image
-                            src="https://via.placeholder.com/494x299"
+                            src={articlesData[0].Images}
                             alt="Placeholder-Event"
                             width={494}
                             height={299}
                         />
 
-                        <h2 className="text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        <h2 className="text-black text-center lg:text-left text-base lg:text-xl my-4">
+                            {articlesData[0].Title}
                         </h2>
-                        <p className="text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                        <p className="text-center lg:text-left text-sm lg:text-base mb-4">
+                            {articlesData[0].Content}
                         </p>
                     </div>
 
                     {/* Small Articles */}
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 flex flex-col items-center">
+                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 lg:flex hidden flex-col items-start">
                         {/* Article */}
-                        <div className="pb-2 flex flex-row items-center">
-                            <div className="pr-10">
-                                <Image
-                                    src="https://via.placeholder.com/262x158"
-                                    alt="Placeholder-Event"
-                                    width={262}
-                                    height={158}
-                                />
-                            </div>
+                        {articlesData.slice(1,3).map((item,index)=> {
+                            return (
+                                <div className="pb-2 flex flex-row items-center" key={index}>
+                                    <div className="w-1/2 pr-10">
+                                        <Image
+                                            src={item.Images}
+                                            alt="Placeholder-Event"
+                                            width={262}
+                                            height={158}
+                                        />
+                                    </div>
 
-                            <div className="flex flex-col">
-                                <h2 className="text-black text-base lg:text-xl my-4">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </h2>
-                                <p className="text-sm lg:text-base mb-4">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Article */}
-                        <div className="pb-2 flex flex-row items-center">
-                            <div className="pr-10">
-                                <Image
-                                    src="https://via.placeholder.com/262x158"
-                                    alt="Placeholder-Event"
-                                    width={262}
-                                    height={158}
-                                />
-                            </div>
-
-                            <div className="flex flex-col">
-                                <h2 className="text-black text-base lg:text-xl my-4">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </h2>
-                                <p className="text-sm lg:text-base mb-4">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </p>
-                            </div>
-                        </div>
+                                    <div className="w-1/2 flex flex-col">
+                                        <h2 className="text-black text-base lg:text-xl my-4 ">
+                                            {item.Title}
+                                        </h2>
+                                        <p className="text-sm lg:text-base mb-4">
+                                            {item.Content}
+                                        </p>
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
                 </section>
+
+                <Button to="/blog" className="self-center lg:self-end">Learn More</Button>
             </section>
 
             {/* Projects */}
-            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center items-start h-auto">    
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">    
                 {/* Header */}
-                <div className="w-full lg:w-1/2 pb-3 lg:pb-0">
+                <div className="pb-3 lg:pb-0">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Projects</h1>
                 </div>
 
                 {/* Projects Container*/}
-                <section className="flex flex-col lg:flex-row justify-center lg:justify-between items-center">
+                <section className="flex flex-col md:flex-row w-full md:justify-between">
                     {/* Project */}
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            className="align-center"
-                            src="https://via.placeholder.com/353x214"
-                            alt="Placeholder-Event"
-                            width={353}
-                            height={214}
-                        />
+                    
+                    {projectsData.slice(0,3).map((item,index)=> {
+                        return (
+                            <div className={`text-center ${index > 0 ? "hidden lg:block" : "block"} w-full lg:w-1/3 ${index === 1 ? "mx-8": ""}`} key={index}>
+                                <div className="relative h-48 md:h-36 lg:h-44 2xl:h-72">
+                                    <Image
+                                        src={faker.image.image()}
+                                        alt="Placeholder-Event"
+                                        layout="fill"
+                                        objectFit="cover"
+                                        objectPosition="center"
+                                    />
+                                </div>
 
-                        <h2 className="text-center text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-center text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
-
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            src="https://via.placeholder.com/353x214"
-                            alt="Placeholder-Event"
-                            width={353}
-                            height={214}
-                        />
-
-                        <h2 className="text-center text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-center text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
-
-                    <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 items-center">
-                        <Image
-                            src="https://via.placeholder.com/353x214"
-                            alt="Placeholder-Event"
-                            width={353}
-                            height={214}
-                        />
-
-                        <h2 className="text-center text-black text-base lg:text-xl my-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </h2>
-                        <p className="text-center text-sm lg:text-base mb-4">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                        </p>
-                    </div>
+                                {/* Project Text */}
+                                <h2 className="text-black text-base lg:text-xl my-4">
+                                    {item.Title}
+                                </h2>
+                                <p className="text-sm lg:text-base mb-4">
+                                    {item.Content}
+                                </p>
+                            </div>
+                        )
+                    })}
                 </section>
+
+                <Button to="/project">Learn More</Button>
             </section>
         </Layout>
     );

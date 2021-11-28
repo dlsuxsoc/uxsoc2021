@@ -6,13 +6,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch"
+    "test": "jest"
   },
   "dependencies": {
     "@notionhq/client": "^0.4.6",
     "@tailwindcss/line-clamp": "^0.2.2",
     "axios": "^0.24.0",
     "contentful": "^9.1.4",
+    "faker": "^5.5.3",
     "next": "12.0.2",
     "precss": "^4.0.0",
     "react": "17.0.2",

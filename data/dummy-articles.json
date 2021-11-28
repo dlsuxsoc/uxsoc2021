@@ -1,0 +1,20 @@
+[
+    {
+        "Content":"Article 1 Subtitle",
+        "Title": "Article 1 Title",
+        "DatePosted": "01-06-2021",
+        "Images": "https://via.placeholder.com/494x299"
+    },
+    {
+        "Content":"Article 2 Subtitle",
+        "Title": "Article 2 Title",
+        "DatePosted": "01-05-2021",
+        "Images": "https://via.placeholder.com/494x299"
+    },
+    {
+        "Content":"Article 3 Subtitle",
+        "Title": "Article 3 Title",
+        "DatePosted": "01-17-2021",
+        "Images": "https://via.placeholder.com/494x299"
+    }
+]

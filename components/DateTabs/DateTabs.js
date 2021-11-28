@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import React from "react";
 import styles from "./DateTabs.module.scss";
 
-const DateTabs = ({ active, year, set}) => {
+const DateTabs = ({ active, year, set }) => {
   return (
     <button
       className={`${styles.dates} block w-full text-left`}
@@ -16,3 +16,4 @@ const DateTabs = ({ active, year, set}) => {
 };
 
 export default DateTabs;
+
