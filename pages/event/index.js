@@ -8,6 +8,7 @@ import SEO from "../../components/seo";
 import styles from "../../styles/Home.module.css";
 import eventPicture from "../../public/images/temp-event.png";
 import { useEffect, useState } from "react";
+import faker from 'faker';
 
 export default function Events({ active }) {
   // const event = {
@@ -92,7 +93,7 @@ export default function Events({ active }) {
         <div className="relative pd">
           <div className="w-96 h-72">
             <Image
-              src={eventPicture}
+              src={faker.image.image()}
               alt="Placeholder"
               layout="fill"
               objectFit="contain"
