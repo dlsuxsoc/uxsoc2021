@@ -1,18 +1,17 @@
 // event queries
 const GET_PROJECTS = `
-query getProjects($slug:String){
-    projectCollection(where:{slug : $slug }){
-      items{
-        title
-        description
-        image{
-          url
-        }
-        slug
-        
+query getProjects($offset:Int){
+  projectCollection(skip: $offset){
+    items {
+      title
+			description
+      image{
+        url
       }
+			slug
     }
   }
+}
     `;
 
 const GET_PROJECT=`

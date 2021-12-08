@@ -1,22 +1,22 @@
 // article queries
 const GET_ARTICLES = `
-query getArticles($slug:String){
-    articleCollection(where:{slug : $slug}){
-      items{
-        content{
-          json
-        }
-        authors
-        title
-        slug
-        imagesCollection{
-          items{
-            url
-          }
+query getArticles($offset: Int){
+  articleCollection(skip: $offset){
+    items{
+      content{
+        json
+      }
+      authors
+      title
+      slug
+      imagesCollection{
+        items{
+          url
         }
       }
     }
   }
+}
     `;
 
 const GET_ARTICLE=`

@@ -1,7 +1,7 @@
 // event queries
 const GET_EVENTS = `
-query getEvents($slug:String){  
-  eventCollection(where:{slug : $slug}){
+query getEvents($offset:Int){  
+  eventCollection(skip: $offset){
     items{
       title
       slug
