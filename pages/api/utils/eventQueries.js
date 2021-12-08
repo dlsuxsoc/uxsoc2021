@@ -26,4 +26,18 @@ query getEvents($slug:String){
     }
   }
 `;
-export {GET_EVENTS,GET_EVENT} 
+
+const GET_EVENTS_BY_YEAR =`
+query getEventsByYear($offset: Int, $dateStart: DateTime, $dateEnd: DateTime) {
+  eventCollection(skip: $offset, where: {dateStart_gte: $dateStart, dateEnd_lte: $dateEnd}, limit: 5) {
+    items {
+      title
+      slug
+      description
+      dateStart
+      dateEnd
+    }
+  }
+}
+`;
+export {GET_EVENTS,GET_EVENT,GET_EVENTS_BY_YEAR} 

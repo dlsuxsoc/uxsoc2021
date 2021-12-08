@@ -38,4 +38,22 @@ query getArticles($slug:String){
     }
   }
 `;
-export {GET_ARTICLES,GET_ARTICLE} 
+
+const GET_ARTICLES_BY_YEAR=`
+query getArticlesByYear($offset: Int, $dateStart: DateTime, $dateEnd: DateTime) {
+  articleCollection(skip: $offset, where: {date_gte: $dateStart, date_lte: $dateEnd}) {
+    items {
+      authors
+      title
+      slug
+      date
+      imagesCollection {
+        items {
+          url
+        }
+      }
+    }
+  }
+}
+`
+export {GET_ARTICLES,GET_ARTICLE,GET_ARTICLES_BY_YEAR} 
