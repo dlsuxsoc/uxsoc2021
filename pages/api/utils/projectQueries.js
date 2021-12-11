@@ -1,7 +1,7 @@
 // event queries
 const GET_PROJECTS = `
 query getProjects($offset:Int){
-  projectCollection(skip: $offset){
+  projectCollection(skip: $offset, order:title_ASC){
     items {
       title
 			description
@@ -14,7 +14,7 @@ query getProjects($offset:Int){
 }
     `;
 
-const GET_PROJECT=`
+const GET_PROJECT = `
 query getProjects($slug:String){
     projectCollection(where:{slug : $slug },limit: 1){
       items{
@@ -29,4 +29,4 @@ query getProjects($slug:String){
     }
   }
 `;
-export {GET_PROJECTS,GET_PROJECT} 
+export { GET_PROJECTS, GET_PROJECT };
