@@ -109,9 +109,9 @@ export default function Index({ articles, projects, events }) {
                 <h2 className="text-black text-center lg:text-left text-base lg:text-xl my-4">
                   {item.title}
                 </h2>
-                <p className="text-center lg:text-left text-sm lg:text-base mb-4">
+                {/* <p className="text-center lg:text-left text-sm lg:text-base mb-4">
                   {item.description}
-                </p>
+                </p> */}
               </div>
             );
           })}
