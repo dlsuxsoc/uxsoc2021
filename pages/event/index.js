@@ -5,9 +5,10 @@ import EventItem from "../../components/EventItem/EventItem";
 import DateTabs from "../../components/DateTabs/DateTabs";
 import data from "../../data/dates.json";
 import SEO from "../../components/seo";
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/Event.module.css";
 import eventPicture from "../../public/images/temp-event.png";
 import { useEffect, useState } from "react";
+import faker from 'faker';
 
 export default function Events({ active }) {
   // const event = {
@@ -73,9 +74,9 @@ export default function Events({ active }) {
     );
   }, [year]); // will run for every change ng dependency array
 
-  useEffect(() => {}, []); // on load
+  useEffect(() => { }, []); // on load
 
-  useEffect(() => {}); // endless
+  useEffect(() => { }); // endless
 
   return (
     <Layout active={3}>
@@ -90,9 +91,9 @@ export default function Events({ active }) {
             </div> */}
       <section className="px-4 sm:px-32 py-2 flex flex-col md:flex-row justify-between">
         <div className="relative pd">
-          <div className="w-96 h-72">
+          <div className="lg:w-96 md:w-64 sd:w-48 h-96">
             <Image
-              src={eventPicture}
+              src={faker.image.image()}
               alt="Placeholder"
               layout="fill"
               objectFit="contain"
@@ -103,7 +104,7 @@ export default function Events({ active }) {
 
         <div className=" md:pl-16 lg:pl-32">
           <h1 className="mb-8 sm:pd-2">Lorem Ipsum Dolor</h1>
-          <p className="whitespace-nowrap">
+          <p className="whitespace-wrap sm:whitespace-nowrap">
             July 9-12, 2019 · 08:00am - 05:00pm
           </p>
           <p className="pb-8 ">
@@ -117,8 +118,11 @@ export default function Events({ active }) {
         </div>
       </section>
 
-      <section className="flex lg:pr-32 pt-28 pb-36 flex-col-reverse lg:flex-row">
-        <ul className="px-4 sm:px-32 flex flex-wrap justify-start w-full md:w-4/5">
+
+
+      <section className="flex pt-28 pb-36 flex-col-reverse lg:flex-row justify-start items-center">
+
+        <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap justify-center items-center w-full md:w-4/5">
           {/* {eventItems.map(({ title, description }) => {
                         return (<EventItem title={title} description={description} />)
                     })} */}
@@ -127,8 +131,19 @@ export default function Events({ active }) {
             <EventItem key={index} title={title} description={description} />
           ))}
         </ul>
+        
+        {/* Dropdown for Mobile */ }
+        <select className={`${styles.customselect} block lg:hidden w-1/2`} onClick={e => {
+          setYear(e.target.value)
+        }}>
+          {data.map((item, key) => (
+            <option key={key} value={item.year}>{item.year}</option>
+          ))}
+        </select>
+          
 
-        <section className="w-16 pr-5">
+        {/* Datetab for Desktop */}
+        <section className="lg:block hidden pr-5 w-16 mr-64">
           {/* <DateTabs setEventItems={setEventItems} events={events} /> */}
           {data.map((item, index) => (
             <DateTabs
