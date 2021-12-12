@@ -4,4 +4,5 @@ module.exports = {
   images: {
     domains: ["via.placeholder.com", "placeimg.com", "images.ctfassets.net"],
   },
+  distDir: "out",
 };
