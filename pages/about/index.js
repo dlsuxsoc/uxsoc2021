@@ -73,14 +73,14 @@ export default function Index() {
             </section> 
 
             {/* Services */}
-            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">    
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between h-auto">    
                 {/* Service Container*/}
-                <section className="flex flex-col w-full md:justify-between">
+                <section className="flex flex-col items-center w-full md:justify-between">
                     {/* Service */}
                     {projectsData.slice(0,3).map((item,index)=> {
                         return (
-                            <div className={`pb-2 flex flex-row items-center`} key={index}>
-                                <div className="w-1/3 relative h-48 md:h-36 lg:h-44 2xl:h-72">
+                            <div className={`pb-2 flex flex-row items-center w-full`} key={index}>
+                                <div className="w-1/2 relative h-48 md:h-36 lg:h-44 2xl:h-72">
                                     <Image
                                         src={faker.image.image()}
                                         alt="Placeholder-Event"
@@ -91,7 +91,7 @@ export default function Index() {
                                 </div>
 
                                 {/* Services Text */}
-                                <div className="w-2/3 flex flex-col pl-10">
+                                <div className="w-1/2 flex flex-col pl-10">
                                     <h2 className="text-black text-base lg:text-xl my-4 ">
                                         {item.Title}
                                     </h2>
