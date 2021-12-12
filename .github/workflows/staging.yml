@@ -36,22 +36,27 @@ jobs:
       # 3. Run npm install
       - run: npm install
 
-      # 4. Run npm build to build the Next.js application
-      - run: npm run build
-        env:
-          CONTENTFUL_CDA_TOKEN: ${{ secrets.CONTENTFUL_CDA_TOKEN }}
-          CONTENTFUL_SPACE_TOKEN: ${{ secrets.CONTENTFUL_SPACE_TOKEN }}
-          CONTENTFUL_TEST_TOKEN: ${{ secrets.CONTENTFUL_TEST_TOKEN }}
-          NOTION_MEMBERSHIP_APPLICATION: ${{ secrets.NOTION_MEMBERSHIP_APPLICATION }}
-          NOTION_INTEGRATION_SECRET: ${{ secrets.NOTION_INTEGRATION_SECRET }}
-
-      # 5. Test with the preferred Unit Testing Tool specified in package.json
+      # 4. Run tests
       - name: Run jest
         uses: stefanoeb/jest-action@1.0.3
         with:
           build: npm run build
           start: npm start
           wait-on: http://localhost:3000
+
+      # 5. Build project
+      - name: Build project
+        id: build-netlify
+        run: |
+          netlify build
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          CONTENTFUL_CDA_TOKEN: ${{ secrets.CONTENTFUL_CDA_TOKEN }}
+          CONTENTFUL_SPACE_TOKEN: ${{ secrets.CONTENTFUL_SPACE_TOKEN }}
+          CONTENTFUL_TEST_TOKEN: ${{ secrets.CONTENTFUL_TEST_TOKEN }}
+          NOTION_MEMBERSHIP_APPLICATION: ${{ secrets.NOTION_MEMBERSHIP_APPLICATION }}
+          NOTION_INTEGRATION_SECRET: ${{ secrets.NOTION_INTEGRATION_SECRET }}
 
       # 6. Deploy to Netlify
       - name: Deploy to Netlify
