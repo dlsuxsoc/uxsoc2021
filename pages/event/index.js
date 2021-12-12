@@ -3,7 +3,7 @@ import Layout from "../../components/layout";
 import EventItem from "../../components/EventItem/EventItem";
 import DateTabs from "../../components/DateTabs/DateTabs";
 import SEO from "../../components/seo";
-import styles from "../../styles/Event.module.css";
+import styles from "../../styles/Event.module.scss";
 import { useEffect, useState } from "react";
 import faker from "faker";
 import ContentfulApi from "./../api/utils/contentfulApi";
@@ -50,7 +50,7 @@ export default function Events({ active, contentfulEvents }) {
     <Layout active={3}>
       <SEO title={"Events"} />
 
-      <h1 className="pl-32 pt-28 pb-6">Events</h1>
+      <h1 className=" pt-28 pb-6 text-center lg:pl-32 lg:text-left">Events</h1>
 
       {/* <div className={`${styles.container} `}>
                 <div>
@@ -71,7 +71,7 @@ export default function Events({ active, contentfulEvents }) {
         </div>
 
         <div className=" md:pl-16 lg:pl-32">
-          <h1 className=" sm:pd-2">{latestEvent.title}</h1>
+          <h2 className="text-left">{latestEvent.title}</h2>
           <p className="whitespace-wrap sm:whitespace-nowrap my-4">
             {
               /** check if same month and day */
@@ -109,7 +109,7 @@ export default function Events({ active, contentfulEvents }) {
 
         {/* Dropdown for Mobile */}
         <select
-          className={`${styles.customselect} block lg:hidden w-1/2`}
+          className={`${styles.customSelect} block lg:hidden w-4/5 py-2 px-3`}
           onClick={(e) => {
             setYear(e.target.value);
           }}
