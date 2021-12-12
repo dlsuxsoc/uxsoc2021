@@ -9,12 +9,12 @@
  import Index from '../pages/index'
  import getRTFContent from '../helpers/getRTFContent'
  
- describe('Landing Page', () => {
-   it('renders the about section in the landing page', () => {
-     render(<Index />)
+//  describe('Landing Page', () => {
+//    it('renders the about section in the landing page', () => {
+//      render(<Index />)
  
-     expect(screen.getByText('About UX', {exact: false})).toBeInTheDocument()
-   })
+//      expect(screen.getByText('About UX', {exact: false})).toBeInTheDocument()
+//    })
 
 //    it('renders the projects section in the landing page', () => {
 //     render(<Index />)
