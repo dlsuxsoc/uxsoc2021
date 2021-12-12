@@ -51,7 +51,7 @@ jobs:
           netlify build
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
           CONTENTFUL_CDA_TOKEN: ${{ secrets.CONTENTFUL_CDA_TOKEN }}
           CONTENTFUL_SPACE_TOKEN: ${{ secrets.CONTENTFUL_SPACE_TOKEN }}
           CONTENTFUL_TEST_TOKEN: ${{ secrets.CONTENTFUL_TEST_TOKEN }}
@@ -59,11 +59,17 @@ jobs:
           NOTION_INTEGRATION_SECRET: ${{ secrets.NOTION_INTEGRATION_SECRET }}
 
       # 6. Deploy to Netlify
-      - name: Deploy to Netlify
-        uses: netlify/actions/cli@master
+      - name: Production deployment
+        id: deploy-netlify
+        run: |
+          COMMAND="netlify deploy --prod"
+          OUTPUT=$(sh -c "$COMMAND")
+
+          NETLIFY_LOGS_URL=$(echo "$OUTPUT" | grep -Eo '(http|https)://app.netlify.com/[a-zA-Z0-9./?=_-]*') # Unique key: app.netlify.com
+          NETLIFY_LIVE_URL=$(echo "$OUTPUT" | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*' | grep -Ev "netlify.com|(--)") # Unique key: doesn't contain -- and app.netlify.com
+
+          echo "::set-output name=netlify_logs_url::$NETLIFY_LOGS_URL"
+          echo "::set-output name=netlify_live_url::$NETLIFY_LIVE_URL"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
-        with:
-          # --prod argument deploys to the actual URL
-          args: deploy -m 'v${{ steps.package-version.outputs.current-version}} ・ ${{ github.head_ref }}'
