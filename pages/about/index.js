@@ -18,7 +18,7 @@ export default function Index() {
             <section className="px-4 sm:px-32 py-2 mt-36 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">    
                 {/* Header and Text */}
                 <div className="w-full lg:w-1/2 pr-0 lg:pr-20 pb-3 lg:pb-0 mb-8">
-                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">UX Society DLSU</h1>
+                    <h1 className="text-center lg:text-left text-black text-3xl lg:text-5xl mb-6 lg:mb-12">UX Society DLSU</h1>
                     <p className="text-base lg:text-xl mb-4">
                         The UX Society - DLSU Chapter is one of the many recognized UX Societies in the same network. 
                         There's UX Society ADMU, Davao, Orange County and the latest, UX Society AIM-Chapter.
@@ -42,30 +42,33 @@ export default function Index() {
             </section>
 
            {/* Mission-Vision */}
-           <section className="px-4 sm:px-32 py-2 mt-36 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">    
-                {/* Image */}
-                <div className="mb-6 lg:mb-12 text-center">
-                    <Image
-                        src="https://via.placeholder.com/590x333"
-                        alt="Placeholder-About"
-                        width={590}
-                        height={333}
-                    />
-                </div>
-                
-                {/* Header and Text */}
-                <div className="pb-3 lg:pb-0 mb-8 text-center">
-                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">The Mission-Vison</h1>
-                    <p className="text-base lg:text-xl mb-4">
-                        To create a community of Lasallian User Experience Designers and enthusiasts 
-                        through User Experience Education and the creation of a distinct User Experience 
-                        Culture within the university.
-                    </p>
-                    <p className="text-base lg:text-xl mb-4">
-                        UX Society envisions to be DLSU's premier consulting and educational body for User 
-                        Experience Strategy, particularly in technologies that enhance usability, guide 
-                        human-computer interaction, and showcase effective visual design.
-                    </p>
+           <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 justify-center lg:justify-between items-center h-auto">    
+                <div className="flex flex-col text-center">
+                    {/* Image */}
+                    <div className="relative h-48 md:h-64 lg:h-52 2xl:h-72 mb-6 lg:mb-12">
+                        <Image
+                            src={faker.image.image()}
+                            alt="Placeholder-About"
+                            layout="fill"
+                            objectFit="contain"
+                            objectPosition="center"
+                        />
+                    </div>
+                    
+                    {/* Header and Text */}
+                    <div className="pb-3 lg:pb-0 mb-8">
+                        <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">The Mission-Vison</h1>
+                        <p className="text-base lg:text-xl mb-4">
+                            To create a community of Lasallian User Experience Designers and enthusiasts through 
+                            User Experience Education and the creation of a distinct User Experience Culture within 
+                            the university.
+                        </p>
+                        <p className="text-base lg:text-xl mb-4">
+                            UX Society envisions to be DLSU's premier consulting and educational body for User  
+                            Experience Strategy, particularly in technologies that enhance usability, guide 
+                            human-computer interaction, and showcase effective visual design.
+                        </p>
+                    </div>
                 </div>
             </section> 
 
