@@ -124,14 +124,14 @@ export default function Events({ active, contentfulEvents }) {
         {/* Datetab for Desktop */}
         <section className="lg:block hidden pr-5 w-16 mr-64">
           {/* <DateTabs setEventItems={setEventItems} events={events} /> */}
-          {yearList.map((item, index) => (
-            <DateTabs
-              key={index}
-              year={item}
-              active={item === year}
-              set={setYear}
-            />
-          ))}
+          {data.map((item, index) => (
+                        <DateTabs
+                            key={index}
+                            year={item.year}
+                            active={item.year === year}
+                            set={setYear}
+                        />
+                    ))}
         </section>
       </section>
     </Layout>
