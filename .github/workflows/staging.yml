@@ -37,6 +37,9 @@ jobs:
           NOTION_MEMBERSHIP_APPLICATION: ${{ secrets.NOTION_MEMBERSHIP_APPLICATION }}
           NOTION_INTEGRATION_SECRET: ${{ secrets.NOTION_INTEGRATION_SECRET }}
 
+        with:
+          secrets: '["CONTENTFUL_CDA_TOKEN" , "CONTENTFUL_SPACE_TOKEN",  "CONTENTFUL_TEST_TOKEN", "NOTION_MEMBERSHIP_APPLICATION", "NOTION_INTEGRATION_SECRET"]'
+
       # 5. Test with the preferred Unit Testing Tool specified in package.json
       - name: Run jest
         uses: stefanoeb/jest-action@1.0.3
