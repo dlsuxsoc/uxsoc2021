@@ -7,18 +7,22 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
-    colors: {
-      green: "#41BC9C",
-      gray: "#80858B",
-    },
-    fontSize: {
-      body: "0.875rem",
-      h1: "3rem",
-      h2: "2rem",
-      h3: "1.5rem",
-      h4: "1.25rem",
-      h5: "1rem",
+    extend: {
+      colors: {
+        green: "#41BC9C",
+        gray: "#80858B",
+      },
+      backgroundColor: {
+        green: "#41BC9C",
+      },
+      fontSize: {
+        body: "0.875rem",
+        h1: "3rem",
+        h2: "2rem",
+        h3: "1.5rem",
+        h4: "1.25rem",
+        h5: "1rem",
+      },
     },
   },
   variants: {
