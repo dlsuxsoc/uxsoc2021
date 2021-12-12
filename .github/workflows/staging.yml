@@ -30,6 +30,14 @@ jobs:
 
       # 4. Run npm build to build the Next.js application
       - run: npm run build
+        env:
+          CONTENTFUL_CDA_TOKEN: ${{ secrets.CONTENTFUL_CDA_TOKEN }}
+          CONTENTFUL_SPACE_TOKEN: ${{ secrets.CONTENTFUL_SPACE_TOKEN }}
+          CONTENTFUL_TEST_TOKEN: ${{ secrets.CONTENTFUL_TEST_TOKEN }}
+          NOTION_MEMBERSHIP_APPLICATION: ${{ secrets.NOTION_MEMBERSHIP_APPLICATION }}
+          NOTION_INTEGRATION_SECRET: ${{ secrets.NOTION_INTEGRATION_SECRET }}
+        with:
+          secrets: '["CONTENTFUL_CDA_TOKEN" , "CONTENTFUL_SPACE_TOKEN",  "CONTENTFUL_TEST_TOKEN", "NOTION_MEMBERSHIP_APPLICATION", "NOTION_INTEGRATION_SECRET"]'
 
       # 5. Test with the preferred Unit Testing Tool specified in package.json
       - name: Run jest
@@ -50,6 +58,7 @@ jobs:
           CONTENTFUL_TEST_TOKEN: ${{ secrets.CONTENTFUL_TEST_TOKEN }}
           NOTION_MEMBERSHIP_APPLICATION: ${{ secrets.NOTION_MEMBERSHIP_APPLICATION }}
           NOTION_INTEGRATION_SECRET: ${{ secrets.NOTION_INTEGRATION_SECRET }}
+
         with:
           # --prod argument deploys to the actual URL
           args: deploy --dir=build --prod
