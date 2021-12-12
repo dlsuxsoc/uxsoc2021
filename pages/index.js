@@ -11,6 +11,7 @@ import projectsData from "../data/dummy-projects.json";
 import faker from "faker";
 import Button from "../components/Button/Button";
 import ContentfulApi from "./api/utils/contentfulApi";
+import getRTFContent from "../helpers/getRTFContent";
 
 export default function Index({ articles, projects, events }) {
   return (
@@ -148,10 +149,7 @@ export default function Index({ articles, projects, events }) {
               {articles[0].title}
             </h2>
             <p className="text-center lg:text-left text-sm lg:text-base mb-4">
-              {articles[0].content.json.content[0].content[0].value.slice(
-                0,
-                300
-              )}
+              {getRTFContent(articles[0], 0, 300)}
               ...
             </p>
           </div>
@@ -168,8 +166,6 @@ export default function Index({ articles, projects, events }) {
                     <Image
                       src={item.imagesCollection.items[0].url}
                       alt="Placeholder-Event"
-                      //   width={262}
-                      //   height={158}
                       layout="fill"
                       objectFit="cover"
                     />
@@ -180,7 +176,7 @@ export default function Index({ articles, projects, events }) {
                       {item.title}
                     </h2>
                     <p className="text-sm lg:text-base">
-                      {item.content.json.content[0].content[0].value}
+                      {getRTFContent(item)}
                     </p>
                   </div>
                 </div>
