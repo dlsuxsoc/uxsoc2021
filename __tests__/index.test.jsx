@@ -7,6 +7,7 @@
  import React from 'react'
  import { render, screen } from '@testing-library/react'
  import Index from '../pages/index'
+ import getRTFContent from '../helpers/getRTFContent'
  
  describe('Landing Page', () => {
    it('renders the about section in the landing page', () => {
