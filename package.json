@@ -9,7 +9,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@netlify/build": "^20.3.0",
     "@netlify/plugin-nextjs": "^4.0.0-rc.1",
     "@notionhq/client": "^0.4.6",
     "@tailwindcss/line-clamp": "^0.2.2",
