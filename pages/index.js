@@ -169,6 +169,7 @@ export default function Index({ articles, projects, events }) {
                       layout="fill"
                       objectFit="cover"
                     />
+                    Added smthn
                   </div>
 
                   <div className="w-1/2 flex flex-col">
