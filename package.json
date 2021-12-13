@@ -6,8 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
-    "postbuild": "next-on-netlify"
+    "test": "jest"
   },
   "dependencies": {
     "@notionhq/client": "^0.4.6",
