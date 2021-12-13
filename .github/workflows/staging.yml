@@ -48,7 +48,7 @@ jobs:
       - name: Build project
         id: build-project
         run: |
-          netlify build
+          netlify build --version 20.3.0
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
