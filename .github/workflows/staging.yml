@@ -46,7 +46,7 @@ jobs:
 
       # 5. Build project
       - name: Build project
-        id: build-netlify
+        id: build-project
         run: |
           netlify build
         env:
