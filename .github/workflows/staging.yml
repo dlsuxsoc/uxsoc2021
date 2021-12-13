@@ -27,11 +27,11 @@ jobs:
             ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
-      # 2. Install Node 16
-      - name: Use Node.js 16.x
+      # 2. Install Node 14
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 16.x
+          node-version: 14.x
 
       # 3. Run npm install
       - run: npm install
@@ -48,7 +48,7 @@ jobs:
       - name: Build project
         id: build-project
         run: |
-          netlify build --version 20.3.0
+          netlify build
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
