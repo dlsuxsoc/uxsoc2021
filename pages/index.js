@@ -18,7 +18,7 @@ export default function Index({ articles, projects, events }) {
     <Layout active={0}>
       <SEO title={"Home"} />
       {/* Hero */}
-      <section className="px-4 sm:px-32 py-2 mt-36 lg:mt-0 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen">
+      <section className="px-4 sm:px-8 lg:px-32 py-2 mt-36 lg:mt-0 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen">
         {/* Header */}
         <div className="w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
           <h1 className="text-black text-4xl lg:text-6xl mb-6 lg:mb-12">
@@ -42,7 +42,7 @@ export default function Index({ articles, projects, events }) {
       </section>
 
       {/* About UX */}
-      <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">
+      <section className="px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">
         {/* Image */}
         <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 text-center">
           <Image
@@ -78,7 +78,7 @@ export default function Index({ articles, projects, events }) {
       </section>
 
       {/* Events */}
-      <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center md:items-start h-auto">
+      <section className="px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center md:items-start h-auto">
         {/* Header */}
         <div className="pb-3 lg:pb-0">
           <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
@@ -124,7 +124,7 @@ export default function Index({ articles, projects, events }) {
       </section>
 
       {/* Articles */}
-      <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center md:items-start h-auto">
+      <section className="px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center md:items-start h-auto">
         {/* Header */}
         <div className="pb-3 lg:pb-0">
           <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
@@ -191,7 +191,7 @@ export default function Index({ articles, projects, events }) {
       </section>
 
       {/* Projects */}
-      <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">
+      <section className="px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">
         {/* Header */}
         <div className="pb-3 lg:pb-0">
           <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
