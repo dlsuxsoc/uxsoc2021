@@ -97,8 +97,8 @@ export default function Events({ active, contentfulEvents }) {
         </div>
       </section>
 
-      <section className="flex pt-28 pb-36 flex-col-reverse lg:flex-row justify-start items-center">
-        <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap justify-center items-center w-full md:w-4/5">
+      <section className="flex pt-28 pb-36 flex-col-reverse lg:flex-row justify-start md:items-stretch items-center">
+        <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap md:justify-start justify-center w-full md:w-4/5">
           {/* {eventItems.map(({ title, description }) => {
                         return (<EventItem title={title} description={description} />)
                     })} */}
