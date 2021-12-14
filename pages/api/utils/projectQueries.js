@@ -24,7 +24,6 @@ query getProjects($slug:String){
           url
         }
         slug
-        
       }
     }
   }
