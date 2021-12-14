@@ -18,6 +18,7 @@ const getYears = (events) => {
 };
 
 export default function Events({ active, contentfulEvents }) {
+  console.log ({...contentfulEvents});
   const [year, setYear] = useState("All"); // selected date
   const [events, setEvents] = useState([...contentfulEvents]);
   const [yearList, setYearList] = useState(["All"]);
@@ -124,14 +125,14 @@ export default function Events({ active, contentfulEvents }) {
         {/* Datetab for Desktop */}
         <section className="lg:block hidden pr-5 w-16 mr-64">
           {/* <DateTabs setEventItems={setEventItems} events={events} /> */}
-          {yearList.map((item, index) => (
-            <DateTabs
-              key={index}
-              year={item}
-              active={item === year}
-              set={setYear}
-            />
-          ))}
+          {yearList.map((item, key) => (
+                        <DateTabs
+                            key={key}
+                            year={item}
+                            active={item === year}
+                            set={setYear}
+                        />
+                    ))}
         </section>
       </section>
     </Layout>
@@ -140,6 +141,5 @@ export default function Events({ active, contentfulEvents }) {
 
 export async function getStaticProps() {
   const { data } = await ContentfulApi.getEvents(0);
-
   return { props: { contentfulEvents: data.eventCollection.items } };
 }

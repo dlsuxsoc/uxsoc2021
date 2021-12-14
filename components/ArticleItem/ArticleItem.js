@@ -5,7 +5,7 @@ import Link from "next/link";
 import eventPicture from "../../public/images/temp-event.png";
 import faker from "faker";
 
-const ArticleItem = ({ title, description, date }) => {
+const ArticleItem = ({ title, authors, slug }) => {
   return (
     <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-28 flex flex-col lg:flex-row justify-center lg:justify-between h-auto">
       {/* Image */}
@@ -23,8 +23,8 @@ const ArticleItem = ({ title, description, date }) => {
         <h1 className="text-black text-3xl lg:text-4xl mb-6 lg:mb-12">
           {title}
         </h1>
-        <p className="text-sm lg:text-base mb-4">{date}</p>
-        <p className="text-sm lg:text-base mb-4">{description}</p>
+        <p className="text-sm lg:text-base mb-4">{authors}</p>
+        <p className="text-sm lg:text-base mb-4">{slug}</p>
       </div>
     </section>
   );
