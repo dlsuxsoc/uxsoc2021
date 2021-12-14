@@ -12,14 +12,14 @@ import { useEffect, useState } from "react";
 
 const getYears = (articles) => {
     const years = articles.map((item) =>
-      new Date(item.dateStart).getFullYear().toString()
+      new Date(item.date).getFullYear().toString()
     );
     return years.filter((item, index, self) => self.indexOf(item) === index);
   };  
 
 export default function Articles({ active, contentfulArticles }) {
-
-    console.log ({...contentfulArticles[0]});
+    
+    console.log ({...contentfulArticles});
     const [year, setYear] = useState("All"); // selected date
     const [articles, setArticles] = useState([...contentfulArticles]);
     const [yearList, setYearList] = useState(["All"]);
@@ -35,7 +35,7 @@ export default function Articles({ active, contentfulArticles }) {
         setArticles(() => {
             return contentfulArticles.filter((item) => {
                 return (
-                    new Date(item.dateStart).getFullYear().toString() === year ||
+                    new Date(item.date).getFullYear().toString() === year ||
                     year === "All"
                 );
             });
@@ -48,10 +48,10 @@ export default function Articles({ active, contentfulArticles }) {
 
             <h1 className="pl-32 lg:pl-32 py-24">Articles</h1>
 
-            <section className="flex flex-col-reverse lg:flex-row">
+            <section className="flex flex-col-reverse lg:flex-row md:items-stretch items-center">
                 <ul className="md:flex-row-reverse">
-                    {articles.map(({ title, description, date }, index) => (
-                        <ArticleItem key={index} title={title} description={description} date={date} />
+                    {articles.map(({ title, authors, slug }, index) => (
+                        <ArticleItem key={index} title={title} authors={authors} slug={slug} />
                     ))}
 
                     
@@ -70,11 +70,11 @@ export default function Articles({ active, contentfulArticles }) {
                     ))}
                 </select>
                 <section className="lg:block hidden pr-5 w-16 mr-96">
-                    {yearList.map((item, index) => (
+                    {yearList.map((item, key) => (
                         <DateTabs
-                            key={index}
-                            year={item.year}
-                            active={item.year === year}
+                            key={key}
+                            year={item}
+                            active={item === year}
                             set={setYear}
                         />
                     ))}
@@ -85,6 +85,8 @@ export default function Articles({ active, contentfulArticles }) {
 }
 
 export async function getStaticProps() {
-    const { data } = await ContentfulApi.getArticles(0);
+    const { data } = await ContentfulApi.getArticlesByYear(0);
     return { props: { contentfulArticles: data.articleCollection.items } };
 }
+
+
