@@ -8,8 +8,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Button from "../components/Button/Button";
 import Link from "next/link";
-import id from "faker/lib/locales/id_ID";
 
+import styles from "../styles/Apply.module.scss";
 const Apply = () => {
   const [maxDate, setMaxDate] = useState("");
   const router = useRouter();
@@ -569,7 +569,7 @@ const Apply = () => {
                   <input
                     type={"submit"}
                     value={"SEND APPLICATION"}
-                    className="font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer"
+                    className={`${styles.btn_container} font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer`}
                   />
                 </div>
               </div>
