@@ -5,25 +5,46 @@ import Image from "next/image";
 import faker from "faker";
 import { range } from "../helpers/generateArrayFromNtoN";
 import { restrictRange } from "../helpers/restrictRange";
+
 const Apply = () => {
   const months = range(1, 12, 1);
   const years = range(1970, new Date().getUTCFullYear(), 1);
   const [maxDate, setMaxDate] = useState("");
 
+  //   const [applicationData, setApplicationData] = useState({
+  //     firstName: "",
+  //     lastName: "",
+  //     nickname: "",
+  //     mOB: "",
+  //     dOB: "",
+  //     yOB: "",
+  //     gender: "",
+  //     customGender: "",
+  //     email: "",
+  //     contactnum: "",
+  //     college: "",
+  //     program: "",
+  //     hobbies: "",
+  //     interestedOrg: "",
+  //     interestedDept: "",
+  //   });
+
   const [applicationData, setApplicationData] = useState({
-    firstName: "",
-    lastName: "",
-    nickname: "",
-    mOB: "",
-    dOB: "",
+    firstName: "Alyssa",
+    lastName: "Palmares",
+    nickname: "Alyssa",
+    mOB: 12,
+    dOB: 14,
     yOB: new Date().getUTCFullYear() - 16,
-    gender: "",
+    gender: "Female",
     customGender: "",
-    college: "",
-    program: "",
-    hobbies: "",
-    interestedOrg: "",
-    interestedDept: "",
+    email: "alyssa_palmares@dlsu.edu.ph",
+    contactnum: "639293397767",
+    college: "De La Salle University - Manila",
+    program: "Bachelor of Science in Computer Science",
+    hobbies: "lorem",
+    interestedOrg: "lorem",
+    interestedDept: "Development, Internal Growth, Marketing",
   });
 
   useEffect(() => {
@@ -54,13 +75,13 @@ const Apply = () => {
     <Layout active={-1}>
       <SEO title={"Membership Application"} />
       <div className="hidden md:block fixed right-0 top-0 bg-green  md:w-64 z-0 lg:w-96 h-screen">
-        <Image
+        {/* <Image
           src={faker.image.image()}
           alt="Placeholder-Hero"
           layout="fill"
           objectFit="cover"
           objectPosition="center"
-        />
+        /> */}
       </div>
       <section className="px-4 sm:px-8 lg:px-32 pt-32 ">
         {/* Header */}
@@ -92,6 +113,13 @@ const Apply = () => {
                 type="text"
                 className="form-input py-2 px-3 w-full"
                 placeholder="Alyssa"
+                value={applicationData.firstName}
+                onChange={(e) =>
+                  setApplicationData({
+                    ...applicationData,
+                    firstName: e.target.value,
+                  })
+                }
                 required
               />
             </div>
@@ -101,6 +129,13 @@ const Apply = () => {
                 type="text"
                 className="form-input py-2 px-3 w-full"
                 placeholder="Palmares"
+                value={applicationData.lastName}
+                onChange={(e) =>
+                  setApplicationData({
+                    ...applicationData,
+                    lastName: e.target.value,
+                  })
+                }
                 required
               />
             </div>{" "}
@@ -111,6 +146,13 @@ const Apply = () => {
               <input
                 type="text"
                 className="form-input py-2 px-3 w-full"
+                value={applicationData.nickname}
+                onChange={(e) =>
+                  setApplicationData({
+                    ...applicationData,
+                    nickname: e.target.value,
+                  })
+                }
                 placeholder="Alyssa"
               />
             </div>
@@ -148,7 +190,7 @@ const Apply = () => {
                     className="form-input py-2 px-3 w-full"
                     placeholder="14"
                     required
-                    value={parseInt(applicationData.dOB)}
+                    value={applicationData.dOB}
                     onChange={(e) => {
                       setApplicationData({
                         ...applicationData,
@@ -166,8 +208,8 @@ const Apply = () => {
                 <div className="col-start-3">
                   <input
                     type="number"
-                    min={1970}
-                    max={new Date().getUTCFullYear()}
+                    min={1920}
+                    max={new Date().getUTCFullYear() - 16}
                     maxLength={4}
                     required
                     className="form-input py-2 px-3 w-full"
@@ -176,13 +218,7 @@ const Apply = () => {
                     onChange={(e) =>
                       setApplicationData({
                         ...applicationData,
-                        yOB:
-                          restrictRange(
-                            parseInt(e.target.value),
-                            applicationData.yOB,
-                            1970,
-                            new Date().getUTCFullYear() - 16
-                          ) || "",
+                        yOB: parseInt(e.target.value) || "",
                       })
                     }
                   />
@@ -275,6 +311,7 @@ const Apply = () => {
               <input
                 type="email"
                 className="form-input py-2 px-3 w-full"
+                value={applicationData.email}
                 placeholder="alyssa_palmares@dlsu.edu.ph"
               />
             </div>
@@ -283,6 +320,7 @@ const Apply = () => {
               <input
                 type="text"
                 pattern="^(09|639)\d{9}$"
+                value={applicationData.contactnum}
                 className="form-input py-2 px-3 w-full"
                 placeholder="63xxxxxxxxx"
               />
@@ -322,8 +360,15 @@ const Apply = () => {
               <label className="block mb-6">Program*</label>
               <input
                 type="text"
+                value={applicationData.program}
                 className="form-input py-2 px-3 w-full"
                 placeholder="Bachelor of Science in Human-Computer Interaction"
+                onChange={(e) =>
+                  setApplicationData({
+                    ...applicationData,
+                    program: e.target.value,
+                  })
+                }
               />
             </div>
           </div>
@@ -344,9 +389,8 @@ const Apply = () => {
                     hobbies: e.target.value,
                   })
                 }
-              >
-                {applicationData.hobbies}
-              </textarea>
+                value={applicationData.hobbies}
+              ></textarea>
             </div>
             <div className="col-span-2"></div>
 
@@ -363,9 +407,8 @@ const Apply = () => {
                     interestedOrg: e.target.value,
                   })
                 }
-              >
-                {applicationData.interestedOrg}
-              </textarea>
+                value={applicationData.interestedOrg}
+              ></textarea>
             </div>
             <div className="col-span-2"></div>
 
@@ -379,12 +422,11 @@ const Apply = () => {
                 onChange={(e) =>
                   setApplicationData({
                     ...applicationData,
-                    interestedOrg: e.target.value,
+                    interestedDept: e.target.value,
                   })
                 }
-              >
-                {applicationData.interestedOrg}
-              </textarea>
+                value={applicationData.interestedDept}
+              ></textarea>
             </div>
           </div>
         </section>
