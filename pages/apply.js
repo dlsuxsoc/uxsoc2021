@@ -10,44 +10,56 @@ import Button from "../components/Button/Button";
 import Link from "next/link";
 
 import styles from "../styles/Apply.module.scss";
+import FormCheckbox from "../components/FormCheckbox/FormCheckbox";
 const Apply = () => {
   const [maxDate, setMaxDate] = useState("");
   const router = useRouter();
 
-  //   const [applicationData, setApplicationData] = useState({
-  //     firstName: "",
-  //     lastName: "",
-  //     nickname: "",
-  //     mOB: "",
-  //     dOB: "",
-  //     yOB: "",
-  //     pronoun: "",
-  //     customPronoun: "",
-  //     email: "",
-  //     contactnum: "",
-  //     college: "",
-  //     program: "",
-  //     hobbies: "",
-  //     interestedOrg: "",
-  //     interestedDept: "",
-  //   });
+  // const [applicationData, setApplicationData] = useState({
+  //   firstName: "Alyssa",
+  //   lastName: "Palmares",
+  //   nickname: "Alyssa",
+  //   mOB: 12,
+  //   dOB: 14,
+  //   yOB: 2001,
+  //   pronoun: "She/ Her",
+  //   customPronoun: "",
+  //   email: "alyssa_palmares@dlsu.edu.ph",
+  //   contactnum: "639293397767",
+  //   college: "De La Salle University - Manila",
+  //   program: "Bachelor of Science in Computer Science",
+  //   hobbies:
+  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
+  //   interestedOrg:
+  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
+  //   interestedDept: [],
+  // });
 
   const [applicationData, setApplicationData] = useState({
-    firstName: "Alyssa",
-    lastName: "Palmares",
-    nickname: "Alyssa",
-    mOB: 12,
-    dOB: 14,
+    firstName: "",
+    lastName: "",
+    nickname: "",
+    mOB: "",
+    dOB: "",
     yOB: new Date().getUTCFullYear() - 16,
-    pronoun: "She/ Her",
+    pronoun: "",
     customPronoun: "",
-    email: "alyssa_palmares@dlsu.edu.ph",
-    contactnum: "639293397767",
-    college: "De La Salle University - Manila",
-    program: "Bachelor of Science in Computer Science",
-    hobbies: "lorem",
-    interestedOrg: "lorem",
-    interestedDept: "Development, Internal Growth, Marketing",
+    email: "",
+    contactnum: "",
+    college: "",
+    program: "",
+    hobbies: "",
+    interestedOrg: "",
+    interestedDept: [],
+  });
+
+  const [checkedDept, setCheckedDept] = useState({
+    Design: false,
+    Development: false,
+    Externals: false,
+    "Internal Growth": false,
+    Marketing: false,
+    Research: false,
   });
 
   useEffect(() => {
@@ -74,15 +86,26 @@ const Apply = () => {
     return () => {};
   }, [applicationData.mOB, applicationData.yOB, maxDate]);
 
+  useEffect(() => {
+    setApplicationData({
+      ...applicationData,
+      interestedDept: Object.keys(checkedDept).filter(
+        (key) => checkedDept[key] === true
+      ),
+    });
+    // console.log(applicationData);
+  }, [setCheckedDept, checkedDept]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     //console.log(applicationData);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     const res = await axios.post(
       "/api/addMembershipApplication",
       applicationData
     );
     //console.log(res);
-
     if (res.status === 201) {
       router.push("?status=success", undefined, { shallow: true });
     } else {
@@ -193,7 +216,7 @@ const Apply = () => {
                     type="text"
                     name="firstName"
                     className="form-input py-2 px-3 w-full"
-                    placeholder="Alyssa"
+                    placeholder="Donald Arthur"
                     value={applicationData.firstName}
                     onChange={(e) =>
                       setApplicationData({
@@ -212,7 +235,7 @@ const Apply = () => {
                     type="text"
                     name="lastName"
                     className="form-input py-2 px-3 w-full"
-                    placeholder="Palmares"
+                    placeholder="Norman"
                     value={applicationData.lastName}
                     onChange={(e) =>
                       setApplicationData({
@@ -237,7 +260,7 @@ const Apply = () => {
                         nickname: e.target.value,
                       })
                     }
-                    placeholder="Alyssa"
+                    placeholder="Don"
                   />
                 </div>
                 <div className=" col-span-12 sm:col-span-6 md:col-span-4 mb-4">
@@ -272,7 +295,7 @@ const Apply = () => {
                         min={1}
                         max={maxDate}
                         className="form-input py-2 px-3 w-full"
-                        placeholder="14"
+                        placeholder="25"
                         required
                         value={applicationData.dOB}
                         onChange={(e) => {
@@ -425,7 +448,7 @@ const Apply = () => {
                     name="email"
                     className="form-input py-2 px-3 w-full"
                     value={applicationData.email}
-                    placeholder="alyssa_palmares@dlsu.edu.ph"
+                    placeholder="don_norman@dlsu.edu.ph"
                     onChange={(e) =>
                       setApplicationData({
                         ...applicationData,
@@ -547,19 +570,80 @@ const Apply = () => {
 
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6">
-                    What department are you interested in?
+                    What department/s are you interested in?
                   </label>
-                  <textarea
-                    className="w-full p-2"
-                    rows={5}
+                  <FormCheckbox
+                    type="departments"
                     onChange={(e) =>
-                      setApplicationData({
-                        ...applicationData,
-                        interestedDept: e.target.value,
+                      setCheckedDept({
+                        ...checkedDept,
+                        Design: !checkedDept.Design,
                       })
                     }
-                    value={applicationData.interestedDept}
-                  ></textarea>
+                    value={checkedDept.Design}
+                  >
+                    Design
+                  </FormCheckbox>
+                  <FormCheckbox
+                    type="departments"
+                    onChange={(e) =>
+                      setCheckedDept({
+                        ...checkedDept,
+                        Development: !checkedDept.Development,
+                      })
+                    }
+                    value={checkedDept.Development}
+                  >
+                    Development
+                  </FormCheckbox>
+                  <FormCheckbox
+                    type="departments"
+                    onChange={(e) =>
+                      setCheckedDept({
+                        ...checkedDept,
+                        Externals: !checkedDept.Externals,
+                      })
+                    }
+                    value={checkedDept.Externals}
+                  >
+                    Externals
+                  </FormCheckbox>
+                  <FormCheckbox
+                    type="departments"
+                    onChange={(e) =>
+                      setCheckedDept({
+                        ...checkedDept,
+                        "Internal Growth": !checkedDept["Internal Growth"],
+                      })
+                    }
+                    value={checkedDept["Internal Growth"]}
+                  >
+                    Internal Growth
+                  </FormCheckbox>
+                  <FormCheckbox
+                    type="departments"
+                    onChange={(e) =>
+                      setCheckedDept({
+                        ...checkedDept,
+                        Marketing: !checkedDept.Marketing,
+                      })
+                    }
+                    value={checkedDept.Marketing}
+                  >
+                    Marketing
+                  </FormCheckbox>
+                  <FormCheckbox
+                    type="departments"
+                    onChange={(e) =>
+                      setCheckedDept({
+                        ...checkedDept,
+                        Research: !checkedDept.Research,
+                      })
+                    }
+                    value={checkedDept.Research}
+                  >
+                    Research
+                  </FormCheckbox>
                 </div>
               </div>
             </section>

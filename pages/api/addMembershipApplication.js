@@ -70,18 +70,82 @@ const addMembershipApplication = async (req, res) => {
             },
           ],
         },
+        "Interested Department/s": {
+          multi_select:
+            data.interestedDept.map((item) => {
+              return { name: item };
+            }) || [],
+        },
         Status: {
           select: {
             name: "Pending",
           },
         },
       },
-      children: [],
+      children: [
+        {
+          object: "block",
+          type: "heading_3",
+          heading_3: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content: "1. What are your hobbies?",
+                },
+              },
+            ],
+          },
+        },
+        {
+          object: "block",
+          type: "paragraph",
+          paragraph: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content: data.hobbies,
+                },
+              },
+            ],
+          },
+        },
+        {
+          object: "block",
+          type: "heading_3",
+          heading_3: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content:
+                    "2. Why are you interested in joining the organization?",
+                },
+              },
+            ],
+          },
+        },
+        {
+          object: "block",
+          type: "paragraph",
+          paragraph: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content: data.interestedOrg,
+                },
+              },
+            ],
+          },
+        },
+      ],
     });
-    console.log(response);
+    //console.log(response);
     res.status(201).json(response);
   } catch (e) {
-    console.error(e);
+    //console.error(e);
     res.status(req.body.status).json(req.body);
   }
 };
