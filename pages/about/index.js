@@ -5,7 +5,7 @@ import SEO from "../../components/seo";
 import axios from "axios";
 import styles from "../../styles/Home.module.css";
 import { useEffect, useState } from "react";
-import projectsData from "../../data/dummy-projects.json";
+import servicesData from "../../data/services.json";
 import faker from "faker";
 import Button from "../../components/Button/Button";
 
@@ -73,11 +73,15 @@ export default function Index() {
             </section> 
 
             {/* Services */}
-            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between h-auto">    
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">    
+                {/* Header*/}
+                <div className="pb-3 lg:pb-0">
+                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Services</h1>
+                </div>
                 {/* Service Container*/}
                 <section className="flex flex-col items-center w-full md:justify-between">
                     {/* Service */}
-                    {projectsData.slice(0,3).map((item,index)=> {
+                    {servicesData.slice(0,3).map((item,index)=> {
                         return (
                             <div className={`pb-2 flex flex-row items-center w-full`} key={index}>
                                 <div className="w-1/2 relative h-48 md:h-36 lg:h-44 2xl:h-72">
@@ -103,6 +107,20 @@ export default function Index() {
                         )
                     })}
                 </section>
+            </section>
+
+            {/* Join Us */}
+            <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">    
+                {/* Header*/}
+                <div className="pb-3 text-center">
+                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Join Us</h1>
+                    <p className="text-base lg:text-xl mb-4 lg:w-96">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
+                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi 
+                    </p>
+                </div>
+                
+                <Button to="/apply">Apply Now</Button>
             </section>
         </Layout>
     );
