@@ -18,7 +18,7 @@ export default function Index({ articles, projects, events }) {
     <Layout active={0}>
       <SEO title={"Home"} />
       {/* Hero */}
-      <section className="px-4 sm:px-8 lg:px-32 py-2 mt-36 lg:mt-0 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen">
+      <section className="px-4 sm:px-8 lg:px-32 py-2 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen min-h-screen md:min-h-max">
         {/* Header */}
         <div className="w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
           <h1 className="text-black text-4xl lg:text-6xl mb-6 lg:mb-12">
@@ -30,12 +30,12 @@ export default function Index({ articles, projects, events }) {
         </div>
 
         {/* Image */}
-        <div className="w-full lg:w-1/2 relative pb-3 lg:pb-0 h-48 md:h-80 lg:h-screen">
+        <div className="w-full lg:w-1/2 relative mb-8 pb-3 lg:pb-0 h-48 md:h-80 lg:h-screen">
           <Image
-            src={faker.image.image()}
+            src="/images/home-1.png"
             alt="Placeholder-Hero"
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
             objectPosition="center"
           />
         </div>
@@ -97,7 +97,7 @@ export default function Index({ articles, projects, events }) {
                 } w-full lg:w-1/3 ${index === 1 ? "mx-8" : ""}`}
                 key={index}
               >
-                <div className="relative h-48 md:h-80 lg:h-44 2xl:h-72">
+                <div className="relative h-48 md:h-80 lg:h-44 2xl:h-72 shadow-lg">
                   <Image
                     src={faker.image.image()}
                     alt="Placeholder-Event"
@@ -110,7 +110,7 @@ export default function Index({ articles, projects, events }) {
                 <h2 className="text-black text-center lg:text-left text-base lg:text-xl my-4">
                   {item.title}
                 </h2>
-                {/* <p className="text-center lg:text-left text-sm lg:text-base mb-4">
+                {/* <p className="break-words text-center lg:text-left text-sm lg:text-base mb-4">
                   {item.description}
                 </p> */}
               </div>
@@ -148,7 +148,7 @@ export default function Index({ articles, projects, events }) {
             <h2 className="text-black text-center lg:text-left text-base lg:text-xl my-4">
               {articles[0].title}
             </h2>
-            <p className="text-center lg:text-left text-sm lg:text-base mb-4">
+            <p className="break-words text-center lg:text-left text-sm lg:text-base mb-4">
               {getRTFContent(articles[0], 0, 300)}
               ...
             </p>
@@ -175,8 +175,8 @@ export default function Index({ articles, projects, events }) {
                     <h2 className="text-black text-sm lg:text-base my-4 lg:mt-0">
                       {item.title}
                     </h2>
-                    <p className="text-xs lg:text-sm">
-                      {getRTFContent(item)}
+                    <p className="break-words text-xs lg:text-sm">
+                    {getRTFContent(item, 0, 120)}...
                     </p>
                   </div>
                 </div>
@@ -211,7 +211,7 @@ export default function Index({ articles, projects, events }) {
                 } w-full lg:w-1/3 ${index === 1 ? "mx-8" : ""}`}
                 key={index}
               >
-                <div className="relative h-48 md:h-80 lg:h-44 2xl:h-72">
+                <div className="relative h-48 md:h-80 lg:h-44 2xl:h-72 shadow-lg">
                   <Image
                     src={item.image.url}
                     alt={item.title}
@@ -225,7 +225,7 @@ export default function Index({ articles, projects, events }) {
                 <h2 className="text-black text-base lg:text-xl my-4">
                   {item.title}
                 </h2>
-                <p className="text-sm lg:text-base mb-4">{item.description}</p>
+                <p className="break-words text-sm lg:text-base mb-4">{item.description.slice(0,175)}...</p>
               </div>
             );
           })}
