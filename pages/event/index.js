@@ -99,10 +99,6 @@ export default function Events({ active, contentfulEvents }) {
 
       <section className="flex pt-28 pb-36 flex-col-reverse lg:flex-row justify-start md:items-stretch items-center">
         <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap md:justify-start justify-center w-full md:w-4/5">
-          {/* {eventItems.map(({ title, description }) => {
-                        return (<EventItem title={title} description={description} />)
-                    })} */}
-
           {events.map(({ title, description }, index) => (
             <EventItem key={index} title={title} description={description} />
           ))}
@@ -113,8 +109,7 @@ export default function Events({ active, contentfulEvents }) {
           className={`${styles.customSelect} block lg:hidden w-4/5 py-2 px-3`}
           onClick={(e) => {
             setYear(e.target.value);
-          }}
-        >
+          }} >
           {yearList.map((item, key) => (
             <option key={key} value={item}>
               {item}
