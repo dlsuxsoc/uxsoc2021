@@ -9,7 +9,7 @@ const ArticleItem = ({ title, authors, slug }) => {
   return (
     <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-28 flex flex-col lg:flex-row justify-center lg:justify-between h-auto">
       {/* Image */}
-      <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20">
+      <div className=" mr-0 md:mr-16 w-96">
         <Image
           src={faker.image.nature()}
           alt="Placeholder"
