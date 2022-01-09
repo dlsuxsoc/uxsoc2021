@@ -18,7 +18,7 @@ const ServiceItem = ({ title, authors, slug }) => {
         />
       </div>
 
-      <div className="py-4 md:pt-8 w-full md:w-4/5">
+      <div className="py-4 md:pt-8 w-full md:w-4/5 px-8 md:px-0">
         <p className="text-xl mb-4 text-center font-bold">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
         <p className="text-base mb-4 text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit lorem ipsum dolor sit amet, consectetuer adipiscing elit lorem ipsum dolor sit amet, consectetuer adipiscing elit lorem ipsum dolor sit amet, consectetuer adipiscing elit lorem ipsum dolor sit amet, consectetuer adipiscing elit </p>
       </div>
