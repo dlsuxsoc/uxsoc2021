@@ -10,12 +10,12 @@ export default function ArticlesPost({ active, title, authors, slug }) {
     return (
         <Layout active={-1}>
             <SEO title={"Articles Post"} />
-            <div className="w-3/4 mt-32 mb-64 mx-auto min-h-full bg-white rounded-md shadow-xl relative z-10">
+            <div className="w-full md:w-3/4 mt-32 mb-64 mx-auto min-h-full bg-white rounded-md shadow-xl relative z-10">
                 <div className="pb-3 lg:pb-0">
-                    <h1 className="text-center text-black lg:px-32 pt-16 pb-8 lg:text-left">{title}</h1>
+                    <h1 className="text-4xl md:text-6xl px-8 text-center text-black lg:px-32 pt-16 pb-8 lg:text-left">{title}</h1>
                 </div>
-                <p className="italic lg:pb-8 lg:px-32">{slug}</p>
-                <div className="pb-4 lg:pl-32 flex flex-row">
+                <p className="italic pb-8 lg:px-32 text-center lg:text-left">{slug}</p>
+                <div className="pb-4 lg:pl-32 flex flex-col lg:flex-row items-center lg:items-start">
                     <div className="relative w-16 h-16 rounded-full">
                         <Image
                             src={faker.image.nature()}
@@ -25,10 +25,10 @@ export default function ArticlesPost({ active, title, authors, slug }) {
                             objectPosition="center"
                         />
                     </div>
-                    <p className=" lg:pb-16 lg:pl-4 lg:pt-4">{authors}</p>
+                    <p className="pt-4 md:pt-0 md:pb-16 lg:pl-4 lg:pt-4">{authors}</p>
                 </div>
 
-                <hr className="mx-4 lg:mx-32"></hr>
+                <hr className="mx-4 md:mx-32"></hr>
                 <br />
                 <br />
                 <br />
