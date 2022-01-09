@@ -20,8 +20,8 @@ export default function Services({ active }) {
             <SEO title={"Services"} />
 
 
-            <section className="sm:px-8 lg:px-32 flex flex-col justify-center lg:justify-between items-center h-auto">
-                <h1 className="text-black pt-24 pb-12 md:pb-24 text-center">Services</h1>
+            <section className="sm:px-8 lg:px-32 flex flex-col justify-center lg:justify-between items-center h-auto min-h-screen">
+                <h1 className="text-black pt-16 pb-8 text-center">Services</h1>
                 <section className="flex flex-col md:flex-row w-full">
                     <ServiceItem></ServiceItem>
                     <ServiceItem></ServiceItem>
