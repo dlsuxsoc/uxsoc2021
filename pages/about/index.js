@@ -47,7 +47,7 @@ export default function Index() {
                     {/* Image */}
                     <div className="relative h-48 md:h-64 lg:h-52 2xl:h-72 mb-6 lg:mb-12">
                         <Image
-                            src={faker.image.image()}
+                            src="/images/mission-vision-1.png"
                             alt="Placeholder-About"
                             layout="fill"
                             objectFit="contain"
