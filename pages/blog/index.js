@@ -85,7 +85,7 @@ export default function Articles({ active, contentfulArticles }) {
 }
 
 export async function getStaticProps() {
-    const { data } = await ContentfulApi.getArticlesByYear(0);
+    const { data } = await ContentfulApi.getArticles(0);
     return { props: { contentfulArticles: data.articleCollection.items } };
 }
 

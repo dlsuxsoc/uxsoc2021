@@ -21,7 +21,11 @@ const ArticleItem = ({ title, authors, slug }) => {
       {/* Header and Text */}
       <div className="w-full lg:w-1/2  lg:pb-0">
         <h1 className="text-black text-3xl lg:text-4xl mb-6 lg:mb-12">
-          {title}
+          <Link href={`/blog/${slug}`}>
+            <a>
+              {title}
+            </a>
+          </Link>
         </h1>
         <p className="text-sm lg:text-base mb-4">{authors}</p>
         <p className="text-sm lg:text-base mb-4">{slug}</p>
