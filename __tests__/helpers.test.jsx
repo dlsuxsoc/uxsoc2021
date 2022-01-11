@@ -1,4 +1,5 @@
 import getRTFContent from "../helpers/getRTFContent";
+import { restrictRange } from "../helpers/restrictRange";
 //import getEventImage from '../helpers/getEventImage'
 
 // content of articles is seen in the articles page
@@ -93,13 +94,26 @@ describe("Get article contents", () => {
   });
 });
 
-// describe('Get images in events', () => {
-//     it('renders event 1\'s image in the events page.', () => {
-//         const events = {
+describe('Testing Restricting Range', () => {
+  it('input is a letter', () => {
+    let num = restrictRange('a',5,0,4);
+    expect(num).toBe("");
+  })
 
-//         };
-//         const event_image = getEventImage();
+  it('input is less than start', () => {
+    let num = restrictRange(4,5,5,10);
+    expect(num).toBe(5);
+  })
 
-//         expect(article_content).toEqual("bla bla bla");
-//      })
-// })
+  it('input is greater than start less than end', () => {
+    let num = restrictRange(5,1,0,10);
+    expect(num).toBe(5);
+  })
+
+  it('input is equal to prev and greater than end', () => {
+    let num = restrictRange(5,5,0,4);
+    expect(num).toBe(4);
+  })
+
+})
+
