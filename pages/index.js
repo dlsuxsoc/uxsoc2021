@@ -18,7 +18,7 @@ export default function Index({ articles, projects, events }) {
     <Layout active={0}>
       <SEO title={"Home"} />
       {/* Hero */}
-      <section className="px-4 sm:px-32 py-2 mt-36 lg:mt-0 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen">
+      <section className="px-4 sm:px-8 lg:px-32 py-2 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen min-h-screen md:min-h-max">
         {/* Header */}
         <div className="w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
           <h1 className="text-black text-4xl lg:text-6xl mb-6 lg:mb-12">
@@ -30,19 +30,19 @@ export default function Index({ articles, projects, events }) {
         </div>
 
         {/* Image */}
-        <div className="w-full lg:w-1/2 relative pb-3 lg:pb-0 h-48 lg:h-screen">
+        <div className="w-full lg:w-1/2 relative mb-8 pb-3 lg:pb-0 h-48 md:h-80 lg:h-screen">
           <Image
-            src={faker.image.image()}
+            src="/images/home-1.png"
             alt="Placeholder-Hero"
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
             objectPosition="center"
           />
         </div>
       </section>
 
       {/* About UX */}
-      <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">
+      <section className="px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">
         {/* Image */}
         <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 text-center">
           <Image
@@ -55,15 +55,15 @@ export default function Index({ articles, projects, events }) {
 
         {/* Header and Text */}
         <div className="w-full lg:w-1/2 pb-3 lg:pb-0 mb-8">
-          <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
+          <h1 className="text-black text-3xl lg:text-4xl 2xl:text-5xl mb-6 lg:mb-12">
             About UX Society DLSU
           </h1>
-          <p className="text-base lg:text-xl mb-4">
+          <p className="text-sm lg:text-lg 2xl:text-xl mb-4">
             The UX Society - DLSU Chapter is one of the many recognized UX
             Societies in the same network. There's UX Society ADMU, Davao,
             Orange County and the latest, UX Society AIM-Chapter.
           </p>
-          <p className="text-base lg:text-xl mb-4">
+          <p className="text-sm lg:text-lg xl:text-xl mb-4">
             UX Society - DLSU aids various organizations by creating quality
             products and services by applying principles, concepts and
             methodologies in such strategies. We hold workshops, seminars and
@@ -71,14 +71,14 @@ export default function Index({ articles, projects, events }) {
             UX discipline and methodologies.
           </p>
 
-          <Button to="/about" className="align-center lg:self-start">
-            Learn More
-          </Button>
+          <div className="text-center lg:text-left">
+            <Button to="/about">Learn More</Button>
+          </div>
         </div>
       </section>
 
       {/* Events */}
-      <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center md:items-start h-auto">
+      <section className="px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto">
         {/* Header */}
         <div className="pb-3 lg:pb-0">
           <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
@@ -97,7 +97,7 @@ export default function Index({ articles, projects, events }) {
                 } w-full lg:w-1/3 ${index === 1 ? "mx-8" : ""}`}
                 key={index}
               >
-                <div className="relative h-48 md:h-36 lg:h-44 2xl:h-72">
+                <div className="relative h-48 md:h-80 lg:h-44 2xl:h-72 shadow-lg">
                   <Image
                     src={faker.image.image()}
                     alt="Placeholder-Event"
@@ -110,7 +110,7 @@ export default function Index({ articles, projects, events }) {
                 <h2 className="text-black text-center lg:text-left text-base lg:text-xl my-4">
                   {item.title}
                 </h2>
-                {/* <p className="text-center lg:text-left text-sm lg:text-base mb-4">
+                {/* <p className="break-words text-center lg:text-left text-sm lg:text-base mb-4">
                   {item.description}
                 </p> */}
               </div>
@@ -124,7 +124,7 @@ export default function Index({ articles, projects, events }) {
       </section>
 
       {/* Articles */}
-      <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center md:items-start h-auto">
+      <section className="px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto">
         {/* Header */}
         <div className="pb-3 lg:pb-0">
           <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
@@ -148,14 +148,14 @@ export default function Index({ articles, projects, events }) {
             <h2 className="text-black text-center lg:text-left text-base lg:text-xl my-4">
               {articles[0].title}
             </h2>
-            <p className="text-center lg:text-left text-sm lg:text-base mb-4">
+            <p className="break-words text-center lg:text-left text-sm lg:text-base mb-4">
               {getRTFContent(articles[0], 0, 300)}
               ...
             </p>
           </div>
 
           {/* Small Articles */}
-          <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-20 lg:flex hidden flex-col items-start">
+          <div className="w-full lg:w-1/2 pb-2 pr-0 lg:pr-10 lg:flex hidden flex-col items-start">
             {/* Article */}
             {articles.slice(1, 3).map((item, index) => {
               return (
@@ -171,12 +171,12 @@ export default function Index({ articles, projects, events }) {
                     />
                   </div>
 
-                  <div className="w-1/2 flex flex-col">
-                    <h2 className="text-black text-base lg:text-xl mb-4 ">
+                  <div className="w-3/5 flex flex-col pl-8">
+                    <h2 className="text-black text-sm lg:text-base my-4 lg:mt-0">
                       {item.title}
                     </h2>
-                    <p className="text-sm lg:text-base">
-                      {getRTFContent(item)}
+                    <p className="break-words text-xs lg:text-sm">
+                    {getRTFContent(item, 0, 120)}...
                     </p>
                   </div>
                 </div>
@@ -191,7 +191,7 @@ export default function Index({ articles, projects, events }) {
       </section>
 
       {/* Projects */}
-      <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">
+      <section className="px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">
         {/* Header */}
         <div className="pb-3 lg:pb-0">
           <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
@@ -211,7 +211,7 @@ export default function Index({ articles, projects, events }) {
                 } w-full lg:w-1/3 ${index === 1 ? "mx-8" : ""}`}
                 key={index}
               >
-                <div className="relative h-48 md:h-36 lg:h-44 2xl:h-72">
+                <div className="relative h-48 md:h-80 lg:h-44 2xl:h-72 shadow-lg">
                   <Image
                     src={item.image.url}
                     alt={item.title}
@@ -225,7 +225,7 @@ export default function Index({ articles, projects, events }) {
                 <h2 className="text-black text-base lg:text-xl my-4">
                   {item.title}
                 </h2>
-                <p className="text-sm lg:text-base mb-4">{item.description}</p>
+                <p className="break-words text-sm lg:text-base mb-4">{item.description.slice(0,175)}...</p>
               </div>
             );
           })}

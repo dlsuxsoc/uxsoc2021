@@ -18,6 +18,7 @@ const getYears = (events) => {
 };
 
 export default function Events({ active, contentfulEvents }) {
+  console.log ({...contentfulEvents});
   const [year, setYear] = useState("All"); // selected date
   const [events, setEvents] = useState([...contentfulEvents]);
   const [yearList, setYearList] = useState(["All"]);
@@ -96,12 +97,8 @@ export default function Events({ active, contentfulEvents }) {
         </div>
       </section>
 
-      <section className="flex pt-28 pb-36 flex-col-reverse lg:flex-row justify-start items-center">
-        <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap justify-center items-center w-full md:w-4/5">
-          {/* {eventItems.map(({ title, description }) => {
-                        return (<EventItem title={title} description={description} />)
-                    })} */}
-
+      <section className="flex pt-28 pb-36 flex-col-reverse lg:flex-row justify-start md:items-stretch items-center">
+        <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap md:justify-start justify-center w-full md:w-4/5">
           {events.map(({ title, description }, index) => (
             <EventItem key={index} title={title} description={description} />
           ))}
@@ -112,8 +109,7 @@ export default function Events({ active, contentfulEvents }) {
           className={`${styles.customSelect} block lg:hidden w-4/5 py-2 px-3`}
           onClick={(e) => {
             setYear(e.target.value);
-          }}
-        >
+          }} >
           {yearList.map((item, key) => (
             <option key={key} value={item}>
               {item}
@@ -124,14 +120,14 @@ export default function Events({ active, contentfulEvents }) {
         {/* Datetab for Desktop */}
         <section className="lg:block hidden pr-5 w-16 mr-64">
           {/* <DateTabs setEventItems={setEventItems} events={events} /> */}
-          {yearList.map((item, index) => (
-            <DateTabs
-              key={index}
-              year={item}
-              active={item === year}
-              set={setYear}
-            />
-          ))}
+          {yearList.map((item, key) => (
+                        <DateTabs
+                            key={key}
+                            year={item}
+                            active={item === year}
+                            set={setYear}
+                        />
+                    ))}
         </section>
       </section>
     </Layout>
@@ -140,6 +136,5 @@ export default function Events({ active, contentfulEvents }) {
 
 export async function getStaticProps() {
   const { data } = await ContentfulApi.getEvents(0);
-
   return { props: { contentfulEvents: data.eventCollection.items } };
 }

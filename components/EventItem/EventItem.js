@@ -10,7 +10,7 @@ const EventItem = ({ title, description }) => {
     <li className={`py-4 mr-0 md:mr-16 w-72`}>
       <div className="relative w-full h-56">
         <Image
-          src={faker.image.image()}
+          src={faker.image.nature()}
           alt={title}
           layout="fill"
           objectPosition="center"

@@ -9,6 +9,7 @@ query getArticles($offset: Int){
       authors
       title
       slug
+      date
       imagesCollection{
         items{
           url
@@ -29,6 +30,7 @@ query getArticles($slug:String){
         authors
         title
         slug
+        date
         imagesCollection{
           items{
             url
