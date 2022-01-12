@@ -12,9 +12,9 @@ export default function ArticlesPost({ active, title, authors, slug }) {
             <SEO title={"Articles Post"} />
             <div className="w-full md:w-3/4 mt-32 mb-64 mx-auto min-h-full bg-white rounded-md shadow-xl relative z-10">
                 <div className="pb-3 lg:pb-0">
-                    <h1 className="text-4xl md:text-6xl px-8 text-center text-black lg:px-32 pt-16 pb-8 lg:text-left">{title}</h1>
+                    <h1 className="text-2xl md:text-5xl px-8 text-center text-black lg:px-32 pt-16 pb-4 md:pb-8 lg:text-left">{title}</h1>
                 </div>
-                <p className="italic pb-8 lg:px-32 text-center lg:text-left">{slug}</p>
+                <p className="italic pb-8 lg:px-32 text-center lg:text-left md:block hidden">{slug}</p>
                 <div className="pb-4 lg:pl-32 flex flex-col lg:flex-row items-center lg:items-start">
                     <div className="relative w-16 h-16 rounded-full">
                         <Image
