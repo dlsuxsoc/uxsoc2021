@@ -9,7 +9,7 @@ const ServiceItem = ({ title, authors, slug }) => {
   return (
     <div className="items-center flex flex-col justify-center">
 
-      <div className="w-2/3">
+      <div className="min-w-screen md:w-3/4">
         <Image
           src={faker.image.nature()}
           alt="Placeholder"
