@@ -5,8 +5,10 @@ import SEO from "../../components/seo";
 import axios from "axios";
 import styles from "../../styles/Home.module.css";
 import { useEffect, useState } from "react";
+import mentorsData from "../../data/dummy-mentors.json"
 import faker from "faker";
 import Button from "../../components/Button/Button";
+import { truncateString } from "../../helpers/truncateString";
 
 export default function Index() {
     return(
@@ -25,217 +27,61 @@ export default function Index() {
                         aliquam erat volutpat. Ut wisi
                     </p>
 
-                    {/*Mentors*/}
-                    <div className="grid grid-cols-3 gap-10">
-                        <div className="flex flex-col">
-                            <div className="text-center relative w-60 h-60">
-                                <Image
-                                    className="rounded-full shadow-sm"
-                                    src={faker.image.image()}
-                                    alt="Placeholder-Event"
-                                    layout="fill"
-                                    objectFit="cover"
-                                    objectPosition="center"
-                                />
-                            </div>
-
-                            <div>
-                                <h2 className="text-black text-xl">Mentor's Name</h2>
-                                <p className="text-base">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                            </div>
-
-                            <div className="text-gray text-base">
-                                <h3 className="text-gray text-base">Available Times</h3>
-
-                                {/* Times Container */}
-                                <div>
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Monday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
+                    {/*Mentors Container*/}
+                    <div className="flex flex-row flex-wrap gap-10 justify-center">
+                        {/* Mentor */}
+                        {mentorsData.map((item,index)=> {
+                            return (
+                                <div className="w-full md:w-1/3 lg:w-1/4" key={index}>
+                                    {/* Mentor Avatar */}
+                                    <div className="mx-auto relative w-48 h-48">
+                                        <Image
+                                            className="rounded-full shadow-md"
+                                            src={faker.image.image()}
+                                            alt="Placeholder-Mentor"
+                                            layout="fill"
+                                            objectFit="cover"
+                                            objectPosition="center"
+                                        />
                                     </div>
 
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Wednesday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col">
-                            <div className="text-center relative w-60 h-60">
-                                <Image
-                                    className="rounded-full shadow-sm"
-                                    src={faker.image.image()}
-                                    alt="Placeholder-Event"
-                                    layout="fill"
-                                    objectFit="cover"
-                                    objectPosition="center"
-                                />
-                            </div>
-
-                            <div>
-                                <h2 className="text-black text-xl">Mentor's Name</h2>
-                                <p className="text-base">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                            </div>
-
-                            <div className="text-gray text-base">
-                                <h3 className="text-gray text-base">Available Times</h3>
-
-                                {/* Times Container */}
-                                <div>
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Monday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
+                                    <div>
+                                        <h2 className="text-black text-xl">{item.Name}</h2>
                                     </div>
 
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Wednesday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
+                                    {/* Available Times */}
+                                    <div className="text-gray text-base px-8">
+                                        <h3 className="text-gray text-base">Available Times</h3>
+
+                                        {item.Slots.map((item,index) => {
+                                            return (
+                                                <div key={index}>
+                                                    <div className="flex flex-row justify-between">
+                                                        {/* Day */}
+                                                        <p className="block md:hidden xl:block">{item.Day}</p>
+                                                        <p className="hidden md:block xl:hidden">{truncateString(item.Day,2)}</p>
+                                                        
+                                                        {/* Times */}
+                                                        <div className="w-3/4">
+                                                            {item.Times.map((item,index) => {
+                                                                return (
+                                                                    <div className="flex flex-col" key={index}>
+                                                                        <p className="text-right block">
+                                                                            {item.Start} - {item.End}
+                                                                        </p>     
+                                                                    </div>
+                                                                )
+                                                            })}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })}
+                                        
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col">
-                            <div className="text-center relative w-60 h-60">
-                                <Image
-                                    className="rounded-full shadow-sm"
-                                    src={faker.image.image()}
-                                    alt="Placeholder-Event"
-                                    layout="fill"
-                                    objectFit="cover"
-                                    objectPosition="center"
-                                />
-                            </div>
-
-                            <div>
-                                <h2 className="text-black text-xl">Mentor's Name</h2>
-                                <p className="text-base">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                            </div>
-
-                            <div className="text-gray text-base">
-                                <h3 className="text-gray text-base">Available Times</h3>
-
-                                {/* Times Container */}
-                                <div>
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Monday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
-                                    </div>
-
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Wednesday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col">
-                            <div className="text-center relative w-60 h-60">
-                                <Image
-                                    className="rounded-full shadow-sm"
-                                    src={faker.image.image()}
-                                    alt="Placeholder-Event"
-                                    layout="fill"
-                                    objectFit="cover"
-                                    objectPosition="center"
-                                />
-                            </div>
-
-                            <div>
-                                <h2 className="text-black text-xl">Mentor's Name</h2>
-                                <p className="text-base">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                            </div>
-
-                            <div className="text-gray text-base">
-                                <h3 className="text-gray text-base">Available Times</h3>
-
-                                {/* Times Container */}
-                                <div>
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Monday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
-                                    </div>
-
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Wednesday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col">
-                            <div className="text-center relative w-60 h-60">
-                                <Image
-                                    className="rounded-full shadow-sm"
-                                    src={faker.image.image()}
-                                    alt="Placeholder-Event"
-                                    layout="fill"
-                                    objectFit="cover"
-                                    objectPosition="center"
-                                />
-                            </div>
-
-                            <div>
-                                <h2 className="text-black text-xl">Mentor's Name</h2>
-                                <p className="text-base">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                            </div>
-
-                            <div className="text-gray text-base">
-                                <h3 className="text-gray text-base">Available Times</h3>
-
-                                {/* Times Container */}
-                                <div>
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Monday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
-                                    </div>
-
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Wednesday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col">
-                            <div className="text-center relative w-60 h-60">
-                                <Image
-                                    className="rounded-full shadow-sm"
-                                    src={faker.image.image()}
-                                    alt="Placeholder-Event"
-                                    layout="fill"
-                                    objectFit="cover"
-                                    objectPosition="center"
-                                />
-                            </div>
-
-                            <div>
-                                <h2 className="text-black text-xl">Mentor's Name</h2>
-                                <p className="text-base">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                            </div>
-
-                            <div className="text-gray text-base">
-                                <h3 className="text-gray text-base">Available Times</h3>
-
-                                {/* Times Container */}
-                                <div>
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Monday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
-                                    </div>
-
-                                    <div className="flex flex-row">
-                                        <p className="w-1/2 text-left">Wednesday</p>
-                                        <p className="w-1/2 text-right">00:00 - 23:59</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            )
+                        })}
                     </div>
                 </div>
             </section>
