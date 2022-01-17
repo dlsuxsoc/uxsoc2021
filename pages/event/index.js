@@ -98,13 +98,14 @@ export default function Events({ active, contentfulEvents }) {
       </section>
 
       <section className="flex pt-28 pb-36 flex-col-reverse lg:flex-row justify-start md:items-stretch items-center">
-        <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap md:justify-start justify-center w-full md:w-4/5">
+        <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap lg:justify-start justify-center lg:w-4/5 w-full">
           {events.map(({ title, description }, index) => (
             <EventItem key={index} title={title} description={description} />
           ))}
         </ul>
 
         {/* Dropdown for Mobile */}
+        <div className="flex flex-row w-full items-center justify-center">
         <select
           className={`${styles.customSelect} block lg:hidden w-4/5 py-2 px-3`}
           onClick={(e) => {
@@ -116,6 +117,7 @@ export default function Events({ active, contentfulEvents }) {
             </option>
           ))}
         </select>
+        </div>
 
         {/* Datetab for Desktop */}
         <section className="lg:block hidden pr-5 w-16 mr-64">
