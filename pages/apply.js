@@ -114,7 +114,7 @@ const Apply = () => {
   };
 
   return (
-    <Layout active={-1}>
+    <Layout active={6}>
       <SEO title={"Membership Application"} />
       <div className="hidden md:block fixed right-0 top-0 bg-green  md:w-64 z-0 lg:w-96 h-screen">
         {/* <Image
