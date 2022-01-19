@@ -19,11 +19,11 @@ export default function Index() {
                 {/* Header and Text */}
                 <div className="w-full lg:w-1/2 text-center lg:text-left pr-0 lg:pr-20 pb-3 lg:pb-0 mb-8">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">UX Society</h1>
-                    <p className="text-base lg:text-lg 2xl:text-xl mb-4">
+                    <p className="text-base lg:text-lg 2xl:text-2xl mb-4">
                         The UX Society - DLSU Chapter is one of the many recognized UX Societies in the same network. 
                         There's UX Society ADMU, Davao, Orange County and the latest, UX Society AIM-Chapter.
                     </p>
-                    <p className="text-base lg:text-lg 2xl:text-xl mb-4">
+                    <p className="text-base lg:text-lg 2xl:text-2xl mb-4">
                         UX Society - DLSU aids various organizations by creating quality products and services by applying 
                         principles, concepts and methodologies in such strategies. We hold workshops, seminars and conferences 
                         to train members about the essentials skills of proper UX discipline and methodologies.
@@ -86,8 +86,8 @@ export default function Index() {
                     {/* Service */}
                     {servicesData.slice(0,3).map((item,index)=> {
                         return (
-                            <div className={`pb-2 flex flex-col md:flex-row items-center w-full`} key={index}>
-                                <div className="w-1/2 relative h-24 md:h-36 lg:h-44 2xl:h-72">
+                            <div className={`2xl:px-72 pb-2 flex flex-col md:flex-row items-center justify-center w-full`} key={index}>
+                                <div className="p-24 mr-0 md:mr-28 relative h-24 md:h-36 lg:h-44 2xl:h-72">
                                     <Image
                                         src={item.Image}
                                         alt="Placeholder-Event"
@@ -98,11 +98,11 @@ export default function Index() {
                                 </div>
 
                                 {/* Services Text */}
-                                <div className="w-1/2 flex flex-col text-center lg:text-left">
-                                    <h2 className="text-black text-base lg:text-xl my-4 ">
+                                <div className="w-1/2 flex flex-col text-center md:text-left">
+                                    <h2 className="text-black text-base lg:text-xl 2xl:text-2xl my-4">
                                         {item.Title}
                                     </h2>
-                                    <p className="break-words text-sm lg:text-base mb-4">
+                                    <p className="break-words text-base xl:text-lg 2xl:text-xl mb-4">
                                         {item.Content}
                                     </p>
                                 </div>
