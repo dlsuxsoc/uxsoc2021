@@ -1,14 +1,17 @@
 [
     {
-        "Content":"Nisi consectetur consequat ipsum sit fugiat occaecat sunt.",
-        "Title": "Services 1"
+        "Content":"Creation of custom web designs from scratch and development using the best front-end technologies.",
+        "Title": "Web Design & Development",
+        "Image":"/images/services-web-design-&-development.png"
     },
     {
-        "Content":"Fugiat dolore sunt cupidatat nulla ullamco dolore laboris est ullamco excepteur officia mollit tempor est.",
-        "Title": "Services 2"
+        "Content":"Learning more about User Experience, Experience Design, Design Strategy, Design Thinking, and many other UX related terms.",
+        "Title": "UX Education & Training",
+        "Image": "/images/services-ux-education-&-training.png"
     },
     {
-        "Content":"NullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNullaNulla ipsum incididunt ipsum labore mollit ipsum elit et id tempor.",
-        "Title": "Services 3"
+        "Content":"Participation and volunteering work to different external events such as workshops & design conferences.",
+        "Title": "Community Engagement",
+        "Image": "/images/services-community-engagement.png"
     }
 ]
