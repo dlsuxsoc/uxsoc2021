@@ -21,7 +21,7 @@ export default function Index() {
         nickname: "",
         contactNum: "",
         email: "",
-        inquiries: "",
+        message: "",
     });
 
     const handleSubmit = async (e) => {
@@ -75,8 +75,9 @@ export default function Index() {
                                         />
                                     </div>
 
-                                    <div>
+                                    <div className="mt-2">
                                         <h2 className="text-black text-xl">{item.Name}</h2>
+                                        <p className="text-base">{item.Description}</p>
                                     </div>
 
                                     {/* Available Times */}
@@ -328,22 +329,22 @@ export default function Index() {
 
                         {/* Right Side starts here */}
                         <div className="flex flex-col md:w-1/2">
-                            {/* Inquiries */}
-                            <label className="block mb-6" htmlFor="inquiries">
+                            {/* Additional Message */}
+                            <label className="block mb-6" htmlFor="message">
                                 Additional message
                             </label>
                             <textarea
-                                name="inquiries"
+                                name="message"
                                 className="h-full p-2"
                                 placeholder=""
                                 
                                 onChange={(e) =>
                                     setBookingData({
                                         ...bookingData,
-                                        inquiries: e.target.value
+                                        message: e.target.value
                                     })
                                 }
-                                value={bookingData.inquiries}
+                                value={bookingData.message}
                             ></textarea>
                         </div>
                     </section>
