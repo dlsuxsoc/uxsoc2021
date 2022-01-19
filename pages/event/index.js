@@ -18,7 +18,7 @@ const getYears = (events) => {
 };
 
 export default function Events({ active, contentfulEvents }) {
-  console.log ({...contentfulEvents});
+  console.log({ ...contentfulEvents });
   const [year, setYear] = useState("All"); // selected date
   const [events, setEvents] = useState([...contentfulEvents]);
   const [yearList, setYearList] = useState(["All"]);
@@ -51,16 +51,18 @@ export default function Events({ active, contentfulEvents }) {
     <Layout active={3}>
       <SEO title={"Events"} />
 
-      <h1 className=" pt-28 pb-6 text-center lg:pl-32 lg:text-left">Events</h1>
+
 
       {/* <div className={`${styles.container} `}>
                 <div>
                     
                 </div>
             </div> */}
-      <section className="px-4 sm:px-32 py-2 flex flex-col md:flex-row justify-between items-center">
-        <div className="relative pd">
-          <div className="lg:w-96 md:w-64 sd:w-48 h-96">
+      <section className="px-4 sm:px-32 flex flex-col min-h-screen">
+        <h1 className=" pt-24 pb-6 text-center lg:text-left text-black">Events</h1>
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="w-full lg:w-1/2 relative lg:pb-0 h-64 md:min-h-screen ">
+
             <Image
               src={faker.image.image()}
               alt="Placeholder"
@@ -68,32 +70,35 @@ export default function Events({ active, contentfulEvents }) {
               objectFit="contain"
               objectPosition="center"
             />
-          </div>
-        </div>
 
-        <div className=" md:pl-16 lg:pl-32">
-          <h2 className="text-left">{latestEvent.title}</h2>
-          <p className="whitespace-wrap sm:whitespace-nowrap my-4">
-            {
-              /** check if same month and day */
-              latestEvent.dateEnd.hasSame(latestEvent.dateStart, "day") &&
-              latestEvent.dateEnd.hasSame(latestEvent.dateStart, "month")
-                ? // format when event is only one day
-                  `${latestEvent.dateStart.toFormat("DDD")}  
+          </div>
+
+          <div className="flex flex-row w-2/3 min-h-screen justify-center">
+            <div className="lg:pl-32 min-w-screen min-h-screen">
+              <h2 className="text-left">{latestEvent.title}</h2>
+              <p className="whitespace-wrap sm:whitespace-nowrap my-4">
+                {
+                  /** check if same month and day */
+                  latestEvent.dateEnd.hasSame(latestEvent.dateStart, "day") &&
+                    latestEvent.dateEnd.hasSame(latestEvent.dateStart, "month")
+                    ? // format when event is only one day
+                    `${latestEvent.dateStart.toFormat("DDD")}  
                 | ${latestEvent.dateStart.toFormat(
-                  "t"
-                )} - ${latestEvent.dateEnd.toFormat("t")}`
-                : // format when event is multiple days
-                  `${latestEvent.dateStart.toFormat(
-                    "DDD"
-                  )} - ${latestEvent.dateEnd.toFormat("DDD")} |  
+                      "t"
+                    )} - ${latestEvent.dateEnd.toFormat("t")}`
+                    : // format when event is multiple days
+                    `${latestEvent.dateStart.toFormat(
+                      "DDD"
+                    )} - ${latestEvent.dateEnd.toFormat("DDD")} |  
                 ${latestEvent.dateStart.toFormat(
-                  "t"
-                )} - ${latestEvent.dateEnd.toFormat("t")}`
-            }
-          </p>
-          <p className="pb-8 ">{latestEvent.description}</p>
-          <Button variant="green">Learn More</Button>
+                      "t"
+                    )} - ${latestEvent.dateEnd.toFormat("t")}`
+                }
+              </p>
+              <p className="pb-8 ">{latestEvent.description}</p>
+              <Button variant="green">Learn More</Button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -106,30 +111,30 @@ export default function Events({ active, contentfulEvents }) {
 
         {/* Dropdown for Mobile */}
         <div className="flex flex-row w-full items-center justify-center">
-        <select
-          className={`${styles.customSelect} block lg:hidden w-4/5 py-2 px-3`}
-          onClick={(e) => {
-            setYear(e.target.value);
-          }} >
-          {yearList.map((item, key) => (
-            <option key={key} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
+          <select
+            className={`${styles.customSelect} block lg:hidden w-4/5 py-2 px-3`}
+            onClick={(e) => {
+              setYear(e.target.value);
+            }} >
+            {yearList.map((item, key) => (
+              <option key={key} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Datetab for Desktop */}
         <section className="lg:block hidden pr-5 w-16 mr-64">
           {/* <DateTabs setEventItems={setEventItems} events={events} /> */}
           {yearList.map((item, key) => (
-                        <DateTabs
-                            key={key}
-                            year={item}
-                            active={item === year}
-                            set={setYear}
-                        />
-                    ))}
+            <DateTabs
+              key={key}
+              year={item}
+              active={item === year}
+              set={setYear}
+            />
+          ))}
         </section>
       </section>
     </Layout>
