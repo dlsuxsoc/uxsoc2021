@@ -98,7 +98,7 @@ export default function Index() {
                                 </div>
 
                                 {/* Services Text */}
-                                <div className="w-1/2 flex flex-col text-center md:text-left">
+                                <div className="w-full lg:w-1/2 flex flex-col text-center md:text-left">
                                     <h2 className="text-black text-base lg:text-xl 2xl:text-2xl my-4">
                                         {item.Title}
                                     </h2>
