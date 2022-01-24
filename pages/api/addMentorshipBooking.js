@@ -41,7 +41,7 @@ const addMentorshipBooking = async (req, res) => {
             rich_text:[
                 {
                   type: "text",
-                  text: { content : data.date },
+                  text: { content : data.bookingDate + " " + data.bookingTime },
                 },
               ], 
         },
