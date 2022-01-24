@@ -37,13 +37,13 @@ const addMentorshipBooking = async (req, res) => {
             ],
         },
         "Date": {
-            date: {
-              start: new Date(
-                `${data.bookingDate}T${data.bookingTime}`
-              )
-                .toISOString()
-                ,
-            },
+            type:"rich_text",
+            rich_text:[
+                {
+                  type: "text",
+                  text: { content : data.date },
+                },
+              ], 
         },
         "Email Address": {
           email: data.email,
