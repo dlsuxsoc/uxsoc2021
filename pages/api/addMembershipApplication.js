@@ -30,10 +30,9 @@ const addMembershipApplication = async (req, res) => {
         "Birth Date": {
           date: {
             start: new Date(
-              `${data.yOB}-${data.mOB}-${String(data.dOB).padStart(
-                2,
-                "0"
-              )}T00:00:00.000+00:00`
+              `${data.yOB}-${String(data.mOB).padStart(2, "0")}-${String(
+                data.dOB
+              ).padStart(2, "0")}T00:00:00.000+00:00`
             )
               .toISOString()
               .slice(0, 10),
