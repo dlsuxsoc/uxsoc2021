@@ -83,13 +83,13 @@ export default function Index({ articles, projects, events }) {
       <section className={`px-4 sm:px-8 lg:px-32 py-28 md:py-40 lg:py-48 2xl:py-96 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto  ${styles.eventBg}`}>
         {/* Header */}
         <div className="pb-3 lg:pb-0">
-          <h1 className="text-white text-3xl lg:text-5xl mb-6 lg:mb-12">
+          <h1 className="text-white text-3xl lg:text-5xl mb-6 lg:mb-12 line-clamp-2">
             Events
           </h1>
         </div>
 
         {/* Event Posts Container*/}
-        <section className="flex flex-col md:flex-row w-full md:justify-between ">
+        <section className="flex flex-col md:flex-row w-full md:justify-between">
           {/* Post */}
           {events.slice(0, 3).map((item, index) => {
             return (
@@ -108,7 +108,6 @@ export default function Index({ articles, projects, events }) {
                     objectPosition="center"
                   />
                 </div>
-
                 <h2 className="text-center text-white lg:text-left text-base lg:text-xl my-4">
                   {item.title}
                 </h2>
@@ -137,7 +136,7 @@ export default function Index({ articles, projects, events }) {
         {/* Articles Container*/}
         <section className="w-full flex flex-col lg:flex-row items-start">
           {/* Big Article */}
-          <div className="w-full lg:w-1/2 pr-0 lg:pr-20 xl:pr-28">
+          <div className="w-full lg:w-1/2 pr-0 lg:pr-20 xl:pr-28 text-center lg:text-left">
             <div className={"relative h-48 md:h-96 lg:h-44 2xl:h-96 shadow-lg"}>
               <Image
                 src={articles[0].imagesCollection.items[0].url}
@@ -147,11 +146,11 @@ export default function Index({ articles, projects, events }) {
               />
             </div>
             <Link href={`/blog/${articles[0].slug}`}>
-              <a className="text-black text-center lg:text-left font-bold text-base md:text-xl lg:text-2xl py-2 inline-block hover:underline">
+              <a className="line-clamp-2 text-black font-bold text-base md:text-xl lg:text-2xl py-2 inline-block hover:underline">
                 {articles[0].title}
               </a>
             </Link>
-            <p className="break-words line-clamp-3 text-center lg:text-left text-sm lg:text-base mb-4">
+            <p className="break-words line-clamp-3 text-sm lg:text-base mb-4">
               {getRTFContent(articles[0])}
             </p>
           </div>
@@ -176,7 +175,7 @@ export default function Index({ articles, projects, events }) {
 
                   <div className="w-2/3 flex flex-col pl-8">
                     <Link href={`/blog/${item.slug}`}>
-                    <a className="text-black text-base lg:text-xl mb-4 hover:underline font-bold">
+                    <a className="line-clamp-2 text-black text-base lg:text-xl mb-4 hover:underline font-bold">
                       {item.title}
                     </a>
                     </Link>
@@ -227,7 +226,7 @@ export default function Index({ articles, projects, events }) {
                 </div>
 
                 {/* Project Text */}
-                <h2 className="text-black text-base lg:text-xl my-4">
+                <h2 className="text-black text-base lg:text-xl my-4 line-clamp-2">
                   {item.title}
                 </h2>
                 <p className="break-words text-sm lg:text-base mb-4 line-clamp-4">{item.description}</p>
