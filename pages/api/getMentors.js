@@ -17,7 +17,7 @@ const getMentors = async (req, res) => {
             mentors.push({
                 email : data.Email.email,
                 picture : data.Picture.files[0].file.url,
-                timeSlots : convTimeSlots(data.TimeSlots.rich_text[0].plain_text),
+                timeSlots : expandTimeSlots(data.TimeSlots.rich_text[0].plain_text),
                 description : data.Description.rich_text[0].plain_text,
                 name: data.Name.title[0].plain_text,
             });
@@ -34,7 +34,7 @@ const getMentors = async (req, res) => {
     }
 };
 
-function convTimeSlots(timeSlots){
+function expandTimeSlots(timeSlots){
     let time = [];
     time = timeSlots.split(", ")
     for(let i = 0; i < time.length; i++){
