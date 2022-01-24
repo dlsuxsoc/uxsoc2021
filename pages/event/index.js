@@ -58,11 +58,11 @@ export default function Events({ active, contentfulEvents }) {
                     
                 </div>
             </div> */}
-      <section className="px-4 sm:px-32 flex flex-col min-h-screen min-w-screen">
-        <h1 className=" pt-28 pb-6 text-center lg:text-left">Events</h1>
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="relative pd">
-            <div className="lg:w-96 h-96">
+      <section className="px-4 sm:px-32 min-w-screen min-h-screen">
+        <h1 className="block text-black pt-28 pb-6 text-center lg:text-left">Events</h1>
+        <div className="flex flex-col lg:flex-row items-center">
+          <div className="relative w-full">
+            <div className={`${styles.eventheroimage} w-1/2 lg:w-full`}>
               <Image
                 src={faker.image.image()}
                 alt="Placeholder"
@@ -73,7 +73,7 @@ export default function Events({ active, contentfulEvents }) {
             </div>
           </div>
 
-          <div className=" md:pl-16 lg:pl-32">
+          <div className="pt-4 pl-0 md:pl-8 lg:pl-32 w-4/5 md-w-2/3">
             <h2 className="text-left">{latestEvent.title}</h2>
             <p className="whitespace-wrap sm:whitespace-nowrap my-4">
               {
