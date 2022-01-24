@@ -12,3 +12,15 @@
     border-color: #fff transparent transparent transparent;
   }
 }
+
+.eventheroimage{
+  
+   @media screen and (max-width: 1536px){
+    height: 32rem;
+  }
+  @media screen and (max-width: 768px){
+    height: 24rem;
+  }
+  
+  height: 48rem;
+}

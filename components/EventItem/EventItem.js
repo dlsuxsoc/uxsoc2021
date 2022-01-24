@@ -7,7 +7,7 @@ import faker from "faker";
 
 const EventItem = ({ title, description }) => {
   return (
-    <li className={`py-4 mr-0 md:mr-16 w-72`}>
+    <li className={`py-4 mr-0 md:mr-16 w-full md:w-72`}>
       <div className="relative w-full h-56">
         <Image
           src={faker.image.nature()}
