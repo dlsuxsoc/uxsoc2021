@@ -58,48 +58,47 @@ export default function Events({ active, contentfulEvents }) {
                     
                 </div>
             </div> */}
-      <section className="px-4 sm:px-32 flex flex-col min-h-screen">
-        <h1 className=" pt-24 pb-6 text-center lg:text-left text-black">Events</h1>
+      <section className="px-4 sm:px-32 flex flex-col min-h-screen min-w-screen">
+        <h1 className=" pt-28 pb-6 text-center lg:text-left">Events</h1>
         <div className="flex flex-col md:flex-row items-center">
-          <div className="w-full lg:w-1/2 relative lg:pb-0 h-64 md:min-h-screen ">
-
-            <Image
-              src={faker.image.image()}
-              alt="Placeholder"
-              layout="fill"
-              objectFit="contain"
-              objectPosition="center"
-            />
-
-          </div>
-
-          <div className="flex flex-row w-2/3 min-h-screen justify-center">
-            <div className="lg:pl-32 min-w-screen min-h-screen">
-              <h2 className="text-left">{latestEvent.title}</h2>
-              <p className="whitespace-wrap sm:whitespace-nowrap my-4">
-                {
-                  /** check if same month and day */
-                  latestEvent.dateEnd.hasSame(latestEvent.dateStart, "day") &&
-                    latestEvent.dateEnd.hasSame(latestEvent.dateStart, "month")
-                    ? // format when event is only one day
-                    `${latestEvent.dateStart.toFormat("DDD")}  
-                | ${latestEvent.dateStart.toFormat(
-                      "t"
-                    )} - ${latestEvent.dateEnd.toFormat("t")}`
-                    : // format when event is multiple days
-                    `${latestEvent.dateStart.toFormat(
-                      "DDD"
-                    )} - ${latestEvent.dateEnd.toFormat("DDD")} |  
-                ${latestEvent.dateStart.toFormat(
-                      "t"
-                    )} - ${latestEvent.dateEnd.toFormat("t")}`
-                }
-              </p>
-              <p className="pb-8 ">{latestEvent.description}</p>
-              <Button variant="green">Learn More</Button>
+          <div className="relative pd">
+            <div className="lg:w-96 h-96">
+              <Image
+                src={faker.image.image()}
+                alt="Placeholder"
+                layout="fill"
+                objectFit="contain"
+                objectPosition="center"
+              />
             </div>
           </div>
+
+          <div className=" md:pl-16 lg:pl-32">
+            <h2 className="text-left">{latestEvent.title}</h2>
+            <p className="whitespace-wrap sm:whitespace-nowrap my-4">
+              {
+                /** check if same month and day */
+                latestEvent.dateEnd.hasSame(latestEvent.dateStart, "day") &&
+                  latestEvent.dateEnd.hasSame(latestEvent.dateStart, "month")
+                  ? // format when event is only one day
+                  `${latestEvent.dateStart.toFormat("DDD")}  
+                | ${latestEvent.dateStart.toFormat(
+                    "t"
+                  )} - ${latestEvent.dateEnd.toFormat("t")}`
+                  : // format when event is multiple days
+                  `${latestEvent.dateStart.toFormat(
+                    "DDD"
+                  )} - ${latestEvent.dateEnd.toFormat("DDD")} |  
+                ${latestEvent.dateStart.toFormat(
+                    "t"
+                  )} - ${latestEvent.dateEnd.toFormat("t")}`
+              }
+            </p>
+            <p className="pb-8 ">{latestEvent.description}</p>
+            <Button variant="green">Learn More</Button>
+          </div>
         </div>
+
       </section>
 
       <section className="flex pt-28 pb-36 flex-col-reverse lg:flex-row justify-start md:items-stretch items-center">
