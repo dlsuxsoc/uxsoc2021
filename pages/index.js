@@ -23,10 +23,11 @@ export default function Index({ articles, projects, events }) {
         {/* Header */}
         <div className="text-center lg:text-left w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
           <h1 className="text-black text-4xl lg:text-6xl xl:text-5xl 2xl:text-7xl mb-6 lg:mb-12">
-            User Experience Society
+            User Experience Society - DLSU
           </h1>
           <p className="text-base lg:text-2xl 2xl:text-3xl">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+            A student organization that advocates User Experience, Experience 
+            Design, and Human-Computer Interaction practices.
           </p>
         </div>
 
@@ -101,14 +102,14 @@ export default function Index({ articles, projects, events }) {
               >
                 <div className="relative h-48 md:h-96 lg:h-44 2xl:h-72 shadow-lg">
                   <Image
-                    src={faker.image.image()}
+                    src={item.image === null ? "/images/placeholder.png" : item.image.url}
                     alt={item.title}
                     layout="fill"
                     objectFit="cover"
                     objectPosition="center"
                   />
                 </div>
-                <h2 className="text-center text-white lg:text-left text-base lg:text-xl my-4">
+                <h2 className="text-center text-white lg:text-left text-base md:text-xl my-4">
                   {item.title}
                 </h2>
                 {/* <p className="break-words text-center lg:text-left text-sm lg:text-base mb-4">
@@ -139,7 +140,7 @@ export default function Index({ articles, projects, events }) {
           <div className="w-full lg:w-1/2 pr-0 lg:pr-20 xl:pr-28 text-center lg:text-left">
             <div className={"relative h-48 md:h-96 lg:h-44 2xl:h-96 shadow-lg"}>
               <Image
-                src={articles[0].imagesCollection.items[0].url}
+                src={articles[0].imagesCollection.items[0] === null ? "/images/placeholder.png" : articles[0].imagesCollection.items[0].url}
                 alt={articles[0].title}
                 layout="fill"
                 objectFit="cover"
@@ -165,7 +166,7 @@ export default function Index({ articles, projects, events }) {
                     className={`w-1/3 relative lg:h-28 2xl:h-44 shadow-lg`}
                   >
                     <Image
-                      src={item.imagesCollection.items[0].url}
+                      src={item.imagesCollection.items[0] === null ? "/images/placeholder.png" : item.imagesCollection.items[0].url}
                       alt={item.title}
                       layout="fill"
                       objectFit="cover"
@@ -217,7 +218,7 @@ export default function Index({ articles, projects, events }) {
               >
                 <div className="relative h-48 md:h-96 lg:h-44 2xl:h-72 shadow-lg">
                   <Image
-                    src={item.image.url}
+                    src={item.image === null ? "/images/placeholder.png" : item.image.url}
                     alt={item.title}
                     layout="fill"
                     objectFit="cover"
@@ -226,7 +227,7 @@ export default function Index({ articles, projects, events }) {
                 </div>
 
                 {/* Project Text */}
-                <h2 className="text-black text-base lg:text-xl my-4 line-clamp-2">
+                <h2 className="text-black text-base md:text-xl my-4 line-clamp-2">
                   {item.title}
                 </h2>
                 <p className="break-words text-sm lg:text-base mb-4 line-clamp-4">{item.description}</p>
