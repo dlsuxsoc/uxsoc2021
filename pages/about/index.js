@@ -118,8 +118,7 @@ export default function Index() {
                 <div className="pb-3 text-center">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Join us</h1>
                     <p className="text-base lg:text-xl mb-4 lg:w-96">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
-                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi 
+                        Apply to become a core member now!
                     </p>
                 </div>
                 

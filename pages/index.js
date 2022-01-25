@@ -23,10 +23,11 @@ export default function Index({ articles, projects, events }) {
         {/* Header */}
         <div className="text-center lg:text-left w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
           <h1 className="text-black text-4xl lg:text-6xl xl:text-5xl 2xl:text-7xl mb-6 lg:mb-12">
-            User Experience Society
+            User Experience Society - DLSU
           </h1>
           <p className="text-base lg:text-2xl 2xl:text-3xl">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+            A student organization that advocates User Experience, Experience 
+            Design, and Human-Computer Interaction practices.
           </p>
         </div>
 
