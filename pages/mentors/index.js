@@ -312,7 +312,7 @@ export default function Index() {
                                     Email*
                                 </label>
                                 <input
-                                    type="text"
+                                    type="email"
                                     name="email"
                                     className="form-input py-2 px-3 w-full"
                                     placeholder="don_norman@dlsu.edu.ph"
