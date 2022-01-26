@@ -13,7 +13,7 @@ import {
 const Footer = () => {
   return (
     <div
-      className={`${styles.container} pt-32 pb-24 px-4 sm:px-8 lg:px-32  flex flex-wrap lg:flex-nowrap`}
+      className={`${styles.container} pt-20 pb-12 px-4 sm:px-8 lg:px-32  flex flex-wrap lg:flex-nowrap`}
     >
       <div className="w-full lg:w-1/2 mb-8">
         <div className="block">

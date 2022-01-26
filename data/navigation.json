@@ -8,8 +8,8 @@
         "link": "/about"
     },
     {
-        "name": "Projects",
-        "link": "/project"
+        "name": "Services",
+        "link": "/services"
     },
     {
         "name": "Events",
@@ -18,5 +18,9 @@
     {
         "name": "Articles",
         "link": "/blog"
+    },
+    {
+        "name": "Mentors",
+        "link": "/mentors"
     }
 ]

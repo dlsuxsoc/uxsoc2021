@@ -98,14 +98,14 @@ const Apply = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log(applicationData);
+    console.log(applicationData);
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     const res = await axios.post(
       "/api/addMembershipApplication",
       applicationData
     );
-    //console.log(res);
+    console.log(res);
     if (res.status === 201) {
       router.push("?status=success", undefined, { shallow: true });
     } else {
@@ -114,7 +114,7 @@ const Apply = () => {
   };
 
   return (
-    <Layout active={-1}>
+    <Layout active={6}>
       <SEO title={"Membership Application"} />
       <div className="hidden md:block fixed right-0 top-0 bg-green  md:w-64 z-0 lg:w-96 h-screen">
         {/* <Image
@@ -196,7 +196,7 @@ const Apply = () => {
                   diam nonummy nibh euismod tincidunt ut laoreet dolore magna
                   aliquam erat volutpat. Ut wisi
                 </p>
-                <p className="text-base lg:text-xl">* Optional</p>
+                <p className="text-base lg:text-xl">* Required</p>
               </div>
             </div>
           </section>
@@ -340,12 +340,13 @@ const Apply = () => {
                     name="pronoun"
                     htmlFor="pronoun"
                   >
-                    Preferred Pronoun
+                    Preferred Pronoun *
                   </label>
                   <div>
                     <input
                       type="radio"
                       name="pronoun"
+                      required
                       checked={applicationData.pronoun === "He/ Him"}
                       className="form-input py-2 px-3"
                       value="He/ Him"
@@ -363,6 +364,7 @@ const Apply = () => {
                     <input
                       type="radio"
                       name="pronoun"
+                      required
                       checked={applicationData.pronoun === "She/ Her"}
                       className="form-input py-2 px-3"
                       value="She/ Her"
@@ -380,6 +382,7 @@ const Apply = () => {
                     <input
                       type="radio"
                       name="pronoun"
+                      required
                       checked={applicationData.pronoun === "They/ Them"}
                       className="form-input py-2 px-3"
                       value="They/ Them"
@@ -397,6 +400,7 @@ const Apply = () => {
                     <input
                       type="radio"
                       name="pronoun"
+                      required
                       className="form-input py-2 px-3"
                       checked={applicationData.pronoun === "Others"}
                       onChange={(e) =>
@@ -410,17 +414,10 @@ const Apply = () => {
                     <span className="mx-2 py-2">Others</span>
                     <input
                       type="text"
-                      className={`${
-                        applicationData.pronoun === "Others"
-                          ? "form-input  w-full sm:w-auto"
-                          : "opacity-0"
-                      } py-2 px-3`}
+                      required
+                      className={`form-input  w-full sm:w-auto py-2 px-3`}
                       value={applicationData.customPronoun}
-                      placeholder={
-                        applicationData.pronoun === "Others"
-                          ? "Please specify"
-                          : ""
-                      }
+                      placeholder="Please specify"
                       disabled={applicationData.pronoun !== "Others"}
                       onChange={(e) =>
                         setApplicationData({
@@ -490,6 +487,7 @@ const Apply = () => {
                   <select
                     value={applicationData.college}
                     className="py-2.5 px-2 w-full"
+                    required
                     style={{ backgroundColor: "#ECECEC" }}
                     onChange={(e) =>
                       setApplicationData({
@@ -515,6 +513,7 @@ const Apply = () => {
                   <input
                     type="text"
                     name="program"
+                    required
                     value={applicationData.program}
                     className="form-input py-2 px-3 w-full"
                     placeholder="Bachelor of Science in Human-Computer Interaction"

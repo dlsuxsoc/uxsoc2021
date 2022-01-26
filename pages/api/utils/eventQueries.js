@@ -8,6 +8,16 @@ query getEvents($offset:Int){
       description
       dateStart
       dateEnd
+      image {
+        title
+        description
+        contentType
+        fileName
+        size
+        url
+        width
+        height
+      }
     }
   }
 }
@@ -15,16 +25,26 @@ query getEvents($offset:Int){
 
 const GET_EVENT = `
 query getEvents($slug:String){  
-    eventCollection(where:{slug : $slug}, limit : 1){
-      items{
+  eventCollection(where:{slug : $slug}, limit : 1){
+    items{
+      title
+      slug
+      description
+      dateStart
+      dateEnd
+      image {
         title
-        slug
         description
-        dateStart
-        dateEnd
+        contentType
+        fileName
+        size
+        url
+        width
+        height
       }
     }
   }
+}
 `;
 
 const GET_EVENTS_BY_YEAR = `
@@ -36,6 +56,16 @@ query getEventsByYear($offset: Int, $dateStart: DateTime, $dateEnd: DateTime) {
       description
       dateStart
       dateEnd
+      image {
+        title
+        description
+        contentType
+        fileName
+        size
+        url
+        width
+        height
+      }
     }
   }
 }

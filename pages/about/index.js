@@ -15,15 +15,15 @@ export default function Index() {
             <SEO title={"About Us"} />
 
             {/* About UX */}
-            <section className="px-4 sm:px-32 py-2 mt-36 mb-16 lg:mb-36 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto">    
+            <section className="px-4 sm:px-32 py-2 mt-28 md:mt-8 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-screen">    
                 {/* Header and Text */}
-                <div className="w-full lg:w-1/2 pr-0 lg:pr-20 pb-3 lg:pb-0 mb-8">
-                    <h1 className="text-center lg:text-left text-black text-3xl lg:text-5xl mb-6 lg:mb-12">UX Society DLSU</h1>
-                    <p className="text-base lg:text-lg 2xl:text-xl mb-4">
+                <div className="w-full lg:w-1/2 text-center lg:text-left pr-0 lg:pr-20 pb-3 lg:pb-0 mb-8">
+                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">UX Society</h1>
+                    <p className="text-base lg:text-lg 2xl:text-2xl mb-4">
                         The UX Society - DLSU Chapter is one of the many recognized UX Societies in the same network. 
                         There's UX Society ADMU, Davao, Orange County and the latest, UX Society AIM-Chapter.
                     </p>
-                    <p className="text-base lg:text-lg 2xl:text-xl mb-4">
+                    <p className="text-base lg:text-lg 2xl:text-2xl mb-4">
                         UX Society - DLSU aids various organizations by creating quality products and services by applying 
                         principles, concepts and methodologies in such strategies. We hold workshops, seminars and conferences 
                         to train members about the essentials skills of proper UX discipline and methodologies.
@@ -31,7 +31,7 @@ export default function Index() {
                 </div>
 
                 {/* Image */}
-                <div className="w-full lg:w-1/2 pb-2 text-center">
+                <div className="w-full lg:w-1/2 pb-2 lg:pb-0 text-center">
                     <Image
                         src="/images/home-1.png"
                         alt="Sketch-About"
@@ -79,17 +79,17 @@ export default function Index() {
             <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">    
                 {/* Header*/}
                 <div className="pb-3 lg:pb-0">
-                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Services</h1>
+                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Our services</h1>
                 </div>
                 {/* Service Container*/}
-                <section className="flex flex-col items-center w-full md:justify-between">
+                <section className="flex flex-col items-center w-full md:justify-center">
                     {/* Service */}
                     {servicesData.slice(0,3).map((item,index)=> {
                         return (
-                            <div className={`pb-2 flex flex-row items-center w-full`} key={index}>
-                                <div className="w-1/3 relative h-24 md:h-36 lg:h-44 2xl:h-72">
+                            <div className={`2xl:px-72 pb-2 flex flex-col md:flex-row items-center justify-center w-full`} key={index}>
+                                <div className="p-24 mr-0 md:mr-28 relative h-24 md:h-36 lg:h-44 2xl:h-72">
                                     <Image
-                                        src={faker.image.image()}
+                                        src={item.Image}
                                         alt="Placeholder-Event"
                                         layout="fill"
                                         objectFit="contain"
@@ -98,11 +98,11 @@ export default function Index() {
                                 </div>
 
                                 {/* Services Text */}
-                                <div className="w-2/3 flex flex-col pl-5">
-                                    <h2 className="text-black text-sm lg:text-xl my-4 ">
+                                <div className="w-full lg:w-1/2 flex flex-col text-center md:text-left">
+                                    <h2 className="text-black text-base lg:text-xl 2xl:text-2xl my-4">
                                         {item.Title}
                                     </h2>
-                                    <p className="break-words text-xs lg:text-base mb-4">
+                                    <p className="break-words text-base xl:text-lg 2xl:text-xl mb-4">
                                         {item.Content}
                                     </p>
                                 </div>
@@ -116,10 +116,9 @@ export default function Index() {
             <section className="px-4 sm:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">    
                 {/* Header*/}
                 <div className="pb-3 text-center">
-                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Join Us</h1>
+                    <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">Join us</h1>
                     <p className="text-base lg:text-xl mb-4 lg:w-96">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
-                        tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi 
+                        Apply to become a core member now!
                     </p>
                 </div>
                 

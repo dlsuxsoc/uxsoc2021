@@ -128,3 +128,13 @@
     flex-direction: column;
   }
 }
+
+
+.eventBg{
+  background: url("/images/blob/top-curve.svg"),
+              url("/images/blob/bottom-curve.svg"),
+              #2FBBAA;
+  background-repeat: no-repeat, no-repeat;
+  background-position: center top, center bottom;
+  background-size: 100%,  100%;
+}
