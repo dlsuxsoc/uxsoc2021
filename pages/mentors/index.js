@@ -9,9 +9,20 @@ import mentorsData from "../../data/dummy-mentors.json"
 import faker from "faker";
 import Button from "../../components/Button/Button";
 import { truncateString } from "../../helpers/truncateString";
+import getMentors from "../api/getMentors";
+import Modal from "../../components/Modal/Modal";
+import getNextNDays from "../../helpers/getNextNDays";
+import getTimeSlotsByDay from "../../helpers/getTimeSlotsByDay";
 
-export default function Index() {
+export default function Index({mentors}) {
     //const router = useRouter(); //TODO: idk
+
+    console.log("TESTING", getTimeSlotsByDay(mentors[0].timeSlots, "January 27, 2022"));
+
+    // BINDED TO DROPDOWN MENTOR NAME
+    const [mentorIndex, setMentorIndex] = useState(-1);
+
+    const [toggle, toggleModal] = useState(false);
     const [bookingData, setBookingData] = useState({
         bookingMentor: "",
         bookingDate: "",
@@ -28,19 +39,20 @@ export default function Index() {
         e.preventDefault();
         //console.log(bookingData);
         window.scrollTo({ top: 0, behavior: "smooth" });
-    
-        const res = await axios.post(
-          "/api/addMembershipApplication", // TODO: Change
-          bookingData
-        );
+        console.log("FORM SUBMITTED");
+        // const res = await axios.post(
+        //   "/api/addMembershipApplication", // TODO: Change
+        //   bookingData
+        // );
         //console.log(res);
+
         if (res.status === 201) {
           //router.push("?status=success", undefined, { shallow: true }); //TODO: router related
         } else {
           //router.push("?status=fail", undefined, { shallow: true }); //TODO: router related
         }
       };
-
+    
     return(
         <Layout active={5}>
             <SEO title={"Mentors"}/>
@@ -60,15 +72,15 @@ export default function Index() {
                     {/*Mentors Container*/}
                     <div className="flex flex-row flex-wrap gap-10 justify-center">
                         {/* Mentor */}
-                        {mentorsData.map((item,index)=> {
+                        {mentors.map((item,index)=> {
                             return (
                                 <div className="w-full md:w-1/3 lg:w-1/4" key={index}>
                                     {/* Mentor Avatar */}
                                     <div className="mx-auto relative w-48 h-48">
                                         <Image
                                             className="rounded-full shadow-md"
-                                            src={faker.image.image()}
-                                            alt="Placeholder-Mentor"
+                                            src={item.picture}
+                                            alt={item.name}
                                             layout="fill"
                                             objectFit="cover"
                                             objectPosition="center"
@@ -76,29 +88,29 @@ export default function Index() {
                                     </div>
 
                                     <div className="mt-2">
-                                        <h2 className="text-black text-xl">{item.Name}</h2>
-                                        <p className="text-base">{item.Description}</p>
+                                        <h2 className="text-black text-xl">{item.name}</h2>
+                                        <p className="text-base">{item.description}</p>
                                     </div>
 
                                     {/* Available Times */}
                                     <div className="text-gray text-base px-8">
                                         <h3 className="text-gray text-base">Available Times</h3>
 
-                                        {item.Slots.map((item,index) => {
+                                        {item.timeSlots.map((ts,index) => {
                                             return (
                                                 <div key={index}>
                                                     <div className="flex flex-row justify-between">
                                                         {/* Day */}
-                                                        <p className="block md:hidden xl:block">{item.Day}</p>
-                                                        <p className="hidden md:block xl:hidden">{truncateString(item.Day,2)}</p>
+                                                        <p className="block md:hidden xl:block">{ts.day}</p>
+                                                        <p className="hidden md:block xl:hidden">{truncateString(ts.day,2)}</p>
                                                         
                                                         {/* Times */}
                                                         <div className="w-3/4">
-                                                            {item.Times.map((item,index) => {
+                                                            {ts.times.map((time,index) => {
                                                                 return (
                                                                     <div className="flex flex-col" key={index}>
                                                                         <p className="text-right block">
-                                                                            {item.Start} - {item.End}
+                                                                            {time.start} - {time.end}
                                                                         </p>     
                                                                     </div>
                                                                 )
@@ -135,25 +147,28 @@ export default function Index() {
                                 {/* Mentor to Book */}
                                 <div className="col-start-1 col-span-12 sm:col-span-6 mb-4">
                                     <label className="block mb-6" htmlFor="bookingMentor">
-                                        Mentor to book*
+                                        Mentor to book
                                     </label>
                                     <select
                                         name="bookingMentor"
                                         className="py-2.5 px-2 w-full"
                                         style={{ backgroundColor: "#ECECEC" }}
-                                        onChange={(e) =>
+                                        onChange={(e) =>{           
+                                            setMentorIndex(parseInt(e.target.value));
                                             setBookingData({
                                                 ...bookingData,
-                                                bookingMentor: e.target.value
+                                                bookingMentor: mentors[parseInt(e.target.value)].name,
                                             })
-                                        }
-                                        value={bookingData.bookingMentor}
+                                        }}
+                                        value={mentorIndex}
                                         required
                                     >
-                                        <option value="" disabled selected>Please select a mentor</option>
-                                        {mentorsData.map((item,index) => {
+                                        <option value={-1} disabled selected>Please select a mentor</option>
+                                        
+                                        {mentors.map((item,index) => {
+                                            // Index = 0 to N
                                             return (
-                                                <option value={item.Name} key={index}>{item.Name}</option>
+                                                <option value={index} key={index}>{item.name}</option>
                                             )
                                         })}
                                     </select>
@@ -162,9 +177,9 @@ export default function Index() {
                                 {/* Date & Time */}
                                 <div className="col-span-12 sm:col-span-6 mb-4">
                                     <label className="block mb-6" htmlFor="bookingDate">
-                                        Date and Time*
+                                        Date and Time
                                     </label>
-
+                                    {/* Date */}
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="col-start-1">
                                             <select
@@ -181,15 +196,15 @@ export default function Index() {
                                                 required
                                             >
                                                 <option value="" disabled selected>Date</option>
-                                                {mentorsData.map((item,index) => {
+                                                {mentorIndex !== -1 ? (getNextNDays(mentors[mentorIndex].timeSlots).map((item,index) => {
                                                     return (
-                                                        // TODO: Based on chosen mentor's timeslot
-                                                        <option key={index}></option>
+                                                        <option key={index}>{item}</option>
                                                     )
-                                                })}
+                                                })) : (null)}
                                             </select>
                                         </div>
-
+                                        
+                                        {/* Time */}
                                         <div className="col-start-2">
                                             <select
                                                 name="bookingSlot"
@@ -205,12 +220,11 @@ export default function Index() {
                                                 required
                                             >
                                                 <option value="" disabled selected>Timeslot</option>
-                                                {mentorsData.map((item,index) => {
+                                                {mentorIndex !== -1 ? (getTimeSlotsByDay(mentors[mentorIndex].timeSlots,bookingData.bookingDate).map((item,index) => {
                                                     return (
-                                                        // TODO: Based on chosen mentor's timeslot
-                                                        <option key={index}></option>
+                                                        <option key={index}>{item}</option>
                                                     )
-                                                })}
+                                                })) : (null)}
                                             </select>
                                         </div>
                                     </div>
@@ -222,7 +236,7 @@ export default function Index() {
                                 {/* First Name */}
                                 <div className="col-start-1 col-span-12 sm:col-span-6 mb-4">
                                     <label className="block mb-6" htmlFor="firstName">
-                                        First Name*
+                                        First Name
                                     </label>
                                     <input
                                         type="text"
@@ -243,7 +257,7 @@ export default function Index() {
                                 {/* Last Name */}
                                 <div className="col-span-12 sm:col-span-6 mb-4">
                                     <label className="block mb-6" htmlFor="lastName">
-                                        Last Name*
+                                        Last Name
                                     </label>
                                     <input
                                         type="text"
@@ -266,7 +280,7 @@ export default function Index() {
                                 {/* Nickname */}
                                 <div className="col-start-1 col-span-12 sm:col-span-6 mb-4">
                                     <label className="block mb-6" htmlFor="nickname">
-                                        Nickname
+                                        Nickname (optional)
                                     </label>
                                     <input
                                         type="text"
@@ -286,7 +300,7 @@ export default function Index() {
                                 {/* Phone Number */}
                                 <div className="col-span-12 sm:col-span-6 mb-4">
                                     <label className="block mb-6" htmlFor="contactNum">
-                                        Phone Number*
+                                        Phone Number (optional)
                                     </label>
                                     <input
                                         type="text"
@@ -309,7 +323,7 @@ export default function Index() {
                             <div className="col-start-1 col-span-12 sm:col-span-6 mb-4 md:mb-0">
                                 {/* Email */}
                                 <label className="block mb-6" htmlFor="email">
-                                    Email*
+                                    Email
                                 </label>
                                 <input
                                     type="email"
@@ -331,7 +345,7 @@ export default function Index() {
                         <div className="flex flex-col md:w-1/2">
                             {/* Additional Message */}
                             <label className="block mb-6" htmlFor="message">
-                                Additional message
+                                Additional message (optional)
                             </label>
                             <textarea
                                 name="message"
@@ -348,15 +362,32 @@ export default function Index() {
                             ></textarea>
                         </div>
                     </section>
-                </form>
-
-                <div className="text-center">
+                    <div className="text-center">
                     <p className="pb-4 text-center text-base lg:text-lg 2xl:text-xl">
                         All information will be kept private.
                     </p>
-                    <Button to="/">Book Mentor</Button>
+                    <input
+                    type={"submit"}
+                    value={"BOOK MENTOR"}
+                    className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer`}
+                  />
                 </div>
+
+                </form>
+
             </section>
+            <Modal title={"You have successfully booked a Mentor"} toggleModal={toggleModal} toggle={toggle}>
+                Lorem ipsum.
+            </Modal>
         </Layout>
     );
+}
+
+export async function getServerSideProps() {
+    const mentorData = await getMentors();
+    return {
+        props: {
+            mentors: mentorData
+        },
+    };
 }
