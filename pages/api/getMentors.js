@@ -1,4 +1,5 @@
 import { notion } from "../../api/notion";
+import { expandTimeSlots } from "../../helpers/expandTimeSlots";
 const getMentors = async (req, res) => {
     try {
         const result = await notion.databases.query({ database_id: process.env.NOTION_MENTOR_LIST});
@@ -34,19 +35,6 @@ const getMentors = async (req, res) => {
     }
 };
 
-function expandTimeSlots(timeSlots){
-    let time = [];
-    time = timeSlots.split(", ")
-    for(let i = 0; i < time.length; i++){
-        time[i] = time[i].replace('M', 'Monday');
-        time[i] = time[i].replace('T', 'Tuesday');
-        time[i] = time[i].replace('W', 'Wednesday');
-        time[i] = time[i].replace('H', 'Thursday');
-        time[i] = time[i].replace('F', 'Friday');
-    }
-    return time;
-}
-
 export const config = {
     api: {
         bodyParser: {
@@ -57,3 +45,4 @@ export const config = {
 };
 
 export default getMentors;
+
