@@ -7,7 +7,7 @@ const expandTimeSlots = (timeSlots) => {
     time = timeSlots.split(", ")
     time.map((item, index) => {
         // replace days with their full names
-        item = item.replace('M', days[0]);
+        item = item.replace('M ', days[0]+" ");
         item = item.replace('T', days[1]);
         item = item.replace('W', days[2]);
         item = item.replace('H', days[3]);
