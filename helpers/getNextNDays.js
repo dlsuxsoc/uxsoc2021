@@ -1,5 +1,5 @@
 export const getNextNDays = (timeSlots) => {
-    console.log("TIMESLOTS", timeSlots);
+    //console.log("TIMESLOTS", timeSlots);
     let wordsToNum = {
         "Sunday": 0,
         "Monday": 1,
@@ -26,21 +26,21 @@ export const getNextNDays = (timeSlots) => {
         return wordsToNum[item.day];
     })
 
-    console.log(days);
+    //console.log(days);
 
     let specificDates = [];
     let counter = 8;
     let myDay = new Date();
     while (counter != 0){
         myDay.setDate(myDay.getDate() + 1);
-        console.log("TODAY IS:", myDay.getDay())
+        //console.log("TODAY IS:", myDay.getDay())
         if(days.includes(myDay.getDay())){
             specificDates.push(`${myDay.toLocaleString("en-us", {month: "long", day: "numeric", year:"numeric"})}`);
             counter--;
         }
     }
     
-    console.log("HELLO", specificDates);
+    //console.log("HELLO", specificDates);
     return specificDates;
 }
 

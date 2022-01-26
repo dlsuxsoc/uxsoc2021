@@ -17,8 +17,6 @@ import getTimeSlotsByDay from "../../helpers/getTimeSlotsByDay";
 export default function Index({mentors}) {
     //const router = useRouter(); //TODO: idk
 
-    console.log("TESTING", getTimeSlotsByDay(mentors[0].timeSlots, "January 27, 2022"));
-
     // BINDED TO DROPDOWN MENTOR NAME
     const [mentorIndex, setMentorIndex] = useState(-1);
 
@@ -140,14 +138,14 @@ export default function Index({mentors}) {
                 
                 {/* Form */}
                 <form action="POST" onSubmit={handleSubmit}>
-                    <section className="flex flex-col md:flex-row justify-between mb-8">
+                    <section className="flex flex-col xl:flex-row justify-between mb-8">
                         {/* Left Side starts here */}
-                        <div className="w-full pr-0 md:pr-4">
+                        <div className="w-full pr-0 xl:pr-4">
                             <div className="grid grid-cols-12 gap-4">
                                 {/* Mentor to Book */}
-                                <div className="col-start-1 col-span-12 sm:col-span-6 mb-4">
+                                <div className="col-start-1 col-span-12 sm:col-span-6 mb-0 md:mb-4">
                                     <label className="block mb-6" htmlFor="bookingMentor">
-                                        Mentor to book
+                                        Mentor to Book
                                     </label>
                                     <select
                                         name="bookingMentor"
@@ -184,7 +182,7 @@ export default function Index({mentors}) {
                                         <div className="col-start-1">
                                             <select
                                                 name="bookingDate"
-                                                className="py-2.5 px-2 w-full"
+                                                className="py-2.5 px-1.5 w-full"
                                                 style={{ backgroundColor: "#ECECEC" }}
                                                 onChange={(e) =>
                                                     setBookingData({
@@ -234,7 +232,7 @@ export default function Index({mentors}) {
 
                             <div className="grid grid-cols-12 gap-4">
                                 {/* First Name */}
-                                <div className="col-start-1 col-span-12 sm:col-span-6 mb-4">
+                                <div className="col-start-1 col-span-12 sm:col-span-6 mb-0 md:mb-4">
                                     <label className="block mb-6" htmlFor="firstName">
                                         First Name
                                     </label>
@@ -278,7 +276,7 @@ export default function Index({mentors}) {
                             
                             <div className="grid grid-cols-12 gap-4">
                                 {/* Nickname */}
-                                <div className="col-start-1 col-span-12 sm:col-span-6 mb-4">
+                                <div className="col-start-1 col-span-12 sm:col-span-6 mb-0 md:mb-4">
                                     <label className="block mb-6" htmlFor="nickname">
                                         Nickname (optional)
                                     </label>
@@ -315,12 +313,11 @@ export default function Index({mentors}) {
                                                 contactNum: e.target.value,
                                         })
                                         }
-                                        required
                                     />
                                 </div>
                             </div>
                                 
-                            <div className="col-start-1 col-span-12 sm:col-span-6 mb-4 md:mb-0">
+                            <div className="col-start-1 col-span-12 sm:col-span-6 mb-4 xl:mb-0">
                                 {/* Email */}
                                 <label className="block mb-6" htmlFor="email">
                                     Email
@@ -342,7 +339,7 @@ export default function Index({mentors}) {
                         </div>
 
                         {/* Right Side starts here */}
-                        <div className="flex flex-col md:w-1/2">
+                        <div className="flex flex-col w-full xl:w-1/2">
                             {/* Additional Message */}
                             <label className="block mb-6" htmlFor="message">
                                 Additional message (optional)
