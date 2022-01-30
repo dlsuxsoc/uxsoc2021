@@ -29,6 +29,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    require('@tailwindcss/line-clamp'),
     plugin(({ addBase, theme }) => {
       addBase({
         h1: { fontSize: theme("fontSize.h1") },
