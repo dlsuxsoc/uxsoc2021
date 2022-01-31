@@ -3,17 +3,15 @@
   padding-bottom: 0.75rem;
   padding-top: 0.75rem;
   cursor: pointer;
-  font-family: Roboto;
-  
+  font-family: 'Roboto', sans-serif;
 }
 
 
 
 .date {
   position: relative;
-  p{
-    font-family: Roboto;
-  }
+  font-family: 'Roboto', sans-serif;
+ 
   &::after {
     transition: all 0.4s;
     content: "";
