@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.8.8 on win32)" generated="20220131 14:36:33.275" rpa="false" schemaversion="2">
+<suite id="s1" name="Robot Tests" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests">
+<suite id="s1-s1" name="Valid About" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests\valid_about.robot">
+<test id="s1-s1-t1" name="Valid Join Button Pressed">
+<kw name="Open Browser To About Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ABOUT URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:36:33.494" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/about'.</msg>
+<status status="PASS" starttime="20220131 14:36:33.494" endtime="20220131 14:36:42.268"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:36:42.269" endtime="20220131 14:36:42.394"/>
+</kw>
+<status status="PASS" starttime="20220131 14:36:33.494" endtime="20220131 14:36:42.395"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class:abt-apply-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220131 14:36:42.395" level="INFO">Clicking element 'class:abt-apply-btn'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220131 14:36:43.682" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220131 14:36:43.476" endtime="20220131 14:36:43.682"/>
+</kw>
+<msg timestamp="20220131 14:36:43.691" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (1270, 3613)
+  (Session info: MicrosoftEdge=97.0.1072.76)
+</msg>
+<status status="FAIL" starttime="20220131 14:36:42.395" endtime="20220131 14:36:43.691"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Membership Application</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20220131 14:36:43.692" endtime="20220131 14:36:43.692"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:36:43.692" endtime="20220131 14:36:45.811"/>
+</kw>
+<status status="FAIL" starttime="20220131 14:36:33.493" endtime="20220131 14:36:45.811">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (1270, 3613)
+  (Session info: MicrosoftEdge=97.0.1072.76)
+</status>
+</test>
+<doc>A test suit for valid use of the about page
+
+this test follows the example using keywords from
+the SeleniumLibrary</doc>
+<status status="FAIL" starttime="20220131 14:36:33.300" endtime="20220131 14:36:45.813"/>
+</suite>
+<suite id="s1-s2" name="Valid Articles" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests\valid_articles.robot">
+<test id="s1-s2-t1" name="Valid Filter By All Articles">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:36:45.821" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 14:36:45.821" endtime="20220131 14:36:51.132"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:36:51.133" endtime="20220131 14:36:51.263"/>
+</kw>
+<status status="PASS" starttime="20220131 14:36:45.821" endtime="20220131 14:36:51.264"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>All</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 14:36:51.265" level="INFO">Clicking button 'class:yAll'.</msg>
+<status status="PASS" starttime="20220131 14:36:51.265" endtime="20220131 14:36:51.309"/>
+</kw>
+<status status="PASS" starttime="20220131 14:36:51.264" endtime="20220131 14:36:51.310"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>All</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 14:36:51.310" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text 'All'.</msg>
+<status status="PASS" starttime="20220131 14:36:51.310" endtime="20220131 14:36:51.327"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:36:51.328" endtime="20220131 14:36:53.433"/>
+</kw>
+<status status="PASS" starttime="20220131 14:36:45.820" endtime="20220131 14:36:53.433"/>
+</test>
+<test id="s1-s2-t2" name="Valid Filter By Year 2019 Articles">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:36:53.435" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 14:36:53.435" endtime="20220131 14:36:57.450"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:36:57.450" endtime="20220131 14:36:57.575"/>
+</kw>
+<status status="PASS" starttime="20220131 14:36:53.435" endtime="20220131 14:36:57.575"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2019</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 14:36:57.576" level="INFO">Clicking button 'class:y2019'.</msg>
+<status status="PASS" starttime="20220131 14:36:57.576" endtime="20220131 14:36:57.649"/>
+</kw>
+<status status="PASS" starttime="20220131 14:36:57.575" endtime="20220131 14:36:57.649"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>2019</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 14:36:57.650" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text '2019'.</msg>
+<status status="PASS" starttime="20220131 14:36:57.650" endtime="20220131 14:36:57.674"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:36:57.675" endtime="20220131 14:36:59.815"/>
+</kw>
+<status status="PASS" starttime="20220131 14:36:53.434" endtime="20220131 14:36:59.815"/>
+</test>
+<test id="s1-s2-t3" name="Valid Filter By Year 2021 Articles">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:36:59.817" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 14:36:59.817" endtime="20220131 14:37:03.510"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:37:03.510" endtime="20220131 14:37:03.635"/>
+</kw>
+<status status="PASS" starttime="20220131 14:36:59.816" endtime="20220131 14:37:03.635"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2021</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 14:37:03.636" level="INFO">Clicking button 'class:y2021'.</msg>
+<status status="PASS" starttime="20220131 14:37:03.636" endtime="20220131 14:37:03.716"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:03.636" endtime="20220131 14:37:03.716"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>2021</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 14:37:03.717" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text '2021'.</msg>
+<status status="PASS" starttime="20220131 14:37:03.716" endtime="20220131 14:37:03.737"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:37:03.737" endtime="20220131 14:37:05.874"/>
+</kw>
+<status status="PASS" starttime="20220131 14:36:59.816" endtime="20220131 14:37:05.874"/>
+</test>
+<test id="s1-s2-t4" name="Valid Filter Through Multiple Years Before Choosing All Articles">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:37:05.876" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 14:37:05.876" endtime="20220131 14:37:09.609"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:37:09.609" endtime="20220131 14:37:09.735"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:05.876" endtime="20220131 14:37:09.735"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2021</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 14:37:09.737" level="INFO">Clicking button 'class:y2021'.</msg>
+<status status="PASS" starttime="20220131 14:37:09.736" endtime="20220131 14:37:09.812"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:09.736" endtime="20220131 14:37:09.812"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2018</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 14:37:09.814" level="INFO">Clicking button 'class:y2018'.</msg>
+<status status="PASS" starttime="20220131 14:37:09.813" endtime="20220131 14:37:09.877"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:09.813" endtime="20220131 14:37:09.877"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>All</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 14:37:09.878" level="INFO">Clicking button 'class:yAll'.</msg>
+<status status="PASS" starttime="20220131 14:37:09.878" endtime="20220131 14:37:09.950"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:09.877" endtime="20220131 14:37:09.950"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>All</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 14:37:09.951" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text 'All'.</msg>
+<status status="PASS" starttime="20220131 14:37:09.951" endtime="20220131 14:37:09.981"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:37:09.982" endtime="20220131 14:37:12.112"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:05.875" endtime="20220131 14:37:12.112"/>
+</test>
+<test id="s1-s2-t5" name="Invalid Filter By Year 1234 Articles">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:37:12.114" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 14:37:12.114" endtime="20220131 14:37:15.870"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:37:15.871" endtime="20220131 14:37:15.997"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:12.113" endtime="20220131 14:37:15.997"/>
+</kw>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<arg>class:y1234</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<msg timestamp="20220131 14:37:16.086" level="INFO">Current page does not contain text 'class:y1234'.</msg>
+<status status="PASS" starttime="20220131 14:37:15.998" endtime="20220131 14:37:16.086"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:37:16.086" endtime="20220131 14:37:18.214"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:12.113" endtime="20220131 14:37:18.214"/>
+</test>
+<doc>A test suit for valid use of the articles page.
+
+this test follows the example using keywords from
+the SeleniumLibrary</doc>
+<status status="PASS" starttime="20220131 14:36:45.815" endtime="20220131 14:37:18.216"/>
+</suite>
+<suite id="s1-s3" name="Valid Events" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests\valid_events.robot">
+<test id="s1-s3-t1" name="Valid Filter By All Events">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:37:18.224" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 14:37:18.224" endtime="20220131 14:37:23.181"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:37:23.181" endtime="20220131 14:37:23.311"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:18.223" endtime="20220131 14:37:23.311"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>All</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 14:37:23.312" level="INFO">Clicking button 'class:yAll'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220131 14:37:24.537" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220131 14:37:24.366" endtime="20220131 14:37:24.537"/>
+</kw>
+<msg timestamp="20220131 14:37:24.538" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (2251, 1421)
+  (Session info: MicrosoftEdge=97.0.1072.76)
+</msg>
+<status status="FAIL" starttime="20220131 14:37:23.312" endtime="20220131 14:37:24.538"/>
+</kw>
+<status status="FAIL" starttime="20220131 14:37:23.311" endtime="20220131 14:37:24.538"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>All</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="NOT RUN" starttime="20220131 14:37:24.539" endtime="20220131 14:37:24.539"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:37:24.539" endtime="20220131 14:37:26.682"/>
+</kw>
+<status status="FAIL" starttime="20220131 14:37:18.223" endtime="20220131 14:37:26.682">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (2251, 1421)
+  (Session info: MicrosoftEdge=97.0.1072.76)
+</status>
+</test>
+<test id="s1-s3-t2" name="Valid Filter By Year 2020 Events">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:37:26.685" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 14:37:26.684" endtime="20220131 14:37:30.426"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:37:30.426" endtime="20220131 14:37:30.549"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:26.684" endtime="20220131 14:37:30.549"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2020</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 14:37:30.550" level="INFO">Clicking button 'class:y2020'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220131 14:37:31.805" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220131 14:37:31.613" endtime="20220131 14:37:31.805"/>
+</kw>
+<msg timestamp="20220131 14:37:31.806" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (2251, 1517)
+  (Session info: MicrosoftEdge=97.0.1072.76)
+</msg>
+<status status="FAIL" starttime="20220131 14:37:30.550" endtime="20220131 14:37:31.806"/>
+</kw>
+<status status="FAIL" starttime="20220131 14:37:30.550" endtime="20220131 14:37:31.807"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>2020</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="NOT RUN" starttime="20220131 14:37:31.807" endtime="20220131 14:37:31.807"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:37:31.808" endtime="20220131 14:37:33.918"/>
+</kw>
+<status status="FAIL" starttime="20220131 14:37:26.683" endtime="20220131 14:37:33.918">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (2251, 1517)
+  (Session info: MicrosoftEdge=97.0.1072.76)
+</status>
+</test>
+<test id="s1-s3-t3" name="Valid Filter By Year 2018 Events">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:37:33.920" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 14:37:33.920" endtime="20220131 14:37:37.590"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:37:37.590" endtime="20220131 14:37:37.713"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:33.920" endtime="20220131 14:37:37.713"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2018</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 14:37:37.715" level="INFO">Clicking button 'class:y2018'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220131 14:37:38.994" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220131 14:37:38.769" endtime="20220131 14:37:38.994"/>
+</kw>
+<msg timestamp="20220131 14:37:38.995" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (2251, 1613)
+  (Session info: MicrosoftEdge=97.0.1072.76)
+</msg>
+<status status="FAIL" starttime="20220131 14:37:37.714" endtime="20220131 14:37:38.995"/>
+</kw>
+<status status="FAIL" starttime="20220131 14:37:37.714" endtime="20220131 14:37:38.996"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>2018</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="NOT RUN" starttime="20220131 14:37:38.996" endtime="20220131 14:37:38.996"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:37:38.996" endtime="20220131 14:37:41.112"/>
+</kw>
+<status status="FAIL" starttime="20220131 14:37:33.919" endtime="20220131 14:37:41.112">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (2251, 1613)
+  (Session info: MicrosoftEdge=97.0.1072.76)
+</status>
+</test>
+<test id="s1-s3-t4" name="Valid Filter Through Multiple Years Before Choosing All Events">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:37:41.115" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 14:37:41.114" endtime="20220131 14:37:44.792"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:37:44.792" endtime="20220131 14:37:44.923"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:41.114" endtime="20220131 14:37:44.923"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2020</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 14:37:44.925" level="INFO">Clicking button 'class:y2020'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220131 14:37:46.287" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220131 14:37:45.988" endtime="20220131 14:37:46.287"/>
+</kw>
+<msg timestamp="20220131 14:37:46.289" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (2251, 1517)
+  (Session info: MicrosoftEdge=97.0.1072.76)
+</msg>
+<status status="FAIL" starttime="20220131 14:37:44.924" endtime="20220131 14:37:46.289"/>
+</kw>
+<status status="FAIL" starttime="20220131 14:37:44.924" endtime="20220131 14:37:46.290"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2018</arg>
+<status status="NOT RUN" starttime="20220131 14:37:46.290" endtime="20220131 14:37:46.290"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>All</arg>
+<status status="NOT RUN" starttime="20220131 14:37:46.291" endtime="20220131 14:37:46.291"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>All</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="NOT RUN" starttime="20220131 14:37:46.291" endtime="20220131 14:37:46.291"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:37:46.292" endtime="20220131 14:37:48.408"/>
+</kw>
+<status status="FAIL" starttime="20220131 14:37:41.113" endtime="20220131 14:37:48.408">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (2251, 1517)
+  (Session info: MicrosoftEdge=97.0.1072.76)
+</status>
+</test>
+<test id="s1-s3-t5" name="Invalid Filter By Year 1234 Events">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:37:48.411" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 14:37:48.410" endtime="20220131 14:37:52.280"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:37:52.280" endtime="20220131 14:37:52.421"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:48.410" endtime="20220131 14:37:52.421"/>
+</kw>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<arg>class:y1234</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<msg timestamp="20220131 14:37:52.504" level="INFO">Current page does not contain text 'class:y1234'.</msg>
+<status status="PASS" starttime="20220131 14:37:52.422" endtime="20220131 14:37:52.504"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:37:52.504" endtime="20220131 14:37:54.621"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:48.409" endtime="20220131 14:37:54.621"/>
+</test>
+<doc>A test suit for valid use of the events page.
+
+this test follows the example using keywords from
+the SeleniumLibrary</doc>
+<status status="FAIL" starttime="20220131 14:37:18.218" endtime="20220131 14:37:54.622"/>
+</suite>
+<suite id="s1-s4" name="Valid Page Open" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests\valid_page_open.robot">
+<test id="s1-s4-t1" name="Valid Landing Page Opened">
+<kw name="Open Browser To Landing Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${HOME URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:37:54.631" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/'.</msg>
+<status status="PASS" starttime="20220131 14:37:54.630" endtime="20220131 14:37:59.844"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:37:59.844" endtime="20220131 14:37:59.977"/>
+</kw>
+<status status="PASS" starttime="20220131 14:37:54.630" endtime="20220131 14:37:59.977"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Lorem Ipsum Dolor</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220131 14:38:01.052" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220131 14:38:00.859" endtime="20220131 14:38:01.052"/>
+</kw>
+<msg timestamp="20220131 14:38:01.053" level="FAIL">Page should have contained text 'Lorem Ipsum Dolor' but did not.</msg>
+<status status="FAIL" starttime="20220131 14:37:59.979" endtime="20220131 14:38:01.053"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>About UX Society DLSU</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20220131 14:38:01.053" endtime="20220131 14:38:01.053"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:38:01.054" endtime="20220131 14:38:04.193"/>
+</kw>
+<status status="FAIL" starttime="20220131 14:37:54.629" endtime="20220131 14:38:04.193">Page should have contained text 'Lorem Ipsum Dolor' but did not.</status>
+</test>
+<test id="s1-s4-t2" name="Valid About Page Opened">
+<kw name="Open Browser To About Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ABOUT URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:38:04.195" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/about'.</msg>
+<status status="PASS" starttime="20220131 14:38:04.195" endtime="20220131 14:38:08.928"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:38:08.928" endtime="20220131 14:38:09.056"/>
+</kw>
+<status status="PASS" starttime="20220131 14:38:04.195" endtime="20220131 14:38:09.056"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>UX Society DLSU</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220131 14:38:10.036" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220131 14:38:09.840" endtime="20220131 14:38:10.036"/>
+</kw>
+<msg timestamp="20220131 14:38:10.037" level="FAIL">Page should have contained text 'UX Society DLSU' but did not.</msg>
+<status status="FAIL" starttime="20220131 14:38:09.057" endtime="20220131 14:38:10.037"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>The Mission-Vision</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" starttime="20220131 14:38:10.038" endtime="20220131 14:38:10.038"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:38:10.038" endtime="20220131 14:38:12.144"/>
+</kw>
+<status status="FAIL" starttime="20220131 14:38:04.194" endtime="20220131 14:38:12.144">Page should have contained text 'UX Society DLSU' but did not.</status>
+</test>
+<test id="s1-s4-t3" name="Valid Events Page Opened">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:38:12.147" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 14:38:12.146" endtime="20220131 14:38:16.004"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:38:16.004" endtime="20220131 14:38:16.132"/>
+</kw>
+<status status="PASS" starttime="20220131 14:38:12.146" endtime="20220131 14:38:16.132"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Events</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220131 14:38:16.188" level="INFO">Current page contains text 'Events'.</msg>
+<status status="PASS" starttime="20220131 14:38:16.132" endtime="20220131 14:38:16.188"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:38:16.188" endtime="20220131 14:38:18.289"/>
+</kw>
+<status status="PASS" starttime="20220131 14:38:12.145" endtime="20220131 14:38:18.289"/>
+</test>
+<test id="s1-s4-t4" name="Valid Articles Page Opened">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:38:18.291" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 14:38:18.291" endtime="20220131 14:38:23.182"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:38:23.182" endtime="20220131 14:38:23.312"/>
+</kw>
+<status status="PASS" starttime="20220131 14:38:18.290" endtime="20220131 14:38:23.313"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Articles</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220131 14:38:23.383" level="INFO">Current page contains text 'Articles'.</msg>
+<status status="PASS" starttime="20220131 14:38:23.313" endtime="20220131 14:38:23.383"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:38:23.384" endtime="20220131 14:38:25.513"/>
+</kw>
+<status status="PASS" starttime="20220131 14:38:18.290" endtime="20220131 14:38:25.513"/>
+</test>
+<test id="s1-s4-t5" name="Valid Membership Application Page Opened">
+<kw name="Open Browser To Membership Application Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MEMBERSHIP URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 14:38:25.515" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/apply'.</msg>
+<status status="PASS" starttime="20220131 14:38:25.515" endtime="20220131 14:38:31.791"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 14:38:31.791" endtime="20220131 14:38:31.914"/>
+</kw>
+<status status="PASS" starttime="20220131 14:38:25.514" endtime="20220131 14:38:31.914"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Membership Application</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220131 14:38:31.975" level="INFO">Current page contains text 'Membership Application'.</msg>
+<status status="PASS" starttime="20220131 14:38:31.914" endtime="20220131 14:38:31.975"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 14:38:31.976" endtime="20220131 14:38:34.107"/>
+</kw>
+<status status="PASS" starttime="20220131 14:38:25.514" endtime="20220131 14:38:34.107"/>
+</test>
+<doc>A test suit for valid opening of pages
+
+this test follows the example using keywords from
+the SeleniumLibrary</doc>
+<status status="FAIL" starttime="20220131 14:37:54.624" endtime="20220131 14:38:34.109"/>
+</suite>
+<status status="FAIL" starttime="20220131 14:36:33.277" endtime="20220131 14:38:34.112"/>
+</suite>
+<statistics>
+<total>
+<stat pass="9" fail="7" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="9" fail="7" skip="0" id="s1" name="Robot Tests">Robot Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Valid About">Robot Tests.Valid About</stat>
+<stat pass="5" fail="0" skip="0" id="s1-s2" name="Valid Articles">Robot Tests.Valid Articles</stat>
+<stat pass="1" fail="4" skip="0" id="s1-s3" name="Valid Events">Robot Tests.Valid Events</stat>
+<stat pass="3" fail="2" skip="0" id="s1-s4" name="Valid Page Open">Robot Tests.Valid Page Open</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
