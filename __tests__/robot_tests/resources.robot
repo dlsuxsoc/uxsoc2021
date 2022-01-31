@@ -15,9 +15,6 @@ ${EVENTS URL}           http://${SERVER}/event
 ${ARTICLES URL}         http://${SERVER}/blog
 ${MEMBERSHIP URL}       http://${SERVER}/apply
 ${BOOKING URL}          http://${SERVER}/booking
-${LANDING HERO IMG}     http://localhost:3000/_next/image?url=%2Fimages%2Fhome-1.png&w=1200&q=75
-${EVENTS ALL}           xpath://*[@id="__next"]/main/section[2]/section/button[1]
-${EVENTS 2018}          document.querySelector("#__next > main > section.flex.pt-28.pb-36.flex-col-reverse.lg\\:flex-row.justify-start.md\\:items-stretch.items-center > section > button:nth-child(5)")
 
 *** Keywords ***
 Open Browser To Landing Page

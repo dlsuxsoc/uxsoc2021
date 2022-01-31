@@ -7,6 +7,10 @@ Resource        resources.robot
 Test Teardown   Close Browser
 
 *** Test Cases ***
+# in DateTabs.js
+# className of each button was changed to className={`${styles.dates} y${year} block w-full text-left`}
+# added y${year}
+
 Valid Filter By All Articles
     Open Browser To Articles Page
     Filter By   All

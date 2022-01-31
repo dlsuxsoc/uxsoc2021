@@ -137,7 +137,7 @@ export default function Index() {
           </p>
         </div>
 
-        <Button className="abt-apply-btn" to="/apply">
+        <Button id="abt-apply-btn" to="/apply">
           Apply Now
         </Button>
       </section>
