@@ -6,10 +6,7 @@ import { renderToString } from 'react-dom/server'
 import { DateTime } from "luxon";
 import eventPicture from "../../public/images/temp-event.png";
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-
 import getRTFContent from "../../helpers/getRTFContent";
-
 import faker from "faker";
 
 const ArticleItem = ({item}) => {
