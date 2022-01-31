@@ -29,6 +29,12 @@ Open Browser To About Page
     # set window size
     Maximize Browser Window  
 
+Open Browser To Services Page
+    # open browser
+    Open Browser    ${SERVICES URL}    ${BROWSER}
+    # set window size
+    Maximize Browser Window  
+
 Open Browser To Events Page
     # open browser
     Open Browser    ${EVENTS URL}    ${BROWSER}
