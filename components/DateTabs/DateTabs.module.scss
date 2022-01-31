@@ -1,10 +1,14 @@
 .dates {
   font-weight: bold;
-  font-family: Roboto;
   padding-bottom: 0.75rem;
   padding-top: 0.75rem;
   cursor: pointer;
+  p{
+    font-family: Roboto;
+  }
 }
+
+
 
 .date {
   position: relative;
