@@ -51,8 +51,8 @@ export default function Articles({ active, contentfulArticles }) {
 
             <section className="flex flex-col-reverse lg:flex-row md:items-stretch items-center">
                 <ul className="md:flex-row-reverse md:justify-start justify-center w-full lg:w-4/5">
-                    {articles.map(({ title, authors, date, content, slug }, index) => (
-                        <ArticleItem key={index} title={title} authors={authors} date={date} content={content} slug={slug} />
+                    {articles.map((item, index) => (
+                        <ArticleItem item={item} />
                     ))}
 
 
