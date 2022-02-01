@@ -90,7 +90,7 @@ export default function Index({mentors}) {
                         {/* Mentor */}
                         {mentors.map((item,index)=> {
                             return (
-                                <div className="w-full md:w-1/3 lg:w-1/4" key={index}>
+                                <div className="w-full lg:w-1/4" key={index}>
                                     {/* Mentor Avatar */}
                                     <div className="mx-auto relative w-48 h-48">
                                         <Image
