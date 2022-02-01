@@ -5,8 +5,7 @@ import SEO from "../../components/seo";
 import axios from "axios";
 import styles from "../../styles/Home.module.css";
 import { useEffect, useState } from "react";
-import mentorsData from "../../data/dummy-mentors.json"
-import faker from "faker";
+import { useRouter } from "next/router";
 import Button from "../../components/Button/Button";
 import { truncateString } from "../../helpers/truncateString";
 import getMentors from "../api/getMentors";
@@ -15,12 +14,14 @@ import getNextNDays from "../../helpers/getNextNDays";
 import getTimeSlotsByDay from "../../helpers/getTimeSlotsByDay";
 
 export default function Index({mentors}) {
-    //const router = useRouter(); //TODO: idk
+    const router = useRouter();
 
     // BINDED TO DROPDOWN MENTOR NAME
     const [mentorIndex, setMentorIndex] = useState(-1);
 
+    // modal open close
     const [toggle, toggleModal] = useState(false);
+
     const [bookingData, setBookingData] = useState({
         bookingMentor: "",
         bookingDate: "",
@@ -35,19 +36,21 @@ export default function Index({mentors}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        //console.log(bookingData);
+        console.log("HEY THERE BESTIE",bookingData);
         window.scrollTo({ top: 0, behavior: "smooth" });
         console.log("FORM SUBMITTED");
-        // const res = await axios.post(
-        //   "/api/addMembershipApplication", // TODO: Change
-        //   bookingData
-        // );
-        //console.log(res);
+        console.log(e.target[0].value)
+        const res = await axios.post(
+          "/api/addMentorshipBooking", // TODO: Change
+          bookingData
+        );
+        console.log(res);
 
         if (res.status === 201) {
-          //router.push("?status=success", undefined, { shallow: true }); //TODO: router related
+            console.log("GUMANA KA DITO PLEASE",res);
+          router.push("?status=success", undefined, { shallow: true });
         } else {
-          //router.push("?status=fail", undefined, { shallow: true }); //TODO: router related
+          router.push("?status=fail", undefined, { shallow: true });
         }
       };
     
@@ -359,16 +362,18 @@ export default function Index({mentors}) {
                             ></textarea>
                         </div>
                     </section>
+
+                    {/* Submit Button */}
                     <div className="text-center">
-                    <p className="pb-4 text-center text-base lg:text-lg 2xl:text-xl">
-                        All information will be kept private.
-                    </p>
-                    <input
-                    type={"submit"}
-                    value={"BOOK MENTOR"}
-                    className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer`}
-                  />
-                </div>
+                        <p className="pb-4 text-center text-base lg:text-lg 2xl:text-xl">
+                            All information will be kept private.
+                        </p>
+                        <input
+                            type={"submit"}
+                            value={"BOOK MENTOR"}
+                            className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer`}
+                        />
+                    </div>
 
                 </form>
 
