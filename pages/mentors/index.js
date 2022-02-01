@@ -41,10 +41,25 @@ export default function Index({mentors}) {
         console.log("FORM SUBMITTED");
         console.log(e.target[0].value)
         const res = await axios.post(
-          "/api/addMentorshipBooking", // TODO: Change
+          "/api/addMentorshipBooking", 
           bookingData
         );
         console.log(res);
+
+        // clearing form values
+        setMentorIndex(-1);
+        setBookingData({
+            bookingMentor: "",
+            bookingDate: "",
+            bookingSlot: "",
+            firstName: "",
+            lastName: "",
+            nickname: "",
+            contactNum: "",
+            email: "",
+            message: "",
+        });
+        console.log("FORM RESET MAGPAKITA KA NGA",bookingData);
 
         if (res.status === 201) {
             console.log("GUMANA KA DITO PLEASE",res);
