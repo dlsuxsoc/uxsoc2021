@@ -458,6 +458,7 @@ const Apply = () => {
                     value={applicationData.email}
                     placeholder="don_norman@dlsu.edu.ph"
                     onChange={(e) => {
+                      setEmailFetching(false);
                       setApplicationData({
                         ...applicationData,
                         email: e.target.value,
@@ -466,23 +467,26 @@ const Apply = () => {
                       e.target.setCustomValidity("");
                     }}
                     onBlur={async (e) => {
-                      setEmailFetching(true);
-                      const res = await axios.get("/api/getMembershipEmails");
-                      setEmailFetching(false);
-                      const invalid = emailExists(
-                        applicationData.email,
-                        res.data
-                      );
-                      if (invalid) {
-                        setEmailTextHelper(
-                          "This email was already used for an application."
+                      if (applicationData.email !== "") {
+                        setEmailFetching(true);
+                        const res = await axios.get("/api/getMembershipEmails");
+
+                        setEmailFetching(false);
+                        const invalid = emailExists(
+                          applicationData.email,
+                          res.data
                         );
-                        e.target.setCustomValidity(
-                          "This email was already used for an application."
-                        );
-                      } else {
-                        setEmailTextHelper("");
-                        e.target.setCustomValidity("");
+                        if (invalid) {
+                          setEmailTextHelper(
+                            "This email was already used for an application."
+                          );
+                          e.target.setCustomValidity(
+                            "This email was already used for an application."
+                          );
+                        } else {
+                          setEmailTextHelper("");
+                          e.target.setCustomValidity("");
+                        }
                       }
                     }}
                   />
