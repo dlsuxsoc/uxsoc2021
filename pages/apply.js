@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import Image from "next/image";
-import faker from "faker";
 import { restrictRange } from "../helpers/restrictRange";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Button from "../components/Button/Button";
 import Link from "next/link";
-
 import styles from "../styles/Apply.module.scss";
 import FormCheckbox from "../components/FormCheckbox/FormCheckbox";
+import { emailExists } from "../helpers/emailExists";
+import { Oval } from "react-loader-spinner";
+import { usePromiseTracker } from "react-promise-tracker";
+import PageLoading from "../components/PageLoading/PageLoading";
+import Image from "next/image";
+
 const Apply = () => {
   const [maxDate, setMaxDate] = useState("");
   const router = useRouter();
+  const { promiseInProgress } = usePromiseTracker();
+  const [emailFetching, setEmailFetching] = useState(false);
+  const [applicationSending, setApplicationSending] = useState(false);
 
   // const [applicationData, setApplicationData] = useState({
   //   firstName: "Alyssa",
@@ -52,6 +58,8 @@ const Apply = () => {
     interestedOrg: "",
     interestedDept: [],
   });
+
+  const [emailTextHelper, setEmailTextHelper] = useState("");
 
   const [checkedDept, setCheckedDept] = useState({
     Design: false,
@@ -97,16 +105,17 @@ const Apply = () => {
   }, [setCheckedDept, checkedDept]);
 
   const handleSubmit = async (e) => {
+    setApplicationSending(true);
     e.preventDefault();
-    console.log(applicationData);
     window.scrollTo({ top: 0, behavior: "smooth" });
-
     const res = await axios.post(
       "/api/addMembershipApplication",
       applicationData
     );
+
+    setApplicationSending(false);
     console.log(res);
-    if (res.status === 201) {
+    if (res && res.status === 201) {
       router.push("?status=success", undefined, { shallow: true });
     } else {
       router.push("?status=fail", undefined, { shallow: true });
@@ -116,14 +125,15 @@ const Apply = () => {
   return (
     <Layout active={6}>
       <SEO title={"Membership Application"} />
-      <div className="hidden md:block fixed right-0 top-0 bg-green  md:w-64 z-0 lg:w-96 h-screen">
-        {/* <Image
-          src={faker.image.image()}
+      {applicationSending ? <PageLoading /> : null}
+      <div className="hidden md:block fixed right-5 top-0 md:w-64 z-0 lg:w-96 h-screen">
+        <Image
+          src={"/images/membership-sketch.svg"}
           alt="Placeholder-Hero"
           layout="fill"
-          objectFit="cover"
+          objectFit="contain"
           objectPosition="center"
-        /> */}
+        />
       </div>
       {/* APPLICATION WAS SUBMITTED */}
       {router.query.status ? (
@@ -192,11 +202,11 @@ const Apply = () => {
               </div>
               <div className="col-start-1 col-end-12 md:col-end-8">
                 <p className="text-base lg:text-2xl leading-loose mb-4">
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                  diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                  aliquam erat volutpat. Ut wisi
+                  Apply as a core member today and get exclusive mentorship from
+                  professionals of the field. You can also help in organizing
+                  UX-related events or workshops for the student community in
+                  Taft.
                 </p>
-                <p className="text-base lg:text-xl">* Required</p>
               </div>
             </div>
           </section>
@@ -210,7 +220,7 @@ const Apply = () => {
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-start-1 col-span-12 sm:col-span-6 md:col-span-4 mb-4">
                   <label className="block mb-6" htmlFor="firstName">
-                    First Name*
+                    First Name
                   </label>
                   <input
                     type="text"
@@ -229,7 +239,7 @@ const Apply = () => {
                 </div>
                 <div className="col-span-12 sm:col-span-6 md:col-span-4 mb-4">
                   <label className="block mb-6" htmlFor="lastName">
-                    Last Name*
+                    Last Name
                   </label>
                   <input
                     type="text"
@@ -249,7 +259,7 @@ const Apply = () => {
               </div>
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-start-1 col-span-12 sm:col-span-6 md:col-span-4 mb-4">
-                  <label className="block mb-6">Nickname</label>
+                  <label className="block mb-6">Nickname (Optional)</label>
                   <input
                     type="text"
                     className="form-input py-2 px-3 w-full"
@@ -264,7 +274,7 @@ const Apply = () => {
                   />
                 </div>
                 <div className=" col-span-12 sm:col-span-6 md:col-span-4 mb-4">
-                  <label className="block mb-6">Birth Date*</label>
+                  <label className="block mb-6">Birth Date</label>
                   <div className="grid grid-cols-3 gap-4">
                     <div className="col-start-1">
                       <input
@@ -340,7 +350,7 @@ const Apply = () => {
                     name="pronoun"
                     htmlFor="pronoun"
                   >
-                    Preferred Pronoun *
+                    Preferred Pronoun
                   </label>
                   <div>
                     <input
@@ -438,25 +448,55 @@ const Apply = () => {
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-start-1 col-span-12 sm:col-span-6 md:col-span-4 mb-8">
                   <label className="block mb-6" htmlFor="email">
-                    Email*
+                    Email
                   </label>
                   <input
                     type="email"
                     name="email"
+                    required
                     className="form-input py-2 px-3 w-full"
                     value={applicationData.email}
                     placeholder="don_norman@dlsu.edu.ph"
-                    onChange={(e) =>
+                    onChange={(e) => {
                       setApplicationData({
                         ...applicationData,
                         email: e.target.value,
-                      })
-                    }
+                      });
+                      setEmailTextHelper("");
+                      e.target.setCustomValidity("");
+                    }}
+                    onBlur={async (e) => {
+                      setEmailFetching(true);
+                      const res = await axios.get("/api/getMembershipEmails");
+                      setEmailFetching(false);
+                      const invalid = emailExists(
+                        applicationData.email,
+                        res.data
+                      );
+                      if (invalid) {
+                        setEmailTextHelper(
+                          "This email was already used for an application."
+                        );
+                        e.target.setCustomValidity(
+                          "This email was already used for an application."
+                        );
+                      } else {
+                        setEmailTextHelper("");
+                        e.target.setCustomValidity("");
+                      }
+                    }}
                   />
+                  {emailFetching ? (
+                    <Oval color="gray" height={24} width={24} />
+                  ) : (
+                    <span className="text-red-500 text-sm h-16">
+                      {emailTextHelper}
+                    </span>
+                  )}
                 </div>
                 <div className="col-span-12 sm:col-span-6 md:col-span-4 mb-8">
                   <label className="block mb-6" htmlFor="contactnum">
-                    Phone Number
+                    Phone Number (Optional)
                   </label>
                   <input
                     type="text"
@@ -482,7 +522,7 @@ const Apply = () => {
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6" htmlFor="college">
-                    College*
+                    College
                   </label>
                   <select
                     value={applicationData.college}
@@ -508,7 +548,7 @@ const Apply = () => {
                 <div className="col-span-2"></div>
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6" htmlFor="program">
-                    Program*
+                    Program
                   </label>
                   <input
                     type="text"
@@ -534,7 +574,9 @@ const Apply = () => {
               </h2>
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
-                  <label className="block mb-6">What are your hobbies?</label>
+                  <label className="block mb-6">
+                    What are your hobbies? (Optional)
+                  </label>
                   <textarea
                     className="w-full p-2"
                     rows={5}
@@ -552,6 +594,7 @@ const Apply = () => {
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6">
                     Why are you interested in joining the organization?
+                    (Optional)
                   </label>
                   <textarea
                     className="w-full p-2"
@@ -569,7 +612,7 @@ const Apply = () => {
 
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6">
-                    What department/s are you interested in?
+                    What department/s are you interested in? (Optional)
                   </label>
                   <FormCheckbox
                     type="departments"
