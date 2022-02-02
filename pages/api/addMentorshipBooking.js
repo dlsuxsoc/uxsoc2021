@@ -4,6 +4,7 @@ const addMentorshipBooking = async (req, res) => {
   try {
     const data = { ...req.body };
     console.log(process.env.NOTION_MENTORSHIP_BOOKING);
+    //console.log(data);
     const response = await notion.pages.create({
       parent: {
         database_id: process.env.NOTION_MENTORSHIP_BOOKING,

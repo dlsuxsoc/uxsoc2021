@@ -36,7 +36,6 @@ export default function Index({mentors}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("HEY THERE BESTIE",bookingData);
         window.scrollTo({ top: 0, behavior: "smooth" });
         console.log("FORM SUBMITTED");
         console.log(e.target[0].value)
@@ -44,7 +43,6 @@ export default function Index({mentors}) {
           "/api/addMentorshipBooking", 
           bookingData
         );
-        console.log(res);
 
         // clearing form values
         setMentorIndex(-1);
@@ -59,13 +57,12 @@ export default function Index({mentors}) {
             email: "",
             message: "",
         });
-        console.log("FORM RESET MAGPAKITA KA NGA",bookingData);
 
         if (res.status === 201) {
-            console.log("GUMANA KA DITO PLEASE",res);
-          router.push("?status=success", undefined, { shallow: true });
+            router.push("?status=success", undefined, { shallow: true });
+            
         } else {
-          router.push("?status=fail", undefined, { shallow: true });
+            router.push("?status=fail", undefined, { shallow: true });
         }
       };
     
@@ -351,6 +348,7 @@ export default function Index({mentors}) {
                                             email: e.target.value,
                                     })
                                     }
+                                    value={bookingData.email}
                                     required
                                 />
                             </div>
