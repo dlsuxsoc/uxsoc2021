@@ -78,7 +78,7 @@ export default function Index({mentors}) {
             {applicationSending ? <PageLoading /> : null}
 
             {/* Our Mentors */}
-            <section className="px-4 sm:px-8 lg:px-32 py-2 mt-36 mb-16 lg:mb-36 justify-center lg:justify-between items-center h-auto">
+            <section className="px-4 sm:px-8 lg:px-32 py-2 mt-28 xl:mt-36 mb-16 lg:mb-36 justify-center lg:justify-between items-center h-auto">
                 {/* Header */}
                 <div className="text-center pb-2">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
@@ -95,7 +95,7 @@ export default function Index({mentors}) {
                         {/* Mentor */}
                         {mentors.map((item,index)=> {
                             return (
-                                <div className="w-full md:w-1/3 lg:w-1/4" key={index}>
+                                <div className="w-full md:w-1/3 xl:w-1/4" key={index}>
                                     {/* Mentor Avatar */}
                                     <div className="mx-auto relative w-48 h-48">
                                         <Image
@@ -114,19 +114,18 @@ export default function Index({mentors}) {
                                     </div>
 
                                     {/* Available Times */}
-                                    <div className="text-gray text-base px-8">
+                                    <div className="text-gray text-base w-full">
                                         <h3 className="text-gray text-base">Available Times</h3>
 
                                         {item.timeSlots.map((ts,index) => {
                                             return (
                                                 <div key={index}>
-                                                    <div className="flex flex-row justify-between">
+                                                    <div className="flex flex-row justify-between sm:px-32 md:px-0 2xl:px-16">
                                                         {/* Day */}
                                                         <p className="block md:hidden xl:block">{ts.day}</p>
                                                         <p className="hidden md:block xl:hidden">{truncateString(ts.day,2)}</p>
-                                                        
                                                         {/* Times */}
-                                                        <div className="w-3/4">
+                                                        <div className="">
                                                             {ts.times.map((time,index) => {
                                                                 return (
                                                                     <div className="flex flex-col" key={index}>
