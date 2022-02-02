@@ -10,6 +10,7 @@ import Button from "../../components/Button/Button";
 import { truncateString } from "../../helpers/truncateString";
 import getMentors from "../api/getMentors";
 import Modal from "../../components/Modal/Modal";
+import PageLoading from "../../components/PageLoading/PageLoading";
 import getNextNDays from "../../helpers/getNextNDays";
 import getTimeSlotsByDay from "../../helpers/getTimeSlotsByDay";
 
@@ -21,6 +22,9 @@ export default function Index({mentors}) {
 
     // modal open close
     const [toggle, toggleModal] = useState(false);
+
+    // loading
+    const [applicationSending, setApplicationSending] = useState(false);
 
     const [bookingData, setBookingData] = useState({
         bookingMentor: "",
@@ -35,6 +39,7 @@ export default function Index({mentors}) {
     });
 
     const handleSubmit = async (e) => {
+        setApplicationSending(true);
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
         console.log("FORM SUBMITTED");
@@ -58,9 +63,10 @@ export default function Index({mentors}) {
             message: "",
         });
 
+        setApplicationSending(false);
         if (res.status === 201) {
             router.push("?status=success", undefined, { shallow: true });
-            
+            toggleModal(true);
         } else {
             router.push("?status=fail", undefined, { shallow: true });
         }
@@ -69,6 +75,8 @@ export default function Index({mentors}) {
     return(
         <Layout active={5}>
             <SEO title={"Mentors"}/>
+            {applicationSending ? <PageLoading /> : null}
+
             {/* Our Mentors */}
             <section className="px-4 sm:px-8 lg:px-32 py-2 mt-36 mb-16 lg:mb-36 justify-center lg:justify-between items-center h-auto">
                 {/* Header */}
@@ -87,7 +95,7 @@ export default function Index({mentors}) {
                         {/* Mentor */}
                         {mentors.map((item,index)=> {
                             return (
-                                <div className="w-full lg:w-1/4" key={index}>
+                                <div className="w-full md:w-1/3 lg:w-1/4" key={index}>
                                     {/* Mentor Avatar */}
                                     <div className="mx-auto relative w-48 h-48">
                                         <Image
@@ -391,8 +399,8 @@ export default function Index({mentors}) {
                 </form>
 
             </section>
-            <Modal title={"You have successfully booked a Mentor"} toggleModal={toggleModal} toggle={toggle}>
-                Lorem ipsum.
+            <Modal title={"Application Successful"} toggleModal={toggleModal} toggle={toggle}>
+                Thank you for booking a mentor! We will reach out to you via your email about your schedule once we have processed your booking.
             </Modal>
         </Layout>
     );
