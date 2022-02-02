@@ -4,6 +4,7 @@ const addMentorshipBooking = async (req, res) => {
   try {
     const data = { ...req.body };
     console.log(process.env.NOTION_MENTORSHIP_BOOKING);
+    //console.log(data);
     const response = await notion.pages.create({
       parent: {
         database_id: process.env.NOTION_MENTORSHIP_BOOKING,
@@ -32,7 +33,7 @@ const addMentorshipBooking = async (req, res) => {
             rich_text:[
                 {
                     type: "text",
-                    text: { content : data.mentor },
+                    text: { content : data.bookingMentor },
                 },
             ],
         },
@@ -41,7 +42,7 @@ const addMentorshipBooking = async (req, res) => {
             rich_text:[
                 {
                   type: "text",
-                  text: { content : data.bookingDate + " " + data.bookingTime },
+                  text: { content : data.bookingDate + " " + data.bookingSlot },
                 },
               ], 
         },
@@ -53,7 +54,7 @@ const addMentorshipBooking = async (req, res) => {
             rich_text:[
                 {
                     type: "text",
-                    text: { content : data.phoneNumber },
+                    text: { content : data.contactNum },
                 },
             ],
         },
@@ -62,7 +63,7 @@ const addMentorshipBooking = async (req, res) => {
             rich_text: [
               {
                 type: "text",
-                text: { content: data.additionalMessages },
+                text: { content: data.message },
               },
             ],
         },
