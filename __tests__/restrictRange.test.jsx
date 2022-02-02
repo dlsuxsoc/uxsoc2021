@@ -8,6 +8,7 @@ describe('Testing Restricting Range', () => {
       let d = 4;
   
       let num = restrictRange(a,b,c,d);
+      
       expect(num).toBe("");
     })
   
@@ -28,6 +29,7 @@ describe('Testing Restricting Range', () => {
       let d = 10;
   
       let num = restrictRange(a,b,c,d);
+
       expect(num).toBe(5);
     })
   
@@ -38,6 +40,7 @@ describe('Testing Restricting Range', () => {
       let d = 4;
   
       let num = restrictRange(a,b,c,d);
+
       expect(num).toBe(4);
     })
   
