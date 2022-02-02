@@ -399,7 +399,7 @@ export default function Index({mentors}) {
 
             </section>
             <Modal title={"Application Successful"} toggleModal={toggleModal} toggle={toggle}>
-                Thank you for booking a mentor! We will reach out to you via your email about your schedule once we have processed your booking.
+                Thank you for booking a mentor! We will reach out to you via email about your schedule once we have processed your booking.
             </Modal>
         </Layout>
     );
