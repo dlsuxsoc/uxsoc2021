@@ -5,10 +5,6 @@ import SEO from "../components/seo";
 import axios from "axios";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
-import articlesData from "../data/dummy-articles.json";
-import eventsData from "../data/dummy-events.json";
-import projectsData from "../data/dummy-projects.json";
-import faker from "faker";
 import Button from "../components/Button/Button";
 import ContentfulApi from "./api/utils/contentfulApi";
 import getRTFContent from "../helpers/getRTFContent";
@@ -44,7 +40,7 @@ export default function Index({ articles, projects, events }) {
       </section>
 
       {/* About UX */}
-      <section className={`px-4 sm:px-8 lg:px-32 pt-16 flex flex-col lg:flex-row justify-center lg:justify-between items-center h-auto ${styles.aboutBg}`}>
+      <section className={`px-4 sm:px-8 lg:px-32 pt-24 sm:pt-32 md:pt-48 lg:pt-36 xl:pt-40 2xl:pt-96 pb-16 lg:pb-36 flex flex-col lg:flex-row justify-center lg:justify-between items-center h-auto ${styles.aboutBg}`}>
         {/* Image */}
         <div className="relative h-52 md:h-96 w-full lg:w-1/2 mb-6 lg:pb-0 pr-0 lg:mr-10 xl:mr-20 2xl:pr-0 mx-auto text-center">
           <Image
@@ -81,10 +77,10 @@ export default function Index({ articles, projects, events }) {
       </section>
 
       {/* Events */}
-      <section className={`px-4 sm:px-8 lg:px-32 py-28 md:py-40 lg:py-48 2xl:py-96 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto  ${styles.eventBg}`}>
+      <section className={`px-4 sm:px-8 lg:px-32 py-2 pb-16 lg:pb-36 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto ${styles.eventBg}`}>
         {/* Header */}
         <div className="pb-3 lg:pb-0">
-          <h1 className="text-white text-3xl lg:text-5xl mb-6 lg:mb-12 line-clamp-2">
+          <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12 line-clamp-2">
             Events
           </h1>
         </div>
@@ -109,7 +105,7 @@ export default function Index({ articles, projects, events }) {
                     objectPosition="center"
                   />
                 </div>
-                <h2 className="text-center text-white lg:text-left text-base md:text-xl my-4">
+                <h2 className="text-center text-black lg:text-left text-base md:text-xl my-4">
                   {item.title}
                 </h2>
                 {/* <p className="break-words text-center lg:text-left text-sm lg:text-base mb-4">
@@ -120,13 +116,13 @@ export default function Index({ articles, projects, events }) {
           })}
         </section>
 
-        <Button to="/event" variant="white" className="self-center lg:self-start">
+        <Button to="/event" className="self-center lg:self-start">
           Learn More
         </Button>
       </section>
 
       {/* Articles */}
-      <section className="px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto">
+      <section className={`px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto ${styles.articleBg}`}>
         {/* Header */}
         <div className="pb-3 lg:pb-0">
           <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
@@ -236,7 +232,7 @@ export default function Index({ articles, projects, events }) {
           })}
         </section>
 
-        <Button to="/project">Learn More</Button>
+        <Button to="/services">Learn More</Button>
       </section>
     </Layout>
   );
