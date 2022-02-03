@@ -108,33 +108,34 @@
   margin-left: 0.5rem;
 }
 
-.articleMainImage {
-  height: 200px;
-}
-
-@media only screen and (min-width: 1024px) {
-  .articleMainImage {
-    height: 400px;
-  }
-
-  .articleImage {
-    height: 180px;
-  }
-}
-
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
 }
-
+.aboutBg{
+  /* background-color: #D8F8F4; */
+  background: url("/images/blob/top-curve.svg"),
+              #D8F8F4;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%;
+}
 
 .eventBg{
-  background: url("/images/blob/top-curve.svg"),
-              url("/images/blob/bottom-curve.svg"),
-              #2FBBAA;
-  background-repeat: no-repeat, no-repeat;
-  background-position: center top, center bottom;
-  background-size: 100%,  100%;
+  background-color: #D8F8F4;
+  /* background: url("/images/blob/bottom-curve1.svg"),
+              #FFFFFF; */
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+}
+
+.articleBg{
+  background: url("/images/blob/bottom-curve1.svg"),
+  #FFFFFF;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%;
 }
