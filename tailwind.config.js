@@ -1,4 +1,5 @@
 const plugin = require("tailwindcss/plugin");
+const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   purge: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -23,6 +24,11 @@ module.exports = {
         h4: "1.25rem",
         h5: "1rem",
       },
+    },
+    screens: {
+      '2xs': '320px',
+      'xs': '360px',
+      ...defaultTheme.screens,
     },
   },
   variants: {

@@ -109,8 +109,8 @@ export default function Index({mentors}) {
                                     </div>
 
                                     <div className="mt-2">
-                                        <h2 className="text-black text-xl">{item.name}</h2>
-                                        <p className="text-base">{item.description}</p>
+                                        <h2 className="text-black text-xl mb-2">{item.name}</h2>
+                                        <p className="text-base mb-2">{item.description}</p>
                                     </div>
 
                                     {/* Available Times */}
@@ -120,10 +120,13 @@ export default function Index({mentors}) {
                                         {item.timeSlots.map((ts,index) => {
                                             return (
                                                 <div key={index}>
-                                                    <div className="flex flex-row justify-between sm:px-32 md:px-0 2xl:px-16">
+                                                    <div className="flex flex-row justify-between 2xs:px-4 xs:px-10 sm:px-40 md:px-0 2xl:px-16">
                                                         {/* Day */}
-                                                        <p className="block md:hidden xl:block">{ts.day}</p>
-                                                        <p className="hidden md:block xl:hidden">{truncateString(ts.day,2)}</p>
+                                                        {/* NOTE: here just in case
+                                                         <p className="hidden xs:block sm:hidden">{ts.day}</p>
+                                                        <p className="block xs:hidden sm:block">{truncateString(ts.day,2)}</p> */}
+                                                        <p className="">{ts.day}</p>
+
                                                         {/* Times */}
                                                         <div className="">
                                                             {ts.times.map((time,index) => {
