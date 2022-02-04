@@ -8,7 +8,7 @@ Test Teardown   Close Browser
 
 *** Test Cases ***
 # in about\index.js
-# added abt-apply-btn to classname of the button that redirects user to application
+# added abt-apply-btn to id of the button that redirects user to application
 Valid Join Button Pressed
     Open Browser To About Page
     Sleep   1s
