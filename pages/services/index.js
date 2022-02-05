@@ -15,8 +15,8 @@ const getYears = (events) => {
 };
 
 
-export default function Services({ active, projects }) {
-  console.log({ ...projects });
+export default function Services({ active, contentfulProjects }) {
+  console.log({ ...contentfulProjects });
 
   return (
     <Layout active={-1}>
@@ -30,14 +30,14 @@ export default function Services({ active, projects }) {
             description={
               "Creation of custom web designs from scratch and development using the best front-end technologies."
             }
-            file={"/images/services-web-design-&-development.png"}
+            file={"/images/services-web-design-and-development.png"}
           />
           <ServiceItem
             title={"UX Education & Training"}
             description={
               "Learning more about User Experience, Experience Design, Design Strategy, Design Thinking, and many other UX related terms."
             }
-            file={"/images/services-ux-education-&-training.png"}
+            file={"/images/services-ux-education-and-training.png"}
           />
           <ServiceItem
             title={"Community Engagement"}
@@ -57,7 +57,7 @@ export default function Services({ active, projects }) {
         </div>
 
         <section>
-          {projects.slice(0, 3).map((item, index) => {
+          {contentfulProjects.slice(0, 3).map((item, index) => {
             return <ProjectItem item={item} key={index} />;
           })}
         </section>
@@ -66,18 +66,7 @@ export default function Services({ active, projects }) {
   );
 }
 
-const getProjectData = async () => {
-  const { data } = await ContentfulApi.getProjects(0);
-
-  return data.projectCollection.items;
-};
-
 export async function getStaticProps() {
-  const projectData = await getProjectData();
-
-  return {
-    props: {
-      projects: projectData,
-    },
-  };
+  const { data } = await ContentfulApi.getProjects(0);
+  return { props: { contentfulProjects: data.projectCollection.items } };
 }
