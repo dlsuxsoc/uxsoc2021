@@ -41,7 +41,8 @@ const Apply = () => {
   //   interestedDept: [],
   // });
 
-  const [applicationData, setApplicationData] = useState({
+
+  const applicationInitialState = {
     firstName: "",
     lastName: "",
     nickname: "",
@@ -54,10 +55,17 @@ const Apply = () => {
     contactnum: "",
     college: "",
     program: "",
+    studentID: "",
     hobbies: "",
     interestedOrg: "",
+    whatIsUX: "",
+    interestedOrg: "",
     interestedDept: [],
-  });
+  }
+
+
+
+  const [applicationData, setApplicationData] = useState(applicationInitialState);
 
   const [emailTextHelper, setEmailTextHelper] = useState("");
 
@@ -117,8 +125,10 @@ const Apply = () => {
     console.log(res);
     if (res && res.status === 201) {
       router.push("?status=success", undefined, { shallow: true });
+      setApplicationData(applicationInitialState);
     } else {
       router.push("?status=fail", undefined, { shallow: true });
+      setApplicationData(applicationInitialState);
     }
   };
 
@@ -469,6 +479,9 @@ const Apply = () => {
                     }}
                     onBlur={async (e) => {
                       if (applicationData.email !== "") {
+                        e.target.setCustomValidity(
+                          "Still validating email."
+                        );
                         setEmailFetching(true);
                         const res = await axios.get("/api/getMembershipEmails");
 
