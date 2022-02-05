@@ -40,6 +40,7 @@ const Navigation = ({ active }) => {
         <Link href="/">
           <a className="hidden md:block">
             <Image
+              id="logo"
               src={"/images/nav-logo.png"}
               alt="UXSOC Navigation Logo"
               width="136px"
@@ -50,6 +51,7 @@ const Navigation = ({ active }) => {
         <Link href="/">
           <a className="block md:hidden">
             <Image
+              id="logo"
               src={"/images/nav-logo-mobile.png"}
               className="block md:hidden "
               alt="UXSOC Navigation Logo"
@@ -70,7 +72,7 @@ const Navigation = ({ active }) => {
               />
             ))}
           </ul>
-          <Button to="apply" size="sm" className="whitespace-nowrap -mt-1 hidden md:inline-block">JOIN US</Button>
+          <Button id="navJoin" to="apply" size="sm" className="whitespace-nowrap -mt-1 hidden md:inline-block">JOIN US</Button>
         </div>
 
 
