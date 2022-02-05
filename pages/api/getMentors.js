@@ -1,5 +1,5 @@
 import { notion } from "../../api/notion";
-import { expandTimeSlots } from "../../helpers/expandTimeSlots";
+import expandTimeSlots from "../../helpers/expandTimeSlots";
 const getMentors = async (req, res) => {
     try {
         const result = await notion.databases.query({ database_id: process.env.NOTION_MENTOR_LIST});
@@ -23,15 +23,16 @@ const getMentors = async (req, res) => {
                 name: data.Name.title[0].plain_text,
             });
         }
-        res.status(200).json(mentors);
-        
+        // res.status(200).json(mentors);
+        return mentors;
     } catch (e) {
         console.error(e);
 
-        res.status(400).json({
-            status: "Error",
-            information: e,
-        });
+        // res.status(400).json({
+        //     status: "Error",
+        //     information: e,
+        // });
+        return e;
     }
 };
 
