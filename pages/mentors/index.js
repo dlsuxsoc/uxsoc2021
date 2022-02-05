@@ -16,7 +16,6 @@ import mentorshipInstanceExists from "../../helpers/mentorshipInstanceExists";
 export default function Index({ mentors }) {
   const router = useRouter();
 
-  // duplicate mentorship check
   const [duplicateTextHelper, setDuplicateTextHelper] = useState("");
   const [duplicateFetching, setDuplicateFetching] = useState(false);
   const [isBookingMentorFilled, setBookingMentor] = useState(false);
@@ -24,6 +23,7 @@ export default function Index({ mentors }) {
   const [isBookingDateFilled, setBookingDate] = useState(false);
   const [isBookingSlotFilled, setBookingSlot] = useState(false);
   const [isFormDataChanged, setFormData] = useState(false);
+
   // BINDED TO DROPDOWN MENTOR NAME
   const [mentorIndex, setMentorIndex] = useState(-1);
 
@@ -49,6 +49,7 @@ export default function Index({ mentors }) {
     setApplicationSending(true);
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
+
     //console.log("FORM SUBMITTED");
     //console.log(e.target[0].value);
     const res = await axios.post("/api/addMentorshipBooking", bookingData);
@@ -469,7 +470,6 @@ export default function Index({ mentors }) {
               ></textarea>
             </div>
           </section>
-
           {/* Submit Button */}
           <div className="text-center">
             <p className="pb-4 text-center text-base lg:text-lg 2xl:text-xl">

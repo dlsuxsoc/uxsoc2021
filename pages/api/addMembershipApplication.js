@@ -1,14 +1,47 @@
+import axios from "axios";
 import { notion } from "../../api/notion";
+import { emailExists } from "../../helpers/emailExists";
 
 const addMembershipApplication = async (req, res) => {
   try {
     const data = { ...req.body };
+
+    // Check Existing
+    const result = await notion.databases.query({
+      database_id: process.env.NOTION_MEMBERSHIP_APPLICATION,
+    });
+
+    const ids = result.results.map((item, index) => {
+      return item.id;
+    });
+
+    const people = [];
+
+    for (let i = 0; i < ids.length; i++) {
+      let person = await notion.pages.retrieve({
+        page_id: ids[i],
+      });
+      people.push(person.properties[`Email Address`].email);
+    }
+
+    if (emailExists(data.email, people)) {
+      const error = new Error("Duplicate Application");
+      error.code = 400;
+      error.msg = "An application with this email was already used";
+
+      throw error;
+    }
 
     const response = await notion.pages.create({
       parent: {
         database_id: process.env.NOTION_MEMBERSHIP_APPLICATION,
       },
       properties: {
+        StudentID: {
+          select: {
+            name: data.studentID,
+          },
+        },
         Name: {
           title: [
             {
@@ -139,13 +172,71 @@ const addMembershipApplication = async (req, res) => {
             ],
           },
         },
+        {
+          object: "block",
+          type: "heading_3",
+          heading_3: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content: "3. What is user experience to you?",
+                },
+              },
+            ],
+          },
+        },
+        {
+          object: "block",
+          type: "paragraph",
+          paragraph: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content: data.whatIsUX,
+                },
+              },
+            ],
+          },
+        },
+        {
+          object: "block",
+          type: "heading_3",
+          heading_3: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content:
+                    "4. How do you think user experience applies in your current degree program and interests?",
+                },
+              },
+            ],
+          },
+        },
+        {
+          object: "block",
+          type: "paragraph",
+          paragraph: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content: data.practicalityUX,
+                },
+              },
+            ],
+          },
+        },
       ],
     });
     //console.log(response);
     res.status(201).json(response);
-  } catch (e) {
+  } catch (err) {
+    console.log(err);
     //console.error(e);
-    res.status(req.body.status).json(req.body);
+    res.status(err.code || 500).json(err.msg);
   }
 };
 

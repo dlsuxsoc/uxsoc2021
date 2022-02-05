@@ -14,7 +14,7 @@ ${SERVICES URL}         http://${SERVER}/services
 ${EVENTS URL}           http://${SERVER}/event
 ${ARTICLES URL}         http://${SERVER}/blog
 ${MEMBERSHIP URL}       http://${SERVER}/apply
-${BOOKING URL}          http://${SERVER}/booking
+${BOOKING URL}          http://${SERVER}/mentors
 
 *** Keywords ***
 Open Browser To Landing Page
@@ -50,6 +50,12 @@ Open Browser To Articles Page
 Open Browser To Membership Application Page
     # open browser
     Open Browser    ${MEMBERSHIP URL}    ${BROWSER}
+    # set window size
+    Maximize Browser Window
+
+Open Browser To Mentorship Booking Page
+    # open browser
+    Open Browser    ${BOOKING URL}    ${BROWSER}
     # set window size
     Maximize Browser Window
     

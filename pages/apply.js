@@ -8,17 +8,17 @@ import Button from "../components/Button/Button";
 import Link from "next/link";
 import styles from "../styles/Apply.module.scss";
 import FormCheckbox from "../components/FormCheckbox/FormCheckbox";
+import { emailExists } from "../helpers/emailExists";
 import { Oval } from "react-loader-spinner";
-import { usePromiseTracker } from "react-promise-tracker";
 import PageLoading from "../components/PageLoading/PageLoading";
 import Image from "next/image";
 
 const Apply = () => {
   const [maxDate, setMaxDate] = useState("");
   const router = useRouter();
-  const { promiseInProgress } = usePromiseTracker();
   const [emailFetching, setEmailFetching] = useState(false);
   const [applicationSending, setApplicationSending] = useState(false);
+  const emailCheckingController = new AbortController();
 
   // const [applicationData, setApplicationData] = useState({
   //   firstName: "Alyssa",
@@ -40,7 +40,7 @@ const Apply = () => {
   //   interestedDept: [],
   // });
 
-  const [applicationData, setApplicationData] = useState({
+  const initialApplicationState = {
     firstName: "",
     lastName: "",
     nickname: "",
@@ -54,9 +54,17 @@ const Apply = () => {
     college: "",
     program: "",
     hobbies: "",
+    whatIsUX: "",
+    practicalityUX: "",
+    studentID: "",
     interestedOrg: "",
     interestedDept: [],
-  });
+    emails: [],
+  };
+
+  const [applicationData, setApplicationData] = useState(
+    initialApplicationState
+  );
 
   const [emailTextHelper, setEmailTextHelper] = useState("");
 
@@ -104,20 +112,25 @@ const Apply = () => {
   }, [setCheckedDept, checkedDept]);
 
   const handleSubmit = async (e) => {
-    setApplicationSending(true);
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    const res = await axios.post(
-      "/api/addMembershipApplication",
-      applicationData
-    );
 
-    setApplicationSending(false);
-    console.log(res);
-    if (res && res.status === 201) {
-      router.push("?status=success", undefined, { shallow: true });
-    } else {
-      router.push("?status=fail", undefined, { shallow: true });
+    if (!emailFetching) {
+      setApplicationSending(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      // console.log(applicationData);
+
+      try {
+        const res = await axios.post(
+          "/api/addMembershipApplication",
+          applicationData
+        );
+        setApplicationSending(false);
+        setApplicationData(initialApplicationState);
+        router.push("?status=success", undefined, { shallow: true });
+      } catch (e) {
+        setApplicationSending(false);
+        router.push("?status=fail", undefined, { shallow: true });
+      }
     }
   };
 
@@ -152,7 +165,7 @@ const Apply = () => {
                 ) : (
                   <>🥺 Sorry </>
                 )}
-                {applicationData.nickname !== ""
+                {applicationData.nickname.trim() !== ""
                   ? applicationData.nickname
                   : applicationData.firstName}
                 ,
@@ -342,6 +355,7 @@ const Apply = () => {
                   </div>
                 </div>
               </div>
+
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-start-1 col-span-12 md:col-span-4 mb-8">
                   <label
@@ -458,25 +472,38 @@ const Apply = () => {
                     placeholder="don_norman@dlsu.edu.ph"
                     onChange={(e) => {
                       setEmailFetching(false);
+
+                      try {
+                        emailCheckingController.abort();
+                        console.log("Request Aborted");
+                      } catch (e) {
+                        console.log("Request did not abort");
+                      }
+
                       setApplicationData({
                         ...applicationData,
-                        email: e.target.value,
+                        email: e.target.value.toLowerCase(),
                       });
                       setEmailTextHelper("");
-                      e.target.setCustomValidity("");
                     }}
                     onBlur={async (e) => {
                       if (applicationData.email !== "") {
                         setEmailFetching(true);
-                        const res = await axios.get("/api/getMembershipEmails");
+                        e.target.setCustomValidity("Still validating.");
 
+                        const res = await axios.get(
+                          "/api/getMembershipEmails",
+                          {
+                            signal: emailCheckingController.signal,
+                          }
+                        );
                         setEmailFetching(false);
-                        const invalid = res.data.includes(applicationData.email);
-                        // const invalid = emailExists(
-                        //   applicationData.email,
-                        //   res.data
-                        // );
-                        
+                        // const invalid = res.data.includes(applicationData.email);
+                        const invalid = emailExists(
+                          applicationData.email,
+                          res.data
+                        );
+
                         if (invalid) {
                           setEmailTextHelper(
                             "This email was already used for an application."
@@ -571,6 +598,33 @@ const Apply = () => {
                   />
                 </div>
               </div>
+              {/* Student ID */}
+              <div className="grid grid-cols-6 gap-4">
+                <div className="col-start-1 col-span-12 sm:col-span-6 md:col-span-4 mb-4">
+                  <label className="block mb-6" htmlFor="firstName">
+                    Student ID
+                  </label>
+                  <select
+                    value={applicationData.studentID}
+                    className="py-2.5 px-2 w-full"
+                    required
+                    style={{ backgroundColor: "#ECECEC" }}
+                    onChange={(e) =>
+                      setApplicationData({
+                        ...applicationData,
+                        studentID: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="">Please select your ID Batch Number</option>
+                    <option value="117">117</option>
+                    <option value="118">118</option>
+                    <option value="119">119</option>
+                    <option value="120">120</option>
+                    <option value="121">121</option>
+                  </select>
+                </div>
+              </div>
             </section>
             {/** Miscellaneous Information */}
             <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
@@ -611,6 +665,43 @@ const Apply = () => {
                       })
                     }
                     value={applicationData.interestedOrg}
+                  ></textarea>
+                </div>
+                <div className="col-span-2"></div>
+
+                <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
+                  <label className="block mb-6">
+                    What is user experience to you? (Optional)
+                  </label>
+                  <textarea
+                    className="w-full p-2"
+                    rows={5}
+                    onChange={(e) =>
+                      setApplicationData({
+                        ...applicationData,
+                        whatIsUX: e.target.value,
+                      })
+                    }
+                    value={applicationData.whatIsUX}
+                  ></textarea>
+                </div>
+                <div className="col-span-2"></div>
+
+                <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
+                  <label className="block mb-6">
+                    How do you think user experience applies in your current
+                    degree program and interests? (Optional)
+                  </label>
+                  <textarea
+                    className="w-full p-2"
+                    rows={5}
+                    onChange={(e) =>
+                      setApplicationData({
+                        ...applicationData,
+                        practicalityUX: e.target.value,
+                      })
+                    }
+                    value={applicationData.practicalityUX}
                   ></textarea>
                 </div>
                 <div className="col-span-2"></div>
