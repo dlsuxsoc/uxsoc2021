@@ -8,7 +8,6 @@ import Button from "../components/Button/Button";
 import Link from "next/link";
 import styles from "../styles/Apply.module.scss";
 import FormCheckbox from "../components/FormCheckbox/FormCheckbox";
-import { emailExists } from "../helpers/emailExists";
 import { Oval } from "react-loader-spinner";
 import { usePromiseTracker } from "react-promise-tracker";
 import PageLoading from "../components/PageLoading/PageLoading";
@@ -472,10 +471,12 @@ const Apply = () => {
                         const res = await axios.get("/api/getMembershipEmails");
 
                         setEmailFetching(false);
-                        const invalid = emailExists(
-                          applicationData.email,
-                          res.data
-                        );
+                        const invalid = res.data.includes(applicationData.email);
+                        // const invalid = emailExists(
+                        //   applicationData.email,
+                        //   res.data
+                        // );
+                        
                         if (invalid) {
                           setEmailTextHelper(
                             "This email was already used for an application."
