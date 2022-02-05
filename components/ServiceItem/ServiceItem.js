@@ -5,7 +5,9 @@ import Link from "next/link";
 import eventPicture from "../../public/images/temp-event.png";
 import faker from "faker";
 
-const ServiceItem = ({ item}) => {
+
+const ServiceItem = ({ item }) => {
+
   return (
     <div className="items-center flex flex-col justify-center">
       <div className="relative w-full ">
