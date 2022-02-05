@@ -41,3 +41,13 @@ Invalid Filter By Year 1234 Articles
     Open Browser To Articles Page
     Page Should Not Contain     class:y1234
 
+Valid View Specific Article
+    Open Browser To Articles Page
+    Sleep   7s
+    Execute Javascript  document.getElementById("user-experience-society-dlsu-at-uxph-roadshow").scrollIntoView()
+    Sleep   7s
+    Wait Until Page Contains    Join Us
+    Sleep   1s
+    Click Element    id:user-experience-society-dlsu-at-uxph-roadshow
+    Sleep   1s
+    Wait Until Page Contains    User Experience Society — DLSU at UXPH Roadshow
