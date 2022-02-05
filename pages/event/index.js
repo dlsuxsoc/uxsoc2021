@@ -64,7 +64,7 @@ export default function Events({ active, contentfulEvents }) {
           <div className="relative w-full">
             <div className={`${styles.eventheroimage} w-1/2 lg:w-full`}>
               <Image
-                src={faker.image.image()}
+                src={latestEvent.image === null ? "/images/placeholder.png" : latestEvent.image.url}
                 alt="Placeholder"
                 layout="fill"
                 objectFit="contain"
@@ -74,7 +74,7 @@ export default function Events({ active, contentfulEvents }) {
           </div>
 
           <div className="pt-4 pl-0 md:pl-8 lg:pl-32 w-4/5 md-w-2/3">
-            <h2 className="text-left">{latestEvent.title}</h2>
+            <h2 className="text-black text-left">{latestEvent.title}</h2>
             <p className="whitespace-wrap sm:whitespace-nowrap my-4">
               {
                 /** check if same month and day */
