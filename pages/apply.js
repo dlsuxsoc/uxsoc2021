@@ -462,7 +462,7 @@ const Apply = () => {
                       setEmailFetching(false);
                       setApplicationData({
                         ...applicationData,
-                        email: e.target.value,
+                        email: e.target.value.toLowerCase(),
                       });
                       setEmailTextHelper("");
                       e.target.setCustomValidity("");
@@ -473,10 +473,12 @@ const Apply = () => {
                         const res = await axios.get("/api/getMembershipEmails");
 
                         setEmailFetching(false);
+                        // const invalid = res.data.includes(applicationData.email);
                         const invalid = emailExists(
                           applicationData.email,
                           res.data
                         );
+                        
                         if (invalid) {
                           setEmailTextHelper(
                             "This email was already used for an application."
