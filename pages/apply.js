@@ -290,6 +290,7 @@ const Apply = () => {
                   <div className="grid grid-cols-3 gap-4">
                     <div className="col-start-1">
                       <input
+                        name="bMonth"
                         type="number"
                         min={1}
                         max={12}
@@ -313,6 +314,7 @@ const Apply = () => {
                     </div>
                     <div className="col-start-2">
                       <input
+                        name="bDay"
                         type="number"
                         min={1}
                         max={maxDate}
@@ -336,6 +338,7 @@ const Apply = () => {
                     </div>
                     <div className="col-start-3">
                       <input
+                        name="bYear"
                         type="number"
                         min={1920}
                         max={new Date().getUTCFullYear() - 16}
@@ -557,6 +560,7 @@ const Apply = () => {
                     College
                   </label>
                   <select
+                    name="college"
                     value={applicationData.college}
                     className="py-2.5 px-2 w-full"
                     required
@@ -602,12 +606,11 @@ const Apply = () => {
               <div className="grid grid-cols-6 gap-4">
                 <div className="col-start-1 col-span-12 sm:col-span-6 md:col-span-4 mb-4">
                   <label className="block mb-6" htmlFor="firstName">
-                    Student ID
+                    Student ID (Optional)
                   </label>
                   <select
                     value={applicationData.studentID}
                     className="py-2.5 px-2 w-full"
-                    required
                     style={{ backgroundColor: "#ECECEC" }}
                     onChange={(e) =>
                       setApplicationData({
@@ -789,6 +792,7 @@ const Apply = () => {
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-start-1 col-span-12 md:col-span-6 mb-8">
                   <input
+                    id="send"
                     type={"submit"}
                     value={"SEND APPLICATION"}
                     className={`${styles.btn_container} font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer`}
