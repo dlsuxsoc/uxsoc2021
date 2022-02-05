@@ -3,7 +3,7 @@ import { notion } from "../../api/notion";
 const addMentorshipBooking = async (req, res) => {
   try {
     const data = { ...req.body };
-    console.log(process.env.NOTION_MENTORSHIP_BOOKING);
+    //console.log(process.env.NOTION_MENTORSHIP_BOOKING);
     //console.log(data);
     const response = await notion.pages.create({
       parent: {
@@ -28,44 +28,44 @@ const addMentorshipBooking = async (req, res) => {
             },
           ],
         },
-        "Mentor" : {
-            type:"rich_text",
-            rich_text:[
-                {
-                    type: "text",
-                    text: { content : data.bookingMentor },
-                },
-            ],
+        Mentor: {
+          type: "rich_text",
+          rich_text: [
+            {
+              type: "text",
+              text: { content: data.bookingMentor },
+            },
+          ],
         },
-        "Date": {
-            type:"rich_text",
-            rich_text:[
-                {
-                  type: "text",
-                  text: { content : data.bookingDate + " " + data.bookingSlot },
-                },
-              ], 
+        Date: {
+          type: "rich_text",
+          rich_text: [
+            {
+              type: "text",
+              text: { content: data.bookingDate + " " + data.bookingSlot },
+            },
+          ],
         },
         "Email Address": {
           email: data.email,
         },
-        "PhoneNumber": {
-            type:"rich_text",
-            rich_text:[
-                {
-                    type: "text",
-                    text: { content : data.contactNum },
-                },
-            ],
+        PhoneNumber: {
+          type: "rich_text",
+          rich_text: [
+            {
+              type: "text",
+              text: { content: data.contactNum },
+            },
+          ],
         },
         "Additional Messages": {
-            type: "rich_text",
-            rich_text: [
-              {
-                type: "text",
-                text: { content: data.message },
-              },
-            ],
+          type: "rich_text",
+          rich_text: [
+            {
+              type: "text",
+              text: { content: data.message },
+            },
+          ],
         },
       },
     });
@@ -75,7 +75,7 @@ const addMentorshipBooking = async (req, res) => {
   } catch (e) {
     console.log("fail");
     console.error(e);
-    
+
     res.status(req.body.status).json(req.body);
   }
 };
