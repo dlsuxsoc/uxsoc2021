@@ -102,8 +102,8 @@ export default function Index() {
               >
                 <div className="p-24 mr-0 md:mr-28 relative h-24 md:h-36 lg:h-44 2xl:h-72">
                   <Image
-                    src={item.Image}
-                    alt="Placeholder-Event"
+                    src={item.Image === null ? "/images/placeholder.png" : item.Image}
+                    alt="Service Image"
                     layout="fill"
                     objectFit="contain"
                     objectPosition="center"

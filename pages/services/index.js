@@ -4,6 +4,7 @@ import ServiceItem from "../../components/ServiceItem/ServiceItem";
 import ProjectItem from "../../components/ProjectItem/ProjectItem";
 import SEO from "../../components/seo";
 import { useEffect, useState } from "react";
+import servicesData from "../../data/services.json";
 import faker from "faker";
 import ContentfulApi from "./../api/utils/contentfulApi";
 
@@ -16,8 +17,6 @@ const getYears = (events) => {
 
 
 export default function Services({ active, contentfulProjects }) {
-  console.log({ ...contentfulProjects });
-
   return (
     <Layout active={-1}>
       <SEO title={"Services"} />
@@ -25,27 +24,11 @@ export default function Services({ active, contentfulProjects }) {
       <section className="sm:px-8 lg:px-32 flex flex-col justify-center items-center h-auto min-h-screen">
         <h1 className="text-black pt-16 pb-8 text-center">Our services</h1>
         <section className="flex flex-col md:flex-row w-full h-full">
-          <ServiceItem
-            title={"Web Design & Development"}
-            description={
-              "Creation of custom web designs from scratch and development using the best front-end technologies."
-            }
-            file={"/images/services-web-design-and-development.png"}
-          />
-          <ServiceItem
-            title={"UX Education & Training"}
-            description={
-              "Learning more about User Experience, Experience Design, Design Strategy, Design Thinking, and many other UX related terms."
-            }
-            file={"/images/services-ux-education-and-training.png"}
-          />
-          <ServiceItem
-            title={"Community Engagement"}
-            description={
-              "Participation and volunteering work to different external events such as workshops & design conferences."
-            }
-            file={"/images/services-community-engagement.png"}
-          />
+          {servicesData.slice(0, 3).map((item, index) => {
+            return (
+              <ServiceItem item={item} index={index} />
+            )
+          })}
         </section>
       </section>
 
