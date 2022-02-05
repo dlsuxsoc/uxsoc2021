@@ -27,16 +27,12 @@ const ArticleItem = ({ item }) => {
   };
 
   return (
-    <section className="pl-4 pr-8 sm:px-32 mb-8 lg:mb-28 flex flex-col lg:flex-row justify-center items-center">
+    <section className="pl-4 pr-4 sm:px-32 mb-8 lg:mb-28 flex flex-col lg:flex-row justify-center items-center">
       {/* Image */}
       <div className="relative w-full ">
         <div className={`${styles.articleImage} w-full  md:w-96 h-96`}>
           <Image
-            src={
-              item.imagesCollection.items[0] === null
-                ? "/images/placeholder.png"
-                : item.imagesCollection.items[0].url
-            }
+            src={item.imagesCollection.items[0] === null ? "/images/placeholder.png" : item.imagesCollection.items[0].url}
             alt="Placeholder"
             layout="fill"
             objectFit="contain"
@@ -61,10 +57,9 @@ const ArticleItem = ({ item }) => {
 
         {/* Author and Date (done)*/}
         <div className="flex flex-row mb-6">
-          <p className="text-sm lg:text-base pr-8">{item.authors}</p>
-          <p className="text-sm lg:text-base">
-            {DateTime.fromISO(item.date).toFormat("DDD")}
-          </p>
+          <p className="text-sm lg:text-base pr-8">{item.authors[0]}</p>
+          <p className="text-sm lg:text-base">{DateTime.fromISO(item.date).toFormat("DDD")}</p>
+
         </div>
 
         <p className="line-clamp-4 text-sm lg:text-base mb-4  break-words">
