@@ -18,7 +18,7 @@ const getYears = (events) => {
 
 export default function Services({ active, contentfulProjects }) {
   return (
-    <Layout active={-1}>
+    <Layout active={2}>
       <SEO title={"Services"} />
 
       <section className="sm:px-8 lg:px-32 flex flex-col justify-center items-center h-auto min-h-screen">

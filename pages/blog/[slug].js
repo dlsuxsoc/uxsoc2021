@@ -10,7 +10,6 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useEffect, useState } from "react";
 
 export default function ArticlesPost({ active, title, authors, content, date, imagesCollection }) {
-    //console.log (content.json);
     console.log (DateTime.fromISO(date).c)
     return (
         <Layout active={-1}>
