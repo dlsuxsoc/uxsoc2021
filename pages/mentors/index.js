@@ -107,7 +107,6 @@ export default function Index({ mentors }) {
                       className="rounded-full shadow-md"
                       src={item.picture}
                       alt={item.name}
-                      unoptimized={true}
                       layout="fill"
                       objectFit="cover"
                       objectPosition="center"
