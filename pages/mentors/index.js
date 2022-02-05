@@ -3,19 +3,26 @@ import Image from "next/image";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import axios from "axios";
-import styles from "../../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Button from "../../components/Button/Button";
-import { truncateString } from "../../helpers/truncateString";
 import getMentors from "../api/getMentors";
 import Modal from "../../components/Modal/Modal";
 import PageLoading from "../../components/PageLoading/PageLoading";
 import getNextNDays from "../../helpers/getNextNDays";
 import getTimeSlotsByDay from "../../helpers/getTimeSlotsByDay";
+import { Oval } from "react-loader-spinner";
+import mentorshipInstanceExists from "../../helpers/mentorshipInstanceExists";
 
 export default function Index({ mentors }) {
   const router = useRouter();
+
+  const [duplicateTextHelper, setDuplicateTextHelper] = useState("");
+  const [duplicateFetching, setDuplicateFetching] = useState(false);
+  const [isBookingMentorFilled, setBookingMentor] = useState(false);
+  const [isBookingEmailFilled, setBookingEmail] = useState(false);
+  const [isBookingDateFilled, setBookingDate] = useState(false);
+  const [isBookingSlotFilled, setBookingSlot] = useState(false);
+  const [isFormDataChanged, setFormData] = useState(false);
 
   // BINDED TO DROPDOWN MENTOR NAME
   const [mentorIndex, setMentorIndex] = useState(-1);
@@ -42,8 +49,9 @@ export default function Index({ mentors }) {
     setApplicationSending(true);
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
-    console.log("FORM SUBMITTED");
-    console.log(e.target[0].value);
+
+    //console.log("FORM SUBMITTED");
+    //console.log(e.target[0].value);
     const res = await axios.post("/api/addMentorshipBooking", bookingData);
 
     // clearing form values
@@ -152,16 +160,51 @@ export default function Index({ mentors }) {
       <section className="px-4 sm:px-8 lg:px-32 py-2 mt-36 mb-16 lg:mb-36 justify-center lg:justify-between items-left h-auto">
         {/* Header */}
         <div className="pb-2">
-          <h1
-            id="book-mentor-header"
-            className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12"
-          >
+          <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
             Book a Mentor
           </h1>
         </div>
 
         {/* Form */}
-        <form action="POST" onSubmit={handleSubmit}>
+        <form
+          action="POST"
+          onSubmit={handleSubmit}
+          onMouseMove={async (e) => {
+            if (
+              isBookingDateFilled &&
+              isBookingEmailFilled &&
+              isBookingMentorFilled &&
+              isBookingSlotFilled &&
+              isFormDataChanged
+            ) {
+              setDuplicateFetching(true);
+              const res = await axios.get("/api/getMentorshipDetails");
+
+              setDuplicateFetching(false);
+              const key = {
+                email: bookingData.email,
+                mentor: bookingData.bookingMentor,
+                date: bookingData.bookingDate + " " + bookingData.bookingSlot,
+              };
+
+              let invalid = mentorshipInstanceExists(res.data, key);
+              //   const invalid = res.data.includes(key)
+              //console.log(key.date);
+              //console.log(res.data);
+              //console.log(invalid);
+              if (invalid) {
+                setDuplicateTextHelper(
+                  `You have already booked ${bookingData.bookingMentor} on ${
+                    bookingData.bookingDate + " " + bookingData.bookingSlot
+                  }.`
+                );
+              } else {
+                setDuplicateTextHelper("");
+              }
+              setFormData(false);
+            }
+          }}
+        >
           <section className="flex flex-col xl:flex-row justify-between mb-8">
             {/* Left Side starts here */}
             <div className="w-full pr-0 xl:pr-4">
@@ -180,7 +223,16 @@ export default function Index({ mentors }) {
                       setBookingData({
                         ...bookingData,
                         bookingMentor: mentors[parseInt(e.target.value)].name,
+                        bookingDate: "",
+                        bookingSlot: "",
                       });
+                      setFormData(true);
+                      setDuplicateTextHelper("");
+                    }}
+                    onBlur={async (e) => {
+                      bookingData.bookingMentor !== ""
+                        ? setBookingMentor(true)
+                        : setBookingMentor(false);
                     }}
                     value={mentorIndex}
                     required
@@ -212,12 +264,20 @@ export default function Index({ mentors }) {
                         name="bookingDate"
                         className="py-2.5 px-1.5 w-full"
                         style={{ backgroundColor: "#ECECEC" }}
-                        onChange={(e) =>
+                        onChange={(e) => {
                           setBookingData({
                             ...bookingData,
                             bookingDate: e.target.value,
-                          })
-                        }
+                            bookingSlot: "",
+                          });
+                          setFormData(true);
+                          setDuplicateTextHelper("");
+                        }}
+                        onBlur={async (e) => {
+                          bookingData.bookingDate !== ""
+                            ? setBookingDate(true)
+                            : setBookingDate(false);
+                        }}
                         value={bookingData.bookingDate}
                         required
                       >
@@ -227,11 +287,7 @@ export default function Index({ mentors }) {
                         {mentorIndex !== -1
                           ? getNextNDays(mentors[mentorIndex].timeSlots).map(
                               (item, index) => {
-                                return (
-                                  <option value={item} key={index}>
-                                    {item}
-                                  </option>
-                                );
+                                return <option key={index}>{item}</option>;
                               }
                             )
                           : null}
@@ -244,12 +300,19 @@ export default function Index({ mentors }) {
                         name="bookingSlot"
                         className="py-2.5 px-2 w-full"
                         style={{ backgroundColor: "#ECECEC" }}
-                        onChange={(e) =>
+                        onChange={(e) => {
                           setBookingData({
                             ...bookingData,
                             bookingSlot: e.target.value,
-                          })
-                        }
+                          });
+                          setFormData(true);
+                          setDuplicateTextHelper("");
+                        }}
+                        onBlur={async (e) => {
+                          bookingData.bookingSlot !== ""
+                            ? setBookingSlot(true)
+                            : setBookingSlot(false);
+                        }}
                         value={bookingData.bookingSlot}
                         required
                       >
@@ -261,11 +324,7 @@ export default function Index({ mentors }) {
                               mentors[mentorIndex].timeSlots,
                               bookingData.bookingDate
                             ).map((item, index) => {
-                              return (
-                                <option value={item} key={index}>
-                                  {item}
-                                </option>
-                              );
+                              return <option key={index}>{item}</option>;
                             })
                           : null}
                       </select>
@@ -371,14 +430,22 @@ export default function Index({ mentors }) {
                   name="email"
                   className="form-input py-2 px-3 w-full"
                   placeholder="don_norman@dlsu.edu.ph"
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setBookingData({
                       ...bookingData,
                       email: e.target.value,
-                    })
-                  }
+                    });
+                    setDuplicateTextHelper("");
+                    setDuplicateFetching(false);
+                    setFormData(true);
+                  }}
                   value={bookingData.email}
                   required
+                  onBlur={async (e) => {
+                    bookingData.email !== ""
+                      ? setBookingEmail(true)
+                      : setBookingEmail(false);
+                  }}
                 />
               </div>
             </div>
@@ -403,18 +470,27 @@ export default function Index({ mentors }) {
               ></textarea>
             </div>
           </section>
-
           {/* Submit Button */}
           <div className="text-center">
             <p className="pb-4 text-center text-base lg:text-lg 2xl:text-xl">
               All information will be kept private.
             </p>
-            <input
-              id={"book-btn"}
-              type={"submit"}
-              value={"BOOK MENTOR"}
-              className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer`}
-            />
+            <span>
+              {duplicateFetching ? (
+                <div className="flex justify-center align-center mb-4">
+                  <Oval color="gray" height={24} width={24} />
+                </div>
+              ) : (
+                <span className="text-red-500 text-sm h-16 w-full block">
+                  {duplicateTextHelper}
+                </span>
+              )}
+              <input
+                type={"submit"}
+                value={"BOOK MENTOR"}
+                className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer`}
+              />
+            </span>
           </div>
         </form>
       </section>
