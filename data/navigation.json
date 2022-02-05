@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Home",
+        "link": "/"
+    },
+    {
+        "name": "About Us",
+        "link": "/about"
+    },
+    {
+        "name": "Services",
+        "link": "/services"
+    },
+    {
+        "name": "Events",
+        "link": "/event"
+    },
+    {
+        "name": "Articles",
+        "link": "/blog"
+    },
+    {
+        "name": "Mentors",
+        "link": "/mentors"
+    }
+]

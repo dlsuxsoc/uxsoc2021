@@ -1,0 +1,26 @@
+.customSelect {
+  border: 1px solid #80858b;
+  border-radius: 8px;
+  &::after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+}
+
+.eventheroimage{
+  
+   @media screen and (max-width: 1536px){
+    height: 32rem;
+  }
+  @media screen and (max-width: 768px){
+    height: 24rem;
+  }
+  
+  height: 48rem;
+}

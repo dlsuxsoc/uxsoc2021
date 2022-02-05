@@ -1,0 +1,59 @@
+.blogtext {
+  h1,
+  h2,
+  h3 {
+    color: black;
+    font-size: xx-large;
+    padding-top: 28px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+  }
+  p {
+    padding-top: 16px;
+    font-family: 'Roboto', sans-serif;
+  }
+  ul {
+    list-style-type: circle;
+    padding-left: 32px;
+    padding-top: 16px;
+    padding-top: 16px;
+  }
+  ol {
+    list-style-type: decimal;
+    padding-left: 32px;
+    padding-top: 16px;
+    padding-top: 16px;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+  blockquote {
+    border-left: 8px solid #ccc;
+    margin: 1.5rem 10px;
+    padding: 0.5rem 10px;
+    padding-top: 0px;
+    p{
+        padding-top: 8px;
+    }
+  }
+  h1+h2{
+      font-size: large;
+  }
+  h2+h2{
+    font-size: large;
+}
+}
+
+.author {
+  font-weight: bold;
+  font-family: Roboto;
+}
+
+.date {
+  font-family: Roboto;
+}
+
+.title {
+  font-family: Roboto;
+}
