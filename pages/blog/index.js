@@ -7,7 +7,6 @@ import SEO from "../../components/seo";
 import styles from "../../styles/Event.module.scss";
 import faker from "faker";
 import ContentfulApi from "./../api/utils/contentfulApi";
-
 import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
 
@@ -19,7 +18,7 @@ const getYears = (articles) => {
 };
 
 export default function Articles({ active, contentfulArticles }) {
-  console.log(contentfulArticles)
+
   const [year, setYear] = useState("All"); // selected date
   const [articles, setArticles] = useState([...contentfulArticles]);
   const [yearList, setYearList] = useState(["All"]);

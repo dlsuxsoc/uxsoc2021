@@ -72,11 +72,7 @@ const ArticleItem = ({ item }) => {
 
         {/* Author and Date (done)*/}
         <div className="flex flex-row mb-6">
-          
-        
-              <p className="text-sm lg:text-base pr-8">{item.authors.join(', ')}</p>
-          
-          
+          <p className="text-sm lg:text-base pr-8">{item.authors.join(', ')}</p>
           <p className="text-sm lg:text-base">{DateTime.fromISO(item.date).toFormat("DDD")}</p>
         </div>
 

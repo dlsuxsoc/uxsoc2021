@@ -26,7 +26,7 @@ export default function Services({ active, contentfulProjects }) {
         <section className="flex flex-col md:flex-row w-full h-full">
         {servicesData.slice(0, 3).map((item, index) => {
             return (
-              <ServiceItem item={item} index={index}/>
+              <ServiceItem item={item} key={index}/>
             );
           })}
           
