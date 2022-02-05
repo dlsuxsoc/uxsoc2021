@@ -13,9 +13,14 @@ import Modal from "../../components/Modal/Modal";
 import PageLoading from "../../components/PageLoading/PageLoading";
 import getNextNDays from "../../helpers/getNextNDays";
 import getTimeSlotsByDay from "../../helpers/getTimeSlotsByDay";
+import { Oval } from "react-loader-spinner";
 
 export default function Index({mentors}) {
     const router = useRouter();
+
+    // duplicate mentorship check
+    const [emailTextHelper, setEmailTextHelper] = useState("");
+    const [duplicateFetching, setDuplicateFetching] = useState(false);
 
     // BINDED TO DROPDOWN MENTOR NAME
     const [mentorIndex, setMentorIndex] = useState(-1);
@@ -352,16 +357,63 @@ export default function Index({mentors}) {
                                     name="email"
                                     className="form-input py-2 px-3 w-full"
                                     placeholder="don_norman@dlsu.edu.ph"
-                                    onChange={(e) =>
+                                    onChange={(e) =>{
                                         setBookingData({
                                             ...bookingData,
                                             email: e.target.value,
-                                    })
-                                    }
+                                    });
+                                    setEmailTextHelper("");
+                                    e.target.setCustomValidity("");
+                                    setDuplicateFetching(false);
+                                    }}
                                     value={bookingData.email}
                                     required
+                                    onBlur={async (e) => {
+                                        if (bookingData.email !== "") {
+                                          setDuplicateFetching(true);
+                                          const res = await axios.get("/api/getMentorshipDetails");
+                                          
+                                          setDuplicateFetching(false);
+                                          const key = {
+                                              email : bookingData.email,
+                                              mentor : bookingData.bookingMentor,
+                                              date : bookingData.bookingDate + " " + bookingData.bookingSlot,
+                                          }
+                                          console.log(key.date);
+                                          console.log(res.data);
+                                          let invalid = false;
+                                          for(let i = 0; i < res.data.length; i++){
+                                              if(key.email == res.data[i].email &&
+                                                 key.mentor == res.data[i].mentor &&
+                                                 key.date == res.data[i].date){
+                                                     invalid = true;
+                                                     break;
+                                                 }
+                                          }
+                                          console.log(invalid);
+                                          if (invalid) {
+                                            setEmailTextHelper(
+                                              `You have already booked ${bookingData.bookingMentor} on ${bookingData.bookingDate + " " + bookingData.bookingSlot}.`
+                                            );
+                                            e.target.setCustomValidity(
+                                                `You have already booked ${bookingData.bookingMentor} on ${bookingData.bookingDate + " " + bookingData.bookingSlot}.`
+                                            );
+
+                                          } else {
+                                            setEmailTextHelper("");
+                                            e.target.setCustomValidity("");
+                                          }
+                                        }
+                                      }}
                                 />
                             </div>
+                            {duplicateFetching ? (
+                                <Oval color="gray" height={24} width={24} />
+                            ) : (
+                                <span className="text-red-500 text-sm h-16">
+                                {emailTextHelper}
+                                </span>
+                            )}
                         </div>
 
                         {/* Right Side starts here */}
