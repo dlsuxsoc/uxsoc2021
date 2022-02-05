@@ -14,8 +14,7 @@ Valid About Learn More Button Pressed
     Execute Javascript  document.getElementById("abouthome").scrollIntoView(false)
     Sleep   .5s
     Click Element    id:abouthome
-    Wait Until Page Contains    Mission-Vision
-    Page Should Contain     UX Society
+    Wait Until Page Contains    UX Society
 
 Valid Events Learn More Button Pressed
     Open Browser To Landing Page
