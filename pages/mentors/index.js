@@ -14,14 +14,19 @@ import PageLoading from "../../components/PageLoading/PageLoading";
 import getNextNDays from "../../helpers/getNextNDays";
 import getTimeSlotsByDay from "../../helpers/getTimeSlotsByDay";
 import { Oval } from "react-loader-spinner";
+import mentorshipInstanceExists from "../../helpers/mentorshipInstanceExists";
 
 export default function Index({mentors}) {
     const router = useRouter();
 
     // duplicate mentorship check
-    const [emailTextHelper, setEmailTextHelper] = useState("");
+    const [duplicateTextHelper, setDuplicateTextHelper] = useState("");
     const [duplicateFetching, setDuplicateFetching] = useState(false);
-
+    const [isBookingMentorFilled, setBookingMentor] = useState(false);
+    const [isBookingEmailFilled, setBookingEmail] = useState(false);
+    const [isBookingDateFilled, setBookingDate] = useState(false);
+    const [isBookingSlotFilled, setBookingSlot] = useState(false);
+    const [isFormDataChanged, setFormData] = useState(false);
     // BINDED TO DROPDOWN MENTOR NAME
     const [mentorIndex, setMentorIndex] = useState(-1);
 
@@ -81,11 +86,11 @@ export default function Index({mentors}) {
         <Layout active={5}>
             <SEO title={"Mentors"}/>
             {applicationSending ? <PageLoading /> : null}
-
+            
             {/* Our Mentors */}
             <section className="px-4 sm:px-8 lg:px-32 py-2 mt-28 xl:mt-36 mb-16 lg:mb-36 justify-center lg:justify-between items-center h-auto">
                 {/* Header */}
-                <div className="text-center pb-2">
+                <div  className="text-center pb-2">
                     <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
                         Our mentors
                     </h1>
@@ -167,7 +172,32 @@ export default function Index({mentors}) {
                 </div>
                 
                 {/* Form */}
-                <form action="POST" onSubmit={handleSubmit}>
+                <form action="POST" onSubmit={handleSubmit} onMouseMove ={async (e) => {
+                if (isBookingDateFilled && isBookingEmailFilled && isBookingMentorFilled && isBookingSlotFilled && isFormDataChanged) {
+                    setDuplicateFetching(true);
+                    const res = await axios.get("/api/getMentorshipDetails");
+                    
+                    setDuplicateFetching(false);
+                    const key = {
+                        email : bookingData.email,
+                        mentor : bookingData.bookingMentor,
+                        date : bookingData.bookingDate + " " + bookingData.bookingSlot,
+                    }
+
+                    let invalid = mentorshipInstanceExists(res.data, key);
+                //   const invalid = res.data.includes(key)
+                    console.log(key.date);
+                    console.log(res.data);
+                    console.log(invalid);
+                    if (invalid) {
+                        setDuplicateTextHelper(
+                            `You have already booked ${bookingData.bookingMentor} on ${bookingData.bookingDate + " " + bookingData.bookingSlot}.`
+                        );
+                    } else {
+                        setDuplicateTextHelper("");
+                    }
+                    setFormData(false);
+                }}}>
                     <section className="flex flex-col xl:flex-row justify-between mb-8">
                         {/* Left Side starts here */}
                         <div className="w-full pr-0 xl:pr-4">
@@ -187,7 +217,12 @@ export default function Index({mentors}) {
                                                 ...bookingData,
                                                 bookingMentor: mentors[parseInt(e.target.value)].name,
                                             })
+                                            setFormData(true);
+                                            setDuplicateTextHelper("");
                                         }}
+                                        onBlur={async (e) => {
+                                            (bookingData.bookingMentor !== "") ? setBookingMentor(true) : setBookingMentor(false);
+                                          }}
                                         value={mentorIndex}
                                         required
                                     >
@@ -214,12 +249,17 @@ export default function Index({mentors}) {
                                                 name="bookingDate"
                                                 className="py-2.5 px-1.5 w-full"
                                                 style={{ backgroundColor: "#ECECEC" }}
-                                                onChange={(e) =>
+                                                onChange={(e) =>{
                                                     setBookingData({
                                                         ...bookingData,
                                                         bookingDate: e.target.value
                                                     })
-                                                }
+                                                    setFormData(true);
+                                                    setDuplicateTextHelper("");
+                                                }}
+                                                onBlur={async (e) => {
+                                                    (bookingData.bookingDate !== "") ? setBookingDate(true) : setBookingDate(false);
+                                                  }}
                                                 value={bookingData.bookingDate}
                                                 required
                                             >
@@ -238,12 +278,17 @@ export default function Index({mentors}) {
                                                 name="bookingSlot"
                                                 className="py-2.5 px-2 w-full"
                                                 style={{ backgroundColor: "#ECECEC" }}
-                                                onChange={(e) =>
+                                                onChange={(e) => {
                                                     setBookingData({
                                                         ...bookingData,
                                                         bookingSlot: e.target.value
                                                     })
-                                                }
+                                                    setFormData(true);
+                                                    setDuplicateTextHelper("");
+                                                }}
+                                                onBlur={async (e) => {
+                                                    (bookingData.bookingSlot !== "") ? setBookingSlot(true) : setBookingSlot(false);
+                                                  }}
                                                 value={bookingData.bookingSlot}
                                                 required
                                             >
@@ -362,58 +407,20 @@ export default function Index({mentors}) {
                                             ...bookingData,
                                             email: e.target.value,
                                     });
-                                    setEmailTextHelper("");
-                                    e.target.setCustomValidity("");
+                                    setDuplicateTextHelper("");
                                     setDuplicateFetching(false);
+                                    setFormData(true);
+                                    
                                     }}
                                     value={bookingData.email}
                                     required
                                     onBlur={async (e) => {
-                                        if (bookingData.email !== "") {
-                                          setDuplicateFetching(true);
-                                          const res = await axios.get("/api/getMentorshipDetails");
-                                          
-                                          setDuplicateFetching(false);
-                                          const key = {
-                                              email : bookingData.email,
-                                              mentor : bookingData.bookingMentor,
-                                              date : bookingData.bookingDate + " " + bookingData.bookingSlot,
-                                          }
-                                          console.log(key.date);
-                                          console.log(res.data);
-                                          let invalid = false;
-                                          for(let i = 0; i < res.data.length; i++){
-                                              if(key.email == res.data[i].email &&
-                                                 key.mentor == res.data[i].mentor &&
-                                                 key.date == res.data[i].date){
-                                                     invalid = true;
-                                                     break;
-                                                 }
-                                          }
-                                          console.log(invalid);
-                                          if (invalid) {
-                                            setEmailTextHelper(
-                                              `You have already booked ${bookingData.bookingMentor} on ${bookingData.bookingDate + " " + bookingData.bookingSlot}.`
-                                            );
-                                            e.target.setCustomValidity(
-                                                `You have already booked ${bookingData.bookingMentor} on ${bookingData.bookingDate + " " + bookingData.bookingSlot}.`
-                                            );
-
-                                          } else {
-                                            setEmailTextHelper("");
-                                            e.target.setCustomValidity("");
-                                          }
-                                        }
-                                      }}
+                                        (bookingData.email !== "") ? setBookingEmail(true) : setBookingEmail(false);
+                                    }
+                                        
+                                      }
                                 />
                             </div>
-                            {duplicateFetching ? (
-                                <Oval color="gray" height={24} width={24} />
-                            ) : (
-                                <span className="text-red-500 text-sm h-16">
-                                {emailTextHelper}
-                                </span>
-                            )}
                         </div>
 
                         {/* Right Side starts here */}
@@ -443,11 +450,20 @@ export default function Index({mentors}) {
                         <p className="pb-4 text-center text-base lg:text-lg 2xl:text-xl">
                             All information will be kept private.
                         </p>
+                        <span>
+                        {duplicateFetching ? (
+                                <Oval color="gray" height={24} width={24} />
+                            ) : (
+                                <span className="text-red-500 text-sm h-16">
+                                {duplicateTextHelper}
+                                </span>
+                        )}
                         <input
                             type={"submit"}
                             value={"BOOK MENTOR"}
                             className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer`}
                         />
+                        </span>
                     </div>
 
                 </form>
@@ -459,6 +475,7 @@ export default function Index({mentors}) {
         </Layout>
     );
 }
+
 
 export async function getServerSideProps() {
     const mentorData = await getMentors();
