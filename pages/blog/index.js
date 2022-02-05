@@ -19,7 +19,7 @@ const getYears = (articles) => {
 };
 
 export default function Articles({ active, contentfulArticles }) {
-  console.log({ ...contentfulArticles });
+  console.log(contentfulArticles)
   const [year, setYear] = useState("All"); // selected date
   const [articles, setArticles] = useState([...contentfulArticles]);
   const [yearList, setYearList] = useState(["All"]);
