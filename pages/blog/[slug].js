@@ -24,7 +24,7 @@ export default function ArticlesPost({ active, title, authors, content, date, im
                 
                 <div className="pb-4 lg:pb-10 lg:pl-32 flex flex-col lg:flex-row items-center lg:items-start">
                     <div className="flex  flex-col md:flex-row items-center justify-center h-12">
-                        <p className={`${styles.author}`}>{authors}</p>
+                        <p className={`${styles.author} md:pr-8`}>{authors.join(', ')}</p>
                         
                         <p className={`${styles.date} `}>{DateTime.fromISO(date).toFormat("DDD")} </p>
                     </div>
