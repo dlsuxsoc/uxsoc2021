@@ -28,6 +28,7 @@ const Footer = () => {
           </div>
           <div className="h-12 relative hidden lg:block text-center lg:text-left mb-12">
             <Image
+              id="footerLogo"
               src="/images/uxsoc-footer.png"
               alt="Footer Logo"
               layout="fill"
@@ -51,7 +52,7 @@ const Footer = () => {
                 key={index}
               >
                 <Link href={item.link}>
-                  <a>{item.name}</a>
+                  <a id={`footer${item.name}`}>{item.name}</a>
                 </Link>
               </li>
             );
@@ -60,28 +61,28 @@ const Footer = () => {
         <ul className="list-none w-full flex justify-center lg:justify-end mb-8">
           <li className="mr-2 ml-2 lg:mr-0 lg:ml-6">
             <Link href={"#"}>
-              <a>
+              <a id="footerFb">
                 <FaFacebookSquare size="32px" />
               </a>
             </Link>
           </li>
           <li className="mr-2 ml-2 lg:mr-0 lg:ml-6">
             <Link href={"#"}>
-              <a>
+              <a id="footerTwitter">
                 <FaTwitter size="32px" />
               </a>
             </Link>
           </li>
           <li className="mr-2 ml-2 lg:mr-0 lg:ml-6">
             <Link href={"#"}>
-              <a>
+              <a id="footerInstagram">
                 <FaInstagram size="32px" />
               </a>
             </Link>
           </li>
           <li className="mr-2 ml-2 lg:mr-0 lg:ml-6">
             <Link href={"#"}>
-              <a>
+              <a id="footerDiscord">
                 <FaDiscord size="32px" />
               </a>
             </Link>

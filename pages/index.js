@@ -71,7 +71,7 @@ export default function Index({ articles, projects, events }) {
           </p>
 
           <div className="text-center md:text-left">
-            <Button to="/about">Learn More</Button>
+            <Button id="abouthome" to="/about">Learn More</Button>
           </div>
         </div>
       </section>
@@ -116,7 +116,7 @@ export default function Index({ articles, projects, events }) {
           })}
         </section>
 
-        <Button to="/event" className="self-center lg:self-start">
+        <Button id="eventshome" to="/event" className="self-center lg:self-start">
           Learn More
         </Button>
       </section>
@@ -186,7 +186,7 @@ export default function Index({ articles, projects, events }) {
           </div>
         </section>
 
-        <Button to="/blog" className="self-center lg:self-end">
+        <Button id="articleshome" to="/blog" className="self-center lg:self-end">
           Learn More
         </Button>
       </section>
@@ -232,7 +232,8 @@ export default function Index({ articles, projects, events }) {
           })}
         </section>
 
-        <Button to="/services">Learn More</Button>
+        <Button id="serviceshome" to="/services">Learn More</Button>
+
       </section>
     </Layout>
   );
