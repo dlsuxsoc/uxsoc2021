@@ -18,7 +18,7 @@ const getYears = (events) => {
 };
 
 export default function Events({ active, contentfulEvents }) {
-  console.log({ ...contentfulEvents });
+  console.log({ ...contentfulEvents }.image);
   const [year, setYear] = useState("All"); // selected date
   const [events, setEvents] = useState([...contentfulEvents]);
   const [yearList, setYearList] = useState(["All"]);
@@ -101,20 +101,21 @@ export default function Events({ active, contentfulEvents }) {
 
       </section>
 
-      <section className="flex pt-28 pb-36 flex-col-reverse lg:flex-row justify-start md:items-stretch items-center">
-        <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap lg:justify-start justify-center lg:w-4/5 w-full">
-          {events.map(({ title, description }, index) => (
-            <EventItem key={index} title={title} description={description} />
+      <section className="flex pt-0 lg:pt-28 pb-36 flex-col-reverse lg:flex-row justify-start md:items-stretch items-center ">
+        <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap lg:justify-between justify-center lg:w-2/3 md:w-full w-full">
+          {events.map((item, index) => (
+            <EventItem key={index} item={item} />
           ))}
         </ul>
 
         {/* Dropdown for Mobile */}
-        <div className="flex flex-row w-full items-center justify-center">
+        <div className="flex flex-row lg:hidden w-full justify-center pb-8 pt-8">
           <select
             className={`${styles.customSelect} block lg:hidden w-4/5 py-2 px-3`}
             onClick={(e) => {
               setYear(e.target.value);
-            }} >
+            }}
+          >
             {yearList.map((item, key) => (
               <option key={key} value={item}>
                 {item}
@@ -122,6 +123,7 @@ export default function Events({ active, contentfulEvents }) {
             ))}
           </select>
         </div>
+
 
         {/* Datetab for Desktop */}
         <section className="lg:block hidden pr-5 w-16 mr-64">
