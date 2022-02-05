@@ -343,6 +343,7 @@ const Apply = () => {
                   </div>
                 </div>
               </div>
+              
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-start-1 col-span-12 md:col-span-4 mb-8">
                   <label
@@ -570,6 +571,44 @@ const Apply = () => {
                   />
                 </div>
               </div>
+              {/* Student ID */}
+              <div className="grid grid-cols-6 gap-4">
+                <div className="col-start-1 col-span-12 sm:col-span-6 md:col-span-4 mb-4">
+                  <label className="block mb-6" htmlFor="firstName">
+                    Student ID
+                  </label>
+                  <select
+                    value={applicationData.studentID}
+                    className="py-2.5 px-2 w-full"
+                    required
+                    style={{ backgroundColor: "#ECECEC" }}
+                    onChange={(e) =>
+                      setApplicationData({
+                        ...applicationData,
+                        studentID: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="">Please select your ID Batch Number</option>                    
+                    <option value="117">
+                      117
+                    </option>
+                    <option value="118">
+                      118
+                    </option>
+                    <option value="119">
+                      119
+                    </option>
+                    <option value="120">
+                      120
+                    </option>
+                    <option value="121">
+                      121
+                    </option>
+                  </select>
+                </div>
+              </div>
+              
             </section>
             {/** Miscellaneous Information */}
             <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
@@ -610,6 +649,44 @@ const Apply = () => {
                       })
                     }
                     value={applicationData.interestedOrg}
+                  ></textarea>
+                </div>
+                <div className="col-span-2"></div>
+
+                <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
+                  <label className="block mb-6">
+                    What is user experience to you?
+                    (Optional)
+                  </label>
+                  <textarea
+                    className="w-full p-2"
+                    rows={5}
+                    onChange={(e) =>
+                      setApplicationData({
+                        ...applicationData,
+                        whatIsUX: e.target.value,
+                      })
+                    }
+                    value={applicationData.whatIsUX}
+                  ></textarea>
+                </div>
+                <div className="col-span-2"></div>
+
+                <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
+                  <label className="block mb-6">
+                    How do you think user experience applies in your current degree program and interests?
+                    (Optional)
+                  </label>
+                  <textarea
+                    className="w-full p-2"
+                    rows={5}
+                    onChange={(e) =>
+                      setApplicationData({
+                        ...applicationData,
+                        practicalityUX: e.target.value,
+                      })
+                    }
+                    value={applicationData.practicalityUX}
                   ></textarea>
                 </div>
                 <div className="col-span-2"></div>

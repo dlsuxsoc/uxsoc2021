@@ -9,6 +9,15 @@ const addMembershipApplication = async (req, res) => {
         database_id: process.env.NOTION_MEMBERSHIP_APPLICATION,
       },
       properties: {
+        StudentID: {
+          type: "rich_text",
+          rich_text: [
+            {
+              type: "text",
+              text: { content: data.studentID },
+            },
+          ],
+        },
         Name: {
           title: [
             {
@@ -134,6 +143,64 @@ const addMembershipApplication = async (req, res) => {
                 type: "text",
                 text: {
                   content: data.interestedOrg,
+                },
+              },
+            ],
+          },
+        },
+        {
+          object: "block",
+          type: "heading_3",
+          heading_3: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content:
+                    "3. What is user experience to you?",
+                },
+              },
+            ],
+          },
+        },
+        {
+          object: "block",
+          type: "paragraph",
+          paragraph: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content: data.whatIsUX,
+                },
+              },
+            ],
+          },
+        },
+        {
+          object: "block",
+          type: "heading_3",
+          heading_3: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content:
+                    "4. How do you think user experience applies in your current degree program and interests?",
+                },
+              },
+            ],
+          },
+        },
+        {
+          object: "block",
+          type: "paragraph",
+          paragraph: {
+            text: [
+              {
+                type: "text",
+                text: {
+                  content: data.practicalityUX,
                 },
               },
             ],
