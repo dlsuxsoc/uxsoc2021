@@ -14,6 +14,7 @@ const getYears = (events) => {
   return years.filter((item, index, self) => self.indexOf(item) === index);
 };
 
+
 export default function Services({ active, projects }) {
   console.log({ ...projects });
 

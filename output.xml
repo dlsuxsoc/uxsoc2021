@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.8.8 on win32)" generated="20220131 15:54:20.990" rpa="false" schemaversion="2">
+<suite id="s1" name="Robot Tests" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests">
+<suite id="s1-s1" name="Valid About" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests\valid_about.robot">
+<test id="s1-s1-t1" name="Valid Join Button Pressed">
+<kw name="Open Browser To About Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ABOUT URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:54:21.212" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/about'.</msg>
+<status status="PASS" starttime="20220131 15:54:21.211" endtime="20220131 15:54:25.705"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:54:25.705" endtime="20220131 15:54:25.837"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:21.211" endtime="20220131 15:54:25.838"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:54:26.839" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:54:25.838" endtime="20220131 15:54:26.839"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("abt-apply-btn").scrollIntoView()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220131 15:54:26.840" level="INFO">Executing JavaScript:
+document.getElementById("abt-apply-btn").scrollIntoView()
+Without any arguments.</msg>
+<status status="PASS" starttime="20220131 15:54:26.839" endtime="20220131 15:54:26.844"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:54:27.849" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:54:26.844" endtime="20220131 15:54:27.849"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Join Us</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220131 15:54:27.849" endtime="20220131 15:54:27.917"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:54:28.933" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:54:27.918" endtime="20220131 15:54:28.933"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:abt-apply-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220131 15:54:28.933" level="INFO">Clicking element 'id:abt-apply-btn'.</msg>
+<status status="PASS" starttime="20220131 15:54:28.933" endtime="20220131 15:54:28.977"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:54:29.987" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:54:28.977" endtime="20220131 15:54:29.987"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Membership Application</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220131 15:54:29.987" endtime="20220131 15:54:32.084"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:54:32.085" endtime="20220131 15:54:34.233"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:21.210" endtime="20220131 15:54:34.233"/>
+</test>
+<doc>A test suit for valid use of the about page
+
+this test follows the example using keywords from
+the SeleniumLibrary</doc>
+<status status="PASS" starttime="20220131 15:54:21.016" endtime="20220131 15:54:34.234"/>
+</suite>
+<suite id="s1-s2" name="Valid Articles" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests\valid_articles.robot">
+<test id="s1-s2-t1" name="Valid Filter By All Articles">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:54:34.242" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 15:54:34.242" endtime="20220131 15:54:38.851"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:54:38.851" endtime="20220131 15:54:38.970"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:34.242" endtime="20220131 15:54:38.970"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>All</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:54:38.971" level="INFO">Clicking button 'class:yAll'.</msg>
+<status status="PASS" starttime="20220131 15:54:38.971" endtime="20220131 15:54:39.019"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:38.971" endtime="20220131 15:54:39.019"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>All</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 15:54:39.020" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text 'All'.</msg>
+<status status="PASS" starttime="20220131 15:54:39.019" endtime="20220131 15:54:39.038"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:54:39.039" endtime="20220131 15:54:41.185"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:34.241" endtime="20220131 15:54:41.185"/>
+</test>
+<test id="s1-s2-t2" name="Valid Filter By Year 2019 Articles">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:54:41.187" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 15:54:41.187" endtime="20220131 15:54:44.785"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:54:44.785" endtime="20220131 15:54:44.906"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:41.187" endtime="20220131 15:54:44.906"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2019</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:54:44.908" level="INFO">Clicking button 'class:y2019'.</msg>
+<status status="PASS" starttime="20220131 15:54:44.907" endtime="20220131 15:54:44.985"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:44.907" endtime="20220131 15:54:44.985"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>2019</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 15:54:44.986" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text '2019'.</msg>
+<status status="PASS" starttime="20220131 15:54:44.986" endtime="20220131 15:54:45.010"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:54:45.010" endtime="20220131 15:54:47.255"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:41.186" endtime="20220131 15:54:47.255"/>
+</test>
+<test id="s1-s2-t3" name="Valid Filter By Year 2021 Articles">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:54:47.257" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 15:54:47.257" endtime="20220131 15:54:50.987"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:54:50.987" endtime="20220131 15:54:51.113"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:47.256" endtime="20220131 15:54:51.113"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2021</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:54:51.114" level="INFO">Clicking button 'class:y2021'.</msg>
+<status status="PASS" starttime="20220131 15:54:51.114" endtime="20220131 15:54:51.193"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:51.113" endtime="20220131 15:54:51.193"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>2021</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 15:54:51.195" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text '2021'.</msg>
+<status status="PASS" starttime="20220131 15:54:51.194" endtime="20220131 15:54:51.214"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:54:51.215" endtime="20220131 15:54:53.369"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:47.256" endtime="20220131 15:54:53.369"/>
+</test>
+<test id="s1-s2-t4" name="Valid Filter Through Multiple Years Before Choosing All Articles">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:54:53.371" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 15:54:53.371" endtime="20220131 15:54:57.074"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:54:57.074" endtime="20220131 15:54:57.198"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:53.370" endtime="20220131 15:54:57.198"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2021</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:54:57.200" level="INFO">Clicking button 'class:y2021'.</msg>
+<status status="PASS" starttime="20220131 15:54:57.199" endtime="20220131 15:54:57.277"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:57.199" endtime="20220131 15:54:57.277"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2018</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:54:57.278" level="INFO">Clicking button 'class:y2018'.</msg>
+<status status="PASS" starttime="20220131 15:54:57.278" endtime="20220131 15:54:57.344"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:57.278" endtime="20220131 15:54:57.344"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>All</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:54:57.345" level="INFO">Clicking button 'class:yAll'.</msg>
+<status status="PASS" starttime="20220131 15:54:57.345" endtime="20220131 15:54:57.427"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:57.345" endtime="20220131 15:54:57.427"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>All</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 15:54:57.428" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text 'All'.</msg>
+<status status="PASS" starttime="20220131 15:54:57.428" endtime="20220131 15:54:57.447"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:54:57.448" endtime="20220131 15:54:59.585"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:53.370" endtime="20220131 15:54:59.585"/>
+</test>
+<test id="s1-s2-t5" name="Invalid Filter By Year 1234 Articles">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:54:59.587" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 15:54:59.587" endtime="20220131 15:55:03.291"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:55:03.291" endtime="20220131 15:55:03.413"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:59.587" endtime="20220131 15:55:03.413"/>
+</kw>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<arg>class:y1234</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<msg timestamp="20220131 15:55:03.500" level="INFO">Current page does not contain text 'class:y1234'.</msg>
+<status status="PASS" starttime="20220131 15:55:03.414" endtime="20220131 15:55:03.500"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:55:03.501" endtime="20220131 15:55:05.625"/>
+</kw>
+<status status="PASS" starttime="20220131 15:54:59.586" endtime="20220131 15:55:05.625"/>
+</test>
+<doc>A test suit for valid use of the articles page.
+
+this test follows the example using keywords from
+the SeleniumLibrary</doc>
+<status status="PASS" starttime="20220131 15:54:34.236" endtime="20220131 15:55:05.626"/>
+</suite>
+<suite id="s1-s3" name="Valid Events" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests\valid_events.robot">
+<test id="s1-s3-t1" name="Valid Filter By All Events">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:55:05.634" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 15:55:05.634" endtime="20220131 15:55:10.379"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:55:10.379" endtime="20220131 15:55:10.505"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:05.634" endtime="20220131 15:55:10.505"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:55:11.512" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:55:10.506" endtime="20220131 15:55:11.512"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementsByClassName("yAll")[0].scrollIntoView(false)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220131 15:55:11.513" level="INFO">Executing JavaScript:
+document.getElementsByClassName("yAll")[0].scrollIntoView(false)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220131 15:55:11.512" endtime="20220131 15:55:11.517"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:55:12.518" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:55:11.517" endtime="20220131 15:55:12.518"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>All</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:55:12.519" level="INFO">Clicking button 'class:yAll'.</msg>
+<status status="PASS" starttime="20220131 15:55:12.519" endtime="20220131 15:55:12.564"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:12.518" endtime="20220131 15:55:12.564"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>All</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 15:55:12.564" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text 'All'.</msg>
+<status status="PASS" starttime="20220131 15:55:12.564" endtime="20220131 15:55:12.584"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:55:12.584" endtime="20220131 15:55:14.734"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:05.633" endtime="20220131 15:55:14.734"/>
+</test>
+<test id="s1-s3-t2" name="Valid Filter By Year 2020 Events">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:55:14.736" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 15:55:14.736" endtime="20220131 15:55:18.344"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:55:18.344" endtime="20220131 15:55:18.471"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:14.735" endtime="20220131 15:55:18.472"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:55:19.483" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:55:18.472" endtime="20220131 15:55:19.483"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementsByClassName("y2020")[0].scrollIntoView(false)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220131 15:55:19.484" level="INFO">Executing JavaScript:
+document.getElementsByClassName("y2020")[0].scrollIntoView(false)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220131 15:55:19.483" endtime="20220131 15:55:19.488"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:55:20.489" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:55:19.488" endtime="20220131 15:55:20.489"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2020</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:55:20.490" level="INFO">Clicking button 'class:y2020'.</msg>
+<status status="PASS" starttime="20220131 15:55:20.490" endtime="20220131 15:55:20.568"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:20.489" endtime="20220131 15:55:20.568"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>2020</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 15:55:20.569" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text '2020'.</msg>
+<status status="PASS" starttime="20220131 15:55:20.568" endtime="20220131 15:55:20.594"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:55:20.595" endtime="20220131 15:55:22.737"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:14.735" endtime="20220131 15:55:22.737"/>
+</test>
+<test id="s1-s3-t3" name="Valid Filter By Year 2018 Events">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:55:22.739" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 15:55:22.739" endtime="20220131 15:55:26.418"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:55:26.419" endtime="20220131 15:55:26.547"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:22.739" endtime="20220131 15:55:26.547"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:55:27.551" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:55:26.547" endtime="20220131 15:55:27.551"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementsByClassName("y2018")[0].scrollIntoView(false)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220131 15:55:27.552" level="INFO">Executing JavaScript:
+document.getElementsByClassName("y2018")[0].scrollIntoView(false)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220131 15:55:27.551" endtime="20220131 15:55:27.556"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:55:28.571" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:55:27.557" endtime="20220131 15:55:28.571"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2018</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:55:28.572" level="INFO">Clicking button 'class:y2018'.</msg>
+<status status="PASS" starttime="20220131 15:55:28.572" endtime="20220131 15:55:28.640"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:28.571" endtime="20220131 15:55:28.640"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>2018</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 15:55:28.641" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text '2018'.</msg>
+<status status="PASS" starttime="20220131 15:55:28.640" endtime="20220131 15:55:28.663"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:55:28.663" endtime="20220131 15:55:30.799"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:22.738" endtime="20220131 15:55:30.799"/>
+</test>
+<test id="s1-s3-t4" name="Valid Filter Through Multiple Years Before Choosing All Events">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:55:30.801" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 15:55:30.801" endtime="20220131 15:55:34.498"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:55:34.498" endtime="20220131 15:55:34.626"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:30.801" endtime="20220131 15:55:34.626"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:55:35.639" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:55:34.627" endtime="20220131 15:55:35.639"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementsByClassName("yAll")[0].scrollIntoView()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220131 15:55:35.640" level="INFO">Executing JavaScript:
+document.getElementsByClassName("yAll")[0].scrollIntoView()
+Without any arguments.</msg>
+<status status="PASS" starttime="20220131 15:55:35.639" endtime="20220131 15:55:35.644"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:55:36.645" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:55:35.644" endtime="20220131 15:55:36.645"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2020</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:55:36.647" level="INFO">Clicking button 'class:y2020'.</msg>
+<status status="PASS" starttime="20220131 15:55:36.646" endtime="20220131 15:55:36.736"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:36.646" endtime="20220131 15:55:36.736"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>2018</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:55:36.738" level="INFO">Clicking button 'class:y2018'.</msg>
+<status status="PASS" starttime="20220131 15:55:36.737" endtime="20220131 15:55:36.817"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:36.737" endtime="20220131 15:55:36.817"/>
+</kw>
+<kw name="Filter By" library="resources">
+<arg>All</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>class:y${year}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220131 15:55:36.819" level="INFO">Clicking button 'class:yAll'.</msg>
+<status status="PASS" starttime="20220131 15:55:36.818" endtime="20220131 15:55:36.903"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:36.818" endtime="20220131 15:55:36.903"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:DateTabs_active__1Dz9v</arg>
+<arg>All</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220131 15:55:36.904" level="INFO">Verifying element 'class:DateTabs_active__1Dz9v' contains exact text 'All'.</msg>
+<status status="PASS" starttime="20220131 15:55:36.904" endtime="20220131 15:55:36.927"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:55:36.927" endtime="20220131 15:55:39.075"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:30.800" endtime="20220131 15:55:39.075"/>
+</test>
+<test id="s1-s3-t5" name="Invalid Filter By Year 1234 Events">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:55:39.077" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 15:55:39.077" endtime="20220131 15:55:42.805"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:55:42.806" endtime="20220131 15:55:42.935"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:39.077" endtime="20220131 15:55:42.935"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:55:43.944" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:55:42.936" endtime="20220131 15:55:43.944"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementsByClassName("yAll")[0].scrollIntoView()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220131 15:55:43.945" level="INFO">Executing JavaScript:
+document.getElementsByClassName("yAll")[0].scrollIntoView()
+Without any arguments.</msg>
+<status status="PASS" starttime="20220131 15:55:43.944" endtime="20220131 15:55:43.949"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220131 15:55:44.958" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220131 15:55:43.949" endtime="20220131 15:55:44.958"/>
+</kw>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<arg>class:y1234</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<msg timestamp="20220131 15:55:45.027" level="INFO">Current page does not contain text 'class:y1234'.</msg>
+<status status="PASS" starttime="20220131 15:55:44.958" endtime="20220131 15:55:45.027"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:55:45.028" endtime="20220131 15:55:47.195"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:39.076" endtime="20220131 15:55:47.195"/>
+</test>
+<doc>A test suit for valid use of the events page.
+
+this test follows the example using keywords from
+the SeleniumLibrary</doc>
+<status status="PASS" starttime="20220131 15:55:05.629" endtime="20220131 15:55:47.196"/>
+</suite>
+<suite id="s1-s4" name="Valid Page Open" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests\valid_page_open.robot">
+<test id="s1-s4-t1" name="Valid Landing Page Opened">
+<kw name="Open Browser To Landing Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${HOME URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:55:47.204" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/'.</msg>
+<status status="PASS" starttime="20220131 15:55:47.204" endtime="20220131 15:55:52.123"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:55:52.123" endtime="20220131 15:55:52.258"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:47.204" endtime="20220131 15:55:52.258"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>User Experience Society - DLSU</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220131 15:55:52.339" level="INFO">Current page contains text 'User Experience Society - DLSU'.</msg>
+<status status="PASS" starttime="20220131 15:55:52.259" endtime="20220131 15:55:52.339"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>About UX Society DLSU</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220131 15:55:52.429" level="INFO">Current page contains text 'About UX Society DLSU'.</msg>
+<status status="PASS" starttime="20220131 15:55:52.340" endtime="20220131 15:55:52.429"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:55:52.429" endtime="20220131 15:55:54.545"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:47.203" endtime="20220131 15:55:54.545"/>
+</test>
+<test id="s1-s4-t2" name="Valid About Page Opened">
+<kw name="Open Browser To About Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ABOUT URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:55:54.547" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/about'.</msg>
+<status status="PASS" starttime="20220131 15:55:54.547" endtime="20220131 15:55:58.988"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:55:58.988" endtime="20220131 15:55:59.118"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:54.547" endtime="20220131 15:55:59.118"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>UX Society</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220131 15:55:59.185" level="INFO">Current page contains text 'UX Society'.</msg>
+<status status="PASS" starttime="20220131 15:55:59.118" endtime="20220131 15:55:59.185"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>The Mission-Vision</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220131 15:55:59.247" level="INFO">Current page contains text 'The Mission-Vision'.</msg>
+<status status="PASS" starttime="20220131 15:55:59.186" endtime="20220131 15:55:59.248"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:55:59.248" endtime="20220131 15:56:01.371"/>
+</kw>
+<status status="PASS" starttime="20220131 15:55:54.546" endtime="20220131 15:56:01.371"/>
+</test>
+<test id="s1-s4-t3" name="Valid Events Page Opened">
+<kw name="Open Browser To Events Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${EVENTS URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:56:01.373" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/event'.</msg>
+<status status="PASS" starttime="20220131 15:56:01.373" endtime="20220131 15:56:04.988"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:56:04.988" endtime="20220131 15:56:05.117"/>
+</kw>
+<status status="PASS" starttime="20220131 15:56:01.373" endtime="20220131 15:56:05.118"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Events</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220131 15:56:05.169" level="INFO">Current page contains text 'Events'.</msg>
+<status status="PASS" starttime="20220131 15:56:05.118" endtime="20220131 15:56:05.169"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:56:05.170" endtime="20220131 15:56:07.313"/>
+</kw>
+<status status="PASS" starttime="20220131 15:56:01.372" endtime="20220131 15:56:07.313"/>
+</test>
+<test id="s1-s4-t4" name="Valid Articles Page Opened">
+<kw name="Open Browser To Articles Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${ARTICLES URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:56:07.315" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/blog'.</msg>
+<status status="PASS" starttime="20220131 15:56:07.315" endtime="20220131 15:56:12.298"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:56:12.298" endtime="20220131 15:56:12.422"/>
+</kw>
+<status status="PASS" starttime="20220131 15:56:07.314" endtime="20220131 15:56:12.422"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Articles</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220131 15:56:12.501" level="INFO">Current page contains text 'Articles'.</msg>
+<status status="PASS" starttime="20220131 15:56:12.422" endtime="20220131 15:56:12.501"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:56:12.501" endtime="20220131 15:56:14.616"/>
+</kw>
+<status status="PASS" starttime="20220131 15:56:07.314" endtime="20220131 15:56:14.616"/>
+</test>
+<test id="s1-s4-t5" name="Valid Membership Application Page Opened">
+<kw name="Open Browser To Membership Application Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${MEMBERSHIP URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220131 15:56:14.619" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/apply'.</msg>
+<status status="PASS" starttime="20220131 15:56:14.618" endtime="20220131 15:56:19.427"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220131 15:56:19.428" endtime="20220131 15:56:19.557"/>
+</kw>
+<status status="PASS" starttime="20220131 15:56:14.618" endtime="20220131 15:56:19.557"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Membership Application</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220131 15:56:19.620" level="INFO">Current page contains text 'Membership Application'.</msg>
+<status status="PASS" starttime="20220131 15:56:19.558" endtime="20220131 15:56:19.621"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220131 15:56:19.621" endtime="20220131 15:56:21.753"/>
+</kw>
+<status status="PASS" starttime="20220131 15:56:14.617" endtime="20220131 15:56:21.753"/>
+</test>
+<doc>A test suit for valid opening of pages
+
+this test follows the example using keywords from
+the SeleniumLibrary</doc>
+<status status="PASS" starttime="20220131 15:55:47.199" endtime="20220131 15:56:21.754"/>
+</suite>
+<status status="PASS" starttime="20220131 15:54:20.991" endtime="20220131 15:56:21.757"/>
+</suite>
+<statistics>
+<total>
+<stat pass="16" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="16" fail="0" skip="0" id="s1" name="Robot Tests">Robot Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Valid About">Robot Tests.Valid About</stat>
+<stat pass="5" fail="0" skip="0" id="s1-s2" name="Valid Articles">Robot Tests.Valid Articles</stat>
+<stat pass="5" fail="0" skip="0" id="s1-s3" name="Valid Events">Robot Tests.Valid Events</stat>
+<stat pass="5" fail="0" skip="0" id="s1-s4" name="Valid Page Open">Robot Tests.Valid Page Open</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
