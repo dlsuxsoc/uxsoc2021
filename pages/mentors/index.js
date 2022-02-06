@@ -12,6 +12,7 @@ import getNextNDays from "../../helpers/getNextNDays";
 import getTimeSlotsByDay from "../../helpers/getTimeSlotsByDay";
 import { Oval } from "react-loader-spinner";
 import mentorshipInstanceExists from "../../helpers/mentorshipInstanceExists";
+import Link from "next/dist/client/link";
 
 export default function Index({ mentors }) {
   const router = useRouter();
@@ -27,7 +28,7 @@ export default function Index({ mentors }) {
     email: "",
     message: "",
   }
-
+  // duplication checking
   const [duplicateTextHelper, setDuplicateTextHelper] = useState("");
   const [duplicateFetching, setDuplicateFetching] = useState(false);
   const [isBookingMentorFilled, setBookingMentor] = useState(false);
@@ -37,6 +38,7 @@ export default function Index({ mentors }) {
   const [isFormDataChanged, setFormData] = useState(false);
   const [isFormValid, setFormValidity] = useState(false);
   const [cancelToken, setCancelToken] = useState(undefined)
+  const [errorToggle, errorToggleModal] = useState(false);
 
   // BINDED TO DROPDOWN MENTOR NAME
   const [mentorIndex, setMentorIndex] = useState(-1);
@@ -66,11 +68,17 @@ export default function Index({ mentors }) {
         const res = await axios.post("/api/addMentorshipBooking", bookingData);
         setApplicationSending(false);
         setBookingData(initialBookingDataState);
-        console.log("zxc");
-        (res.status === 201) ? router.push("?status=success", undefined, {shallow: true}) :
-                               router.push("?status=fail", undefined, { shallow: true });
+        if(res.status === 201){
+          router.push("?status=success", undefined, {shallow: true})
+          toggleModal(true);
+        }else{
+          router.push("?status=fail", undefined, { shallow: true });
+          errorToggleModal(true);
+        }
+                               
       }catch(e){
         setApplicationSending(false);
+        errorToggleModal(true)
         router.push("?status=fail", undefined, { shallow: true });
       }
     }
@@ -85,17 +93,13 @@ export default function Index({ mentors }) {
       isFormDataChanged &&
       !applicationSending
     ) {
-      if(typeof cancelToken != typeof undefined ){
-        cancelToken.cancel();
-        console.log("aborted");
-      }
+      cancelMentorshipCheck();
       setCancelToken(axios.CancelToken.source())
 
       
       setFormData(false);
       setDuplicateFetching(true);
       try {
-        cancelToken.cancel();
         const res = await axios.get("/api/getMentorshipDetails",
                           bookingData,
                           {cancelToken : cancelToken.token});
@@ -127,6 +131,9 @@ export default function Index({ mentors }) {
      }
     }
   };
+
+
+  
 
   return (
     <Layout active={5}>
@@ -243,6 +250,7 @@ export default function Index({ mentors }) {
                         bookingDate: "",
                         bookingSlot: "",
                       });
+                      cancelMentorshipCheck();
                       setFormData(true);
                       setDuplicateTextHelper("");
                     }}
@@ -287,6 +295,11 @@ export default function Index({ mentors }) {
                             bookingDate: e.target.value,
                             bookingSlot: "",
                           });
+                          if(typeof cancelToken != typeof undefined ){
+                            cancelToken.cancel();
+                            // console.log("aborted");
+                          }
+                          cancelMentorshipCheck();
                           setFormData(true);
                           setDuplicateTextHelper("");
                         }}
@@ -322,6 +335,7 @@ export default function Index({ mentors }) {
                             ...bookingData,
                             bookingSlot: e.target.value,
                           });
+                          cancelMentorshipCheck();
                           setFormData(true);
                           setDuplicateTextHelper("");
                         }}
@@ -452,6 +466,8 @@ export default function Index({ mentors }) {
                       ...bookingData,
                       email: e.target.value,
                     });
+                    cancelMentorshipCheck();
+                    
                     setDuplicateTextHelper("");
                     setDuplicateFetching(false);
                     setFormData(true);
@@ -519,9 +535,31 @@ export default function Index({ mentors }) {
         Thank you for booking a mentor! We will reach out to you via email about
         your schedule once we have processed your booking.
       </Modal>
+      <Modal
+        title={"Something Went Wrong!"}
+        toggleModal={errorToggleModal}
+        toggle={errorToggle}
+      >
+        It looks like we are having issues processing your
+        application. Please try again later. If this problem
+        persists, you may try contacting us through our email at{" "}
+        <Link href={"mailto:dlsuuxsociety@gmail.com"}>
+          <a className="text-blue-500">dlsuuxsociety@gmail.com</a>
+        </Link>
+      .
+      </Modal>
     </Layout>
   );
 }
+const cancelMentorshipCheck = () => {
+  if(typeof cancelToken != typeof undefined ){
+    try{
+      cancelToken.cancel();
+    }catch(e){
+      console.log(e);
+    }
+  }
+};
 
 export async function getServerSideProps() {
   const mentorData = await getMentors();
