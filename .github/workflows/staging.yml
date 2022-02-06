@@ -27,7 +27,7 @@ jobs:
             ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
-      # 2. Install Node 14
+      # 2. Install Node 16
       - name: Use Node.js 16.x
         uses: actions/setup-node@v1
         with:
