@@ -54,7 +54,7 @@ Valid Mentors Button Pressed
     Execute Javascript  document.getElementById("footerMentors").scrollIntoView(false)
     Sleep   1s
     Click Element    id:footerMentors
-    Sleep   7s
+    Sleep   20s
     Page Should Contain     Our mentors
 
 Valid Facebook Button Pressed
