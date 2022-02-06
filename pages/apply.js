@@ -18,7 +18,7 @@ const Apply = () => {
   const router = useRouter();
   const [emailFetching, setEmailFetching] = useState(false);
   const [applicationSending, setApplicationSending] = useState(false);
-  const emailCheckingController = new AbortController();
+  // const emailCheckingController = new AbortController();
 
   // const [applicationData, setApplicationData] = useState({
   //   firstName: "Alyssa",
@@ -476,12 +476,12 @@ const Apply = () => {
                     onChange={(e) => {
                       setEmailFetching(false);
 
-                      try {
-                        emailCheckingController.abort();
-                        console.log("Request Aborted");
-                      } catch (e) {
-                        console.log("Request did not abort");
-                      }
+                      // try {
+                      //   emailCheckingController.abort();
+                      //   console.log("Request Aborted");
+                      // } catch (e) {
+                      //   console.log("Request did not abort");
+                      // }
 
                       setApplicationData({
                         ...applicationData,
