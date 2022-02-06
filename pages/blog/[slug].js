@@ -10,7 +10,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useEffect, useState } from "react";
 
 export default function ArticlesPost({ active, title, authors, content, date, imagesCollection }) {
-    console.log (DateTime.fromISO(date).c)
+   
     return (
         <Layout active={-1}>
             <SEO title={"Articles Post"} />
@@ -50,20 +50,37 @@ export default function ArticlesPost({ active, title, authors, content, date, im
 
 
 
+// export async function getStaticPaths() {
+//     const { data } = await ContentfulApi.getArticles(0);
+ 
+//     const foo = {
+//         paths: data.articleCollection.items.map((item) => ({
+//             params: {
+//                 slug: item.slug
+//             }
+//         })),
+//         fallback: true,
+//     };
+
+
+//     return foo;
+// }
+
+
 export async function getStaticPaths() {
     const { data } = await ContentfulApi.getArticles(0);
-    console.log(data);
-    const foo = {
-        paths: data.articleCollection.items.map((item) => ({
-            params: {
-                slug: item.slug
-            }
-        })),
-        fallback: false,
+ 
+ 
+    const paths = data.articleCollection.items.map((item) => {
+            return  {
+                params: {slug: item.slug} 
+            };
+        });
+        
+    return {
+        paths,
+        fallback: false
     };
-
-    console.log(JSON.stringify(foo, null, ' '));
-    return foo;
 }
 
 export async function getStaticProps(context) {

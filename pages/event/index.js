@@ -18,7 +18,6 @@ const getYears = (events) => {
 };
 
 export default function Events({ active, contentfulEvents }) {
-  console.log({ ...contentfulEvents }.image);
   const [year, setYear] = useState("All"); // selected date
   const [events, setEvents] = useState([...contentfulEvents]);
   const [yearList, setYearList] = useState(["All"]);
