@@ -93,29 +93,29 @@ export default function Index({ mentors }) {
       isFormDataChanged &&
       !applicationSending
     ) {
-      cancelMentorshipCheck();
-      setCancelToken(axios.CancelToken.source())
+      // cancelMentorshipCheck();
+      // setCancelToken(axios.CancelToken.source())
 
       
       setFormData(false);
       setDuplicateFetching(true);
+      console.log("asd");
       try {
         const res = await axios.get("/api/getMentorshipDetails",
-                          bookingData,
-                          {cancelToken : cancelToken.token});
+                          bookingData);
         setDuplicateFetching(false);
         const key = {
           email: bookingData.email,
           mentor: bookingData.bookingMentor,
           date: bookingData.bookingDate + " " + bookingData.bookingSlot,
         };
-
+        
         let invalid = mentorshipInstanceExists(res.data, key);
         setFormValidity(!invalid);
         //   const invalid = res.data.includes(key)
-        console.log(invalid);
-        console.log(key.email);
-        // console.log(res.data);
+        // console.log(invalid);
+        // console.log(key.email);
+        console.log(res.data);
         //console.log(invalid);
         if (invalid) {
           setDuplicateTextHelper(
@@ -254,7 +254,7 @@ export default function Index({ mentors }) {
                         bookingDate: "",
                         bookingSlot: "",
                       });
-                      cancelMentorshipCheck();
+                      // cancelMentorshipCheck();
                       setFormData(true);
                       setDuplicateTextHelper("");
                     }}
@@ -299,11 +299,7 @@ export default function Index({ mentors }) {
                             bookingDate: e.target.value,
                             bookingSlot: "",
                           });
-                          if(typeof cancelToken != typeof undefined ){
-                            cancelToken.cancel();
-                            // console.log("aborted");
-                          }
-                          cancelMentorshipCheck();
+                          // cancelMentorshipCheck();
                           setFormData(true);
                           setDuplicateTextHelper("");
                         }}
@@ -343,7 +339,7 @@ export default function Index({ mentors }) {
                             ...bookingData,
                             bookingSlot: e.target.value,
                           });
-                          cancelMentorshipCheck();
+                          // cancelMentorshipCheck();
                           setFormData(true);
                           setDuplicateTextHelper("");
                         }}
@@ -478,7 +474,7 @@ export default function Index({ mentors }) {
                       ...bookingData,
                       email: e.target.value,
                     });
-                    cancelMentorshipCheck();
+                    // cancelMentorshipCheck();
                     
                     setDuplicateTextHelper("");
                     setDuplicateFetching(false);
@@ -564,15 +560,15 @@ export default function Index({ mentors }) {
     </Layout>
   );
 }
-const cancelMentorshipCheck = () => {
-  if(typeof cancelToken != typeof undefined ){
-    try{
-      cancelToken.cancel();
-    }catch(e){
-      console.log(e);
-    }
-  }
-};
+// const cancelMentorshipCheck = () => {
+//   if(typeof cancelToken != typeof undefined ){
+//     try{
+//       cancelToken.cancel();
+//     }catch(e){
+//       console.log(e);
+//     }
+//   }
+// };
 
 export async function getServerSideProps() {
   const mentorData = await getMentors();
