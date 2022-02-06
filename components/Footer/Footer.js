@@ -16,7 +16,7 @@ const Footer = () => {
       className={`${styles.container} pt-20 pb-12 px-4 sm:px-8 lg:px-32  flex flex-wrap lg:flex-nowrap`}
     >
       <div className="w-full lg:w-1/2 mb-8">
-        <div className="block">
+        <div className="block lg:inline-block">
           <div className="h-12 relative block lg:hidden text-center lg:text-left mb-12">
             <Image
               src="/images/uxsoc-footer.png"
@@ -44,7 +44,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full lg:w-1/2">
-        <ul className="list-none w-full flex flex-wrap sm:flex-nowrap justify-center lg:justify-end mb-16">
+        <ul className="list-none w-full flex flex-wrap sm:flex-nowrap justify-center lg:justify-end mb-16 z-10">
           {data.map((item, index) => {
             return (
               <li
@@ -60,22 +60,22 @@ const Footer = () => {
         </ul>
         <ul className="list-none w-full flex justify-center lg:justify-end mb-8">
           <li className="mr-2 ml-2 lg:mr-0 lg:ml-6">
-            <Link href={"#"}>
-              <a id="footerFb">
+            <Link href={"https://www.facebook.com/uxsocietydlsu"}>
+              <a id="footerFb" target={"_blank"}>
                 <FaFacebookSquare size="32px" />
               </a>
             </Link>
           </li>
           <li className="mr-2 ml-2 lg:mr-0 lg:ml-6">
-            <Link href={"#"}>
-              <a id="footerTwitter">
+            <Link href={"https://twitter.com/uxsocietydlsu"}>
+              <a id="footerTwitter" target={"_blank"}>
                 <FaTwitter size="32px" />
               </a>
             </Link>
           </li>
           <li className="mr-2 ml-2 lg:mr-0 lg:ml-6">
-            <Link href={"#"}>
-              <a id="footerInstagram">
+            <Link href={"https://www.instagram.com/uxsocietydlsu"}>
+              <a id="footerInstagram" target={"_blank"}>
                 <FaInstagram size="32px" />
               </a>
             </Link>
