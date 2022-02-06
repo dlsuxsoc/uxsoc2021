@@ -18,7 +18,7 @@ const Apply = () => {
   const router = useRouter();
   const [emailFetching, setEmailFetching] = useState(false);
   const [applicationSending, setApplicationSending] = useState(false);
-  // const emailCheckingController = new AbortController();
+  const emailCheckingController = new AbortController();
 
   // const [applicationData, setApplicationData] = useState({
   //   firstName: "Alyssa",

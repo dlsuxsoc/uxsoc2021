@@ -10,7 +10,6 @@ Test Teardown   Close Browser
 
 Blank First Name
     Open Browser To Membership Application Page
-    Sleep   10s
     Input Text  name:lastName   DELETE
     Input Text  name:bMonth     11
     Input Text  name:bDay       11

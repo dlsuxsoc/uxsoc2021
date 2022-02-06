@@ -21,31 +21,36 @@ Open Browser To Landing Page
     # open browser
     Open Browser    ${HOME URL}    ${BROWSER}
     # set window size
-    Maximize Browser Window  
+    Maximize Browser Window
+    Sleep   10s  
 
 Open Browser To About Page
     # open browser
     Open Browser    ${ABOUT URL}    ${BROWSER}
     # set window size
     Maximize Browser Window  
+    Sleep   10s
 
 Open Browser To Services Page
     # open browser
     Open Browser    ${SERVICES URL}    ${BROWSER}
     # set window size
     Maximize Browser Window  
+    Sleep   10s
 
 Open Browser To Events Page
     # open browser
     Open Browser    ${EVENTS URL}    ${BROWSER}
     # set window size
     Maximize Browser Window
+    Sleep   10s
 
 Open Browser To Articles Page
     # open browser
     Open Browser    ${ARTICLES URL}    ${BROWSER}
     # set window size
     Maximize Browser Window
+    Sleep   10s
     
 Open Browser To Membership Application Page
     # # open browser
@@ -55,12 +60,14 @@ Open Browser To Membership Application Page
     Open Browser To Landing Page
     Click Element    id:navJoin
     Maximize Browser Window
+    Sleep   10s
 
 Open Browser To Mentorship Booking Page
     # open browser
     Open Browser    ${BOOKING URL}    ${BROWSER}
     # set window size
     Maximize Browser Window
+    Sleep   10s
     
 Filter By 
     [Arguments]     ${year}    
