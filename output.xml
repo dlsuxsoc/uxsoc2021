@@ -1,324 +1,1436 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1.2 (Python 3.8.8 on win32)" generated="20220206 17:54:48.143" rpa="false" schemaversion="2">
-<suite id="s1" name="Valid Membership" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests\valid_membership.robot">
-<test id="s1-t1" name="Blank First Name">
-<kw name="Open Browser To Membership Application Page" library="resources">
-<kw name="Open Browser To Landing Page" library="resources">
+<robot generator="Robot 4.1.2 (Python 3.8.8 on win32)" generated="20220206 19:12:15.261" rpa="false" schemaversion="2">
+<suite id="s1" name="Valid Mentorship" source="C:\Users\JAMES SY\Desktop\Work Space\STSWENG\uxsoc2021\__tests__\robot_tests\valid_mentorship.robot">
+<test id="s1-t1" name="Valid Book A Mentor">
+<kw name="Open Browser To Mentorship Booking Page" library="resources">
 <kw name="Open Browser" library="SeleniumLibrary">
-<arg>${HOME URL}</arg>
+<arg>${BOOKING URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20220206 17:54:48.372" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/'.</msg>
-<status status="PASS" starttime="20220206 17:54:48.372" endtime="20220206 17:54:51.888"/>
+<msg timestamp="20220206 19:12:15.476" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/mentors'.</msg>
+<status status="PASS" starttime="20220206 19:12:15.476" endtime="20220206 19:12:25.365"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20220206 17:54:51.889" endtime="20220206 17:54:52.073"/>
+<status status="PASS" starttime="20220206 19:12:25.365" endtime="20220206 19:12:25.527"/>
 </kw>
-<status status="PASS" starttime="20220206 17:54:48.371" endtime="20220206 17:54:52.074"/>
+<status status="PASS" starttime="20220206 19:12:15.476" endtime="20220206 19:12:25.528"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:12:26.540" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220206 19:12:25.528" endtime="20220206 19:12:26.540"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("book-mentor-header").scrollIntoView(true)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220206 19:12:26.541" level="INFO">Executing JavaScript:
+document.getElementById("book-mentor-header").scrollIntoView(true)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220206 19:12:26.540" endtime="20220206 19:12:26.545"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:12:31.546" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220206 19:12:26.545" endtime="20220206 19:12:31.546"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Book a Mentor</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220206 19:12:31.546" endtime="20220206 19:12:31.632"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingMentor</arg>
+<arg>0</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:12:31.632" level="INFO">Selecting options from selection list 'name:bookingMentor' by value 0.</msg>
+<status status="PASS" starttime="20220206 19:12:31.632" endtime="20220206 19:12:31.707"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingDate</arg>
+<arg>February 11, 2022</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:12:31.708" level="INFO">Selecting options from selection list 'name:bookingDate' by value February 11, 2022.</msg>
+<status status="PASS" starttime="20220206 19:12:31.707" endtime="20220206 19:12:31.791"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingSlot</arg>
+<arg>03:00PM-05:00PM</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:12:31.792" level="INFO">Selecting options from selection list 'name:bookingSlot' by value 03:00PM-05:00PM.</msg>
+<status status="PASS" starttime="20220206 19:12:31.792" endtime="20220206 19:12:31.867"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:firstName</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:12:31.869" level="INFO">Typing text 'Jake' into text field 'name:firstName'.</msg>
+<status status="PASS" starttime="20220206 19:12:31.868" endtime="20220206 19:12:32.010"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:lastName</arg>
+<arg>Paul</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:12:32.011" level="INFO">Typing text 'Paul' into text field 'name:lastName'.</msg>
+<status status="PASS" starttime="20220206 19:12:32.010" endtime="20220206 19:12:32.112"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:nickname</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:12:32.113" level="INFO">Typing text 'Jake' into text field 'name:nickname'.</msg>
+<status status="PASS" starttime="20220206 19:12:32.113" endtime="20220206 19:12:32.214"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:contactNum</arg>
+<arg>639123456789</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:12:32.215" level="INFO">Typing text '639123456789' into text field 'name:contactNum'.</msg>
+<status status="PASS" starttime="20220206 19:12:32.214" endtime="20220206 19:12:32.391"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:email</arg>
+<arg>jake_paul@email.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:12:32.392" level="INFO">Typing text 'jake_paul@email.com' into text field 'name:email'.</msg>
+<status status="PASS" starttime="20220206 19:12:32.391" endtime="20220206 19:12:32.632"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:message</arg>
+<arg>Hello there</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:12:32.633" level="INFO">Typing text 'Hello there' into text field 'name:message'.</msg>
+<status status="PASS" starttime="20220206 19:12:32.632" endtime="20220206 19:12:32.793"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20220206 19:12:32.794" level="INFO">Simulating Mouse Over on element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:12:32.794" endtime="20220206 19:12:33.078"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:12:53.088" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20220206 19:12:33.078" endtime="20220206 19:12:53.088"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>id:navJoin</arg>
+<arg>id:book-btn</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220206 17:54:52.074" level="INFO">Clicking element 'id:navJoin'.</msg>
-<status status="PASS" starttime="20220206 17:54:52.074" endtime="20220206 17:54:52.133"/>
-</kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20220206 17:54:52.133" endtime="20220206 17:54:52.137"/>
-</kw>
-<status status="PASS" starttime="20220206 17:54:48.371" endtime="20220206 17:54:52.138"/>
+<msg timestamp="20220206 19:12:53.089" level="INFO">Clicking element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:12:53.088" endtime="20220206 19:12:53.176"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>10s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220206 17:55:02.151" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20220206 17:54:52.139" endtime="20220206 17:55:02.151"/>
+<msg timestamp="20220206 19:13:03.181" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20220206 19:12:53.177" endtime="20220206 19:13:03.181"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>name:lastName</arg>
-<arg>DELETE</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220206 17:55:02.152" level="INFO">Typing text 'DELETE' into text field 'name:lastName'.</msg>
-<status status="PASS" starttime="20220206 17:55:02.151" endtime="20220206 17:55:02.269"/>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:success-book-modal</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220206 19:13:03.190" level="INFO">Current page contains element 'id:success-book-modal'.</msg>
+<status status="PASS" starttime="20220206 19:13:03.181" endtime="20220206 19:13:03.190"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>name:bMonth</arg>
-<arg>11</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220206 17:55:02.270" level="INFO">Typing text '11' into text field 'name:bMonth'.</msg>
-<status status="PASS" starttime="20220206 17:55:02.270" endtime="20220206 17:55:02.369"/>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220206 19:13:03.190" endtime="20220206 19:13:05.664"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>name:bDay</arg>
-<arg>11</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220206 17:55:02.370" level="INFO">Typing text '11' into text field 'name:bDay'.</msg>
-<status status="PASS" starttime="20220206 17:55:02.370" endtime="20220206 17:55:02.441"/>
+<status status="PASS" starttime="20220206 19:12:15.475" endtime="20220206 19:13:05.664"/>
+</test>
+<test id="s1-t2" name="Invalid Missing Mentor">
+<kw name="Open Browser To Mentorship Booking Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BOOKING URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220206 19:13:05.666" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/mentors'.</msg>
+<status status="PASS" starttime="20220206 19:13:05.666" endtime="20220206 19:13:15.828"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>name:bYear</arg>
-<arg>2000</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220206 17:55:02.442" level="INFO">Typing text '2000' into text field 'name:bYear'.</msg>
-<status status="PASS" starttime="20220206 17:55:02.442" endtime="20220206 17:55:02.549"/>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220206 19:13:15.828" endtime="20220206 19:13:15.997"/>
+</kw>
+<status status="PASS" starttime="20220206 19:13:05.666" endtime="20220206 19:13:15.998"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
+<arg>1s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220206 17:55:03.056" level="INFO">Slept 500 milliseconds</msg>
-<status status="PASS" starttime="20220206 17:55:02.549" endtime="20220206 17:55:03.056"/>
+<msg timestamp="20220206 19:13:16.999" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220206 19:13:15.998" endtime="20220206 19:13:16.999"/>
 </kw>
 <kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>document.getElementsByName("email")[0].scrollIntoView(false)</arg>
+<arg>document.getElementById("book-mentor-header").scrollIntoView(true)</arg>
 <doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20220206 17:55:03.057" level="INFO">Executing JavaScript:
-document.getElementsByName("email")[0].scrollIntoView(false)
+<msg timestamp="20220206 19:13:17.000" level="INFO">Executing JavaScript:
+document.getElementById("book-mentor-header").scrollIntoView(true)
 Without any arguments.</msg>
-<status status="PASS" starttime="20220206 17:55:03.056" endtime="20220206 17:55:03.061"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220206 17:55:03.562" level="INFO">Slept 500 milliseconds</msg>
-<status status="PASS" starttime="20220206 17:55:03.061" endtime="20220206 17:55:03.562"/>
-</kw>
-<kw name="Select Radio Button" library="SeleniumLibrary">
-<arg>pronoun</arg>
-<arg>He/ Him</arg>
-<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
-<msg timestamp="20220206 17:55:03.563" level="INFO">Selecting 'He/ Him' from radio button 'pronoun'.</msg>
-<status status="PASS" starttime="20220206 17:55:03.563" endtime="20220206 17:55:03.616"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>name:email</arg>
-<arg>DELETEME@dlsu.instructure.com</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220206 17:55:03.617" level="INFO">Typing text 'DELETEME@dlsu.instructure.com' into text field 'name:email'.</msg>
-<status status="PASS" starttime="20220206 17:55:03.617" endtime="20220206 17:55:03.863"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220206 17:55:04.372" level="INFO">Slept 500 milliseconds</msg>
-<status status="PASS" starttime="20220206 17:55:03.864" endtime="20220206 17:55:04.372"/>
-</kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>document.getElementsByName("program")[0].scrollIntoView(false)</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20220206 17:55:04.373" level="INFO">Executing JavaScript:
-document.getElementsByName("program")[0].scrollIntoView(false)
-Without any arguments.</msg>
-<status status="PASS" starttime="20220206 17:55:04.372" endtime="20220206 17:55:04.377"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220206 17:55:04.880" level="INFO">Slept 500 milliseconds</msg>
-<status status="PASS" starttime="20220206 17:55:04.378" endtime="20220206 17:55:04.880"/>
-</kw>
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>name:college</arg>
-<arg>De La Salle University - Manila</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<msg timestamp="20220206 17:55:04.881" level="INFO">Selecting options from selection list 'name:college' by value De La Salle University - Manila.</msg>
-<status status="PASS" starttime="20220206 17:55:04.880" endtime="20220206 17:55:04.966"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>name:program</arg>
-<arg>BS ORG</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220206 17:55:04.967" level="INFO">Typing text 'BS ORG' into text field 'name:program'.</msg>
-<status status="PASS" starttime="20220206 17:55:04.967" endtime="20220206 17:55:05.100"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220206 17:55:05.612" level="INFO">Slept 500 milliseconds</msg>
-<status status="PASS" starttime="20220206 17:55:05.100" endtime="20220206 17:55:05.612"/>
-</kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>document.getElementById("send").scrollIntoView(false)</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20220206 17:55:05.614" level="INFO">Executing JavaScript:
-document.getElementById("send").scrollIntoView(false)
-Without any arguments.</msg>
-<status status="PASS" starttime="20220206 17:55:05.613" endtime="20220206 17:55:05.620"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220206 17:55:06.120" level="INFO">Slept 500 milliseconds</msg>
-<status status="PASS" starttime="20220206 17:55:05.620" endtime="20220206 17:55:06.120"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>id:send</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220206 17:55:06.121" level="INFO">Clicking element 'id:send'.</msg>
-<status status="PASS" starttime="20220206 17:55:06.121" endtime="20220206 17:55:06.181"/>
+<status status="PASS" starttime="20220206 19:13:16.999" endtime="20220206 19:13:17.005"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220206 17:55:11.186" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20220206 17:55:06.181" endtime="20220206 17:55:11.186"/>
+<msg timestamp="20220206 19:13:22.009" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220206 19:13:17.005" endtime="20220206 19:13:22.009"/>
 </kw>
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>First Name</arg>
+<arg>Book a Mentor</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20220206 17:55:11.186" endtime="20220206 17:55:11.280"/>
-</kw>
-<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20220206 17:55:11.281" endtime="20220206 17:55:13.483"/>
-</kw>
-<status status="PASS" starttime="20220206 17:54:48.370" endtime="20220206 17:55:13.483"/>
-</test>
-<test id="s1-t2" name="Blank Last Name">
-<kw name="Open Browser To Membership Application Page" library="resources">
-<kw name="Open Browser To Landing Page" library="resources">
-<kw name="Open Browser" library="SeleniumLibrary">
-<arg>${HOME URL}</arg>
-<arg>${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20220206 17:55:13.485" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/'.</msg>
-<status status="PASS" starttime="20220206 17:55:13.485" endtime="20220206 17:55:17.062"/>
-</kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20220206 17:55:17.063" endtime="20220206 17:55:17.196"/>
-</kw>
-<status status="PASS" starttime="20220206 17:55:13.485" endtime="20220206 17:55:17.197"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>id:navJoin</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220206 17:55:17.197" level="INFO">Clicking element 'id:navJoin'.</msg>
-<kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="FAIL" starttime="20220206 17:55:17.240" endtime="20220206 17:55:17.240"/>
-</kw>
-<msg timestamp="20220206 17:55:17.240" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Execution terminated by signal</msg>
-<status status="FAIL" starttime="20220206 17:55:17.197" endtime="20220206 17:55:17.240"/>
-</kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.242" endtime="20220206 17:55:17.242"/>
-</kw>
-<status status="FAIL" starttime="20220206 17:55:13.485" endtime="20220206 17:55:17.242"/>
+<status status="PASS" starttime="20220206 19:13:22.009" endtime="20220206 19:13:22.088"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>name:firstName</arg>
-<arg>DELETE</arg>
+<arg>Jake</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.242" endtime="20220206 17:55:17.242"/>
+<msg timestamp="20220206 19:13:22.088" level="INFO">Typing text 'Jake' into text field 'name:firstName'.</msg>
+<status status="PASS" starttime="20220206 19:13:22.088" endtime="20220206 19:13:22.213"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<arg>name:bMonth</arg>
-<arg>11</arg>
+<arg>name:lastName</arg>
+<arg>Paul</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.243" endtime="20220206 17:55:17.243"/>
+<msg timestamp="20220206 19:13:22.214" level="INFO">Typing text 'Paul' into text field 'name:lastName'.</msg>
+<status status="PASS" starttime="20220206 19:13:22.214" endtime="20220206 19:13:22.306"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<arg>name:bDay</arg>
-<arg>11</arg>
+<arg>name:nickname</arg>
+<arg>Jake</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.243" endtime="20220206 17:55:17.243"/>
+<msg timestamp="20220206 19:13:22.307" level="INFO">Typing text 'Jake' into text field 'name:nickname'.</msg>
+<status status="PASS" starttime="20220206 19:13:22.307" endtime="20220206 19:13:22.397"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<arg>name:bYear</arg>
-<arg>2000</arg>
+<arg>name:contactNum</arg>
+<arg>639123456789</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.243" endtime="20220206 17:55:17.243"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.243" endtime="20220206 17:55:17.243"/>
-</kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>document.getElementsByName("email")[0].scrollIntoView(false)</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.243" endtime="20220206 17:55:17.244"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.244" endtime="20220206 17:55:17.244"/>
-</kw>
-<kw name="Select Radio Button" library="SeleniumLibrary">
-<arg>pronoun</arg>
-<arg>He/ Him</arg>
-<doc>Sets the radio button group ``group_name`` to ``value``.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.244" endtime="20220206 17:55:17.244"/>
+<msg timestamp="20220206 19:13:22.398" level="INFO">Typing text '639123456789' into text field 'name:contactNum'.</msg>
+<status status="PASS" starttime="20220206 19:13:22.398" endtime="20220206 19:13:22.555"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>name:email</arg>
-<arg>DELETEME@dlsu.instructure.com</arg>
+<arg>jake_paul@email.com</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.245" endtime="20220206 17:55:17.245"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.245" endtime="20220206 17:55:17.245"/>
-</kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>document.getElementsByName("program")[0].scrollIntoView(false)</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.245" endtime="20220206 17:55:17.245"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.246" endtime="20220206 17:55:17.246"/>
-</kw>
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<arg>name:college</arg>
-<arg>De La Salle University - Manila</arg>
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.246" endtime="20220206 17:55:17.246"/>
+<msg timestamp="20220206 19:13:22.556" level="INFO">Typing text 'jake_paul@email.com' into text field 'name:email'.</msg>
+<status status="PASS" starttime="20220206 19:13:22.556" endtime="20220206 19:13:22.746"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<arg>name:program</arg>
-<arg>BS ORG</arg>
+<arg>name:message</arg>
+<arg>Hello there</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.247" endtime="20220206 17:55:17.247"/>
+<msg timestamp="20220206 19:13:22.746" level="INFO">Typing text 'Hello there' into text field 'name:message'.</msg>
+<status status="PASS" starttime="20220206 19:13:22.746" endtime="20220206 19:13:22.885"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20220206 19:13:22.886" level="INFO">Simulating Mouse Over on element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:13:22.886" endtime="20220206 19:13:23.160"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
+<arg>20s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.247" endtime="20220206 17:55:17.247"/>
-</kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<arg>document.getElementById("send").scrollIntoView(false)</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.248" endtime="20220206 17:55:17.248"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>.5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.248" endtime="20220206 17:55:17.248"/>
+<msg timestamp="20220206 19:13:43.164" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20220206 19:13:23.160" endtime="20220206 19:13:43.164"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>id:send</arg>
+<arg>id:book-btn</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.248" endtime="20220206 17:55:17.248"/>
+<msg timestamp="20220206 19:13:43.165" level="INFO">Clicking element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:13:43.164" endtime="20220206 19:13:43.203"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:13:50.206" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220206 19:13:43.204" endtime="20220206 19:13:50.206"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:book-modal</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220206 19:13:50.215" level="INFO">Current page contains element 'id:book-modal'.</msg>
+<status status="PASS" starttime="20220206 19:13:50.206" endtime="20220206 19:13:50.215"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220206 19:13:50.215" endtime="20220206 19:13:52.755"/>
+</kw>
+<status status="PASS" starttime="20220206 19:13:05.665" endtime="20220206 19:13:52.755"/>
+</test>
+<test id="s1-t3" name="Invalid Missing Date Mentor">
+<kw name="Open Browser To Mentorship Booking Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BOOKING URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220206 19:13:52.757" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/mentors'.</msg>
+<status status="PASS" starttime="20220206 19:13:52.757" endtime="20220206 19:14:03.153"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220206 19:14:03.153" endtime="20220206 19:14:03.292"/>
+</kw>
+<status status="PASS" starttime="20220206 19:13:52.757" endtime="20220206 19:14:03.292"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:14:04.295" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220206 19:14:03.292" endtime="20220206 19:14:04.295"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("book-mentor-header").scrollIntoView(true)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220206 19:14:04.296" level="INFO">Executing JavaScript:
+document.getElementById("book-mentor-header").scrollIntoView(true)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220206 19:14:04.295" endtime="20220206 19:14:04.300"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.249" endtime="20220206 17:55:17.249"/>
+<msg timestamp="20220206 19:14:09.309" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220206 19:14:04.300" endtime="20220206 19:14:09.309"/>
 </kw>
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<arg>Last Name</arg>
+<arg>Book a Mentor</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="NOT RUN" starttime="20220206 17:55:17.249" endtime="20220206 17:55:17.249"/>
+<status status="PASS" starttime="20220206 19:14:09.309" endtime="20220206 19:14:09.392"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingMentor</arg>
+<arg>0</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:14:09.392" level="INFO">Selecting options from selection list 'name:bookingMentor' by value 0.</msg>
+<status status="PASS" starttime="20220206 19:14:09.392" endtime="20220206 19:14:09.489"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:firstName</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:09.490" level="INFO">Typing text 'Jake' into text field 'name:firstName'.</msg>
+<status status="PASS" starttime="20220206 19:14:09.489" endtime="20220206 19:14:09.616"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:lastName</arg>
+<arg>Paul</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:09.617" level="INFO">Typing text 'Paul' into text field 'name:lastName'.</msg>
+<status status="PASS" starttime="20220206 19:14:09.617" endtime="20220206 19:14:09.722"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:nickname</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:09.723" level="INFO">Typing text 'Jake' into text field 'name:nickname'.</msg>
+<status status="PASS" starttime="20220206 19:14:09.723" endtime="20220206 19:14:09.829"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:contactNum</arg>
+<arg>639123456789</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:09.830" level="INFO">Typing text '639123456789' into text field 'name:contactNum'.</msg>
+<status status="PASS" starttime="20220206 19:14:09.830" endtime="20220206 19:14:10.010"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:email</arg>
+<arg>jake_paul@email.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:10.011" level="INFO">Typing text 'jake_paul@email.com' into text field 'name:email'.</msg>
+<status status="PASS" starttime="20220206 19:14:10.011" endtime="20220206 19:14:10.254"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:message</arg>
+<arg>Hello there</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:10.255" level="INFO">Typing text 'Hello there' into text field 'name:message'.</msg>
+<status status="PASS" starttime="20220206 19:14:10.255" endtime="20220206 19:14:10.431"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20220206 19:14:10.432" level="INFO">Simulating Mouse Over on element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:14:10.432" endtime="20220206 19:14:10.713"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:14:30.729" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20220206 19:14:10.713" endtime="20220206 19:14:30.729"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:30.730" level="INFO">Clicking element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:14:30.729" endtime="20220206 19:14:30.770"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:14:37.779" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220206 19:14:30.771" endtime="20220206 19:14:37.779"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:book-modal</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220206 19:14:37.787" level="INFO">Current page contains element 'id:book-modal'.</msg>
+<status status="PASS" starttime="20220206 19:14:37.779" endtime="20220206 19:14:37.788"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220206 19:14:37.788" endtime="20220206 19:14:40.308"/>
+</kw>
+<status status="PASS" starttime="20220206 19:13:52.756" endtime="20220206 19:14:40.308"/>
+</test>
+<test id="s1-t4" name="Invalid Missing Date Mentor">
+<kw name="Open Browser To Mentorship Booking Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BOOKING URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220206 19:14:40.310" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/mentors'.</msg>
+<status status="PASS" starttime="20220206 19:14:40.310" endtime="20220206 19:14:50.688"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220206 19:14:50.688" endtime="20220206 19:14:50.854"/>
+</kw>
+<status status="PASS" starttime="20220206 19:14:40.310" endtime="20220206 19:14:50.854"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:14:51.861" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220206 19:14:50.855" endtime="20220206 19:14:51.861"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("book-mentor-header").scrollIntoView(true)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220206 19:14:51.862" level="INFO">Executing JavaScript:
+document.getElementById("book-mentor-header").scrollIntoView(true)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220206 19:14:51.861" endtime="20220206 19:14:51.866"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:14:56.875" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220206 19:14:51.866" endtime="20220206 19:14:56.875"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Book a Mentor</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220206 19:14:56.875" endtime="20220206 19:14:56.958"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingMentor</arg>
+<arg>0</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:14:56.959" level="INFO">Selecting options from selection list 'name:bookingMentor' by value 0.</msg>
+<status status="PASS" starttime="20220206 19:14:56.959" endtime="20220206 19:14:57.039"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingDate</arg>
+<arg>March 25, 2022</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:14:57.040" level="INFO">Selecting options from selection list 'name:bookingDate' by value March 25, 2022.</msg>
+<status status="PASS" starttime="20220206 19:14:57.040" endtime="20220206 19:14:57.132"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:firstName</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:57.133" level="INFO">Typing text 'Jake' into text field 'name:firstName'.</msg>
+<status status="PASS" starttime="20220206 19:14:57.132" endtime="20220206 19:14:57.251"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:lastName</arg>
+<arg>Paul</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:57.252" level="INFO">Typing text 'Paul' into text field 'name:lastName'.</msg>
+<status status="PASS" starttime="20220206 19:14:57.251" endtime="20220206 19:14:57.353"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:nickname</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:57.354" level="INFO">Typing text 'Jake' into text field 'name:nickname'.</msg>
+<status status="PASS" starttime="20220206 19:14:57.354" endtime="20220206 19:14:57.446"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:contactNum</arg>
+<arg>639123456789</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:57.447" level="INFO">Typing text '639123456789' into text field 'name:contactNum'.</msg>
+<status status="PASS" starttime="20220206 19:14:57.446" endtime="20220206 19:14:57.626"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:email</arg>
+<arg>jake_paul@email.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:57.627" level="INFO">Typing text 'jake_paul@email.com' into text field 'name:email'.</msg>
+<status status="PASS" starttime="20220206 19:14:57.627" endtime="20220206 19:14:57.869"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:message</arg>
+<arg>Hello there</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:14:57.869" level="INFO">Typing text 'Hello there' into text field 'name:message'.</msg>
+<status status="PASS" starttime="20220206 19:14:57.869" endtime="20220206 19:14:58.041"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20220206 19:14:58.045" level="INFO">Simulating Mouse Over on element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:14:58.045" endtime="20220206 19:14:58.324"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:15:18.338" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20220206 19:14:58.324" endtime="20220206 19:15:18.338"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220206 19:15:18.338" level="INFO">Clicking element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:15:18.338" endtime="20220206 19:15:18.377"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:15:25.384" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220206 19:15:18.377" endtime="20220206 19:15:25.384"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:book-modal</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220206 19:15:25.393" level="INFO">Current page contains element 'id:book-modal'.</msg>
+<status status="PASS" starttime="20220206 19:15:25.384" endtime="20220206 19:15:25.393"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220206 19:15:25.393" endtime="20220206 19:15:27.882"/>
+</kw>
+<status status="PASS" starttime="20220206 19:14:40.309" endtime="20220206 19:15:27.882"/>
+</test>
+<test id="s1-t5" name="Invalid Missing FirstName Mentor">
+<kw name="Open Browser To Mentorship Booking Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BOOKING URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220206 19:15:27.884" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/mentors'.</msg>
+<status status="PASS" starttime="20220206 19:15:27.884" endtime="20220206 19:15:39.560"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220206 19:15:39.561" endtime="20220206 19:15:39.730"/>
+</kw>
+<status status="PASS" starttime="20220206 19:15:27.883" endtime="20220206 19:15:39.730"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:15:40.743" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220206 19:15:39.730" endtime="20220206 19:15:40.743"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("book-mentor-header").scrollIntoView(true)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220206 19:15:40.744" level="INFO">Executing JavaScript:
+document.getElementById("book-mentor-header").scrollIntoView(true)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220206 19:15:40.743" endtime="20220206 19:15:40.748"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:15:45.754" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220206 19:15:40.748" endtime="20220206 19:15:45.754"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Book a Mentor</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220206 19:15:45.754" endtime="20220206 19:15:45.830"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingMentor</arg>
+<arg>0</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:15:45.831" level="INFO">Selecting options from selection list 'name:bookingMentor' by value 0.</msg>
+<status status="PASS" starttime="20220206 19:15:45.831" endtime="20220206 19:15:45.901"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingDate</arg>
+<arg>February 11, 2022</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:15:45.901" level="INFO">Selecting options from selection list 'name:bookingDate' by value February 11, 2022.</msg>
+<status status="PASS" starttime="20220206 19:15:45.901" endtime="20220206 19:15:45.978"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingSlot</arg>
+<arg>03:00PM-05:00PM</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:15:45.978" level="INFO">Selecting options from selection list 'name:bookingSlot' by value 03:00PM-05:00PM.</msg>
+<status status="PASS" starttime="20220206 19:15:45.978" endtime="20220206 19:15:46.050"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:lastName</arg>
+<arg>Paul</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:15:46.051" level="INFO">Typing text 'Paul' into text field 'name:lastName'.</msg>
+<status status="PASS" starttime="20220206 19:15:46.051" endtime="20220206 19:15:46.186"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:nickname</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:15:46.187" level="INFO">Typing text 'Jake' into text field 'name:nickname'.</msg>
+<status status="PASS" starttime="20220206 19:15:46.186" endtime="20220206 19:15:46.288"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:contactNum</arg>
+<arg>639123456789</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:15:46.288" level="INFO">Typing text '639123456789' into text field 'name:contactNum'.</msg>
+<status status="PASS" starttime="20220206 19:15:46.288" endtime="20220206 19:15:46.473"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:email</arg>
+<arg>jake_paul@email.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:15:46.474" level="INFO">Typing text 'jake_paul@email.com' into text field 'name:email'.</msg>
+<status status="PASS" starttime="20220206 19:15:46.474" endtime="20220206 19:15:46.715"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:message</arg>
+<arg>Hello there</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:15:46.716" level="INFO">Typing text 'Hello there' into text field 'name:message'.</msg>
+<status status="PASS" starttime="20220206 19:15:46.716" endtime="20220206 19:15:46.882"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20220206 19:15:46.883" level="INFO">Simulating Mouse Over on element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:15:46.883" endtime="20220206 19:15:47.177"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:16:07.187" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20220206 19:15:47.177" endtime="20220206 19:16:07.187"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220206 19:16:07.187" level="INFO">Clicking element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:16:07.187" endtime="20220206 19:16:07.227"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:16:14.242" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220206 19:16:07.227" endtime="20220206 19:16:14.242"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:book-modal</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220206 19:16:14.252" level="INFO">Current page contains element 'id:book-modal'.</msg>
+<status status="PASS" starttime="20220206 19:16:14.243" endtime="20220206 19:16:14.253"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220206 19:16:14.253" endtime="20220206 19:16:16.760"/>
+</kw>
+<status status="PASS" starttime="20220206 19:15:27.883" endtime="20220206 19:16:16.760"/>
+</test>
+<test id="s1-t6" name="Invalid Missing LastName Mentor">
+<kw name="Open Browser To Mentorship Booking Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BOOKING URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220206 19:16:16.762" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/mentors'.</msg>
+<status status="PASS" starttime="20220206 19:16:16.762" endtime="20220206 19:16:28.052"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220206 19:16:28.052" endtime="20220206 19:16:28.253"/>
+</kw>
+<status status="PASS" starttime="20220206 19:16:16.762" endtime="20220206 19:16:28.253"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:16:29.261" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220206 19:16:28.254" endtime="20220206 19:16:29.261"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("book-mentor-header").scrollIntoView(true)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220206 19:16:29.262" level="INFO">Executing JavaScript:
+document.getElementById("book-mentor-header").scrollIntoView(true)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220206 19:16:29.261" endtime="20220206 19:16:29.267"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:16:34.273" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220206 19:16:29.268" endtime="20220206 19:16:34.273"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Book a Mentor</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220206 19:16:34.274" endtime="20220206 19:16:34.355"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingMentor</arg>
+<arg>1</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:16:34.356" level="INFO">Selecting options from selection list 'name:bookingMentor' by value 1.</msg>
+<status status="PASS" starttime="20220206 19:16:34.355" endtime="20220206 19:16:34.451"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingDate</arg>
+<arg>February 21, 2022</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:16:34.452" level="INFO">Selecting options from selection list 'name:bookingDate' by value February 21, 2022.</msg>
+<status status="PASS" starttime="20220206 19:16:34.452" endtime="20220206 19:16:34.562"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingSlot</arg>
+<arg>03:00PM-05:00PM</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:16:34.563" level="INFO">Selecting options from selection list 'name:bookingSlot' by value 03:00PM-05:00PM.</msg>
+<status status="PASS" starttime="20220206 19:16:34.563" endtime="20220206 19:16:34.651"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:firstName</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:16:34.652" level="INFO">Typing text 'Jake' into text field 'name:firstName'.</msg>
+<status status="PASS" starttime="20220206 19:16:34.652" endtime="20220206 19:16:34.788"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:nickname</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:16:34.788" level="INFO">Typing text 'Jake' into text field 'name:nickname'.</msg>
+<status status="PASS" starttime="20220206 19:16:34.788" endtime="20220206 19:16:34.895"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:contactNum</arg>
+<arg>639123456789</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:16:34.895" level="INFO">Typing text '639123456789' into text field 'name:contactNum'.</msg>
+<status status="PASS" starttime="20220206 19:16:34.895" endtime="20220206 19:16:35.070"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:email</arg>
+<arg>jake_paul@email.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:16:35.071" level="INFO">Typing text 'jake_paul@email.com' into text field 'name:email'.</msg>
+<status status="PASS" starttime="20220206 19:16:35.070" endtime="20220206 19:16:35.353"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:message</arg>
+<arg>Hello there</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:16:35.354" level="INFO">Typing text 'Hello there' into text field 'name:message'.</msg>
+<status status="PASS" starttime="20220206 19:16:35.353" endtime="20220206 19:16:35.557"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20220206 19:16:35.558" level="INFO">Simulating Mouse Over on element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:16:35.558" endtime="20220206 19:16:35.853"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:16:55.859" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20220206 19:16:35.853" endtime="20220206 19:16:55.859"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220206 19:16:55.859" level="INFO">Clicking element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:16:55.859" endtime="20220206 19:16:55.899"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:17:02.904" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220206 19:16:55.900" endtime="20220206 19:17:02.904"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:book-modal</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220206 19:17:02.918" level="INFO">Current page contains element 'id:book-modal'.</msg>
+<status status="PASS" starttime="20220206 19:17:02.905" endtime="20220206 19:17:02.918"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220206 19:17:02.918" endtime="20220206 19:17:05.335"/>
+</kw>
+<status status="PASS" starttime="20220206 19:16:16.761" endtime="20220206 19:17:05.335"/>
+</test>
+<test id="s1-t7" name="Invalid Missing Email Mentor">
+<kw name="Open Browser To Mentorship Booking Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BOOKING URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220206 19:17:05.337" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/mentors'.</msg>
+<status status="PASS" starttime="20220206 19:17:05.337" endtime="20220206 19:17:15.771"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220206 19:17:15.772" endtime="20220206 19:17:16.059"/>
+</kw>
+<status status="PASS" starttime="20220206 19:17:05.336" endtime="20220206 19:17:16.059"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:17:17.074" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220206 19:17:16.060" endtime="20220206 19:17:17.074"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("book-mentor-header").scrollIntoView(true)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220206 19:17:17.075" level="INFO">Executing JavaScript:
+document.getElementById("book-mentor-header").scrollIntoView(true)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220206 19:17:17.074" endtime="20220206 19:17:17.079"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:17:22.089" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220206 19:17:17.079" endtime="20220206 19:17:22.089"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Book a Mentor</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220206 19:17:22.089" endtime="20220206 19:17:22.167"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingMentor</arg>
+<arg>0</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:17:22.168" level="INFO">Selecting options from selection list 'name:bookingMentor' by value 0.</msg>
+<status status="PASS" starttime="20220206 19:17:22.167" endtime="20220206 19:17:22.257"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingDate</arg>
+<arg>February 11, 2022</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:17:22.258" level="INFO">Selecting options from selection list 'name:bookingDate' by value February 11, 2022.</msg>
+<status status="PASS" starttime="20220206 19:17:22.258" endtime="20220206 19:17:22.336"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingSlot</arg>
+<arg>03:00PM-05:00PM</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:17:22.337" level="INFO">Selecting options from selection list 'name:bookingSlot' by value 03:00PM-05:00PM.</msg>
+<status status="PASS" starttime="20220206 19:17:22.336" endtime="20220206 19:17:22.404"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:firstName</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:17:22.405" level="INFO">Typing text 'Jake' into text field 'name:firstName'.</msg>
+<status status="PASS" starttime="20220206 19:17:22.405" endtime="20220206 19:17:22.516"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:lastName</arg>
+<arg>Paul</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:17:22.517" level="INFO">Typing text 'Paul' into text field 'name:lastName'.</msg>
+<status status="PASS" starttime="20220206 19:17:22.517" endtime="20220206 19:17:22.605"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:nickname</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:17:22.606" level="INFO">Typing text 'Jake' into text field 'name:nickname'.</msg>
+<status status="PASS" starttime="20220206 19:17:22.605" endtime="20220206 19:17:22.697"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:contactNum</arg>
+<arg>639123456789</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:17:22.698" level="INFO">Typing text '639123456789' into text field 'name:contactNum'.</msg>
+<status status="PASS" starttime="20220206 19:17:22.697" endtime="20220206 19:17:22.870"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:message</arg>
+<arg>Hello there</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:17:22.871" level="INFO">Typing text 'Hello there' into text field 'name:message'.</msg>
+<status status="PASS" starttime="20220206 19:17:22.871" endtime="20220206 19:17:23.020"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20220206 19:17:23.020" level="INFO">Simulating Mouse Over on element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:17:23.020" endtime="20220206 19:17:23.301"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:17:43.307" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20220206 19:17:23.301" endtime="20220206 19:17:43.307"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220206 19:17:43.308" level="INFO">Clicking element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:17:43.307" endtime="20220206 19:17:43.349"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:17:50.361" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220206 19:17:43.349" endtime="20220206 19:17:50.361"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:book-modal</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220206 19:17:50.370" level="INFO">Current page contains element 'id:book-modal'.</msg>
+<status status="PASS" starttime="20220206 19:17:50.362" endtime="20220206 19:17:50.370"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220206 19:17:50.370" endtime="20220206 19:17:52.881"/>
+</kw>
+<status status="PASS" starttime="20220206 19:17:05.336" endtime="20220206 19:17:52.881"/>
+</test>
+<test id="s1-t8" name="Invalid Wrong Email Mentor">
+<kw name="Open Browser To Mentorship Booking Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BOOKING URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220206 19:17:52.883" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/mentors'.</msg>
+<status status="PASS" starttime="20220206 19:17:52.883" endtime="20220206 19:18:05.305"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220206 19:18:05.305" endtime="20220206 19:18:05.474"/>
+</kw>
+<status status="PASS" starttime="20220206 19:17:52.882" endtime="20220206 19:18:05.474"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:18:06.484" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220206 19:18:05.475" endtime="20220206 19:18:06.484"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("book-mentor-header").scrollIntoView(true)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220206 19:18:06.485" level="INFO">Executing JavaScript:
+document.getElementById("book-mentor-header").scrollIntoView(true)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220206 19:18:06.484" endtime="20220206 19:18:06.489"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:18:11.496" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220206 19:18:06.489" endtime="20220206 19:18:11.496"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Book a Mentor</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220206 19:18:11.496" endtime="20220206 19:18:11.573"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingMentor</arg>
+<arg>0</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:18:11.573" level="INFO">Selecting options from selection list 'name:bookingMentor' by value 0.</msg>
+<status status="PASS" starttime="20220206 19:18:11.573" endtime="20220206 19:18:11.646"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingDate</arg>
+<arg>February 11, 2022</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:18:11.647" level="INFO">Selecting options from selection list 'name:bookingDate' by value February 11, 2022.</msg>
+<status status="PASS" starttime="20220206 19:18:11.647" endtime="20220206 19:18:11.710"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingSlot</arg>
+<arg>03:00PM-05:00PM</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:18:11.711" level="INFO">Selecting options from selection list 'name:bookingSlot' by value 03:00PM-05:00PM.</msg>
+<status status="PASS" starttime="20220206 19:18:11.711" endtime="20220206 19:18:11.774"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:firstName</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:18:11.775" level="INFO">Typing text 'Jake' into text field 'name:firstName'.</msg>
+<status status="PASS" starttime="20220206 19:18:11.774" endtime="20220206 19:18:11.913"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:lastName</arg>
+<arg>Paul</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:18:11.914" level="INFO">Typing text 'Paul' into text field 'name:lastName'.</msg>
+<status status="PASS" starttime="20220206 19:18:11.914" endtime="20220206 19:18:12.020"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:nickname</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:18:12.021" level="INFO">Typing text 'Jake' into text field 'name:nickname'.</msg>
+<status status="PASS" starttime="20220206 19:18:12.021" endtime="20220206 19:18:12.122"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:contactNum</arg>
+<arg>639123456789</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:18:12.123" level="INFO">Typing text '639123456789' into text field 'name:contactNum'.</msg>
+<status status="PASS" starttime="20220206 19:18:12.123" endtime="20220206 19:18:12.300"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:email</arg>
+<arg>jake_paul</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:18:12.301" level="INFO">Typing text 'jake_paul' into text field 'name:email'.</msg>
+<status status="PASS" starttime="20220206 19:18:12.300" endtime="20220206 19:18:12.459"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:message</arg>
+<arg>Hello there</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:18:12.461" level="INFO">Typing text 'Hello there' into text field 'name:message'.</msg>
+<status status="PASS" starttime="20220206 19:18:12.460" endtime="20220206 19:18:12.634"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20220206 19:18:12.635" level="INFO">Simulating Mouse Over on element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:18:12.635" endtime="20220206 19:18:12.914"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:18:32.927" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20220206 19:18:12.914" endtime="20220206 19:18:32.927"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220206 19:18:32.928" level="INFO">Clicking element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:18:32.927" endtime="20220206 19:18:32.970"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:18:39.983" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220206 19:18:32.971" endtime="20220206 19:18:39.983"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:book-modal</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220206 19:18:39.992" level="INFO">Current page contains element 'id:book-modal'.</msg>
+<status status="PASS" starttime="20220206 19:18:39.983" endtime="20220206 19:18:39.993"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220206 19:18:39.993" endtime="20220206 19:18:42.474"/>
+</kw>
+<status status="PASS" starttime="20220206 19:17:52.882" endtime="20220206 19:18:42.474"/>
+</test>
+<test id="s1-t9" name="Invalid Wrong Number Mentor">
+<kw name="Open Browser To Mentorship Booking Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BOOKING URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220206 19:18:42.476" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/mentors'.</msg>
+<status status="PASS" starttime="20220206 19:18:42.476" endtime="20220206 19:18:53.334"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220206 19:18:53.335" endtime="20220206 19:18:53.495"/>
+</kw>
+<status status="PASS" starttime="20220206 19:18:42.476" endtime="20220206 19:18:53.495"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:18:54.497" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220206 19:18:53.496" endtime="20220206 19:18:54.497"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("book-mentor-header").scrollIntoView(true)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220206 19:18:54.498" level="INFO">Executing JavaScript:
+document.getElementById("book-mentor-header").scrollIntoView(true)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220206 19:18:54.497" endtime="20220206 19:18:54.502"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:18:59.509" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220206 19:18:54.502" endtime="20220206 19:18:59.509"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Book a Mentor</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220206 19:18:59.510" endtime="20220206 19:18:59.595"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingMentor</arg>
+<arg>0</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:18:59.595" level="INFO">Selecting options from selection list 'name:bookingMentor' by value 0.</msg>
+<status status="PASS" starttime="20220206 19:18:59.595" endtime="20220206 19:18:59.665"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingDate</arg>
+<arg>February 11, 2022</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:18:59.666" level="INFO">Selecting options from selection list 'name:bookingDate' by value February 11, 2022.</msg>
+<status status="PASS" starttime="20220206 19:18:59.666" endtime="20220206 19:18:59.739"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingSlot</arg>
+<arg>03:00PM-05:00PM</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:18:59.740" level="INFO">Selecting options from selection list 'name:bookingSlot' by value 03:00PM-05:00PM.</msg>
+<status status="PASS" starttime="20220206 19:18:59.740" endtime="20220206 19:18:59.811"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:firstName</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:18:59.812" level="INFO">Typing text 'Jake' into text field 'name:firstName'.</msg>
+<status status="PASS" starttime="20220206 19:18:59.811" endtime="20220206 19:18:59.938"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:lastName</arg>
+<arg>Paul</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:18:59.939" level="INFO">Typing text 'Paul' into text field 'name:lastName'.</msg>
+<status status="PASS" starttime="20220206 19:18:59.938" endtime="20220206 19:19:00.033"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:nickname</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:19:00.033" level="INFO">Typing text 'Jake' into text field 'name:nickname'.</msg>
+<status status="PASS" starttime="20220206 19:19:00.033" endtime="20220206 19:19:00.125"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:contactNum</arg>
+<arg>631234567890</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:19:00.126" level="INFO">Typing text '631234567890' into text field 'name:contactNum'.</msg>
+<status status="PASS" starttime="20220206 19:19:00.126" endtime="20220206 19:19:00.291"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:email</arg>
+<arg>jake_paul@email.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:19:00.291" level="INFO">Typing text 'jake_paul@email.com' into text field 'name:email'.</msg>
+<status status="PASS" starttime="20220206 19:19:00.291" endtime="20220206 19:19:00.528"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:message</arg>
+<arg>Hello there</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:19:00.529" level="INFO">Typing text 'Hello there' into text field 'name:message'.</msg>
+<status status="PASS" starttime="20220206 19:19:00.528" endtime="20220206 19:19:00.689"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20220206 19:19:00.690" level="INFO">Simulating Mouse Over on element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:19:00.689" endtime="20220206 19:19:00.978"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:19:20.979" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20220206 19:19:00.978" endtime="20220206 19:19:20.979"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220206 19:19:20.979" level="INFO">Clicking element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:19:20.979" endtime="20220206 19:19:21.019"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:19:28.024" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220206 19:19:21.019" endtime="20220206 19:19:28.024"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:book-modal</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220206 19:19:28.033" level="INFO">Current page contains element 'id:book-modal'.</msg>
+<status status="PASS" starttime="20220206 19:19:28.024" endtime="20220206 19:19:28.033"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220206 19:19:28.033" endtime="20220206 19:19:30.372"/>
+</kw>
+<status status="PASS" starttime="20220206 19:18:42.475" endtime="20220206 19:19:30.373"/>
+</test>
+<test id="s1-t10" name="Invalid Missing All Mentor">
+<kw name="Open Browser To Mentorship Booking Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BOOKING URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220206 19:19:30.375" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/mentors'.</msg>
+<status status="PASS" starttime="20220206 19:19:30.375" endtime="20220206 19:19:41.193"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220206 19:19:41.193" endtime="20220206 19:19:41.402"/>
+</kw>
+<status status="PASS" starttime="20220206 19:19:30.374" endtime="20220206 19:19:41.402"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:19:42.418" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220206 19:19:41.403" endtime="20220206 19:19:42.418"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("book-mentor-header").scrollIntoView(true)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220206 19:19:42.419" level="INFO">Executing JavaScript:
+document.getElementById("book-mentor-header").scrollIntoView(true)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220206 19:19:42.418" endtime="20220206 19:19:42.423"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:19:47.430" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220206 19:19:42.424" endtime="20220206 19:19:47.430"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20220206 19:19:47.431" level="INFO">Simulating Mouse Over on element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:19:47.431" endtime="20220206 19:19:47.715"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:20:07.715" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20220206 19:19:47.715" endtime="20220206 19:20:07.715"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220206 19:20:07.716" level="INFO">Clicking element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:20:07.715" endtime="20220206 19:20:07.755"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:20:14.759" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220206 19:20:07.755" endtime="20220206 19:20:14.759"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>id:book-modal</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220206 19:20:14.768" level="INFO">Current page contains element 'id:book-modal'.</msg>
+<status status="PASS" starttime="20220206 19:20:14.759" endtime="20220206 19:20:14.768"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220206 19:20:14.768" endtime="20220206 19:20:17.118"/>
+</kw>
+<status status="PASS" starttime="20220206 19:19:30.374" endtime="20220206 19:20:17.118"/>
+</test>
+<test id="s1-t11" name="Valid Book A Different Mentor">
+<kw name="Open Browser To Mentorship Booking Page" library="resources">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BOOKING URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220206 19:20:17.121" level="INFO">Opening browser 'edge' to base url 'http://localhost:3000/mentors'.</msg>
+<status status="PASS" starttime="20220206 19:20:17.120" endtime="20220206 19:20:27.531"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220206 19:20:27.531" endtime="20220206 19:20:27.667"/>
+</kw>
+<status status="PASS" starttime="20220206 19:20:17.120" endtime="20220206 19:20:27.667"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:20:28.671" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220206 19:20:27.668" endtime="20220206 19:20:28.671"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("book-mentor-header").scrollIntoView(true)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220206 19:20:28.672" level="INFO">Executing JavaScript:
+document.getElementById("book-mentor-header").scrollIntoView(true)
+Without any arguments.</msg>
+<status status="PASS" starttime="20220206 19:20:28.671" endtime="20220206 19:20:28.676"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:20:33.682" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220206 19:20:28.676" endtime="20220206 19:20:33.682"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Book a Mentor</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220206 19:20:33.682" endtime="20220206 19:20:33.759"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingMentor</arg>
+<arg>0</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:20:33.759" level="INFO">Selecting options from selection list 'name:bookingMentor' by value 0.</msg>
+<status status="PASS" starttime="20220206 19:20:33.759" endtime="20220206 19:20:33.841"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingDate</arg>
+<arg>February 11, 2022</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:20:33.848" level="INFO">Selecting options from selection list 'name:bookingDate' by value February 11, 2022.</msg>
+<status status="PASS" starttime="20220206 19:20:33.847" endtime="20220206 19:20:33.963"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingSlot</arg>
+<arg>03:00PM-05:00PM</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:20:33.964" level="INFO">Selecting options from selection list 'name:bookingSlot' by value 03:00PM-05:00PM.</msg>
+<status status="PASS" starttime="20220206 19:20:33.964" endtime="20220206 19:20:34.038"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:firstName</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:20:34.039" level="INFO">Typing text 'Jake' into text field 'name:firstName'.</msg>
+<status status="PASS" starttime="20220206 19:20:34.039" endtime="20220206 19:20:34.157"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:lastName</arg>
+<arg>Paul</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:20:34.158" level="INFO">Typing text 'Paul' into text field 'name:lastName'.</msg>
+<status status="PASS" starttime="20220206 19:20:34.157" endtime="20220206 19:20:34.254"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:nickname</arg>
+<arg>Jake</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:20:34.254" level="INFO">Typing text 'Jake' into text field 'name:nickname'.</msg>
+<status status="PASS" starttime="20220206 19:20:34.254" endtime="20220206 19:20:34.350"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:contactNum</arg>
+<arg>639123456789</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:20:34.350" level="INFO">Typing text '639123456789' into text field 'name:contactNum'.</msg>
+<status status="PASS" starttime="20220206 19:20:34.350" endtime="20220206 19:20:34.533"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:email</arg>
+<arg>jake_paul@email.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:20:34.534" level="INFO">Typing text 'jake_paul@email.com' into text field 'name:email'.</msg>
+<status status="PASS" starttime="20220206 19:20:34.533" endtime="20220206 19:20:34.769"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name:message</arg>
+<arg>Hello there</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220206 19:20:34.770" level="INFO">Typing text 'Hello there' into text field 'name:message'.</msg>
+<status status="PASS" starttime="20220206 19:20:34.769" endtime="20220206 19:20:34.945"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingMentor</arg>
+<arg>2</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:20:34.946" level="INFO">Selecting options from selection list 'name:bookingMentor' by value 2.</msg>
+<status status="PASS" starttime="20220206 19:20:34.945" endtime="20220206 19:20:35.006"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingDate</arg>
+<arg>February 23, 2022</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:20:35.008" level="INFO">Selecting options from selection list 'name:bookingDate' by value February 23, 2022.</msg>
+<status status="PASS" starttime="20220206 19:20:35.007" endtime="20220206 19:20:35.095"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>name:bookingSlot</arg>
+<arg>12:45AM-12:45PM</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220206 19:20:35.096" level="INFO">Selecting options from selection list 'name:bookingSlot' by value 12:45AM-12:45PM.</msg>
+<status status="PASS" starttime="20220206 19:20:35.096" endtime="20220206 19:20:35.170"/>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20220206 19:20:35.171" level="INFO">Simulating Mouse Over on element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:20:35.170" endtime="20220206 19:20:35.457"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:20:55.472" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20220206 19:20:35.458" endtime="20220206 19:20:55.472"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:book-btn</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220206 19:20:55.473" level="INFO">Clicking element 'id:book-btn'.</msg>
+<status status="PASS" starttime="20220206 19:20:55.472" endtime="20220206 19:20:55.530"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220206 19:21:05.541" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20220206 19:20:55.531" endtime="20220206 19:21:05.541"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220206 19:21:05.541" endtime="20220206 19:21:07.651"/>
+</kw>
+<status status="PASS" starttime="20220206 19:20:17.119" endtime="20220206 19:21:07.651"/>
+</test>
+<doc>A test suit for valid use of the book a mentor page.
+
+this test follows the example using keywords from
+the SeleniumLibrary</doc>
+<status status="PASS" starttime="20220206 19:12:15.263" endtime="20220206 19:21:07.653"/>
+</suite>
+<statistics>
+<total>
+<stat pass="11" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="11" fail="0" skip="0" id="s1" name="Valid Mentorship">Valid Mentorship</stat>
+</suite>
+</statistics>
 <errors>
-<msg timestamp="20220206 17:55:17.240" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Execution terminated by signal</msg>
-<msg timestamp="20220206 17:55:19.282" level="ERROR">Execution stopped by user.</msg>
+<msg timestamp="20220206 19:14:40.309" level="WARN">Multiple test cases with name 'Invalid Missing Date Mentor' executed in test suite 'Valid Mentorship'.</msg>
 </errors>
 </robot>

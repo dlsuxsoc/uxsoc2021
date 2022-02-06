@@ -23,9 +23,11 @@ Valid Book A Mentor
     Input Text      name:contactNum     639123456789
     Input Text      name:email          jake_paul@email.com
     Input Text      name:message        Hello there
+    Mouse Over                       id:book-btn
+    Sleep   20s
     Click Element                       id:book-btn
-    Sleep   7s
-    Page Should Contain Element     id:success-book-modal
+    Sleep   10s
+    Page Should Contain Element         id:success-book-modal
 
 Invalid Missing Mentor
     Open Browser To Mentorship Booking Page
@@ -39,6 +41,8 @@ Invalid Missing Mentor
     Input Text      name:contactNum     639123456789
     Input Text      name:email          jake_paul@email.com
     Input Text      name:message        Hello there
+    Mouse Over                          id:book-btn
+    Sleep   20s
     Click Element                       id:book-btn
     Sleep   7s
     Page Should Contain Element     id:book-modal
@@ -56,6 +60,8 @@ Invalid Missing Date Mentor
     Input Text      name:contactNum     639123456789
     Input Text      name:email          jake_paul@email.com
     Input Text      name:message        Hello there
+    Mouse Over                          id:book-btn
+    Sleep   20s
     Click Element                       id:book-btn
     Sleep   7s
     Page Should Contain Element     id:book-modal
@@ -74,6 +80,8 @@ Invalid Missing Date Mentor
     Input Text      name:contactNum     639123456789
     Input Text      name:email          jake_paul@email.com
     Input Text      name:message        Hello there
+    Mouse Over                          id:book-btn
+    Sleep   20s
     Click Element                       id:book-btn
     Sleep   7s
     Page Should Contain Element     id:book-modal
@@ -92,6 +100,8 @@ Invalid Missing FirstName Mentor
     Input Text      name:contactNum     639123456789
     Input Text      name:email          jake_paul@email.com
     Input Text      name:message        Hello there
+    Mouse Over                          id:book-btn
+    Sleep   20s
     Click Element                       id:book-btn
     Sleep   7s
     Page Should Contain Element     id:book-modal
@@ -110,6 +120,8 @@ Invalid Missing LastName Mentor
     Input Text      name:contactNum     639123456789
     Input Text      name:email          jake_paul@email.com
     Input Text      name:message        Hello there
+    Mouse Over                          id:book-btn
+    Sleep   20s
     Click Element                       id:book-btn
     Sleep   7s
     Page Should Contain Element     id:book-modal
@@ -128,6 +140,8 @@ Invalid Missing Email Mentor
     Input Text      name:nickname       Jake
     Input Text      name:contactNum     639123456789
     Input Text      name:message        Hello there
+    Mouse Over                          id:book-btn
+    Sleep   20s
     Click Element                       id:book-btn
     Sleep   7s
     Page Should Contain Element     id:book-modal
@@ -147,6 +161,8 @@ Invalid Wrong Email Mentor
     Input Text      name:contactNum     639123456789
     Input Text      name:email          jake_paul
     Input Text      name:message        Hello there
+    Mouse Over                          id:book-btn
+    Sleep   20s
     Click Element                       id:book-btn
     Sleep   7s
     Page Should Contain Element     id:book-modal
@@ -166,6 +182,8 @@ Invalid Wrong Number Mentor
     Input Text      name:contactNum     631234567890
     Input Text      name:email          jake_paul@email.com
     Input Text      name:message        Hello there
+    Mouse Over                          id:book-btn
+    Sleep   20s
     Click Element                       id:book-btn
     Sleep   7s
     Page Should Contain Element     id:book-modal
@@ -175,6 +193,8 @@ Invalid Missing All Mentor
     Sleep   1s
     Execute Javascript  document.getElementById("book-mentor-header").scrollIntoView(true)
     Sleep   5s
+    Mouse Over                          id:book-btn
+    Sleep   20s
     Click Element                       id:book-btn
     Sleep   7s
     Page Should Contain Element     id:book-modal
@@ -197,6 +217,7 @@ Valid Book A Different Mentor
     Select From List By Value           name:bookingMentor      2
     Select From List By Value           name:bookingDate        February 23, 2022
     Select From List By Value           name:bookingSlot        12:45AM-12:45PM
+    Mouse Over                          id:book-btn
+    Sleep   20s
     Click Element                       id:book-btn
-    Sleep   7s
-    Page Should Contain Element     id:success-book-modal
+    Sleep   10s

@@ -31,5 +31,6 @@ Valid Articles Page Opened
 
 Valid Membership Application Page Opened
     Open Browser To Membership Application Page
+    Sleep   10s
     # check if in membership application page
     Page Should Contain     Membership Application
