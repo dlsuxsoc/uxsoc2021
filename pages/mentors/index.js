@@ -219,7 +219,10 @@ export default function Index({ mentors }) {
       <section className="px-4 sm:px-8 lg:px-32 py-2 mt-36 mb-16 lg:mb-36 justify-center lg:justify-between items-left h-auto">
         {/* Header */}
         <div className="pb-2">
-          <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
+          <h1
+            id="book-mentor-header"
+            className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12"
+          >
             Book a Mentor
           </h1>
         </div>
@@ -318,7 +321,11 @@ export default function Index({ mentors }) {
                         {mentorIndex !== -1
                           ? getNextNDays(mentors[mentorIndex].timeSlots).map(
                               (item, index) => {
-                                return <option key={index}>{item}</option>;
+                                return (
+                                  <option value={item} key={index}>
+                                    {item}
+                                  </option>
+                                );
                               }
                             )
                           : null}
@@ -356,7 +363,11 @@ export default function Index({ mentors }) {
                               mentors[mentorIndex].timeSlots,
                               bookingData.bookingDate
                             ).map((item, index) => {
-                              return <option key={index}>{item}</option>;
+                              return (
+                                <option value={item} key={index}>
+                                  {item}
+                                </option>
+                              );
                             })
                           : null}
                       </select>
@@ -520,6 +531,7 @@ export default function Index({ mentors }) {
                 </span>
               )}
               <input
+                id={"book-btn"}
                 type={"submit"}
                 value={"BOOK MENTOR"}
                 className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer`}

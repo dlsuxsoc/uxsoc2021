@@ -48,9 +48,12 @@ Open Browser To Articles Page
     Maximize Browser Window
     
 Open Browser To Membership Application Page
-    # open browser
-    Open Browser    ${MEMBERSHIP URL}    ${BROWSER}
-    # set window size
+    # # open browser
+    # Open Browser    ${MEMBERSHIP URL}    ${BROWSER}
+    # # set window size
+    # Maximize Browser Window
+    Open Browser To Landing Page
+    Click Element    id:navJoin
     Maximize Browser Window
 
 Open Browser To Mentorship Booking Page
