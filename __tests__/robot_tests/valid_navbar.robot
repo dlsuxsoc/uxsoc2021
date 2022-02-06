@@ -41,7 +41,7 @@ Valid Articles Button Pressed
 Valid Mentors Button Pressed
     Open Browser To About Page
     Click Element    id:navMentors
-    Sleep   7s
+    Sleep   10s
     Page Should Contain     Our mentors
 
 Valid Join Us Button Pressed
