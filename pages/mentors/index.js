@@ -16,7 +16,7 @@ import Link from "next/dist/client/link";
 
 export default function Index({ mentors }) {
   const router = useRouter();
-  
+
   const initialBookingDataState = {
     bookingMentor: "",
     bookingDate: "",
@@ -27,7 +27,7 @@ export default function Index({ mentors }) {
     contactNum: "",
     email: "",
     message: "",
-  }
+  };
   // duplication checking
   const [duplicateTextHelper, setDuplicateTextHelper] = useState("");
   const [duplicateFetching, setDuplicateFetching] = useState(false);
@@ -37,7 +37,7 @@ export default function Index({ mentors }) {
   const [isBookingSlotFilled, setBookingSlot] = useState(false);
   const [isFormDataChanged, setFormData] = useState(false);
   const [isFormValid, setFormValidity] = useState(false);
-  const [cancelToken, setCancelToken] = useState(undefined)
+  const [cancelToken, setCancelToken] = useState(undefined);
   const [errorToggle, errorToggleModal] = useState(false);
 
   // BINDED TO DROPDOWN MENTOR NAME
@@ -53,7 +53,7 @@ export default function Index({ mentors }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(isFormValid){
+    if (isFormValid) {
       setApplicationSending(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -63,22 +63,20 @@ export default function Index({ mentors }) {
 
       //console.log("FORM SUBMITTED");
       //console.log(e.target[0].value);
-      try{
-        
+      try {
         const res = await axios.post("/api/addMentorshipBooking", bookingData);
         setApplicationSending(false);
         setBookingData(initialBookingDataState);
-        if(res.status === 201){
-          router.push("?status=success", undefined, {shallow: true})
+        if (res.status === 201) {
+          router.push("?status=success", undefined, { shallow: true });
           toggleModal(true);
-        }else{
+        } else {
           router.push("?status=fail", undefined, { shallow: true });
           errorToggleModal(true);
         }
-                               
-      }catch(e){
+      } catch (e) {
         setApplicationSending(false);
-        errorToggleModal(true)
+        errorToggleModal(true);
         router.push("?status=fail", undefined, { shallow: true });
       }
     }
@@ -96,20 +94,18 @@ export default function Index({ mentors }) {
       // cancelMentorshipCheck();
       // setCancelToken(axios.CancelToken.source())
 
-      
       setFormData(false);
       setDuplicateFetching(true);
       console.log("asd");
       try {
-        const res = await axios.get("/api/getMentorshipDetails",
-                          bookingData);
+        const res = await axios.get("/api/getMentorshipDetails", bookingData);
         setDuplicateFetching(false);
         const key = {
           email: bookingData.email,
           mentor: bookingData.bookingMentor,
           date: bookingData.bookingDate + " " + bookingData.bookingSlot,
         };
-        
+
         let invalid = mentorshipInstanceExists(res.data, key);
         setFormValidity(!invalid);
         //   const invalid = res.data.includes(key)
@@ -126,14 +122,11 @@ export default function Index({ mentors }) {
         } else {
           setDuplicateTextHelper("");
         }
-     }catch(e){
-       console.log(e.message);
-     }
+      } catch (e) {
+        console.log(e.message);
+      }
     }
   };
-
-
-  
 
   return (
     <Layout active={5}>
@@ -148,9 +141,7 @@ export default function Index({ mentors }) {
             Our mentors
           </h1>
           <p className="text-base lg:text-lg 2xl:text-xl mb-6 lg:mb-12 lg:w-1/2 mx-auto">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi
+            Get to know and learn from professionals in the academe and industry
           </p>
 
           {/*Mentors Container*/}
@@ -475,7 +466,7 @@ export default function Index({ mentors }) {
                       email: e.target.value,
                     });
                     // cancelMentorshipCheck();
-                    
+
                     setDuplicateTextHelper("");
                     setDuplicateFetching(false);
                     setFormData(true);
@@ -549,13 +540,13 @@ export default function Index({ mentors }) {
         toggleModal={errorToggleModal}
         toggle={errorToggle}
       >
-        It looks like we are having issues processing your
-        application. Please try again later. If this problem
-        persists, you may try contacting us through our email at{" "}
+        It looks like we are having issues processing your application. Please
+        try again later. If this problem persists, you may try contacting us
+        through our email at{" "}
         <Link href={"mailto:dlsuuxsociety@gmail.com"}>
           <a className="text-blue-500">dlsuuxsociety@gmail.com</a>
         </Link>
-      .
+        .
       </Modal>
     </Layout>
   );
