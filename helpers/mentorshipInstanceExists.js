@@ -4,7 +4,6 @@ export const mentorshipInstanceExists = (data, key) => {
         if(key.email.toLowerCase() == data[i].email.toLowerCase() &&
            key.mentor == data[i].mentor &&
            key.date == data[i].date){
-               console.log(data[i].email);
                invalid = true;
                break;
            }

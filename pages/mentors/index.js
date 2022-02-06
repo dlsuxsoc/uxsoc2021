@@ -12,10 +12,23 @@ import getNextNDays from "../../helpers/getNextNDays";
 import getTimeSlotsByDay from "../../helpers/getTimeSlotsByDay";
 import { Oval } from "react-loader-spinner";
 import mentorshipInstanceExists from "../../helpers/mentorshipInstanceExists";
+import Link from "next/dist/client/link";
 
 export default function Index({ mentors }) {
   const router = useRouter();
-
+  
+  const initialBookingDataState = {
+    bookingMentor: "",
+    bookingDate: "",
+    bookingSlot: "",
+    firstName: "",
+    lastName: "",
+    nickname: "",
+    contactNum: "",
+    email: "",
+    message: "",
+  }
+  // duplication checking
   const [duplicateTextHelper, setDuplicateTextHelper] = useState("");
   const [duplicateFetching, setDuplicateFetching] = useState(false);
   const [isBookingMentorFilled, setBookingMentor] = useState(false);
@@ -23,6 +36,9 @@ export default function Index({ mentors }) {
   const [isBookingDateFilled, setBookingDate] = useState(false);
   const [isBookingSlotFilled, setBookingSlot] = useState(false);
   const [isFormDataChanged, setFormData] = useState(false);
+  const [isFormValid, setFormValidity] = useState(false);
+  const [cancelToken, setCancelToken] = useState(undefined)
+  const [errorToggle, errorToggleModal] = useState(false);
 
   // BINDED TO DROPDOWN MENTOR NAME
   const [mentorIndex, setMentorIndex] = useState(-1);
@@ -33,49 +49,91 @@ export default function Index({ mentors }) {
   // loading
   const [applicationSending, setApplicationSending] = useState(false);
 
-  const [bookingData, setBookingData] = useState({
-    bookingMentor: "",
-    bookingDate: "",
-    bookingSlot: "",
-    firstName: "",
-    lastName: "",
-    nickname: "",
-    contactNum: "",
-    email: "",
-    message: "",
-  });
+  const [bookingData, setBookingData] = useState(initialBookingDataState);
 
   const handleSubmit = async (e) => {
-    setApplicationSending(true);
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if(isFormValid){
+      setApplicationSending(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
 
-    //console.log("FORM SUBMITTED");
-    //console.log(e.target[0].value);
-    const res = await axios.post("/api/addMentorshipBooking", bookingData);
+      // clearing form values
+      setMentorIndex(-1);
+      setBookingData(initialBookingDataState);
 
-    // clearing form values
-    setMentorIndex(-1);
-    setBookingData({
-      bookingMentor: "",
-      bookingDate: "",
-      bookingSlot: "",
-      firstName: "",
-      lastName: "",
-      nickname: "",
-      contactNum: "",
-      email: "",
-      message: "",
-    });
-
-    setApplicationSending(false);
-    if (res.status === 201) {
-      router.push("?status=success", undefined, { shallow: true });
-      toggleModal(true);
-    } else {
-      router.push("?status=fail", undefined, { shallow: true });
+      //console.log("FORM SUBMITTED");
+      //console.log(e.target[0].value);
+      try{
+        
+        const res = await axios.post("/api/addMentorshipBooking", bookingData);
+        setApplicationSending(false);
+        setBookingData(initialBookingDataState);
+        if(res.status === 201){
+          router.push("?status=success", undefined, {shallow: true})
+          toggleModal(true);
+        }else{
+          router.push("?status=fail", undefined, { shallow: true });
+          errorToggleModal(true);
+        }
+                               
+      }catch(e){
+        setApplicationSending(false);
+        errorToggleModal(true)
+        router.push("?status=fail", undefined, { shallow: true });
+      }
     }
   };
+
+  const handleMousemove = async (e) => {
+    if (
+      isBookingDateFilled &&
+      isBookingEmailFilled &&
+      isBookingMentorFilled &&
+      isBookingSlotFilled &&
+      isFormDataChanged &&
+      !applicationSending
+    ) {
+      cancelMentorshipCheck();
+      setCancelToken(axios.CancelToken.source())
+
+      
+      setFormData(false);
+      setDuplicateFetching(true);
+      try {
+        const res = await axios.get("/api/getMentorshipDetails",
+                          bookingData,
+                          {cancelToken : cancelToken.token});
+        setDuplicateFetching(false);
+        const key = {
+          email: bookingData.email,
+          mentor: bookingData.bookingMentor,
+          date: bookingData.bookingDate + " " + bookingData.bookingSlot,
+        };
+
+        let invalid = mentorshipInstanceExists(res.data, key);
+        setFormValidity(!invalid);
+        //   const invalid = res.data.includes(key)
+        console.log(invalid);
+        console.log(key.email);
+        // console.log(res.data);
+        //console.log(invalid);
+        if (invalid) {
+          setDuplicateTextHelper(
+            `You have already booked ${bookingData.bookingMentor} on ${
+              bookingData.bookingDate + " " + bookingData.bookingSlot
+            }.`
+          );
+        } else {
+          setDuplicateTextHelper("");
+        }
+     }catch(e){
+       console.log(e.message);
+     }
+    }
+  };
+
+
+  
 
   return (
     <Layout active={5}>
@@ -170,41 +228,7 @@ export default function Index({ mentors }) {
         <form
           action="POST"
           onSubmit={handleSubmit}
-          onMouseMove={async (e) => {
-            if (
-              isBookingDateFilled &&
-              isBookingEmailFilled &&
-              isBookingMentorFilled &&
-              isBookingSlotFilled &&
-              isFormDataChanged
-            ) {
-              setDuplicateFetching(true);
-              const res = await axios.get("/api/getMentorshipDetails");
-
-              setDuplicateFetching(false);
-              const key = {
-                email: bookingData.email,
-                mentor: bookingData.bookingMentor,
-                date: bookingData.bookingDate + " " + bookingData.bookingSlot,
-              };
-
-              let invalid = mentorshipInstanceExists(res.data, key);
-              //   const invalid = res.data.includes(key)
-              //console.log(key.date);
-              //console.log(res.data);
-              //console.log(invalid);
-              if (invalid) {
-                setDuplicateTextHelper(
-                  `You have already booked ${bookingData.bookingMentor} on ${
-                    bookingData.bookingDate + " " + bookingData.bookingSlot
-                  }.`
-                );
-              } else {
-                setDuplicateTextHelper("");
-              }
-              setFormData(false);
-            }
-          }}
+          onMouseMove={handleMousemove}
         >
           <section className="flex flex-col xl:flex-row justify-between mb-8">
             {/* Left Side starts here */}
@@ -227,6 +251,7 @@ export default function Index({ mentors }) {
                         bookingDate: "",
                         bookingSlot: "",
                       });
+                      cancelMentorshipCheck();
                       setFormData(true);
                       setDuplicateTextHelper("");
                     }}
@@ -271,6 +296,11 @@ export default function Index({ mentors }) {
                             bookingDate: e.target.value,
                             bookingSlot: "",
                           });
+                          if(typeof cancelToken != typeof undefined ){
+                            cancelToken.cancel();
+                            // console.log("aborted");
+                          }
+                          cancelMentorshipCheck();
                           setFormData(true);
                           setDuplicateTextHelper("");
                         }}
@@ -306,6 +336,7 @@ export default function Index({ mentors }) {
                             ...bookingData,
                             bookingSlot: e.target.value,
                           });
+                          cancelMentorshipCheck();
                           setFormData(true);
                           setDuplicateTextHelper("");
                         }}
@@ -436,6 +467,8 @@ export default function Index({ mentors }) {
                       ...bookingData,
                       email: e.target.value,
                     });
+                    cancelMentorshipCheck();
+                    
                     setDuplicateTextHelper("");
                     setDuplicateFetching(false);
                     setFormData(true);
@@ -503,9 +536,31 @@ export default function Index({ mentors }) {
         Thank you for booking a mentor! We will reach out to you via email about
         your schedule once we have processed your booking.
       </Modal>
+      <Modal
+        title={"Something Went Wrong!"}
+        toggleModal={errorToggleModal}
+        toggle={errorToggle}
+      >
+        It looks like we are having issues processing your
+        application. Please try again later. If this problem
+        persists, you may try contacting us through our email at{" "}
+        <Link href={"mailto:dlsuuxsociety@gmail.com"}>
+          <a className="text-blue-500">dlsuuxsociety@gmail.com</a>
+        </Link>
+      .
+      </Modal>
     </Layout>
   );
 }
+const cancelMentorshipCheck = () => {
+  if(typeof cancelToken != typeof undefined ){
+    try{
+      cancelToken.cancel();
+    }catch(e){
+      console.log(e);
+    }
+  }
+};
 
 export async function getServerSideProps() {
   const mentorData = await getMentors();
