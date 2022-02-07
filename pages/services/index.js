@@ -15,7 +15,6 @@ const getYears = (events) => {
   return years.filter((item, index, self) => self.indexOf(item) === index);
 };
 
-
 export default function Services({ active, contentfulProjects }) {
   return (
     <Layout active={2}>
@@ -24,15 +23,9 @@ export default function Services({ active, contentfulProjects }) {
       <section className="sm:px-8 lg:px-32 flex flex-col justify-center items-center h-auto min-h-screen">
         <h1 className="text-black pt-16 pb-8 text-center">Our services</h1>
         <section className="flex flex-col md:flex-row w-full h-full">
-
-        {servicesData.slice(0, 3).map((item, index) => {
-            return (
-              <ServiceItem item={item} key={index}/>
-            );
+          {servicesData.slice(0, 3).map((item, index) => {
+            return <ServiceItem item={item} key={index} />;
           })}
-          
-          
-
         </section>
       </section>
 
@@ -53,7 +46,7 @@ export default function Services({ active, contentfulProjects }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { data } = await ContentfulApi.getProjects(0);
   return { props: { contentfulProjects: data.projectCollection.items } };
 }

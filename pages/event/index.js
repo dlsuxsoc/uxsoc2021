@@ -50,20 +50,24 @@ export default function Events({ active, contentfulEvents }) {
     <Layout active={3}>
       <SEO title={"Events"} />
 
-
-
       {/* <div className={`${styles.container} `}>
                 <div>
                     
                 </div>
             </div> */}
       <section className="px-4 sm:px-32 min-w-screen min-h-screen">
-        <h1 className="block text-black pt-28 pb-6 text-center lg:text-left">Events</h1>
+        <h1 className="block text-black pt-28 pb-6 text-center lg:text-left">
+          Events
+        </h1>
         <div className="flex flex-col lg:flex-row items-center">
           <div className="relative w-full">
             <div className={`${styles.eventheroimage} w-1/2 lg:w-full`}>
               <Image
-                src={latestEvent.image === null ? "/images/placeholder.png" : latestEvent.image.url}
+                src={
+                  latestEvent.image === null
+                    ? "/images/placeholder.png"
+                    : latestEvent.image.url
+                }
                 alt="Placeholder"
                 layout="fill"
                 objectFit="contain"
@@ -78,26 +82,25 @@ export default function Events({ active, contentfulEvents }) {
               {
                 /** check if same month and day */
                 latestEvent.dateEnd.hasSame(latestEvent.dateStart, "day") &&
-                  latestEvent.dateEnd.hasSame(latestEvent.dateStart, "month")
+                latestEvent.dateEnd.hasSame(latestEvent.dateStart, "month")
                   ? // format when event is only one day
-                  `${latestEvent.dateStart.toFormat("DDD")}  
+                    `${latestEvent.dateStart.toFormat("DDD")}  
                 | ${latestEvent.dateStart.toFormat(
-                    "t"
-                  )} - ${latestEvent.dateEnd.toFormat("t")}`
+                  "t"
+                )} - ${latestEvent.dateEnd.toFormat("t")}`
                   : // format when event is multiple days
-                  `${latestEvent.dateStart.toFormat(
-                    "DDD"
-                  )} - ${latestEvent.dateEnd.toFormat("DDD")} |  
+                    `${latestEvent.dateStart.toFormat(
+                      "DDD"
+                    )} - ${latestEvent.dateEnd.toFormat("DDD")} |  
                 ${latestEvent.dateStart.toFormat(
-                    "t"
-                  )} - ${latestEvent.dateEnd.toFormat("t")}`
+                  "t"
+                )} - ${latestEvent.dateEnd.toFormat("t")}`
               }
             </p>
             <p className="pb-8 ">{latestEvent.description}</p>
             <Button variant="green">Learn More</Button>
           </div>
         </div>
-
       </section>
 
       <section className="flex pt-0 lg:pt-28 pb-36 flex-col-reverse lg:flex-row justify-start md:items-stretch items-center ">
@@ -123,7 +126,6 @@ export default function Events({ active, contentfulEvents }) {
           </select>
         </div>
 
-
         {/* Datetab for Desktop */}
         <section className="lg:block hidden pr-5 w-16 mr-64">
           {/* <DateTabs setEventItems={setEventItems} events={events} /> */}
@@ -141,7 +143,7 @@ export default function Events({ active, contentfulEvents }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { data } = await ContentfulApi.getEvents(0);
   return { props: { contentfulEvents: data.eventCollection.items } };
 }
