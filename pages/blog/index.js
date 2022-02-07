@@ -18,7 +18,6 @@ const getYears = (articles) => {
 };
 
 export default function Articles({ active, contentfulArticles }) {
-
   const [year, setYear] = useState("All"); // selected date
   const [articles, setArticles] = useState([...contentfulArticles]);
   const [yearList, setYearList] = useState(["All"]);
@@ -86,7 +85,7 @@ export default function Articles({ active, contentfulArticles }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { data } = await ContentfulApi.getArticles(0);
   return { props: { contentfulArticles: data.articleCollection.items } };
 }
