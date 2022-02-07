@@ -25,7 +25,12 @@ const Navigation = ({ active }) => {
 
   return (
     <>
-      <a href="#main" className={`${styles.skipToContent} ml-4 sm:ml-8 lg:ml-32 text-green`}>Skip to content</a>
+      <a
+        href="#main"
+        className={`${styles.skipToContent} ml-4 sm:ml-8 lg:ml-32 text-green`}
+      >
+        Skip to content
+      </a>
       <div
         className={`${styles.container} px-4 sm:px-8 lg:px-32 py-2 flex flex-row justify-between items-center relative`}
         style={{
@@ -40,6 +45,7 @@ const Navigation = ({ active }) => {
         <Link href="/">
           <a className="hidden md:block">
             <Image
+              id="logo"
               src={"/images/nav-logo.png"}
               alt="UXSOC Navigation Logo"
               width="136px"
@@ -50,6 +56,7 @@ const Navigation = ({ active }) => {
         <Link href="/">
           <a className="block md:hidden">
             <Image
+              id="logo"
               src={"/images/nav-logo-mobile.png"}
               className="block md:hidden "
               alt="UXSOC Navigation Logo"
@@ -70,9 +77,15 @@ const Navigation = ({ active }) => {
               />
             ))}
           </ul>
-          <Button to="apply" size="sm" className="whitespace-nowrap -mt-1 hidden md:inline-block">JOIN US</Button>
+          <Button
+            id="navJoin"
+            to="/apply"
+            size="sm"
+            className="whitespace-nowrap -mt-1 hidden md:inline-block"
+          >
+            JOIN US
+          </Button>
         </div>
-
 
         <div className="block md:hidden">
           <GiHamburgerMenu
@@ -81,36 +94,35 @@ const Navigation = ({ active }) => {
             color="gray"
             onClick={() => toggleSidebar(true)}
           />
-            <div
-              className={`fixed transition-all w-full h-full top-0 flex flex-col justify-center ease-in-out duration-300 ${styles.sidebar}`}
-              style={{
-                left: sidebar ? "0": "100%"
-              }}
-            >
-              <FaTimes
-                size="32px"
-                color="gray"
-                className="absolute right-0 top-0 mr-4 mt-4"
-                onClick={() => toggleSidebar(false)}
-              />
-
-        <ul className="list-none w-full block">
-          {data.map((item, index) => (
-            <NavItemMobile
-              active={index == active}
-              key={index}
-              name={item.name}
-              link={item.link}
+          <div
+            className={`fixed transition-all w-full h-full top-0 flex flex-col justify-center ease-in-out duration-300 ${styles.sidebar}`}
+            style={{
+              left: sidebar ? "0" : "100%",
+            }}
+          >
+            <FaTimes
+              size="32px"
+              color="gray"
+              className="absolute right-0 top-0 mr-4 mt-4"
+              onClick={() => toggleSidebar(false)}
             />
-          ))}
+
+            <ul className="list-none w-full block">
+              {data.map((item, index) => (
+                <NavItemMobile
+                  active={index == active}
+                  key={index}
+                  name={item.name}
+                  link={item.link}
+                />
+              ))}
               <NavItemMobile
-              active={6 == active}
-              name={"Join Us"}
-              link={"apply"}
-            />
-
-        </ul>
-            </div>
+                active={6 == active}
+                name={"Join Us"}
+                link={"/apply"}
+              />
+            </ul>
+          </div>
         </div>
       </div>
       {/* <div className={`${styles.spacer}`}></div> */}

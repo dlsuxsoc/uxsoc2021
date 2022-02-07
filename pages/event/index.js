@@ -18,7 +18,6 @@ const getYears = (events) => {
 };
 
 export default function Events({ active, contentfulEvents }) {
-  console.log({ ...contentfulEvents });
   const [year, setYear] = useState("All"); // selected date
   const [events, setEvents] = useState([...contentfulEvents]);
   const [yearList, setYearList] = useState(["All"]);
@@ -51,20 +50,24 @@ export default function Events({ active, contentfulEvents }) {
     <Layout active={3}>
       <SEO title={"Events"} />
 
-
-
       {/* <div className={`${styles.container} `}>
                 <div>
                     
                 </div>
             </div> */}
       <section className="px-4 sm:px-32 min-w-screen min-h-screen">
-        <h1 className="block text-black pt-28 pb-6 text-center lg:text-left">Events</h1>
+        <h1 className="block text-black pt-28 pb-6 text-center lg:text-left">
+          Events
+        </h1>
         <div className="flex flex-col lg:flex-row items-center">
           <div className="relative w-full">
             <div className={`${styles.eventheroimage} w-1/2 lg:w-full`}>
               <Image
-                src={faker.image.image()}
+                src={
+                  latestEvent.image === null
+                    ? "/images/placeholder.png"
+                    : latestEvent.image.url
+                }
                 alt="Placeholder"
                 layout="fill"
                 objectFit="contain"
@@ -74,47 +77,47 @@ export default function Events({ active, contentfulEvents }) {
           </div>
 
           <div className="pt-4 pl-0 md:pl-8 lg:pl-32 w-4/5 md-w-2/3">
-            <h2 className="text-left">{latestEvent.title}</h2>
+            <h2 className="text-black text-left">{latestEvent.title}</h2>
             <p className="whitespace-wrap sm:whitespace-nowrap my-4">
               {
                 /** check if same month and day */
                 latestEvent.dateEnd.hasSame(latestEvent.dateStart, "day") &&
-                  latestEvent.dateEnd.hasSame(latestEvent.dateStart, "month")
+                latestEvent.dateEnd.hasSame(latestEvent.dateStart, "month")
                   ? // format when event is only one day
-                  `${latestEvent.dateStart.toFormat("DDD")}  
+                    `${latestEvent.dateStart.toFormat("DDD")}  
                 | ${latestEvent.dateStart.toFormat(
-                    "t"
-                  )} - ${latestEvent.dateEnd.toFormat("t")}`
+                  "t"
+                )} - ${latestEvent.dateEnd.toFormat("t")}`
                   : // format when event is multiple days
-                  `${latestEvent.dateStart.toFormat(
-                    "DDD"
-                  )} - ${latestEvent.dateEnd.toFormat("DDD")} |  
+                    `${latestEvent.dateStart.toFormat(
+                      "DDD"
+                    )} - ${latestEvent.dateEnd.toFormat("DDD")} |  
                 ${latestEvent.dateStart.toFormat(
-                    "t"
-                  )} - ${latestEvent.dateEnd.toFormat("t")}`
+                  "t"
+                )} - ${latestEvent.dateEnd.toFormat("t")}`
               }
             </p>
             <p className="pb-8 ">{latestEvent.description}</p>
             <Button variant="green">Learn More</Button>
           </div>
         </div>
-
       </section>
 
-      <section className="flex pt-28 pb-36 flex-col-reverse lg:flex-row justify-start md:items-stretch items-center">
-        <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap lg:justify-start justify-center lg:w-4/5 w-full">
-          {events.map(({ title, description }, index) => (
-            <EventItem key={index} title={title} description={description} />
+      <section className="flex pt-0 lg:pt-28 pb-36 flex-col-reverse lg:flex-row justify-start md:items-stretch items-center ">
+        <ul className="px-4 sm:px-32 flex flex-wrap lg:flex-wrap lg:justify-between justify-center lg:w-2/3 md:w-full w-full">
+          {events.map((item, index) => (
+            <EventItem key={index} item={item} />
           ))}
         </ul>
 
         {/* Dropdown for Mobile */}
-        <div className="flex flex-row w-full items-center justify-center">
+        <div className="flex flex-row lg:hidden w-full justify-center pb-8 pt-8">
           <select
             className={`${styles.customSelect} block lg:hidden w-4/5 py-2 px-3`}
             onClick={(e) => {
               setYear(e.target.value);
-            }} >
+            }}
+          >
             {yearList.map((item, key) => (
               <option key={key} value={item}>
                 {item}
@@ -140,7 +143,7 @@ export default function Events({ active, contentfulEvents }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { data } = await ContentfulApi.getEvents(0);
   return { props: { contentfulEvents: data.eventCollection.items } };
 }
