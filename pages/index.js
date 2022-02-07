@@ -22,7 +22,7 @@ export default function Index({ articles, projects, events }) {
             User Experience Society - DLSU
           </h1>
           <p className="text-base lg:text-2xl 2xl:text-3xl">
-            A student organization that advocates User Experience, Experience 
+            A student organization that advocates User Experience, Experience
             Design, and Human-Computer Interaction practices.
           </p>
         </div>
@@ -40,7 +40,9 @@ export default function Index({ articles, projects, events }) {
       </section>
 
       {/* About UX */}
-      <section className={`px-4 sm:px-8 lg:px-32 pt-24 sm:pt-32 md:pt-48 lg:pt-36 xl:pt-40 2xl:pt-96 pb-16 lg:pb-36 flex flex-col lg:flex-row justify-center lg:justify-between items-center h-auto ${styles.aboutBg}`}>
+      <section
+        className={`px-4 sm:px-8 lg:px-32 pt-24 sm:pt-32 md:pt-48 lg:pt-36 xl:pt-40 2xl:pt-96 pb-16 lg:pb-36 flex flex-col lg:flex-row justify-center lg:justify-between items-center h-auto ${styles.aboutBg}`}
+      >
         {/* Image */}
         <div className="relative h-52 md:h-96 w-full lg:w-1/2 mb-6 lg:pb-0 pr-0 lg:mr-10 xl:mr-20 2xl:pr-0 mx-auto text-center">
           <Image
@@ -71,13 +73,17 @@ export default function Index({ articles, projects, events }) {
           </p>
 
           <div className="text-center md:text-left">
-            <Button id="abouthome" to="/about">Learn More</Button>
+            <Button id="abouthome" to="/about">
+              Learn More
+            </Button>
           </div>
         </div>
       </section>
 
       {/* Events */}
-      <section className={`px-4 sm:px-8 lg:px-32 py-2 pb-16 lg:pb-36 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto ${styles.eventBg}`}>
+      <section
+        className={`px-4 sm:px-8 lg:px-32 py-2 pb-16 lg:pb-36 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto ${styles.eventBg}`}
+      >
         {/* Header */}
         <div className="pb-3 lg:pb-0">
           <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12 line-clamp-2">
@@ -98,7 +104,11 @@ export default function Index({ articles, projects, events }) {
               >
                 <div className="relative h-48 md:h-96 lg:h-44 2xl:h-72 shadow-lg">
                   <Image
-                    src={item.image === null ? "/images/placeholder.png" : item.image.url}
+                    src={
+                      item.image === null
+                        ? "/images/placeholder.png"
+                        : item.image.url
+                    }
                     alt={item.title}
                     layout="fill"
                     objectFit="cover"
@@ -116,13 +126,19 @@ export default function Index({ articles, projects, events }) {
           })}
         </section>
 
-        <Button id="eventshome" to="/event" className="self-center lg:self-start">
+        <Button
+          id="eventshome"
+          to="/event"
+          className="self-center lg:self-start"
+        >
           Learn More
         </Button>
       </section>
 
       {/* Articles */}
-      <section className={`px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto ${styles.articleBg}`}>
+      <section
+        className={`px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto ${styles.articleBg}`}
+      >
         {/* Header */}
         <div className="pb-3 lg:pb-0">
           <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
@@ -136,7 +152,11 @@ export default function Index({ articles, projects, events }) {
           <div className="w-full lg:w-1/2 pr-0 lg:pr-20 xl:pr-28 text-center lg:text-left">
             <div className={"relative h-48 md:h-96 lg:h-44 2xl:h-96 shadow-lg"}>
               <Image
-                src={articles[0].imagesCollection.items[0] === null ? "/images/placeholder.png" : articles[0].imagesCollection.items[0].url}
+                src={
+                  articles[0].imagesCollection.items[0] === null
+                    ? "/images/placeholder.png"
+                    : articles[0].imagesCollection.items[0].url
+                }
                 alt={articles[0].title}
                 layout="fill"
                 objectFit="cover"
@@ -157,12 +177,17 @@ export default function Index({ articles, projects, events }) {
             {/* Article */}
             {articles.slice(1, 3).map((item, index) => {
               return (
-                <div className="w-full pb-8 flex flex-row items-start" key={index}>
-                  <div
-                    className={`w-1/3 relative lg:h-28 2xl:h-44 shadow-lg`}
-                  >
+                <div
+                  className="w-full pb-8 flex flex-row items-start"
+                  key={index}
+                >
+                  <div className={`w-1/3 relative lg:h-28 2xl:h-44 shadow-lg`}>
                     <Image
-                      src={item.imagesCollection.items[0] === null ? "/images/placeholder.png" : item.imagesCollection.items[0].url}
+                      src={
+                        item.imagesCollection.items[0] === null
+                          ? "/images/placeholder.png"
+                          : item.imagesCollection.items[0].url
+                      }
                       alt={item.title}
                       layout="fill"
                       objectFit="cover"
@@ -172,12 +197,12 @@ export default function Index({ articles, projects, events }) {
 
                   <div className="w-2/3 flex flex-col pl-8">
                     <Link href={`/blog/${item.slug}`}>
-                    <a className="line-clamp-2 text-black text-base lg:text-xl mb-4 hover:underline font-bold">
-                      {item.title}
-                    </a>
+                      <a className="line-clamp-2 text-black text-base lg:text-xl mb-4 hover:underline font-bold">
+                        {item.title}
+                      </a>
                     </Link>
                     <p className="break-words line-clamp-4 text-xs lg:text-sm">
-                    {getRTFContent(item)}
+                      {getRTFContent(item)}
                     </p>
                   </div>
                 </div>
@@ -186,7 +211,11 @@ export default function Index({ articles, projects, events }) {
           </div>
         </section>
 
-        <Button id="articleshome" to="/blog" className="self-center lg:self-end">
+        <Button
+          id="articleshome"
+          to="/blog"
+          className="self-center lg:self-end"
+        >
           Learn More
         </Button>
       </section>
@@ -214,7 +243,11 @@ export default function Index({ articles, projects, events }) {
               >
                 <div className="relative h-48 md:h-96 lg:h-44 2xl:h-72 shadow-lg">
                   <Image
-                    src={item.image === null ? "/images/placeholder.png" : item.image.url}
+                    src={
+                      item.image === null
+                        ? "/images/placeholder.png"
+                        : item.image.url
+                    }
                     alt={item.title}
                     layout="fill"
                     objectFit="cover"
@@ -226,14 +259,17 @@ export default function Index({ articles, projects, events }) {
                 <h2 className="text-black text-base md:text-xl my-4 line-clamp-2">
                   {item.title}
                 </h2>
-                <p className="break-words text-sm lg:text-base mb-4 line-clamp-4">{item.description}</p>
+                <p className="break-words text-sm lg:text-base mb-4 line-clamp-4">
+                  {item.description}
+                </p>
               </div>
             );
           })}
         </section>
 
-        <Button id="serviceshome" to="/services">Learn More</Button>
-
+        <Button id="serviceshome" to="/services">
+          Learn More
+        </Button>
       </section>
     </Layout>
   );
@@ -257,7 +293,7 @@ const getEventData = async () => {
   return data.eventCollection.items;
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const articleData = await getArticleData();
   const projectData = await getProjectData();
   const eventData = await getEventData();

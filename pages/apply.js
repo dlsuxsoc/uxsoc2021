@@ -476,12 +476,12 @@ const Apply = () => {
                     onChange={(e) => {
                       setEmailFetching(false);
 
-                      try {
-                        emailCheckingController.abort();
-                        console.log("Request Aborted");
-                      } catch (e) {
-                        console.log("Request did not abort");
-                      }
+                      // try {
+                      //   emailCheckingController.abort();
+                      //   console.log("Request Aborted");
+                      // } catch (e) {
+                      //   console.log("Request did not abort");
+                      // }
 
                       setApplicationData({
                         ...applicationData,
