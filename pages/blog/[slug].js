@@ -16,10 +16,15 @@ export default function ArticlesPost({
   content,
   date,
   imagesCollection,
+  slug,
 }) {
   return (
     <Layout active={-1}>
-      <SEO title={"Articles Post"} />
+      <SEO
+        title={"Articles Post"}
+        description={content.json.content[0].content[0].value}
+        slug={`blog/${slug}`}
+      />
       <div className="w-full md:w-2/3 mt-32 mb-64 mx-auto min-h-full bg-white shadow-xl relative z-10">
         <div className="pb-3 lg:pb-0">
           <h1
@@ -90,8 +95,9 @@ export async function getServerSideProps(context) {
   const { data } = await ContentfulApi.getArticles(0);
   const { params } = context;
   return {
-    props: data.articleCollection.items.find(
-      (item) => item.slug === params.slug
-    ),
+    props: {
+      ...data.articleCollection.items.find((item) => item.slug === params.slug),
+      slug: params.slug,
+    },
   };
 }

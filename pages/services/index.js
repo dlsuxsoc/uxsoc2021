@@ -18,7 +18,12 @@ const getYears = (events) => {
 export default function Services({ active, contentfulProjects }) {
   return (
     <Layout active={2}>
-      <SEO title={"Services"} />
+      {/* TODO: add a better description */}
+      <SEO
+        title={"Services"}
+        description="We provide different services"
+        slug="services"
+      />
 
       <section className="sm:px-8 lg:px-32 flex flex-col justify-center items-center h-auto min-h-screen">
         <h1 className="text-black pt-16 pb-8 text-center">Our services</h1>

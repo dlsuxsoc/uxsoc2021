@@ -48,7 +48,7 @@ export default function Events({ active, contentfulEvents }) {
 
   return (
     <Layout active={3}>
-      <SEO title={"Events"} />
+      <SEO title={"Events"} slug="event" />
 
       {/* <div className={`${styles.container} `}>
                 <div>

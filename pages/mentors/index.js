@@ -130,7 +130,11 @@ export default function Index({ mentors }) {
 
   return (
     <Layout active={5}>
-      <SEO title={"Mentors"} />
+      <SEO
+        title={"Mentors"}
+        description="Get to know and learn from professionals in the academe and industry"
+        slug="mentors"
+      />
       {applicationSending ? <PageLoading /> : null}
 
       {/* Our Mentors */}
