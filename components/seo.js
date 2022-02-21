@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 const SEO = ({ title, description = "", slug = "" }) => {
-  const URL = "dlsuuxsoc.netlify.app";
+  const URL = "https://dlsuuxsoc.netlify.app";
   return (
     <Head>
       <title> {title} | User Experience Society - DLSU</title>
