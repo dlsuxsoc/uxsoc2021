@@ -12,7 +12,14 @@ import Button from "../../components/Button/Button";
 export default function Index() {
   return (
     <Layout active={1}>
-      <SEO title={"About Us"} />
+      <SEO
+        title={"About Us"}
+        description="UX Society envisions to be DLSU's premier consulting and
+                educational body for User Experience Strategy, particularly in
+                technologies that enhance usability, guide human-computer
+                interaction, and showcase effective visual design."
+        slug="about"
+      />
 
       {/* About UX */}
       <section className="px-4 sm:px-32 py-2 mt-28 md:mt-8 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-screen">
@@ -102,7 +109,11 @@ export default function Index() {
               >
                 <div className="p-24 mr-0 md:mr-28 relative h-24 md:h-36 lg:h-44 2xl:h-72">
                   <Image
-                    src={item.Image === null ? "/images/placeholder.png" : item.Image}
+                    src={
+                      item.Image === null
+                        ? "/images/placeholder.png"
+                        : item.Image
+                    }
                     alt="Service Image"
                     layout="fill"
                     objectFit="contain"

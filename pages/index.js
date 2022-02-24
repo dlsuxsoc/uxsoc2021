@@ -13,7 +13,14 @@ import Link from "next/link";
 export default function Index({ articles, projects, events }) {
   return (
     <Layout active={0}>
-      <SEO title={"Home"} />
+      <SEO
+        title={"Home"}
+        description="UX Society - DLSU aids various organizations by creating quality
+            products and services by applying principles, concepts and
+            methodologies in such strategies. We hold workshops, seminars and
+            conferences to train members about the essentials skills of proper
+            UX discipline and methodologies."
+      />
       {/* Hero */}
       <section className="px-4 sm:px-8 lg:px-32 py-2 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen min-h-screen md:min-h-max">
         {/* Header */}

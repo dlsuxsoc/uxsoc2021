@@ -136,7 +136,14 @@ const Apply = () => {
 
   return (
     <Layout active={6}>
-      <SEO title={"Membership Application"} />
+      <SEO
+        title={"Membership Application"}
+        description="Apply as a core member today and get exclusive mentorship from
+                  professionals of the field. You can also help in organizing
+                  UX-related events or workshops for the student community in
+                  Taft."
+        slug="apply"
+      />
       {applicationSending ? <PageLoading /> : null}
       <div className="hidden md:block fixed right-5 top-0 md:w-64 z-0 lg:w-96 h-screen">
         <Image
