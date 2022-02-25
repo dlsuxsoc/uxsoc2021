@@ -20,51 +20,54 @@ const Apply = () => {
   const [applicationSending, setApplicationSending] = useState(false);
   const emailCheckingController = new AbortController();
 
-  // const [applicationData, setApplicationData] = useState({
-  //   firstName: "Alyssa",
-  //   lastName: "Palmares",
-  //   nickname: "Alyssa",
-  //   mOB: 12,
-  //   dOB: 14,
-  //   yOB: 2001,
-  //   pronoun: "She/ Her",
-  //   customPronoun: "",
-  //   email: "alyssa_palmares@dlsu.edu.ph",
-  //   contactnum: "639293397767",
-  //   college: "De La Salle University - Manila",
-  //   program: "Bachelor of Science in Computer Science",
-  //   hobbies:
-  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
-  //   interestedOrg:
-  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
-  //   interestedDept: [],
-  // });
-
-  const initialApplicationState = {
-    firstName: "",
-    lastName: "",
-    nickname: "",
-    mOB: "",
-    dOB: "",
-    yOB: new Date().getUTCFullYear() - 16,
-    pronoun: "",
+  const [applicationData, setApplicationData] = useState({
+    firstName: "Alyssa",
+    lastName: "Palmares",
+    nickname: "Alyssa",
+    mOB: 12,
+    dOB: 14,
+    yOB: 2001,
+    pronoun: "She/ Her",
     customPronoun: "",
-    email: "",
-    contactnum: "",
-    college: "",
-    program: "",
-    hobbies: "",
-    whatIsUX: "",
-    practicalityUX: "",
-    studentID: "",
-    interestedOrg: "",
+    email: "alyssa_palmares@dlsu.edu.ph",
+    contactnum: "639293397767",
+    college: "De La Salle University - Manila",
+    program: "Bachelor of Science in Computer Science",
+    hobbies:
+      "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
+    interestedOrg:
+      "2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
     interestedDept: [],
-    emails: [],
-  };
+    whatIsUX: "3. testing ",
+    practicalityUX: "4. testin",
+    studentID: "119",
+  });
 
-  const [applicationData, setApplicationData] = useState(
-    initialApplicationState
-  );
+  // const initialApplicationState = {
+  //   firstName: "",
+  //   lastName: "",
+  //   nickname: "",
+  //   mOB: "",
+  //   dOB: "",
+  //   yOB: new Date().getUTCFullYear() - 16,
+  //   pronoun: "",
+  //   customPronoun: "",
+  //   email: "",
+  //   contactnum: "",
+  //   college: "",
+  //   program: "",
+  //   hobbies: "",
+  //   whatIsUX: "",
+  //   practicalityUX: "",
+  //   studentID: "",
+  //   interestedOrg: "",
+  //   interestedDept: [],
+  //   emails: [],
+  // };
+
+  // const [applicationData, setApplicationData] = useState(
+  //   initialApplicationState
+  // );
 
   const [emailTextHelper, setEmailTextHelper] = useState("");
 
@@ -97,7 +100,6 @@ const Apply = () => {
       });
     }
 
-    //    console.log(num);
     return () => {};
   }, [applicationData.mOB, applicationData.yOB, maxDate]);
 
@@ -117,17 +119,20 @@ const Apply = () => {
     if (!emailFetching) {
       setApplicationSending(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
-      // console.log(applicationData);
 
       try {
-        const res = await axios.post(
-          "/api/addMembershipApplication",
-          applicationData
-        );
+        const [create, send] = await Promise.all([
+          axios.post("/api/triggerWebhookMemApp", applicationData),
+          axios.post("/api/addMembershipApplication", applicationData),
+        ]);
+
         setApplicationSending(false);
-        setApplicationData(initialApplicationState);
+        //console.log(create, send);
+
+        //setApplicationData(initialApplicationState);
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
+        console.log(e);
         setApplicationSending(false);
         router.push("?status=fail", undefined, { shallow: true });
       }
@@ -483,13 +488,6 @@ const Apply = () => {
                     onChange={(e) => {
                       setEmailFetching(false);
 
-                      // try {
-                      //   emailCheckingController.abort();
-                      //   console.log("Request Aborted");
-                      // } catch (e) {
-                      //   console.log("Request did not abort");
-                      // }
-
                       setApplicationData({
                         ...applicationData,
                         email: e.target.value.toLowerCase(),
@@ -613,7 +611,7 @@ const Apply = () => {
               <div className="grid grid-cols-6 gap-4">
                 <div className="col-start-1 col-span-12 sm:col-span-6 md:col-span-4 mb-4">
                   <label className="block mb-6" htmlFor="firstName">
-                    Student ID (Optional)
+                    Student ID (if applicable)
                   </label>
                   <select
                     value={applicationData.studentID}
@@ -643,9 +641,7 @@ const Apply = () => {
               </h2>
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
-                  <label className="block mb-6">
-                    What are your hobbies? (Optional)
-                  </label>
+                  <label className="block mb-6">What are your hobbies?</label>
                   <textarea
                     className="w-full p-2"
                     rows={5}
@@ -663,7 +659,6 @@ const Apply = () => {
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6">
                     Why are you interested in joining the organization?
-                    (Optional)
                   </label>
                   <textarea
                     className="w-full p-2"
@@ -681,7 +676,7 @@ const Apply = () => {
 
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6">
-                    What is user experience to you? (Optional)
+                    What is user experience to you?
                   </label>
                   <textarea
                     className="w-full p-2"
@@ -700,7 +695,7 @@ const Apply = () => {
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6">
                     How do you think user experience applies in your current
-                    degree program and interests? (Optional)
+                    degree program and interests?
                   </label>
                   <textarea
                     className="w-full p-2"
@@ -718,7 +713,7 @@ const Apply = () => {
 
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6">
-                    What department/s are you interested in? (Optional)
+                    What department/s are you interested in?
                   </label>
                   <FormCheckbox
                     type="departments"

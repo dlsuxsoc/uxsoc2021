@@ -9,4 +9,7 @@ module.exports = {
     ],
   },
   distDir: "out",
+  env: {
+    WEBHOOK_MEM_APP: process.env.WEBHOOK_MEM_APP,
+  },
 };
