@@ -20,56 +20,41 @@ const Apply = () => {
   const [applicationSending, setApplicationSending] = useState(false);
   const emailCheckingController = new AbortController();
 
-  const [applicationData, setApplicationData] = useState({
-    firstName: "Alyssa",
-    lastName: "Palmares",
-    nickname: "Alyssa",
-    mOB: 12,
-    dOB: 14,
-    yOB: 2001,
-    pronoun: "She/ Her",
+  const initialStatusTextState = {
+    firstName: "",
+    email: "",
+    contactnum: "",
+  };
+  const initialApplicationState = {
+    firstName: "",
+    lastName: "",
+    nickname: "",
+    mOB: "",
+    dOB: "",
+    yOB: "",
+    pronoun: "",
     customPronoun: "",
-    email: "alyssa_palmares@dlsu.edu.ph",
-    contactnum: "639293397767",
-    college: "De La Salle University - Manila",
-    program: "Bachelor of Science in Computer Science",
-    hobbies:
-      "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
-    interestedOrg:
-      "2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
+    email: "",
+    contactnum: "",
+    college: "",
+    program: "",
+    hobbies: "",
+    whatIsUX: "",
+    practicalityUX: "",
+    studentID: "",
+    interestedOrg: "",
     interestedDept: [],
-    whatIsUX: "3. testing ",
-    practicalityUX: "4. testin",
-    studentID: "119",
-  });
+    emails: [],
+  };
 
-  // const initialApplicationState = {
-  //   firstName: "",
-  //   lastName: "",
-  //   nickname: "",
-  //   mOB: "",
-  //   dOB: "",
-  //   yOB: new Date().getUTCFullYear() - 16,
-  //   pronoun: "",
-  //   customPronoun: "",
-  //   email: "",
-  //   contactnum: "",
-  //   college: "",
-  //   program: "",
-  //   hobbies: "",
-  //   whatIsUX: "",
-  //   practicalityUX: "",
-  //   studentID: "",
-  //   interestedOrg: "",
-  //   interestedDept: [],
-  //   emails: [],
-  // };
+  const [applicationData, setApplicationData] = useState(
+    initialApplicationState
+  );
 
-  // const [applicationData, setApplicationData] = useState(
-  //   initialApplicationState
-  // );
+  const [statusText, setStatusText] = useState(initialStatusTextState);
 
   const [emailTextHelper, setEmailTextHelper] = useState("");
+  const [deptTextHelper, setDeptTextHelper] = useState("");
 
   const [checkedDept, setCheckedDept] = useState({
     Design: false,
@@ -104,14 +89,34 @@ const Apply = () => {
   }, [applicationData.mOB, applicationData.yOB, maxDate]);
 
   useEffect(() => {
+    const depts = Object.keys(checkedDept).filter(
+      (key) => checkedDept[key] === true
+    );
+
     setApplicationData({
       ...applicationData,
-      interestedDept: Object.keys(checkedDept).filter(
-        (key) => checkedDept[key] === true
-      ),
+      interestedDept: depts,
     });
+
+    if (!depts.length) {
+      setDeptTextHelper("(Please choose at least 1)");
+    } else {
+      setDeptTextHelper("");
+    }
+
     // console.log(applicationData);
   }, [setCheckedDept, checkedDept]);
+
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    console.log(router);
+
+    if (router.query.status && statusText.firstName === "")
+      router.push("/apply", undefined, { shallow: true });
+
+    return () => {};
+  }, [router, router.isReady]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -125,11 +130,9 @@ const Apply = () => {
           axios.post("/api/triggerWebhookMemApp", applicationData),
           axios.post("/api/addMembershipApplication", applicationData),
         ]);
-
         setApplicationSending(false);
-        //console.log(create, send);
-
-        //setApplicationData(initialApplicationState);
+        setApplicationData(initialStatusTextState);
+        setStatusText(create.data);
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
         console.log(e);
@@ -149,6 +152,7 @@ const Apply = () => {
                   Taft."
         slug="apply"
       />
+
       {applicationSending ? <PageLoading /> : null}
       <div className="hidden md:block fixed right-5 top-0 md:w-64 z-0 lg:w-96 h-screen">
         <Image
@@ -177,18 +181,22 @@ const Apply = () => {
                 ) : (
                   <>🥺 Sorry </>
                 )}
-                {applicationData.nickname.trim() !== ""
-                  ? applicationData.nickname
-                  : applicationData.firstName}
-                ,
+                {statusText?.firstName},
               </p>
               <p className="text-base lg:text-2xl leading-loose mb-4">
                 {router.query.status === "success" ? (
                   <>
                     The application was successfully submitted. Sit tight while
-                    the team is reviewing your application. We will be
-                    contacting you through the email or the contact number you
-                    have provided.
+                    the team is reviewing your application. We will be sending
+                    instructions for the next step of the application to your
+                    email at{" "}
+                    <span className="text-blue-500">{statusText?.email}</span>.
+                    If you haven't received an email from us in 3 days, you may
+                    try contacting us through our email at{" "}
+                    <Link href={"mailto:dlsuuxsociety@gmail.com"}>
+                      <a className="text-blue-500">dlsuuxsociety@gmail.com</a>
+                    </Link>
+                    .
                   </>
                 ) : (
                   <>
@@ -712,9 +720,12 @@ const Apply = () => {
                 <div className="col-span-2"></div>
 
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
-                  <label className="block mb-6">
+                  <label className="inline-block mb-6">
                     What department/s are you interested in?
                   </label>
+                  <span className="ml-2 inline-block text-red-500 text-sm">
+                    {deptTextHelper}
+                  </span>{" "}
                   <FormCheckbox
                     type="departments"
                     onChange={(e) =>
@@ -797,7 +808,12 @@ const Apply = () => {
                     id="send"
                     type={"submit"}
                     value={"SEND APPLICATION"}
-                    className={`${styles.btn_container} font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer`}
+                    disabled={deptTextHelper !== "" || emailFetching}
+                    className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green ${
+                      deptTextHelper === "" && !emailFetching
+                        ? `cursor-pointer ${styles.btn_container}`
+                        : "cursor-not-allowed opacity-50"
+                    }`}
                   />
                 </div>
               </div>

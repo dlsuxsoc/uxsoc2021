@@ -24,7 +24,7 @@ const triggerWebhookMemApp = async (req, res) => {
       people.push(person.properties[`Email Address`].email);
     }
 
-    if (emailExists(data.email, people)) {
+    if (emailExists(email, people)) {
       const error = new Error("Duplicate Application");
       error.code = 400;
       error.msg = "An application with this email was already used";
