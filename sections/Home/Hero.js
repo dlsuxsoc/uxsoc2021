@@ -3,7 +3,7 @@ import Button from "../../components/Button/Button";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 
-const Hero = () => {
+const Hero = ({ refProp }) => {
   return (
     <section className="px-4 sm:px-8 lg:px-32 py-2 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen min-h-screen md:min-h-max">
       <div className="text-center lg:text-left w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
@@ -17,9 +17,7 @@ const Hero = () => {
         <Button
           className="mt-5"
           eventHandler={(event) => {
-            document
-              .getElementById("about")
-              .scrollIntoView({ behavior: "smooth" });
+            refProp.current.scrollIntoView({ behavior: "smooth" });
           }}
         >
           Learn more about UXSOC

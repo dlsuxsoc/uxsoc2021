@@ -3,10 +3,10 @@ import Button from "../../components/Button/Button";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 
-const AboutUs = () => {
+const AboutUs = ({ refProp }) => {
   return (
     <section
-      id="about"
+      ref={refProp}
       className={`px-4 sm:px-8 lg:px-32 pt-24 sm:pt-32 md:pt-48 lg:pt-36 xl:pt-40 2xl:pt-96 pb-16 lg:pb-36 flex flex-col lg:flex-row justify-center lg:justify-between items-center h-auto ${styles.aboutBg}`}
     >
       {/* Image */}

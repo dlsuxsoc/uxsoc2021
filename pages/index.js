@@ -1,20 +1,15 @@
-import Head from "next/head";
-import Image from "next/image";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import axios from "axios";
-import styles from "../styles/Home.module.css";
-import { useEffect, useState } from "react";
-import Button from "../components/Button/Button";
+import { useRef } from "react";
 import ContentfulApi from "./api/utils/contentfulApi";
-import getRTFContent from "../helpers/getRTFContent";
-import Link from "next/link";
 import Hero from "../sections/Home/Hero";
 import AboutUs from "./../sections/Home/AboutUs";
 import Articles from "../sections/Home/Articles";
 import Projects from "../sections/Home/Projects";
 
 export default function Index({ articles, projects, events }) {
+  const aboutRef = useRef(null);
+
   return (
     <Layout active={0}>
       <SEO
@@ -25,8 +20,8 @@ export default function Index({ articles, projects, events }) {
             conferences to train members about the essentials skills of proper
             UX discipline and methodologies."
       />
-      <Hero />
-      <AboutUs />
+      <Hero refProp={aboutRef} />
+      <AboutUs refProp={aboutRef} />
       <Articles articles={articles} />
       <Projects projects={projects} />
     </Layout>
