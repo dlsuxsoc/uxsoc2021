@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
-import faker from "faker";
 import styles from "../../styles/Slug.module.scss";
 import ContentfulApi from "./../api/utils/contentfulApi";
 import { DateTime } from "luxon";

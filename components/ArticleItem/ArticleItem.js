@@ -7,7 +7,6 @@ import { DateTime } from "luxon";
 import eventPicture from "../../public/images/temp-event.png";
 import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import getRTFContent from "../../helpers/getRTFContent";
-import faker from "faker";
 
 const ArticleItem = ({ item }) => {
   const options = {

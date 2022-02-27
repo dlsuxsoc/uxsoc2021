@@ -5,7 +5,6 @@ import DateTabs from "../../components/DateTabs/DateTabs";
 import SEO from "../../components/seo";
 import styles from "../../styles/Event.module.scss";
 import { useEffect, useState } from "react";
-import faker from "faker";
 import ContentfulApi from "./../api/utils/contentfulApi";
 import { DateTime } from "luxon";
 import Button from "./../../components/Button/Button";

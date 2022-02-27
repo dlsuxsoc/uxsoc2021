@@ -3,7 +3,6 @@ import styles from "./ProjectItem.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import eventPicture from "../../public/images/temp-event.png";
-import faker, { image } from "faker";
 
 const ProjectItem = ({ item }) => {
   return (
