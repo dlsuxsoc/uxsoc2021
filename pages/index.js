@@ -25,7 +25,7 @@ export default function Index({ articles, projects, events }) {
       <section className="px-4 sm:px-8 lg:px-32 py-2 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen min-h-screen md:min-h-max">
         {/* Header */}
         <div className="text-center lg:text-left w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
-          <h1 className="text-black text-4xl lg:text-6xl xl:text-5xl 2xl:text-7xl mb-6 lg:mb-12">
+          <h1 className="text-4xl lg:text-6xl xl:text-5xl 2xl:text-7xl mb-6 lg:mb-12">
             User Experience Society - DLSU
           </h1>
           <p className="text-base lg:text-2xl 2xl:text-3xl">
@@ -63,7 +63,7 @@ export default function Index({ articles, projects, events }) {
 
         {/* Header and Text */}
         <div className="w-full lg:w-1/2 pb-3 lg:pb-0 mb-8">
-          <h1 className="text-black text-3xl lg:text-4xl 2xl:text-5xl mb-6 lg:mb-12">
+          <h1 className=" text-3xl lg:text-4xl 2xl:text-5xl mb-6 lg:mb-12">
             About UX Society DLSU
           </h1>
           <p className="text-sm md:text-base lg:text-lg 2xl:text-xl mb-4">
@@ -93,7 +93,7 @@ export default function Index({ articles, projects, events }) {
       >
         {/* Header */}
         <div className="pb-3 lg:pb-0">
-          <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12 line-clamp-2">
+          <h1 className=" text-3xl lg:text-5xl mb-6 lg:mb-12 line-clamp-2">
             Events
           </h1>
         </div>
@@ -122,7 +122,7 @@ export default function Index({ articles, projects, events }) {
                     objectPosition="center"
                   />
                 </div>
-                <h2 className="text-center text-black lg:text-left text-base md:text-xl my-4">
+                <h2 className="text-center  lg:text-left text-base md:text-xl my-4">
                   {item.title}
                 </h2>
                 {/* <p className="break-words text-center lg:text-left text-sm lg:text-base mb-4">
@@ -148,9 +148,7 @@ export default function Index({ articles, projects, events }) {
       >
         {/* Header */}
         <div className="pb-3 lg:pb-0">
-          <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
-            Articles
-          </h1>
+          <h1 className=" text-3xl lg:text-5xl mb-6 lg:mb-12">Articles</h1>
         </div>
 
         {/* Articles Container*/}
@@ -170,7 +168,7 @@ export default function Index({ articles, projects, events }) {
               />
             </div>
             <Link href={`/blog/${articles[0].slug}`}>
-              <a className="line-clamp-2 text-black font-bold text-base md:text-xl lg:text-2xl py-2 inline-block hover:underline">
+              <a className="line-clamp-2  font-bold text-base md:text-xl lg:text-2xl py-2 inline-block hover:underline">
                 {articles[0].title}
               </a>
             </Link>
@@ -204,7 +202,7 @@ export default function Index({ articles, projects, events }) {
 
                   <div className="w-2/3 flex flex-col pl-8">
                     <Link href={`/blog/${item.slug}`}>
-                      <a className="line-clamp-2 text-black text-base lg:text-xl mb-4 hover:underline font-bold">
+                      <a className="line-clamp-2  text-base lg:text-xl mb-4 hover:underline font-bold">
                         {item.title}
                       </a>
                     </Link>
@@ -231,9 +229,7 @@ export default function Index({ articles, projects, events }) {
       <section className="px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">
         {/* Header */}
         <div className="pb-3 lg:pb-0">
-          <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
-            Projects
-          </h1>
+          <h1 className=" text-3xl lg:text-5xl mb-6 lg:mb-12">Projects</h1>
         </div>
 
         {/* Projects Container*/}
@@ -263,7 +259,7 @@ export default function Index({ articles, projects, events }) {
                 </div>
 
                 {/* Project Text */}
-                <h2 className="text-black text-base md:text-xl my-4 line-clamp-2">
+                <h2 className=" text-base md:text-xl my-4 line-clamp-2">
                   {item.title}
                 </h2>
                 <p className="break-words text-sm lg:text-base mb-4 line-clamp-4">

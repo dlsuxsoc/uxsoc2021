@@ -159,7 +159,7 @@ const Apply = () => {
         <section className="px-4 sm:px-8 lg:px-32 pt-32 min-h-screen">
           <div className="mb-24 w-full grid grid-cols-12 gap-2">
             <div className="col-start-1 col-end-12">
-              <h1 className="text-black text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
+              <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
                 {router.query.status === "success"
                   ? "Application Submitted"
                   : "Something Went Wrong"}
@@ -215,7 +215,7 @@ const Apply = () => {
             {/* Header */}
             <div className="mb-24 w-full grid grid-cols-12 gap-2">
               <div className="col-start-1 col-end-12">
-                <h1 className="text-black text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
+                <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
                   Membership Application
                 </h1>
               </div>
@@ -233,7 +233,7 @@ const Apply = () => {
           <form action="POST" onSubmit={handleSubmit}>
             <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
               {/** Personal Information Section */}
-              <h2 className="text-black text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
+              <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 Personal Information
               </h2>
               <div className="grid grid-cols-12 gap-4">
@@ -465,7 +465,7 @@ const Apply = () => {
             </section>
             {/** Contact Information Section */}
             <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
-              <h2 className="text-black text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
+              <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 Where can we contact you?
               </h2>
               <div className="grid grid-cols-12 gap-4">
@@ -558,7 +558,7 @@ const Apply = () => {
             </section>
             {/** Academic Background Section */}
             <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
-              <h2 className="text-black text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
+              <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 Academic Background
               </h2>
               <div className="grid grid-cols-12 gap-4">
@@ -638,7 +638,7 @@ const Apply = () => {
             </section>
             {/** Miscellaneous Information */}
             <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
-              <h2 className="text-black text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
+              <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 We want to know more about you
               </h2>
               <div className="grid grid-cols-12 gap-4">

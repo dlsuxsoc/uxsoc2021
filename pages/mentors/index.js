@@ -141,9 +141,7 @@ export default function Index({ mentors }) {
       <section className="px-4 sm:px-8 lg:px-32 py-2 mt-28 xl:mt-36 mb-16 lg:mb-36 justify-center lg:justify-between items-center h-auto">
         {/* Header */}
         <div className="text-center pb-2">
-          <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
-            Our mentors
-          </h1>
+          <h1 className=" text-3xl lg:text-5xl mb-6 lg:mb-12">Our mentors</h1>
           <p className="text-base lg:text-lg 2xl:text-xl mb-6 lg:mb-12 lg:w-1/2 mx-auto">
             Get to know and learn from professionals in the academe and industry
           </p>
@@ -168,7 +166,7 @@ export default function Index({ mentors }) {
                   </div>
 
                   <div className="mt-2">
-                    <h2 className="text-black text-xl mb-2">{item.name}</h2>
+                    <h2 className=" text-xl mb-2">{item.name}</h2>
                     <p className="text-base mb-2">{item.description}</p>
                   </div>
 
@@ -216,7 +214,7 @@ export default function Index({ mentors }) {
         <div className="pb-2">
           <h1
             id="book-mentor-header"
-            className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12"
+            className=" text-3xl lg:text-5xl mb-6 lg:mb-12"
           >
             Book a Mentor
           </h1>

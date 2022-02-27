@@ -26,7 +26,7 @@ export default function Services({ active, contentfulProjects }) {
       />
 
       <section className="sm:px-8 lg:px-32 flex flex-col justify-center items-center h-auto min-h-screen">
-        <h1 className="text-black pt-16 pb-8 text-center">Our services</h1>
+        <h1 className=" pt-16 pb-8 text-center">Our services</h1>
         <section className="flex flex-col md:flex-row w-full h-full">
           {servicesData.slice(0, 3).map((item, index) => {
             return <ServiceItem item={item} key={index} />;
@@ -36,7 +36,7 @@ export default function Services({ active, contentfulProjects }) {
 
       <section>
         <div className="pb-3 lg:pb-0">
-          <h1 className="text-black md:pt-8 pb-6 text-center lg:pl-24 lg:text-left">
+          <h1 className=" md:pt-8 pb-6 text-center lg:pl-24 lg:text-left">
             Projects
           </h1>
         </div>
