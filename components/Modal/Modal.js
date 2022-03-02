@@ -21,7 +21,7 @@ const Modal = ({ children, toggleModal, title, toggle }) => {
           <i className="fas fa-times md:text-2xl"></i>
         </button>
 
-        <h2 className="text-xl md:text-3xl text-center mb-2 md:mb-8 px-4 text-black">
+        <h2 className="text-xl md:text-3xl text-center mb-2 md:mb-8 px-4 ">
           {title}
         </h2>
         <p className="my-5 sm:my-8 md:mx-12 text-center text-sm md:text-lg">

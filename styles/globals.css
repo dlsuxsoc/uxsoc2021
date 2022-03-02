@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html,
 body {
   padding: 0;
@@ -26,7 +25,11 @@ h3,
 h4,
 h5 {
   font-weight: bold;
-  color: #41bc9c;
+  color: #333333;
+}
+
+p {
+  color: #676d76;
 }
 
 input[type="text"],
