@@ -12,7 +12,7 @@ const Hero = ({ refProp }) => {
         </h1>
         <p className="text-base lg:text-2xl 2xl:text-3xl">
           A student organization that advocates User Experience, Experience
-          Design, and Human-Computer Interaction practices.
+          Design, and Human-Computer Interaction 
         </p>
         <Button
           className="mt-5"
