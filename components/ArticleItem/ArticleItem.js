@@ -70,8 +70,9 @@ const ArticleItem = ({ item }) => {
             </p>
           </div>
 
-          <p className="line-clamp-4 text-sm lg:text-base mb-4  break-words">
-            {getRTFContent(item)}
+          {/* Display preview text if exists, otherwise display first paragraph. */}
+          <p className="line-clamp-4 text-sm lg:text-base mb-4 break-words">
+            {item.previewText ? item.previewText : getRTFContent(item)}
           </p>
         </div>
       </motion.section>              

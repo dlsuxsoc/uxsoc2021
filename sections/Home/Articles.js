@@ -29,6 +29,7 @@ const Articles = ({ articles }) => {
                     ? "/images/placeholder.png"
                     : articles[0].imagesCollection.items[0].url
                 }
+                key={0}
                 alt={articles[0].title}
                 layout="fill"
                 objectFit="cover"
@@ -37,8 +38,9 @@ const Articles = ({ articles }) => {
             <a className="line-clamp-2  font-bold text-base md:text-xl lg:text-2xl py-2 inline-block">
                 {articles[0].title}
             </a>
+            {/* Display preview text if exists, otherwise display first paragraph. */}
             <p className="break-words line-clamp-3 text-sm lg:text-base mb-4">
-              {getRTFContent(articles[0])}
+              {articles[0].previewText ? articles[0].previewText : getRTFContent(articles[0])}
             </p>
           </motion.div>
         </Link>
@@ -72,8 +74,9 @@ const Articles = ({ articles }) => {
                     <a className="line-clamp-2  text-base lg:text-xl mb-4 font-bold">
                       {item.title}
                     </a>
+                    {/* Display preview text if exists, otherwise display first paragraph. */}
                     <p className="break-words line-clamp-4 text-xs lg:text-sm">
-                      {getRTFContent(item)}
+                      {item.previewText ? item.previewText : getRTFContent(item)}
                     </p>
                   </div>
                 </motion.div>
