@@ -10,6 +10,7 @@ query getArticles($offset: Int){
       title
       slug
       date
+      previewText
       imagesCollection{
         items{
           url
@@ -31,6 +32,7 @@ query getArticles($slug:String){
         title
         slug
         date
+        previewText
         imagesCollection{
           items{
             url
@@ -49,6 +51,7 @@ query getArticlesByYear($offset: Int, $dateStart: DateTime, $dateEnd: DateTime) 
       title
       slug
       date
+      previewText
       imagesCollection {
         items {
           url
