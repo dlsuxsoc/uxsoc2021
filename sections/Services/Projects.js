@@ -12,8 +12,9 @@ const Projects = ({ contentfulProjects }) => {
 
       <div>
         {contentfulProjects.slice(0, 3).map((item, index) => {
-          return <ProjectItem item={item} key={index} />;
-        })}
+          var classNames = index % 2 == 0? "lg:flex-row" : "lg:flex-row-reverse"
+          return <ProjectItem item={item} key={index} classNames={classNames}/> 
+      })}
       </div>
     </section>
   );
