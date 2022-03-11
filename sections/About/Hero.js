@@ -22,7 +22,7 @@ const Hero = () => {
           discipline and methodologies.
         </p>
       </div>
-      {/** IMAGE */}
+      {/* IMAGE */}
       <div className="w-full lg:w-1/2 pb-2 lg:pb-0 text-center">
         <Image
           src="/images/home-1.png"
