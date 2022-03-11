@@ -3,7 +3,7 @@ import ProjectItem from "../../components/ProjectItem/ProjectItem";
 
 const Projects = ({ contentfulProjects }) => {
   return (
-    <section>
+    <section className="px-11">
       <div className="pb-3 lg:pb-0">
         <h1 className="text-black md:pt-8 pb-6 text-center lg:pl-24 lg:text-left">
           Projects
