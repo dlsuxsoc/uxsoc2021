@@ -21,8 +21,8 @@ const Articles = ({ articles }) => {
       <section className="w-full flex flex-col lg:flex-row items-start">
         {/* Big Article */}
         <Link href={`/blog/${articles[0].slug}`}>
-          <motion.div className="w-full lg:w-1/2 pr-0 lg:pr-20 xl:pr-28 text-center lg:text-left cursor-pointer" whileHover={cardHover}>
-            <div className={"relative h-48 md:h-96 lg:h-44 2xl:h-96 shadow-lg"}>
+          <motion.div className="w-full lg:w-6/12 pr-0 lg:pr-10 xl:mr-0 text-center lg:text-left cursor-pointer" whileHover={cardHover}>
+            <div className={"relative h-48 md:h-96 lg:h-44 md:mb-4 2xl:h-96 shadow-lg"}>
               <Image
                 src={
                   articles[0].imagesCollection.items[0] === null
@@ -46,7 +46,7 @@ const Articles = ({ articles }) => {
         </Link>
 
         {/* Small Articles */}
-        <div className="lg:w-1/2 lg:flex hidden flex-col items-start">
+        <div className="lg:w-6/12 lg:pl-10 lg:flex hidden flex-col items-start">
           {/* Article */}
           {articles.slice(1, 3).map((item, index) => {
             return (
@@ -86,8 +86,8 @@ const Articles = ({ articles }) => {
         </div>
       </section>
 
-      <Button id="articleshome" to="/blog" className="self-center lg:self-end">
-        Learn More
+      <Button id="articleshome" to="/blog" className="self-center lg:self-center mt-4">
+        View More Articles
       </Button>
     </section>
   );

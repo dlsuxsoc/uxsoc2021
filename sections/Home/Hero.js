@@ -20,7 +20,7 @@ const Hero = ({ refProp }) => {
             refProp.current.scrollIntoView({ behavior: "smooth" });
           }}
         >
-          Learn more about UXSOC
+          Explore More
         </Button>
       </div>
 
