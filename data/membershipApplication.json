@@ -1,0 +1,20 @@
+{
+  "firstName": "Alyssa",
+  "lastName": "Palmares",
+  "nickname": "Alyssa",
+  "mOB": 12,
+  "dOB": 14,
+  "yOB": 2001,
+  "pronoun": "She/ Her",
+  "customPronoun": "",
+  "email": "alyssa_palmares@dlsu.edu.ph",
+  "contactnum": "639293397767",
+  "college": "De La Salle University - Manila",
+  "program": "Bachelor of Science in Computer Science",
+  "hobbies": "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
+  "interestedOrg": "2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
+  "interestedDept": [],
+  "whatIsUX": "3. testing ",
+  "practicalityUX": "4. testin",
+  "studentID": "119"
+}
