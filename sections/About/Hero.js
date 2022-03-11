@@ -3,9 +3,9 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="px-4 sm:px-32 py-2 mt-28 md:mt-8 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-screen">
+    <section className="px-4 sm:px-32 py-2 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-screen">
       {/* Header and Text */}
-      <div className="w-full lg:w-1/2 text-center lg:text-left pr-0 lg:pr-20 pb-3 lg:pb-0 mb-8">
+      <div className="w-full lg:w-1/2 text-center lg:text-left pr-0 lg:pr-20">
         <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
           UX Society
         </h1>
@@ -14,7 +14,7 @@ const Hero = () => {
           Societies in the same network. There's UX Society ADMU, Davao, Orange
           County and the latest, UX Society AIM-Chapter.
         </p>
-        <p className="text-base lg:text-lg 2xl:text-2xl mb-4">
+        <p className="text-base lg:text-lg 2xl:text-2xl">
           UX Society - DLSU aids various organizations by creating quality
           products and services by applying principles, concepts and
           methodologies in such strategies. We hold workshops, seminars and
