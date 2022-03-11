@@ -46,7 +46,7 @@ const Apply = () => {
     nickname: "",
     mOB: "",
     dOB: "",
-    yOB: new Date().getUTCFullYear() - 16,
+    yOB: "",
     pronoun: "",
     customPronoun: "",
     email: "",
@@ -302,7 +302,7 @@ const Apply = () => {
                         min={1}
                         max={12}
                         className="form-input py-2 px-3 w-full"
-                        placeholder="12"
+                        placeholder="Month"
                         required
                         value={applicationData.mOB}
                         onChange={(e) => {
@@ -326,7 +326,7 @@ const Apply = () => {
                         min={1}
                         max={maxDate}
                         className="form-input py-2 px-3 w-full"
-                        placeholder="25"
+                        placeholder="Day"
                         required
                         value={applicationData.dOB}
                         onChange={(e) => {
@@ -352,7 +352,7 @@ const Apply = () => {
                         maxLength={4}
                         required
                         className="form-input py-2 px-3 w-full"
-                        placeholder="2001"
+                        placeholder="Year"
                         value={applicationData.yOB}
                         onChange={(e) =>
                           setApplicationData({
