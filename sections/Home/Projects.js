@@ -41,7 +41,7 @@ const Projects = ({ projects }) => {
               <h2 className=" text-base md:text-xl my-4 line-clamp-2">
                 {item.title}
               </h2>
-              <p className="break-words text-sm lg:text-base mb-4 line-clamp-4">
+              <p className="break-words text-sm lg:text-base line-clamp-4">
                 {item.description}
               </p>
             </div>
@@ -49,7 +49,7 @@ const Projects = ({ projects }) => {
         })}
       </section>
 
-      <Button id="serviceshome" to="/services">
+      <Button className="mt-10" id="serviceshome" to="/services">
         Learn More
       </Button>
     </section>

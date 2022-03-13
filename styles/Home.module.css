@@ -117,24 +117,30 @@
 .aboutBg{
   /* background-color: #D8F8F4; */
   background: url("/images/blob/top-curve.svg"),
-              #D8F8F4;
+  #FAF9F6;
+  background-color: #FAF9F6;
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 100%;
 }
 
 .eventBg{
+  /*
   background-color: #D8F8F4;
-  /* background: url("/images/blob/bottom-curve1.svg"),
-              #FFFFFF; */
+  */
+  background: url("/images/blob/bottom-curve1.svg"),
+              #FFFFFF;
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 100%;
 }
 
 .articleBg{
+  
   background: url("/images/blob/bottom-curve1.svg"),
   #FFFFFF;
+ 
+  background-color: white;
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 100%;
