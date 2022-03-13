@@ -5,7 +5,6 @@ import ArticleItem from "../../components/ArticleItem/ArticleItem";
 import DateTabs from "../../components/DateTabs/DateTabs";
 import SEO from "../../components/seo";
 import styles from "../../styles/Event.module.scss";
-import faker from "faker";
 import ContentfulApi from "./../api/utils/contentfulApi";
 import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
@@ -42,9 +41,9 @@ export default function Articles({ active, contentfulArticles }) {
 
   return (
     <Layout active={4}>
-      <SEO title={"Articles"} />
+      <SEO title={"Articles"} slug="blog" />
 
-      <h1 className="line-clamp-4 text-black text-center lg:pl-32 py-24 lg:text-left">
+      <h1 className="line-clamp-4  text-center lg:pl-32 py-24 lg:text-left">
         Articles
       </h1>
 

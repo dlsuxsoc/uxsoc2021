@@ -3,7 +3,6 @@ import styles from "./EventItem.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import eventPicture from "../../public/images/temp-event.png";
-import faker from "faker";
 
 const EventItem = ({ item }) => {
   return (

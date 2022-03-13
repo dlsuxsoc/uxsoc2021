@@ -5,10 +5,12 @@ const ScrollToTop = () => {
     const [scrollTop, setScrollTop] = useState(0);
 
     const handleSmoothScrolling = () => {
-        window.scrollTo({
+      document.documentElement.style.scrollBehavior = "smooth";  
+      window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
+      
     }
 
     useEffect(() => {
@@ -17,7 +19,10 @@ const ScrollToTop = () => {
       };
       window.addEventListener("scroll", onScroll);
   
-      return () => window.removeEventListener("scroll", onScroll);
+      return () =>{ 
+        window.removeEventListener("scroll", onScroll);
+        document.documentElement.style.scrollBehavior = "auto";  
+      }
     }, [scrollTop]);
   
 

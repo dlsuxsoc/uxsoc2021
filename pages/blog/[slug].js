@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
-import faker from "faker";
 import styles from "../../styles/Slug.module.scss";
 import ContentfulApi from "./../api/utils/contentfulApi";
 import { DateTime } from "luxon";
@@ -16,14 +15,19 @@ export default function ArticlesPost({
   content,
   date,
   imagesCollection,
+  slug,
 }) {
   return (
     <Layout active={-1}>
-      <SEO title={"Articles Post"} />
+      <SEO
+        title={"Articles Post"}
+        description={content.json.content[0].content[0].value}
+        slug={`blog/${slug}`}
+      />
       <div className="w-full md:w-2/3 mt-32 mb-64 mx-auto min-h-full bg-white shadow-xl relative z-10">
         <div className="pb-3 lg:pb-0">
           <h1
-            className={`${styles.title}font-bold text-2xl md:text-5xl pl-8 lg:pl-32 pr-8 lg:pr-72 text-center text-black pt-12 lg:pt-24 pb-4 md:pb-14 lg:text-left`}
+            className={`${styles.title}font-bold text-2xl md:text-5xl pl-8 lg:pl-32 pr-8 lg:pr-72 text-center  pt-12 lg:pt-24 pb-4 md:pb-14 lg:text-left`}
           >
             {title}
           </h1>
@@ -90,8 +94,9 @@ export async function getServerSideProps(context) {
   const { data } = await ContentfulApi.getArticles(0);
   const { params } = context;
   return {
-    props: data.articleCollection.items.find(
-      (item) => item.slug === params.slug
-    ),
+    props: {
+      ...data.articleCollection.items.find((item) => item.slug === params.slug),
+      slug: params.slug,
+    },
   };
 }

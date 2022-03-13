@@ -12,15 +12,7 @@
         "link": "/services"
     },
     {
-        "name": "Events",
-        "link": "/event"
-    },
-    {
         "name": "Articles",
         "link": "/blog"
-    },
-    {
-        "name": "Mentors",
-        "link": "/mentors"
     }
 ]
