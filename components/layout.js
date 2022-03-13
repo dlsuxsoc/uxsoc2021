@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Navigation from "./Navigation/Navigation";
 import Footer from "./Footer/Footer";
 import ScrollToTop from "./ScrollToTop/ScrollToTop"
+import { useRouter } from "next/router";
 const Layout = ({ children, active, special }) => {
+    // const router = useRouter()
+
+    // useEffect(()=>  {
+    //     router.push("/comingsoon");
+
+    // }, [router])
+
+
     return (
         <>
             <Navigation active={active} special={special} />
