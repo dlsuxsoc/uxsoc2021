@@ -5,7 +5,6 @@ import DateTabs from "../../components/DateTabs/DateTabs";
 import SEO from "../../components/seo";
 import styles from "../../styles/Event.module.scss";
 import { useEffect, useState } from "react";
-import faker from "faker";
 import ContentfulApi from "./../api/utils/contentfulApi";
 import { DateTime } from "luxon";
 import Button from "./../../components/Button/Button";
@@ -56,9 +55,7 @@ export default function Events({ active, contentfulEvents }) {
                 </div>
             </div> */}
       <section className="px-4 sm:px-32 min-w-screen min-h-screen">
-        <h1 className="block text-black pt-28 pb-6 text-center lg:text-left">
-          Events
-        </h1>
+        <h1 className="block  pt-28 pb-6 text-center lg:text-left">Events</h1>
         <div className="flex flex-col lg:flex-row items-center">
           <div className="relative w-full">
             <div className={`${styles.eventheroimage} w-1/2 lg:w-full`}>
@@ -77,7 +74,7 @@ export default function Events({ active, contentfulEvents }) {
           </div>
 
           <div className="pt-4 pl-0 md:pl-8 lg:pl-32 w-4/5 md-w-2/3">
-            <h2 className="text-black text-left">{latestEvent.title}</h2>
+            <h2 className=" text-left">{latestEvent.title}</h2>
             <p className="whitespace-wrap sm:whitespace-nowrap my-4">
               {
                 /** check if same month and day */

@@ -1,41 +1,71 @@
 .container {
   position: relative;
-  display: inline-block;
-  margin-right: 0.8rem;
+  display: block;
+  width: fit-content;
+  margin-right: 1.2rem;
+  cursor: pointer;
   margin-bottom: 0.4rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   input {
-    opacity: 0;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
     height: 100%;
     width: 100%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+  }
 
-    &:focus ~ label {
-      border: 0.2rem solid #41bc9c !important;
-    }
-    &:checked ~ label {
-      color: white !important;
-      border: 0.2rem solid #41bc9c !important;
-      background-color: #41bc9c !important;
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: #eee;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
     }
   }
 
+  &:hover input ~ span,
+  input:focus ~ span {
+    background-color: #ccc;
+  }
+
+  input:checked ~ span {
+    background-color: #41bc9c;
+  }
+  input:checked ~ span:after {
+    display: block;
+  }
+
+  span:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
   label {
     text-align: center !important;
-    font-size: 0.9rem !important;
-    border: 0.2rem solid rgba(65, 188, 156, 0.5) !important;
+    font-size: 1rem !important;
     display: inline-block !important;
-    cursor: pointer !important;
-    line-height: 2.4rem !important;
-    min-height: 1.2rem !important;
+    line-height: 0.2rem !important;
     color: rgba(0, 0, 0, 0.7) !important;
     background-color: #fff !important;
     padding: 0rem 1.2rem;
-    border-radius: 1.2rem !important;
-    transition: all 0.3s !important;
+    margin-left: 1.2rem;
+    margin-bottom: 0.4rem;
   }
 }

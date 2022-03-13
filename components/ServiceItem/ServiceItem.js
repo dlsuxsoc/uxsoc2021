@@ -3,18 +3,14 @@ import styles from "./ServiceItem.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import eventPicture from "../../public/images/temp-event.png";
-import faker from "faker";
-
 
 const ServiceItem = ({ item }) => {
-
   return (
     <div className="items-center flex flex-col justify-center">
       <div className="relative w-full ">
         <div className={`${styles.articleImage} w-full  md:w-72 h-72`}>
           <Image
             src={item.Image === null ? "/images/placeholder.png" : item.Image}
-
             alt="Placeholder"
             layout="fill"
             objectFit="contain"
@@ -26,7 +22,7 @@ const ServiceItem = ({ item }) => {
         <p className="text-xl mb-4 text-center font-bold">{item.Title} </p>
         <p className="text-base mb-4 text-center">{item.Content}</p>
       </div>
-    </div >
+    </div>
   );
 };
 

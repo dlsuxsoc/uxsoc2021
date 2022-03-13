@@ -11,6 +11,7 @@ const FormCheckbox = ({ children, type, onChange, value }) => {
         checked={value === true}
         onChange={onChange}
       />
+      <span></span>
       <label htmlFor={children}>{children}</label>
     </div>
   );

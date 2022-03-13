@@ -20,33 +20,18 @@ const Apply = () => {
   const [applicationSending, setApplicationSending] = useState(false);
   const emailCheckingController = new AbortController();
 
-  // const [applicationData, setApplicationData] = useState({
-  //   firstName: "Alyssa",
-  //   lastName: "Palmares",
-  //   nickname: "Alyssa",
-  //   mOB: 12,
-  //   dOB: 14,
-  //   yOB: 2001,
-  //   pronoun: "She/ Her",
-  //   customPronoun: "",
-  //   email: "alyssa_palmares@dlsu.edu.ph",
-  //   contactnum: "639293397767",
-  //   college: "De La Salle University - Manila",
-  //   program: "Bachelor of Science in Computer Science",
-  //   hobbies:
-  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
-  //   interestedOrg:
-  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio necessitatibus veniam repellat, dolor dolore beatae qui quaerat suscipit expedita nisi velit quam totam officia numquam aut aspernatur accusantium esse corporis.",
-  //   interestedDept: [],
-  // });
-
+  const initialStatusTextState = {
+    firstName: "",
+    email: "",
+    contactnum: "",
+  };
   const initialApplicationState = {
     firstName: "",
     lastName: "",
     nickname: "",
     mOB: "",
     dOB: "",
-    yOB: new Date().getUTCFullYear() - 16,
+    yOB: "",
     pronoun: "",
     customPronoun: "",
     email: "",
@@ -66,7 +51,10 @@ const Apply = () => {
     initialApplicationState
   );
 
+  const [statusText, setStatusText] = useState(initialStatusTextState);
+
   const [emailTextHelper, setEmailTextHelper] = useState("");
+  const [deptTextHelper, setDeptTextHelper] = useState("");
 
   const [checkedDept, setCheckedDept] = useState({
     Design: false,
@@ -97,19 +85,38 @@ const Apply = () => {
       });
     }
 
-    //    console.log(num);
     return () => {};
   }, [applicationData.mOB, applicationData.yOB, maxDate]);
 
   useEffect(() => {
+    const depts = Object.keys(checkedDept).filter(
+      (key) => checkedDept[key] === true
+    );
+
     setApplicationData({
       ...applicationData,
-      interestedDept: Object.keys(checkedDept).filter(
-        (key) => checkedDept[key] === true
-      ),
+      interestedDept: depts,
     });
+
+    if (!depts.length) {
+      setDeptTextHelper("(Please choose at least 1)");
+    } else {
+      setDeptTextHelper("");
+    }
+
     // console.log(applicationData);
   }, [setCheckedDept, checkedDept]);
+
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    console.log(router);
+
+    if (router.query.status && statusText.firstName === "")
+      router.push("/apply", undefined, { shallow: true });
+
+    return () => {};
+  }, [router, router.isReady]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -117,17 +124,18 @@ const Apply = () => {
     if (!emailFetching) {
       setApplicationSending(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
-      // console.log(applicationData);
 
       try {
-        const res = await axios.post(
-          "/api/addMembershipApplication",
-          applicationData
-        );
+        const [create, send] = await Promise.all([
+          axios.post("/api/triggerWebhookMemApp", applicationData),
+          axios.post("/api/addMembershipApplication", applicationData),
+        ]);
         setApplicationSending(false);
-        setApplicationData(initialApplicationState);
+        setApplicationData(initialStatusTextState);
+        setStatusText(create.data);
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
+        console.log(e);
         setApplicationSending(false);
         router.push("?status=fail", undefined, { shallow: true });
       }
@@ -144,6 +152,7 @@ const Apply = () => {
                   Taft."
         slug="apply"
       />
+
       {applicationSending ? <PageLoading /> : null}
       <div className="hidden md:block fixed right-5 top-0 md:w-64 z-0 lg:w-96 h-screen">
         <Image
@@ -159,7 +168,7 @@ const Apply = () => {
         <section className="px-4 sm:px-8 lg:px-32 pt-32 min-h-screen">
           <div className="mb-24 w-full grid grid-cols-12 gap-2">
             <div className="col-start-1 col-end-12">
-              <h1 className="text-black text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
+              <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
                 {router.query.status === "success"
                   ? "Application Submitted"
                   : "Something Went Wrong"}
@@ -172,18 +181,22 @@ const Apply = () => {
                 ) : (
                   <>🥺 Sorry </>
                 )}
-                {applicationData.nickname.trim() !== ""
-                  ? applicationData.nickname
-                  : applicationData.firstName}
-                ,
+                {statusText?.firstName},
               </p>
               <p className="text-base lg:text-2xl leading-loose mb-4">
                 {router.query.status === "success" ? (
                   <>
                     The application was successfully submitted. Sit tight while
-                    the team is reviewing your application. We will be
-                    contacting you through the email or the contact number you
-                    have provided.
+                    the team is reviewing your application. We will be sending
+                    instructions for the next step of the application to your
+                    email at{" "}
+                    <span className="text-blue-500">{statusText?.email}</span>.
+                    If you haven't received an email from us in 3 days, you may
+                    try contacting us through our email at{" "}
+                    <Link href={"mailto:dlsuuxsociety@gmail.com"}>
+                      <a className="text-blue-500">dlsuuxsociety@gmail.com</a>
+                    </Link>
+                    .
                   </>
                 ) : (
                   <>
@@ -215,7 +228,7 @@ const Apply = () => {
             {/* Header */}
             <div className="mb-24 w-full grid grid-cols-12 gap-2">
               <div className="col-start-1 col-end-12">
-                <h1 className="text-black text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
+                <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
                   Membership Application
                 </h1>
               </div>
@@ -233,7 +246,7 @@ const Apply = () => {
           <form action="POST" onSubmit={handleSubmit}>
             <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
               {/** Personal Information Section */}
-              <h2 className="text-black text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
+              <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 Personal Information
               </h2>
               <div className="grid grid-cols-12 gap-4">
@@ -302,7 +315,7 @@ const Apply = () => {
                         min={1}
                         max={12}
                         className="form-input py-2 px-3 w-full"
-                        placeholder="12"
+                        placeholder="Month"
                         required
                         value={applicationData.mOB}
                         onChange={(e) => {
@@ -326,7 +339,7 @@ const Apply = () => {
                         min={1}
                         max={maxDate}
                         className="form-input py-2 px-3 w-full"
-                        placeholder="25"
+                        placeholder="Day"
                         required
                         value={applicationData.dOB}
                         onChange={(e) => {
@@ -352,7 +365,7 @@ const Apply = () => {
                         maxLength={4}
                         required
                         className="form-input py-2 px-3 w-full"
-                        placeholder="2001"
+                        placeholder="Year"
                         value={applicationData.yOB}
                         onChange={(e) =>
                           setApplicationData({
@@ -465,7 +478,7 @@ const Apply = () => {
             </section>
             {/** Contact Information Section */}
             <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
-              <h2 className="text-black text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
+              <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 Where can we contact you?
               </h2>
               <div className="grid grid-cols-12 gap-4">
@@ -482,13 +495,6 @@ const Apply = () => {
                     placeholder="don_norman@dlsu.edu.ph"
                     onChange={(e) => {
                       setEmailFetching(false);
-
-                      // try {
-                      //   emailCheckingController.abort();
-                      //   console.log("Request Aborted");
-                      // } catch (e) {
-                      //   console.log("Request did not abort");
-                      // }
 
                       setApplicationData({
                         ...applicationData,
@@ -558,7 +564,7 @@ const Apply = () => {
             </section>
             {/** Academic Background Section */}
             <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
-              <h2 className="text-black text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
+              <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 Academic Background
               </h2>
               <div className="grid grid-cols-12 gap-4">
@@ -613,7 +619,7 @@ const Apply = () => {
               <div className="grid grid-cols-6 gap-4">
                 <div className="col-start-1 col-span-12 sm:col-span-6 md:col-span-4 mb-4">
                   <label className="block mb-6" htmlFor="firstName">
-                    Student ID (Optional)
+                    Student ID (if applicable)
                   </label>
                   <select
                     value={applicationData.studentID}
@@ -638,14 +644,12 @@ const Apply = () => {
             </section>
             {/** Miscellaneous Information */}
             <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
-              <h2 className="text-black text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
+              <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 We want to know more about you
               </h2>
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
-                  <label className="block mb-6">
-                    What are your hobbies? (Optional)
-                  </label>
+                  <label className="block mb-6">What are your hobbies?</label>
                   <textarea
                     className="w-full p-2"
                     rows={5}
@@ -663,7 +667,6 @@ const Apply = () => {
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6">
                     Why are you interested in joining the organization?
-                    (Optional)
                   </label>
                   <textarea
                     className="w-full p-2"
@@ -681,7 +684,7 @@ const Apply = () => {
 
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6">
-                    What is user experience to you? (Optional)
+                    What is user experience to you?
                   </label>
                   <textarea
                     className="w-full p-2"
@@ -700,7 +703,7 @@ const Apply = () => {
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                   <label className="block mb-6">
                     How do you think user experience applies in your current
-                    degree program and interests? (Optional)
+                    degree program and interests?
                   </label>
                   <textarea
                     className="w-full p-2"
@@ -717,9 +720,12 @@ const Apply = () => {
                 <div className="col-span-2"></div>
 
                 <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
-                  <label className="block mb-6">
-                    What department/s are you interested in? (Optional)
+                  <label className="inline-block mb-6">
+                    What department/s are you interested in?
                   </label>
+                  <span className="ml-2 inline-block text-red-500 text-sm">
+                    {deptTextHelper}
+                  </span>{" "}
                   <FormCheckbox
                     type="departments"
                     onChange={(e) =>
@@ -802,7 +808,12 @@ const Apply = () => {
                     id="send"
                     type={"submit"}
                     value={"SEND APPLICATION"}
-                    className={`${styles.btn_container} font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green cursor-pointer`}
+                    disabled={deptTextHelper !== "" || emailFetching}
+                    className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green ${
+                      deptTextHelper === "" && !emailFetching
+                        ? `cursor-pointer ${styles.btn_container}`
+                        : "cursor-not-allowed opacity-50"
+                    }`}
                   />
                 </div>
               </div>

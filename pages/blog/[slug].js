@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
-import faker from "faker";
 import styles from "../../styles/Slug.module.scss";
 import ContentfulApi from "./../api/utils/contentfulApi";
 import { DateTime } from "luxon";
@@ -28,7 +27,7 @@ export default function ArticlesPost({
       <div className="w-full md:w-2/3 mt-32 mb-64 mx-auto min-h-full bg-white shadow-xl relative z-10">
         <div className="pb-3 lg:pb-0">
           <h1
-            className={`${styles.title}font-bold text-2xl md:text-5xl pl-8 lg:pl-32 pr-8 lg:pr-72 text-center text-black pt-12 lg:pt-24 pb-4 md:pb-14 lg:text-left`}
+            className={`${styles.title}font-bold text-2xl md:text-5xl pl-8 lg:pl-32 pr-8 lg:pr-72 text-center  pt-12 lg:pt-24 pb-4 md:pb-14 lg:text-left`}
           >
             {title}
           </h1>
