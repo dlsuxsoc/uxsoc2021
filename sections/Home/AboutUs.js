@@ -20,16 +20,16 @@ const AboutUs = ({ refProp }) => {
         />
       </div>
 
-      <div className="w-full lg:w-1/2 pb-3 lg:pb-0 mb-8">
-        <h1 className=" text-3xl lg:text-4xl 2xl:text-5xl mb-6 lg:mb-6">
+      <div className="w-full lg:w-1/2 pb-3 lg:pb-0 mb-8 mt-24">
+        <h1 className=" text-3xl lg:text-4xl 2xl:text-5xl mb-6 lg:mb-10">
           About UX Society DLSU
         </h1>
-        <p className="text-sm md:text-base lg:text-lg 2xl:text-xl mb-4">
+        <p className="text-sm md:text-base lg:text-lg xl:text-xl mb-8">
           The UX Society - DLSU Chapter is one of the many recognized UX
           Societies in the same network. There's UX Society ADMU, Davao, Orange
           County and the latest, UX Society AIM-Chapter.
         </p>
-        <p className="text-sm md:text-base lg:text-lg xl:text-xl mb-4">
+        <p className="text-sm md:text-base lg:text-lg xl:text-xl mb-8">
           UX Society - DLSU aids various organizations by creating quality
           products and services by applying principles, concepts and
           methodologies in such strategies. We hold workshops, seminars and
@@ -37,7 +37,7 @@ const AboutUs = ({ refProp }) => {
           discipline and methodologies.
         </p>
 
-        <div className="text-center md:text-left">
+        <div className="text-center lg:text-left mt-10">
           <Button id="abouthome" to="/about">
             Learn More
           </Button>

@@ -35,11 +35,11 @@ const Articles = ({ articles }) => {
                 objectFit="cover"
               />
             </div>
-            <a className="line-clamp-2  font-bold text-base md:text-xl lg:text-2xl py-2 inline-block">
+            <a className="line-clamp-2  font-bold text-base md:text-xl lg:text-2xl my-4 inline-block">
                 {articles[0].title}
             </a>
             {/* Display preview text if exists, otherwise display first paragraph. */}
-            <p className="break-words line-clamp-3 text-sm lg:text-base mb-4">
+            <p className="break-words line-clamp-3 text-sm lg:text-base lg:mb-4">
               {articles[0].previewText ? articles[0].previewText : getRTFContent(articles[0])}
             </p>
           </motion.div>
@@ -86,7 +86,7 @@ const Articles = ({ articles }) => {
         </div>
       </section>
 
-      <Button id="articleshome" to="/blog" className="self-center lg:self-center mt-4">
+      <Button id="articleshome" to="/blog" className="self-center lg:self-center mt-10">
         View More Articles
       </Button>
     </section>
