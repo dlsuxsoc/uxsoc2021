@@ -20,7 +20,7 @@ const Projects = ({ projects }) => {
 
         {projects.slice(0, 3).map((item, index) => {
           return (
-            <Link href={`/services`} key={index}>
+            <Link href={`/services/#${index}`} >
               <motion.div
                 className={`text-center cursor-pointer ${
                   index > 0 ? "hidden lg:block" : "block"
