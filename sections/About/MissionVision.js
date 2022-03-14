@@ -6,7 +6,7 @@ const MissionVision = () => {
     <section className="px-4 sm:px-32 py-2 mb-16 md:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">
       <div className="flex flex-col lg:flex-row text-center lg:text-left items-center space-x-0 lg:space-x-8 xl:space-x-14 2xl:space-x-0">
         {/* Image */}
-        <div className="w-full lg:w-1/2 relative h-48 md:h-64 lg:h-96 mb-6 lg:mb-0">
+        <div className="w-full lg:w-1/2 relative h-52 md:h-72 lg:h-96 mb-6 lg:mb-0">
           <Image
             src="/images/mission-vision-1.png"
             alt="Placeholder-About"
