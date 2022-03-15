@@ -8,9 +8,15 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
       colors: {
+        white: "#FFFFFF",
+        offwhite: "#FAF9F6",
         green: "#41BC9C",
+        lightgreen: "#D8F8F4",
         gray: "#80858B",
         fontHeadingColor: "#20252B",
         fontBodyColor: "#3B3E42"

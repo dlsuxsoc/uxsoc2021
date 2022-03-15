@@ -43,11 +43,11 @@ export default function Articles({ active, contentfulArticles }) {
     <Layout active={4}>
       <SEO title={"Articles"} slug="blog" />
 
-      <h1 className="line-clamp-4  text-center lg:pl-32 py-24 lg:text-left">
+      <h1 className="container line-clamp-4  text-center lg:pl-32 py-24 lg:text-left">
         Articles
       </h1>
 
-      <section className="flex flex-col-reverse lg:flex-row md:items-stretch items-center">
+      <section className="container flex flex-col-reverse lg:flex-row md:items-stretch items-center">
         <ul className="md:flex-row-reverse md:justify-start justify-center w-full lg:w-4/5">
           {articles.map((item, index) => (
             <ArticleItem item={item} key={index} />
