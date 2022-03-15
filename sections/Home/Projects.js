@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import { motion } from "framer-motion";
-import { projectHover } from "../../helpers/motionHelpers";
+import { homeProjectHover } from "../../helpers/motionHelpers";
 
 const Projects = ({ projects }) => {
   return (
@@ -19,6 +19,7 @@ const Projects = ({ projects }) => {
         {/* Project */}
 
         {projects.slice(0, 3).map((item, index) => {
+          console.log (item);
           return (
             <Link href={`/services/#${index}`} >
               <motion.div
@@ -26,7 +27,7 @@ const Projects = ({ projects }) => {
                   index > 0 ? "hidden lg:block" : "block"
                 } w-full lg:w-1/3 ${index === 1 ? "mx-8" : ""}`}
                 key={index}
-                whileHover={projectHover}
+                whileHover={homeProjectHover}
               >
                 <div className="relative h-48 md:h-96 lg:h-44 2xl:h-72 shadow-lg">
                   <Image
@@ -47,7 +48,7 @@ const Projects = ({ projects }) => {
                   <a>{item.title}</a>
                 </h2>
                 <p className="break-words text-sm lg:text-base line-clamp-4">
-                  {item.description}
+                  {item.previewText ? item.previewText : item.description}
                 </p>
               </motion.div>
             </Link>
