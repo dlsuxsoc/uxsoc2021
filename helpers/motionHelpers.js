@@ -14,5 +14,5 @@ const homeProjectHover = {
 
 module.exports = {
     cardHover,
-    projectHover
+    homeProjectHover
 }
