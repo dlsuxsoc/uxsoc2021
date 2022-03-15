@@ -5,7 +5,7 @@ import styles from "../../styles/Home.module.css";
 
 const Hero = ({ refProp }) => {
   return (
-    <section className="px-4 sm:px-8 lg:px-32 py-2 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen min-h-screen md:min-h-max">
+    <section className="px-4 sm:px-8 lg:px-32 py-2 mt-20 lg:mt-28 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-full">
       <div className="text-center lg:text-left w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
         <h1 className="text-4xl lg:text-6xl xl:text-5xl 2xl:text-7xl mb-6 lg:mb-12">
           User Experience Society - DLSU
@@ -24,7 +24,7 @@ const Hero = ({ refProp }) => {
         </Button>
       </div>
 
-      <div className="w-full lg:w-1/2 relative mb-8 pb-3 lg:pb-0 h-48 md:h-80">
+      <div className="w-full lg:w-1/2 relative mb-8 pb-3 lg:pb-0 h-48 md:h-80 2xl:h-96">
         <Image
           src="/images/home-1.png"
           alt="Hero Image"

@@ -20,7 +20,7 @@ const Articles = ({ articles }) => {
       {/* Articles Container*/}
       <section className="w-full flex flex-col lg:flex-row items-start">
         {/* Big Article */}
-        <Link href={`/blog/${articles[0].slug}`}>
+        <Link href={`/blog/${articles[0].slug}`} passHref>
           <motion.div className="w-full lg:w-6/12 pr-0 lg:pr-10 xl:mr-0 text-center lg:text-left cursor-pointer" whileHover={cardHover}>
             <div className={"relative h-48 md:h-96 lg:h-44 md:mb-4 2xl:h-96 shadow-lg"}>
               <Image
@@ -50,10 +50,10 @@ const Articles = ({ articles }) => {
           {/* Article */}
           {articles.slice(1, 3).map((item, index) => {
             return (
-              <Link href={`/blog/${item.slug}`}>
+              <Link href={`/blog/${item.slug}`} key={index} passHref>
                 <motion.div
                   className="w-full pb-8 flex flex-row items-start cursor-pointer"
-                  key={index}
+                  
                   whileHover={cardHover}
                 >
                   <div className={`w-1/3 relative lg:h-28 2xl:h-44 shadow-lg`}>
