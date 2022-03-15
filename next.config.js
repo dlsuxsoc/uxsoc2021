@@ -9,36 +9,36 @@ module.exports = {
     ],
   },
   distDir: "out",
-  // async redirects(){
-  //   return [
-  //     {
-  //       source: "/",
-  //       destination: "/comingsoon",
-  //       permanent: true
-  //       },
-  //       {
-  //         source: "/about",
-  //         destination: "/comingsoon",
-  //         permanent: true
-  //       },
-  //       {
-  //         source: "/services",
-  //         destination: "/comingsoon",
-  //         permanent: true
-  //         },
-  //       {
-  //         source: "/apply",
-  //         destination: "/comingsoon",
-  //         permanent: true
-  //       },
-  //       {
-  //         source: "/articles",
-  //         destination: "/comingsoon",
-  //         permanent: true
-  //       },
+  async redirects(){
+    return [
+      {
+        source: "/",
+        destination: "/comingsoon",
+        permanent: true
+        },
+        {
+          source: "/about",
+          destination: "/comingsoon",
+          permanent: true
+        },
+        {
+          source: "/services",
+          destination: "/comingsoon",
+          permanent: true
+          },
+        {
+          source: "/apply",
+          destination: "/comingsoon",
+          permanent: true
+        },
+        {
+          source: "/articles",
+          destination: "/comingsoon",
+          permanent: true
+        },
 
-  //   ]
-  // },
+    ]
+  },
   env: {
     WEBHOOK_MEM_APP: process.env.WEBHOOK_MEM_APP,
   },
