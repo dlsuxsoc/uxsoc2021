@@ -24,7 +24,7 @@ export default function ArticlesPost({
         description={content.json.content[0].content[0].value}
         slug={`blog/${slug}`}
       />
-      <div className="w-full md:w-2/3 mt-32 mb-64 mx-auto min-h-full bg-white shadow-xl relative z-10">
+      <div className="container w-full md:w-2/3 mt-32 mb-64 mx-auto min-h-full bg-white shadow-xl relative z-10">
         <div className="pb-3 lg:pb-0">
           <h1
             className={`${styles.title}font-bold text-2xl md:text-5xl pl-8 lg:pl-32 pr-8 lg:pr-72 text-center  pt-12 lg:pt-24 pb-4 md:pb-14 lg:text-left`}
