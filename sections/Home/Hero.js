@@ -24,7 +24,6 @@ const Hero = ({ refProp }) => {
             Explore More
           </Button>
         </div>
-
         <div className="w-full lg:w-1/2 relative mb-8 pb-3 lg:pb-0 h-48 md:h-80">
           <Image
             src="/images/home-1.png"
