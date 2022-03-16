@@ -22,7 +22,7 @@ const AboutUs = ({ refProp }) => {
           />
         </div>
 
-        <div className="w-full lg:w-1/2 pb-3 lg:pb-0 mb-8 mt-24">
+        <div className="w-full lg:w-1/2 pb-3 lg:pb-0 mb-8 mt-24 lg:my-0">
           <h1 className=" text-3xl lg:text-4xl 2xl:text-5xl mb-6 lg:mb-10">
             About UX Society DLSU
           </h1>
