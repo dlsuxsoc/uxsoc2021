@@ -5,8 +5,8 @@ import styles from "../../styles/Home.module.css";
 
 const Hero = ({ refProp }) => {
   return (
-    <section className="px-4 sm:px-8 lg:px-32 py-2">
-      <div className="container flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-auto lg:h-screen min-h-screen md:min-h-max">
+    <section className="px-4 sm:px-8 lg:px-32 py-2 mt-20 lg:mt-28">
+      <div className="container flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-full">
         <div className="text-center lg:text-left w-full lg:w-1/2 pr-0 lg:pr-28 pb-2">
           <h1 className="text-4xl lg:text-6xl xl:text-5xl 2xl:text-7xl mb-6 lg:mb-12">
             User Experience Society - DLSU

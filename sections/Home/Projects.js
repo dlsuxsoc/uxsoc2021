@@ -21,12 +21,11 @@ const Projects = ({ projects }) => {
         {projects.slice(0, 3).map((item, index) => {
           console.log (item);
           return (
-            <Link href={`/services/#project${index}`} >
+            <Link href={`/services/#${index}`} key={index} passHref>
               <motion.div
                 className={`text-center cursor-pointer ${
                   index > 0 ? "hidden lg:block" : "block"
                 } w-full lg:w-1/3 ${index === 1 ? "mx-8" : ""}`}
-                key={index}
                 whileHover={homeProjectHover}
               >
                 <div className="relative h-48 md:h-96 lg:h-44 2xl:h-72 shadow-lg">
