@@ -30,7 +30,7 @@ const ArticleItem = ({ item }) => {
   return (
     <Link href={`/blog/${item.slug}`}>
       <motion.section 
-        className="pl-4 pr-4 sm:px-32 mb-8 lg:mb-28 flex flex-col lg:flex-row justify-center items-center cursor-pointer"
+        className="sm:px-32 mb-8 lg:mb-28 flex flex-col lg:flex-row justify-center items-center cursor-pointer"
         whileHover={cardHover}
       >
         {/* Image */}

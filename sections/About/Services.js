@@ -3,14 +3,14 @@ import Image from "next/image";
 
 const Services = ({ servicesData }) => {
   return (
-    <section className="px-4 sm:px-32 py-2 mb-16 md:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">
+    <section className="px-4 sm:px-32 py-14 lg:py-20 flex flex-col justify-center lg:justify-between items-center h-auto">
       {/* Header*/}
       <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
         Our services
       </h1>
 
       {/* Service Container*/}
-      <div className="flex flex-col lg:flex-row w-full justify-center space-y-6 lg:space-y-0 lg:space-x-8 xl:space-x-16">
+      <div className="container flex flex-col lg:flex-row w-full justify-center space-y-6 lg:space-y-0 lg:space-x-8 xl:space-x-16">
         {/* Service */}
         {servicesData.slice(0, 3).map((item, index) => {
           return (

@@ -8,14 +8,14 @@ import { homeProjectHover } from "../../helpers/motionHelpers";
 
 const Projects = ({ projects }) => {
   return (
-    <section className="px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center h-auto">
+    <section className={`px-4 sm:px-8 lg:px-32 py-14 lg:py-20 flex flex-col justify-center lg:justify-between items-center h-auto ${styles.projectsBg}`}>
       {/* Header */}
       <div className="pb-3 lg:pb-0">
         <h1 className=" text-3xl lg:text-5xl mb-6 lg:mb-12">Projects</h1>
       </div>
 
       {/* Projects Container*/}
-      <section className="flex flex-col md:flex-row w-full md:justify-between lg:mb-5">
+      <section className="container flex flex-col md:flex-row w-full md:justify-between lg:mb-5">
         {/* Project */}
 
         {projects.slice(0, 3).map((item, index) => {
