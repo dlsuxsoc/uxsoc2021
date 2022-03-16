@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout/Layout";
 import ArticleItem from "../../components/ArticleItem/ArticleItem";
 import DateTabs from "../../components/DateTabs/DateTabs";
 import SEO from "../../components/seo";

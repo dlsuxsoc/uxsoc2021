@@ -17,8 +17,7 @@ const Layout = ({ children, active, special }) => {
     return (
         <>
             <Navigation active={active} special={special} />
-            <span className={`${styles.anchor}`}></span>
-            <main id= "main" >{children}  </main>
+            <main id= "main">{children}  </main>
             <ScrollToTop/>
             <Footer />
         </>
