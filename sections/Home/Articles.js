@@ -10,15 +10,15 @@ import { cardHover } from "../../helpers/motionHelpers";
 const Articles = ({ articles }) => {
   return (
     <section
-      className={`px-4 sm:px-8 lg:px-32 py-2 mb-16 lg:mb-36 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto ${styles.articleBg}`}
+      className={`px-4 sm:px-8 lg:px-32 py-14 lg:py-20 flex flex-col justify-center lg:justify-between items-center lg:items-start h-auto ${styles.articleBg}`}
     >
       {/* Header */}
-      <div className="pb-3 lg:pb-0">
+      <div className="container pb-3 lg:pb-0">
         <h1 className=" text-3xl lg:text-5xl mb-6 lg:mb-12">Articles</h1>
       </div>
 
       {/* Articles Container*/}
-      <section className="w-full flex flex-col lg:flex-row items-start">
+      <section className="container w-full flex flex-col lg:flex-row items-start">
         {/* Big Article */}
         <Link href={`/blog/${articles[0].slug}`} passHref>
           <motion.div className="w-full lg:w-6/12 pr-0 lg:pr-10 xl:mr-0 text-center lg:text-left cursor-pointer" whileHover={cardHover}>

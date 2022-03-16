@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../components/layout";
+import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import { restrictRange } from "../helpers/restrictRange";
 import { useRouter } from "next/router";
@@ -154,15 +154,7 @@ const Apply = () => {
       />
 
       {applicationSending ? <PageLoading /> : null}
-      <div className="hidden md:block fixed right-5 top-0 md:w-64 z-0 lg:w-96 h-screen">
-        <Image
-          src={"/images/membership-sketch.svg"}
-          alt="Placeholder-Hero"
-          layout="fill"
-          objectFit="contain"
-          objectPosition="center"
-        />
-      </div>
+      
       {/* APPLICATION WAS SUBMITTED */}
       {router.query.status ? (
         <section className="px-4 sm:px-8 lg:px-32 pt-32 min-h-screen">
@@ -224,7 +216,16 @@ const Apply = () => {
         <>
           {/**Membership Application Form Section*/}
 
-          <section className="px-4 sm:px-8 lg:px-32 pt-32 ">
+          <section className="container px-4 sm:px-8 lg:px-32 pt-32 ">
+            <div className="container hidden md:block fixed right-20 top-0 md:w-64 z-0 lg:w-96 h-screen">
+              <Image
+                src={"/images/membership-sketch.svg"}
+                alt="Placeholder-Hero"
+                layout="fill"
+                objectFit="contain"
+                objectPosition="center"
+              />
+            </div>
             {/* Header */}
             <div className="mb-24 w-full grid grid-cols-12 gap-2">
               <div className="col-start-1 col-end-12">
@@ -244,7 +245,7 @@ const Apply = () => {
           </section>
           {/** Actual Form */}
           <form action="POST" onSubmit={handleSubmit}>
-            <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
+            <section className="container px-4 sm:px-8 lg:px-32 pt-2 pb-16">
               {/** Personal Information Section */}
               <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 Personal Information
@@ -477,7 +478,7 @@ const Apply = () => {
               </div>
             </section>
             {/** Contact Information Section */}
-            <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
+            <section className="container px-4 sm:px-8 lg:px-32 pt-2 pb-16">
               <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 Where can we contact you?
               </h2>
@@ -563,7 +564,7 @@ const Apply = () => {
               </div>
             </section>
             {/** Academic Background Section */}
-            <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
+            <section className="container px-4 sm:px-8 lg:px-32 pt-2 pb-16">
               <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 Academic Background
               </h2>
@@ -643,7 +644,7 @@ const Apply = () => {
               </div>
             </section>
             {/** Miscellaneous Information */}
-            <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
+            <section className="container px-4 sm:px-8 lg:px-32 pt-2 pb-16">
               <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                 We want to know more about you
               </h2>
@@ -801,7 +802,7 @@ const Apply = () => {
                 </div>
               </div>
             </section>
-            <section className="px-4 sm:px-8 lg:px-32 pt-2 pb-16">
+            <section className="container px-4 sm:px-8 lg:px-32 pt-2 pb-16">
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-start-1 col-span-12 md:col-span-6 mb-8">
                   <input

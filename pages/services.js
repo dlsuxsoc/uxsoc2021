@@ -1,4 +1,4 @@
-import Layout from "../components/layout";
+import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import ContentfulApi from "./api/utils/contentfulApi";
 import Hero from "../sections/Services/Hero";
