@@ -79,6 +79,7 @@ export async function getStaticProps(context) {
       ...data.articleCollection.items.find((item) => item.slug === params.slug),
       slug: params.slug,
     },
+    revalidate: 60,
   };
 }
 
