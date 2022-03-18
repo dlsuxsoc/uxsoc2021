@@ -154,10 +154,19 @@ const Apply = () => {
       />
 
       {applicationSending ? <PageLoading /> : null}
-      
+
       {/* APPLICATION WAS SUBMITTED */}
       {router.query.status ? (
         <section className="px-4 sm:px-8 lg:px-32 pt-32 min-h-screen">
+          <div className="hidden md:block fixed right-20 top-0 md:w-64 z-0 lg:w-96 h-screen">
+            <Image
+              src={"/images/membership-sketch.svg"}
+              alt="Placeholder-Hero"
+              layout="fill"
+              objectFit="contain"
+              objectPosition="center"
+            />
+          </div>
           <div className="mb-24 w-full grid grid-cols-12 gap-2">
             <div className="col-start-1 col-end-12">
               <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
@@ -173,7 +182,7 @@ const Apply = () => {
                 ) : (
                   <>🥺 Sorry </>
                 )}
-                {statusText?.firstName},
+                {statusText?.firstName.trim()},
               </p>
               <p className="text-base lg:text-2xl leading-loose mb-4">
                 {router.query.status === "success" ? (
@@ -215,9 +224,9 @@ const Apply = () => {
       ) : (
         <>
           {/**Membership Application Form Section*/}
-
           <section className="container px-4 sm:px-8 lg:px-32 pt-32 ">
-            <div className="container hidden md:block fixed right-20 top-0 md:w-64 z-0 lg:w-96 h-screen">
+            {/* Header */}
+            <div className="hidden md:block fixed right-20 top-0 md:w-64 z-0 lg:w-96 h-screen">
               <Image
                 src={"/images/membership-sketch.svg"}
                 alt="Placeholder-Hero"
@@ -226,7 +235,7 @@ const Apply = () => {
                 objectPosition="center"
               />
             </div>
-            {/* Header */}
+
             <div className="mb-24 w-full grid grid-cols-12 gap-2">
               <div className="col-start-1 col-end-12">
                 <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
