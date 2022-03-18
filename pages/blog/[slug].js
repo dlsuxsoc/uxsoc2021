@@ -60,37 +60,18 @@ export default function ArticlesPost({
   );
 }
 
-// export async function getStaticPaths() {
-//     const { data } = await ContentfulApi.getArticles(0);
-
-//     const foo = {
-//         paths: data.articleCollection.items.map((item) => ({
-//             params: {
-//                 slug: item.slug
-//             }
-//         })),
-//         fallback: true,
-//     };
-
-//     return foo;
+// export async function getServerSideProps(context) {
+//   const { data } = await ContentfulApi.getArticles(0);
+//   const { params } = context;
+//   return {
+//     props: {
+//       ...data.articleCollection.items.find((item) => item.slug === params.slug),
+//       slug: params.slug,
+//     },
+//   };
 // }
 
-// export async function getStaticPaths() {
-//     const { data } = await ContentfulApi.getArticles(0);
-
-//     const paths = data.articleCollection.items.map((item) => {
-//             return  {
-//                 params: {slug: item.slug}
-//             };
-//         });
-
-//     return {
-//         paths,
-//         fallback: false
-//     };
-// }
-
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const { data } = await ContentfulApi.getArticles(0);
   const { params } = context;
   return {
@@ -98,5 +79,21 @@ export async function getServerSideProps(context) {
       ...data.articleCollection.items.find((item) => item.slug === params.slug),
       slug: params.slug,
     },
+    revalidate: 60,
+  };
+}
+
+export async function getStaticPaths() {
+  const { data } = await ContentfulApi.getArticles(0);
+
+  const paths = data.articleCollection.items.map((item) => {
+    return {
+      params: { slug: item.slug }
+    };
+  });
+
+  return {
+    paths,
+    fallback: false
   };
 }
