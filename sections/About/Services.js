@@ -5,7 +5,7 @@ const Services = ({ servicesData }) => {
   return (
     <section className="px-4 sm:px-32 py-14 lg:py-20 flex flex-col justify-center lg:justify-between items-center h-auto">
       {/* Header*/}
-      <h1 className="text-black text-3xl lg:text-5xl mb-6 lg:mb-12">
+      <h1 className="text-3xl lg:text-5xl mb-6 lg:mb-12">
         Our services
       </h1>
 
@@ -32,7 +32,7 @@ const Services = ({ servicesData }) => {
 
               {/* Services Text */}
               <div className="w-full flex flex-col text-center items-center">
-                <h2 className="text-black text-base lg:text-xl 2xl:text-2xl my-4">
+                <h2 className="text-base lg:text-xl 2xl:text-2xl my-4">
                   {item.Title}
                 </h2>
                 <p className="break-words text-base xl:text-lg 2xl:text-xl md:w-80 lg:w-full">

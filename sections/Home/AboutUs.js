@@ -12,31 +12,25 @@ const AboutUs = ({ refProp }) => {
       {/* Wrapper for Container */}
       <div className="container flex flex-col lg:flex-row justify-center lg:justify-between items-center">
         {/* Image */}
-        <div className="relative h-52 md:h-96 w-full lg:w-1/2 mb-6 lg:pb-0 pr-0 lg:mr-10 xl:mr-20 2xl:pr-0 mx-auto text-center">
+        <div className="relative h-48 md:h-96 lg:h-60 xl:h-72 2xl:h-96 w-full lg:w-1/2 lg:mr-10 xl:mr-20 2xl:pr-2 mx-auto text-center">
           <Image
             src="/images/about-ux-1.png"
             alt="About UX Society DLSU"
             layout="fill"
-            objectFit="contain"
+            objectFit="cover"
             objectPosition="center"
           />
         </div>
 
-        <div className="w-full lg:w-1/2 pb-3 lg:pb-0 mb-8 mt-24 lg:my-0">
+        <div className="w-full lg:w-1/2 mt-10 lg:my-0">
           <h1 className=" text-3xl lg:text-4xl 2xl:text-5xl mb-6 lg:mb-10">
-            About UX Society DLSU
+            Our Organization
           </h1>
-          <p className="text-sm md:text-base lg:text-lg xl:text-xl mb-8">
-            The UX Society - DLSU Chapter is one of the many recognized UX
-            Societies in the same network. There's UX Society ADMU, Davao, Orange
-            County and the latest, UX Society AIM-Chapter.
-          </p>
-          <p className="text-sm md:text-base lg:text-lg xl:text-xl mb-8">
-            UX Society - DLSU aids various organizations by creating quality
-            products and services by applying principles, concepts and
-            methodologies in such strategies. We hold workshops, seminars and
-            conferences to train members about the essentials skills of proper UX
-            discipline and methodologies.
+          <p className="text-sm md:text-base lg:text-xl 2xl:text-2xl mb-8">
+            Together with the other UX Society chapters, we are one of the recognized UX Societies for students. 
+            We aid various organizations by creating quality products and services by applying principles, 
+            concepts, and methodologies in such strategies. We also hold workshops, seminars, and conferences 
+            to train members about the essentials skills of proper UX discipline and methodologies.
           </p>
 
           <div className="container text-center lg:text-left mt-10">
