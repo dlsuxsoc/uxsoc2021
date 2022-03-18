@@ -46,6 +46,7 @@ const getEventData = async () => {
   return data.eventCollection.items;
 };
 
+/*
 export async function getServerSideProps() {
   const articleData = await getArticleData();
   const projectData = await getProjectData();
@@ -55,5 +56,20 @@ export async function getServerSideProps() {
       articles: articleData,
       projects: projectData,
     },
+  };
+}
+*/
+
+// ISR Test
+export async function getStaticProps() {
+  const articleData = await getArticleData();
+  const projectData = await getProjectData();
+
+  return {
+    props: {
+      articles: articleData,
+      projects: projectData,
+    },
+    revalidate: 60,
   };
 }
