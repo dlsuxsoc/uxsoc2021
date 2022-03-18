@@ -71,6 +71,6 @@ export async function getStaticProps() {
       articles: articlesData,
       projects: projectData
     },
-    revalidate: 60,
+    revalidate: 300,
   };
 }

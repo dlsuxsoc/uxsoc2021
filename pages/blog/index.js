@@ -93,10 +93,11 @@ export async function getServerSideProps() {
 
 export async function getStaticProps() {
   const { data } = await ContentfulApi.getArticles(0);
-  return { props:
-    { 
-       contentfulArticles: data.articleCollection.items 
+  return {
+    props:
+    {
+      contentfulArticles: data.articleCollection.items
     },
-    revalidate: 60,
+    revalidate: 300,
   };
 }

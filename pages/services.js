@@ -38,6 +38,6 @@ export async function getStaticProps() {
     {
       contentfulProjects: data.projectCollection.items
     },
-    revalidate: 60,
+    revalidate: 300,
   };
 }
