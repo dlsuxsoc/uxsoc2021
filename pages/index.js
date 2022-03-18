@@ -22,7 +22,7 @@ export default function Index({ articles, projects, events }) {
       />
       <Hero refProp={aboutRef} />
       <AboutUs refProp={aboutRef} />
-      {/* <Articles articles={articles} /> */}
+      <Articles articles={articles} />
       <Projects projects={projects} />
     </Layout>
   );
@@ -62,13 +62,13 @@ export async function getServerSideProps() {
 
 // ISR Test
 export async function getStaticProps() {
-  const [projectData] = await Promise.all(
-    [getProjectData()]
+  const [articlesData, projectData] = await Promise.all(
+    [getArticleData(), getProjectData()]
   );
 
   return {
     props: {
-
+      articles: articlesData,
       projects: projectData
     },
     revalidate: 60,
