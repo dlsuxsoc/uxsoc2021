@@ -5,6 +5,14 @@ const cardHover = {
     }
 }
 
+const homeProjectHover = {
+    scale: 1.03,
+    transition:{
+        duration: .2
+    }
+}
+
 module.exports = {
     cardHover,
+    homeProjectHover
 }

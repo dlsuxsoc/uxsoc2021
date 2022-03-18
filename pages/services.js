@@ -1,4 +1,4 @@
-import Layout from "../components/layout";
+import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import ContentfulApi from "./api/utils/contentfulApi";
 import Hero from "../sections/Services/Hero";
@@ -26,7 +26,18 @@ export default function Services({ active, contentfulProjects }) {
   );
 }
 
-export async function getServerSideProps() {
+// export async function getServerSideProps() {
+//   const { data } = await ContentfulApi.getProjects(0);
+//   return { props: { contentfulProjects: data.projectCollection.items } };
+// }
+
+export async function getStaticProps() {
   const { data } = await ContentfulApi.getProjects(0);
-  return { props: { contentfulProjects: data.projectCollection.items } };
+  return {
+    props:
+    {
+      contentfulProjects: data.projectCollection.items
+    },
+    revalidate: 60,
+  };
 }

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout/Layout";
 import ArticleItem from "../../components/ArticleItem/ArticleItem";
 import DateTabs from "../../components/DateTabs/DateTabs";
 import SEO from "../../components/seo";
@@ -43,12 +43,12 @@ export default function Articles({ active, contentfulArticles }) {
     <Layout active={4}>
       <SEO title={"Articles"} slug="blog" />
 
-      <h1 className="line-clamp-4  text-center lg:pl-32 py-24 lg:text-left">
+      <h1 className="container line-clamp-4 text-center lg:pl-32 py-24 lg:text-left">
         Articles
       </h1>
 
-      <section className="flex flex-col-reverse lg:flex-row md:items-stretch items-center">
-        <ul className="md:flex-row-reverse md:justify-start justify-center w-full lg:w-4/5">
+      <section className="container flex flex-col-reverse lg:flex-row lg:items-stretch">
+        <ul className="md:justify-start justify-center w-full">
           {articles.map((item, index) => (
             <ArticleItem item={item} key={index} />
           ))}
@@ -84,7 +84,19 @@ export default function Articles({ active, contentfulArticles }) {
   );
 }
 
+/*
 export async function getServerSideProps() {
   const { data } = await ContentfulApi.getArticles(0);
   return { props: { contentfulArticles: data.articleCollection.items } };
+}
+*/
+
+export async function getStaticProps() {
+  const { data } = await ContentfulApi.getArticles(0);
+  return { props:
+    { 
+       contentfulArticles: data.articleCollection.items 
+    },
+    revalidate: 60,
+  };
 }

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout/Layout";
 import SEO from "../../components/seo";
 import styles from "../../styles/Slug.module.scss";
 import ContentfulApi from "./../api/utils/contentfulApi";
@@ -24,7 +24,7 @@ export default function ArticlesPost({
         description={content.json.content[0].content[0].value}
         slug={`blog/${slug}`}
       />
-      <div className="w-full md:w-2/3 mt-32 mb-64 mx-auto min-h-full bg-white shadow-xl relative z-10">
+      <div className="container w-full md:w-2/3 mt-32 mb-64 mx-auto min-h-full bg-white shadow-xl relative z-10">
         <div className="pb-3 lg:pb-0">
           <h1
             className={`${styles.title}font-bold text-2xl md:text-5xl pl-8 lg:pl-32 pr-8 lg:pr-72 text-center  pt-12 lg:pt-24 pb-4 md:pb-14 lg:text-left`}
@@ -60,37 +60,18 @@ export default function ArticlesPost({
   );
 }
 
-// export async function getStaticPaths() {
-//     const { data } = await ContentfulApi.getArticles(0);
-
-//     const foo = {
-//         paths: data.articleCollection.items.map((item) => ({
-//             params: {
-//                 slug: item.slug
-//             }
-//         })),
-//         fallback: true,
-//     };
-
-//     return foo;
+// export async function getServerSideProps(context) {
+//   const { data } = await ContentfulApi.getArticles(0);
+//   const { params } = context;
+//   return {
+//     props: {
+//       ...data.articleCollection.items.find((item) => item.slug === params.slug),
+//       slug: params.slug,
+//     },
+//   };
 // }
 
-// export async function getStaticPaths() {
-//     const { data } = await ContentfulApi.getArticles(0);
-
-//     const paths = data.articleCollection.items.map((item) => {
-//             return  {
-//                 params: {slug: item.slug}
-//             };
-//         });
-
-//     return {
-//         paths,
-//         fallback: false
-//     };
-// }
-
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const { data } = await ContentfulApi.getArticles(0);
   const { params } = context;
   return {
@@ -98,5 +79,21 @@ export async function getServerSideProps(context) {
       ...data.articleCollection.items.find((item) => item.slug === params.slug),
       slug: params.slug,
     },
+    revalidate: 60,
+  };
+}
+
+export async function getStaticPaths() {
+  const { data } = await ContentfulApi.getArticles(0);
+
+  const paths = data.articleCollection.items.map((item) => {
+    return {
+      params: { slug: item.slug }
+    };
+  });
+
+  return {
+    paths,
+    fallback: false
   };
 }

@@ -9,36 +9,6 @@ module.exports = {
     ],
   },
   distDir: "out",
-  // async redirects(){
-  //   return [
-  //     {
-  //       source: "/",
-  //       destination: "/comingsoon",
-  //       permanent: false
-  //       },
-  //       {
-  //         source: "/about",
-  //         destination: "/comingsoon",
-  //         permanent: false
-  //       },
-  //       {
-  //         source: "/services",
-  //         destination: "/comingsoon",
-  //         permanent: false
-  //         },
-  //       {
-  //         source: "/apply",
-  //         destination: "/comingsoon",
-  //         permanent: false
-  //       },
-  //       {
-  //         source: "/articles",
-  //         destination: "/comingsoon",
-  //         permanent: false
-  //       },
-
-  //   ]
-  // },
   env: {
     WEBHOOK_MEM_APP: process.env.WEBHOOK_MEM_APP,
   },

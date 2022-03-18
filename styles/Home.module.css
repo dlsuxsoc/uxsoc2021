@@ -115,9 +115,9 @@
   }
 }
 .aboutBg{
-  /* background-color: #D8F8F4; */
-  background: url("/images/blob/top-curve.svg"),
-  #FAF9F6;
+  background-color: #D8F8F4;
+  /* background: url("/images/blob/top-curve.svg"),
+  #FAF9F6; */
   background-color: #FAF9F6;
   background-repeat: no-repeat;
   background-position: center top;
@@ -136,11 +136,17 @@
 }
 
 .articleBg{
-  
-  background: url("/images/blob/bottom-curve1.svg"),
-  #FFFFFF;
+  /* background: url("/images/blob/bottom-curve1.svg"),
+  #FFFFFF; */
  
-  background-color: white;
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%;
+}
+
+.projectsBg {
+  background-color: #FAF9F6;
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 100%;
