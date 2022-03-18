@@ -19,13 +19,12 @@ const Projects = ({ projects }) => {
         {/* Project */}
 
         {projects.slice(0, 3).map((item, index) => {
-          console.log (item);
+          console.log(item);
           return (
             <Link href={`/services/#${index}`} key={index} passHref>
               <motion.div
-                className={`text-center cursor-pointer ${
-                  index > 0 ? "hidden lg:block" : "block"
-                } w-full lg:w-1/3 ${index === 1 ? "mx-8" : ""}`}
+                className={`text-center cursor-pointer ${index > 0 ? "hidden lg:block" : "block"
+                  } w-full lg:w-1/3 ${index === 1 ? "mx-16" : ""}`}
                 whileHover={homeProjectHover}
               >
                 <div className="relative h-48 md:h-96 lg:h-44 2xl:h-72 shadow-lg">
@@ -43,7 +42,7 @@ const Projects = ({ projects }) => {
                 </div>
 
                 {/* Project Text */}
-                <h2 className=" text-base md:text-xl my-4 line-clamp-2">
+                <h2 className=" text-base md:text-xl mb-4 mt-8 line-clamp-2">
                   <a>{item.title}</a>
                 </h2>
                 <p className="break-words text-sm lg:text-base line-clamp-4">
