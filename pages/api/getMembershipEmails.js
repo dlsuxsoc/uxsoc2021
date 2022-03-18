@@ -6,18 +6,10 @@ const getMembershipEmails = async (req, res) => {
       database_id: process.env.NOTION_MEMBERSHIP_APPLICATION,
     });
 
-    const ids = result.results.map((item, index) => {
-      return item.id;
+    const people = result.results.map((item) => {
+      return item.properties["Email Address"].email;
     });
 
-    const people = [];
-
-    for (let i = 0; i < ids.length; i++) {
-      let person = await notion.pages.retrieve({
-        page_id: ids[i],
-      });
-      people.push(person.properties[`Email Address`].email);
-    }
     res.status(200).json(people);
   } catch (e) {
     console.error(e);

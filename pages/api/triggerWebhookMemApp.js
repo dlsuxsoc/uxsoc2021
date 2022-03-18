@@ -7,22 +7,18 @@ const triggerWebhookMemApp = async (req, res) => {
     let { firstName, email, contactnum, interestedDept } = req.body;
     // trigger webhook
 
-    const result = await notion.databases.query({
-      database_id: process.env.NOTION_MEMBERSHIP_APPLICATION,
+    const [result, calendly_links] = await Promise.all([
+      notion.databases.query({
+        database_id: process.env.NOTION_MEMBERSHIP_APPLICATION,
+      }),
+      notion.databases.query({
+        database_id: process.env.NOTION_CALENDLINKS,
+      }),
+    ]);
+
+    const people = result.results.map((item, index) => {
+      return item.properties["Email Address"].email;
     });
-
-    const ids = result.results.map((item, index) => {
-      return item.id;
-    });
-
-    const people = [];
-
-    for (let i = 0; i < ids.length; i++) {
-      let person = await notion.pages.retrieve({
-        page_id: ids[i],
-      });
-      people.push(person.properties[`Email Address`].email);
-    }
 
     if (emailExists(email, people)) {
       const error = new Error("Duplicate Application");
@@ -31,14 +27,7 @@ const triggerWebhookMemApp = async (req, res) => {
 
       throw error;
     }
-
-    // PROCESS Calendly
-    const calendly_links = await notion.databases.query({
-      database_id: process.env.NOTION_CALENDLINKS,
-    });
-
     let counter = 1;
-
     let htmlElements = calendly_links.results.map((item) => {
       const depts = item.properties["Department/s"].multi_select.map(
         (item) => item.name
