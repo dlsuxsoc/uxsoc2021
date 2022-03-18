@@ -46,7 +46,7 @@ const getEventData = async () => {
   return data.eventCollection.items;
 };
 
-/*
+
 export async function getServerSideProps() {
   const articleData = await getArticleData();
   const projectData = await getProjectData();
@@ -58,19 +58,18 @@ export async function getServerSideProps() {
     },
   };
 }
-*/
 
-// ISR Test
-export async function getStaticProps() {
-  const [articleData, projectData] = await Promise.all(
-    [getArticleData(), getProjectData()]
-  )
 
-  return {
-    props: {
-      articles: articleData,
-      projects: projectData
-    },
-    revalidate: 60,
-  };
-}
+// // ISR Test
+// export async function getStaticProps() {
+//   const articleData = await getArticleData();
+//   const projectData = await getProjectData();
+
+//   return {
+//     props: {
+//       articles: articleData,
+//       projects: projectData
+//     },
+//     revalidate: 60,
+//   };
+// }
