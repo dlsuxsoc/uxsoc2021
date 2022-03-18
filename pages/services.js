@@ -33,7 +33,6 @@ export default function Services({ active, contentfulProjects }) {
 
 export async function getStaticProps() {
   const { data } = await ContentfulApi.getProjects(0);
-  console.log(`${data.projectCollection.items.map}`);
   return {
     props:
     {
