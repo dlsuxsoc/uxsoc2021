@@ -62,13 +62,14 @@ export async function getServerSideProps() {
 
 // ISR Test
 export async function getStaticProps() {
-  const articleData = await getArticleData();
-  const projectData = await getProjectData();
+  const [articleData, projectData] = await Promise.all(
+    [getArticleData(), getProjectData()]
+  )
 
   return {
     props: {
       articles: articleData,
-      projects: projectData,
+      projects: projectData
     },
     revalidate: 60,
   };
