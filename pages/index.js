@@ -22,7 +22,7 @@ export default function Index({ articles, projects, events }) {
       />
       <Hero refProp={aboutRef} />
       <AboutUs refProp={aboutRef} />
-      <Articles articles={articles} />
+      {/* <Articles articles={articles} /> */}
       <Projects projects={projects} />
     </Layout>
   );
@@ -46,7 +46,7 @@ const getEventData = async () => {
   return data.eventCollection.items;
 };
 
-
+/*
 export async function getServerSideProps() {
   const articleData = await getArticleData();
   const projectData = await getProjectData();
@@ -58,18 +58,19 @@ export async function getServerSideProps() {
     },
   };
 }
+*/
 
+// ISR Test
+export async function getStaticProps() {
+  const [projectData] = await Promise.all(
+    [getProjectData()]
+  );
 
-// // ISR Test
-// export async function getStaticProps() {
-//   const articleData = await getArticleData();
-//   const projectData = await getProjectData();
+  return {
+    props: {
 
-//   return {
-//     props: {
-//       articles: articleData,
-//       projects: projectData
-//     },
-//     revalidate: 60,
-//   };
-// }
+      projects: projectData
+    },
+    revalidate: 60,
+  };
+}
