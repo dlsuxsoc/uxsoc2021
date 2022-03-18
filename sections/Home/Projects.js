@@ -19,7 +19,6 @@ const Projects = ({ projects }) => {
         {/* Project */}
 
         {projects.slice(0, 3).map((item, index) => {
-          console.log(item);
           return (
             <Link href={`/services/#${index}`} key={index} passHref>
               <motion.div
