@@ -42,11 +42,11 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full">
-        <ul className="list-none w-full flex flex-wrap justify-center mb-8 z-10">
+        <ul className="list-none w-full flex flex-wrap justify-center mb-6 z-10">
           {data.map((item, index) => {
             return (
               <li
-                className="mr-3 ml-3 lg:mr-0 lg:ml-12 whitespace-nowrap text-center sm:text-right w-full sm:w-auto mb-10"
+                className="mr-3 ml-3 lg:mr-0 lg:ml-12 lg:mb-10 whitespace-nowrap text-center sm:text-right w-full sm:w-auto mb-4"
                 key={index}
               >
                 <Link href={item.link}>
@@ -55,7 +55,7 @@ const Footer = () => {
               </li>
             );
           })} 
-          <ul className="list-none w-full flex justify-center mb-2">
+          <ul className="list-none w-full flex justify-center mb-2 mt-2">
           <li className="mr-2 ml-2 lg:mr-0 lg:ml-6">
             <Link href={"https://www.facebook.com/uxsocietydlsu"}>
               <a id="footerFb" target={"_blank"}>
