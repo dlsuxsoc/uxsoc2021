@@ -237,12 +237,11 @@ const addMembershipApplication = async (req, res) => {
       ],
     });
 
-    //console.log(response);
-    res.status(201).json(response);
+    res.status(201).json();
   } catch (err) {
-    console.log(err);
+    //console.log(err);
     //console.error(e);
-    res.status(err.code || 500).json(err.msg);
+    res.status(err.code || 500).json(err);
   }
 };
 
