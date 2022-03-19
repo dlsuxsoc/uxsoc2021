@@ -138,7 +138,7 @@ const Apply = () => {
 
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
-        console.log(e);
+        // console.log(e);
         router.push("?status=fail", undefined, { shallow: true });
       } finally {
         setApplicationSending(false);
