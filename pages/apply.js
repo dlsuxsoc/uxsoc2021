@@ -110,8 +110,6 @@ const Apply = () => {
   useEffect(() => {
     if (!router.isReady) return;
 
-    console.log(router);
-
     if (router.query.status && statusText.firstName === "")
       router.push("/apply", undefined, { shallow: true });
 
@@ -126,18 +124,24 @@ const Apply = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       try {
-        const [create, send] = await Promise.all([
+        setApplicationData(initialStatusTextState);
+        setStatusText({
+          firstName: applicationData.firstName,
+          email: applicationData.email,
+          contactnum: applicationData.contactnum,
+        });
+
+        await Promise.all([
           axios.post("/api/triggerWebhookMemApp", applicationData),
           axios.post("/api/addMembershipApplication", applicationData),
         ]);
-        setApplicationSending(false);
-        setApplicationData(initialStatusTextState);
-        setStatusText(create.data);
+
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
         console.log(e);
-        setApplicationSending(false);
         router.push("?status=fail", undefined, { shallow: true });
+      } finally {
+        setApplicationSending(false);
       }
     }
   };
@@ -175,7 +179,7 @@ const Apply = () => {
                   : "Something Went Wrong"}
               </h1>
             </div>
-            <div className="col-start-1 col-end-12 md:col-end-8">
+            <div className="col-start-1 col-end-12 md:col-end-9">
               <p className="text-base lg:text-2xl leading-loose mb-4">
                 {router.query.status === "success" ? (
                   <>🥳 Congratulations </>
