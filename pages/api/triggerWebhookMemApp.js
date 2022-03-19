@@ -6,7 +6,6 @@ const triggerWebhookMemApp = async (req, res) => {
   try {
     let { firstName, email, contactnum, interestedDept } = req.body;
     // trigger webhook
-
     const [result, calendly_links] = await Promise.all([
       notion.databases.query({
         database_id: process.env.NOTION_MEMBERSHIP_APPLICATION,
@@ -19,14 +18,13 @@ const triggerWebhookMemApp = async (req, res) => {
     const people = result.results.map((item, index) => {
       return item.properties["Email Address"].email;
     });
-
     if (emailExists(email, people)) {
       const error = new Error("Duplicate Application");
       error.code = 400;
       error.msg = "An application with this email was already used";
-
       throw error;
     }
+
     let counter = 1;
     let htmlElements = calendly_links.results.map((item) => {
       const depts = item.properties["Department/s"].multi_select.map(
@@ -55,7 +53,6 @@ const triggerWebhookMemApp = async (req, res) => {
     });
 
     let htmlCode = htmlElements.join("");
-
     await crossAxios.post(process.env.WEBHOOK_MEM_APP, {
       firstName,
       email,
@@ -63,8 +60,7 @@ const triggerWebhookMemApp = async (req, res) => {
       htmlCode,
     });
 
-    // return response as the 3 values
-    return res.status(201).json({ firstName, email, contactnum });
+    return res.status(201).json();
   } catch (e) {
     console.log(e);
     res.status(500).json(e);
