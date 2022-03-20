@@ -2,32 +2,25 @@ import React from "react";
 import styles from "./ServiceItem.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import eventPicture from "../../public/images/temp-event.png";
 
 const ServiceItem = ({ item }) => {
   return (
-    <div
-      className={`flex flex-col items-center w-full`}
-    >
-      <div className="p-20 relative h-24 md:h-50 md:w-50">
-        <Image
-          src={
-            item.Image === null ? "/images/placeholder.png" : item.Image
-          }
-          alt="Service Image"
-          layout="fill"
-          objectFit="contain"
-          objectPosition="center"
-        />
+    <div className="items-center flex flex-col justify-center">
+      <div className="relative w-full ">
+        <div className={`${styles.articleImage} w-full  md:w-72 h-72`}>
+          <Image
+            src={item.Image === null ? "/images/placeholder.png" : item.Image}
+            alt="Placeholder"
+            layout="fill"
+            objectFit="contain"
+            objectPosition="center"
+          />
+        </div>
       </div>
-
-      {/* Services Text */}
-      <div className="w-full flex flex-col text-center items-center">
-        <h2 className="text-base lg:text-xl 2xl:text-2xl my-4">
-          {item.Title}
-        </h2>
-        <p className="break-words text-base xl:text-md 2xl:text-xl md:w-60 lg:w-full">
-          {item.Content}
-        </p>
+      <div className="py-4 md:pt-8 w-full md:w-4/5 px-8 md:px-0">
+        <p className="text-xl mb-4 text-center font-bold">{item.Title} </p>
+        <p className="text-base mb-4 text-center">{item.Content}</p>
       </div>
     </div>
   );

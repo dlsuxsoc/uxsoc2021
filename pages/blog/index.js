@@ -40,53 +40,47 @@ export default function Articles({ active, contentfulArticles }) {
   }, [year]); // will run for every change ng dependency array
 
   return (
-    <Layout active={3}>
+    <Layout active={4}>
       <SEO title={"Articles"} slug="blog" />
 
-      <section className="container">
-        <h1 className="w-line-clamp-4 text-center pt-24 pb-10 lg:text-left lg:px-14 xl:px-20">
-          Articles
-        </h1>
+      <h1 className="container line-clamp-4 text-center lg:pl-32 py-24 lg:text-left">
+        Articles
+      </h1>
 
-        <div className="flex flex-col-reverse lg:flex-row justify-center lg:justify-start text-left lg:space-x-14 lg:px-14 xl:px-20 xl:space-x-40">
-          <ul>
-            {articles.map((item, index) => (
-              <ArticleItem item={item} key={index} />
-            ))}
-          </ul>
+      <section className="container flex flex-col-reverse lg:flex-row lg:items-stretch">
+        <ul className="md:justify-start justify-center w-full">
+          {articles.map((item, index) => (
+            <ArticleItem item={item} key={index} />
+          ))}
+        </ul>
 
-          {/* Dropdown Filter */}
-          <div className="flex flex-row w-full justify-center mb-8 lg:hidden">
-            <select
-              className={`${styles.customSelect} block lg:hidden w-4/5 py-2 px-3`}
-              onClick={(e) => {
-                setYear(e.target.value);
-              }}
-            >
-              {yearList.map((item, key) => (
-                <option key={key} value={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Side Filter */}
-          <div className="lg:block hidden pr-5 w-16 mr-96">
+        <div className="flex flex-row w-full justify-center mb-8">
+          <select
+            className={`${styles.customSelect} block lg:hidden w-4/5 py-2 px-3`}
+            onClick={(e) => {
+              setYear(e.target.value);
+            }}
+          >
             {yearList.map((item, key) => (
-              <DateTabs
-                key={key}
-                year={item}
-                active={item === year}
-                set={setYear}
-              />
+              <option key={key} value={item}>
+                {item}
+              </option>
             ))}
-          </div>
-
+          </select>
         </div>
-      </section>
 
-    </Layout >
+        <section className="lg:block hidden pr-5 w-16 mr-96">
+          {yearList.map((item, key) => (
+            <DateTabs
+              key={key}
+              year={item}
+              active={item === year}
+              set={setYear}
+            />
+          ))}
+        </section>
+      </section>
+    </Layout>
   );
 }
 

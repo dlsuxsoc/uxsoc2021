@@ -19,18 +19,18 @@ const MissionVision = () => {
         <div className="w-full lg:w-1/2">
           {/* Header and Text */}
           <h1 className="text-3xl lg:text-5xl mb-6 lg:mb-10">
-            Our Mission-Vision
+            The Mission-Vision
           </h1>
 
           <div className="md:w-96 lg:w-full mx-auto space-y-4">
             <p className="text-base lg:text-lg 2xl:text-xl">
-              Our goal is to create a community of User Experience Designers and Enthusiasts
-              through User Experience Education and the creation of a distinct User Experience
+              Our goal is to create a community of User Experience Designers and Enthusiasts 
+              through User Experience Education and the creation of a distinct User Experience 
               Culture within the student community.
             </p>
             <p className="text-base lg:text-lg 2xl:text-xl">
-              To be a premier consulting and educational body for User Experience Strategy,
-              particularly in technologies that enhance usability, guide human-computer
+              To be a premier consulting and educational body for User Experience Strategy, 
+              particularly in technologies that enhance usability, guide human-computer 
               interaction, and showcase effective visual design.
             </p>
           </div>
