@@ -29,13 +29,13 @@ const ArticleItem = ({ item }) => {
 
   return (
     <Link href={`/blog/${item.slug}`}>
-      <motion.section
-        className="mb-8 lg:mb-28 flex flex-col lg:flex-row justify-center align-center items-center cursor-pointer"
+      <motion.section 
+        className="sm:px-32 mb-8 lg:mb-28 flex flex-col lg:flex-row justify-center items-center cursor-pointer"
         whileHover={cardHover}
       >
         {/* Image */}
-        <div className="relative w-96">
-          <div className={`${styles.articleImage} md:w-96 h-96`}>
+        <div className="relative w-full ">
+          <div className={`${styles.articleImage} w-full  md:w-96 h-96`}>
             <Image
               src={
                 item.imagesCollection.items[0] === null
@@ -51,13 +51,13 @@ const ArticleItem = ({ item }) => {
         </div>
 
         {/* Header and Text */}
-        <div className="w-96 lg:ml-16">
+        <div className="w-full lg:w-96 lg:ml-16">
           {/* Header */}
           <div
             id={item.slug}
             className="h-auto min-w-full overflow-hidden overflow-ellipsis"
           >
-            <h1 className="line-clamp-4 break-words text-3xl lg:text-4xl mb-6 lg:mb-12 pt-8 lg:pt-0">
+            <h1 className="line-clamp-4  break-words text-3xl w-96 lg:text-4xl mb-6 lg:mb-12 pt-8 lg:pt-0">
               <a>{item.title}</a>
             </h1>
           </div>
@@ -75,7 +75,7 @@ const ArticleItem = ({ item }) => {
             {item.previewText ? item.previewText : getRTFContent(item)}
           </p>
         </div>
-      </motion.section>
+      </motion.section>              
     </Link>
   );
 };
