@@ -18,6 +18,7 @@ module.exports = {
         green: "#41BC9C",
         lightgreen: "#D8F8F4",
         gray: "#80858B",
+        blue: "#89CFF0",
         fontHeadingColor: "#20252B",
         fontBodyColor: "#3B3E42"
       },
