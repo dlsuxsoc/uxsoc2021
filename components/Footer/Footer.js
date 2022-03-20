@@ -98,7 +98,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="block text-center lg:text-center">
-            <p className="my-4">© 2021 User Experience Society - DLSU</p>
+            <p className="my-4">© {`${new Date().getFullYear()}`} User Experience Society - DLSU</p>
           </div>
         </ul>
       </div>
