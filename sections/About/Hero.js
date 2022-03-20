@@ -7,15 +7,15 @@ const Hero = () => {
       <div className="container flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-full">
         {/* Header and Text */}
         <div className="w-full lg:w-1/2 text-center lg:text-left pr-0 lg:pr-20">
-          <h1 className="text-3xl lg:text-5xl mb-6 lg:mb-12">
-            UX Society DLSU
+          <h1 className="text-4xl lg:text-6xl xl:text-5xl mb-6 lg:mb-12">
+            Our Organization
           </h1>
           <p className="text-base lg:text-lg 2xl:text-2xl">
-            We aid various organizations in developing high-quality products and services by implementing 
-            principles, concepts, and methodologies in such strategies. We also hold workshops, seminars, 
+            We aid various organizations in developing high-quality products and services by implementing
+            principles, concepts, and methodologies in such strategies. We also hold workshops, seminars,
             and conferences to train members the fundamentals of UX discipline and methodologies.
           </p>
-          
+
         </div>
         {/* IMAGE */}
         {/* <div className="w-full lg:w-1/2 pb-2 lg:pb-0 text-center">
