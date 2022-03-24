@@ -1,4 +1,4 @@
-import Layout from "../components/layout";
+import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import { useRef } from "react";
 import ContentfulApi from "./api/utils/contentfulApi";
@@ -46,6 +46,7 @@ const getEventData = async () => {
   return data.eventCollection.items;
 };
 
+/*
 export async function getServerSideProps() {
   const articleData = await getArticleData();
   const projectData = await getProjectData();
@@ -55,5 +56,21 @@ export async function getServerSideProps() {
       articles: articleData,
       projects: projectData,
     },
+  };
+}
+*/
+
+// ISR Test
+export async function getStaticProps() {
+  const [articlesData, projectData] = await Promise.all(
+    [getArticleData(), getProjectData()]
+  );
+
+  return {
+    props: {
+      articles: articlesData,
+      projects: projectData
+    },
+    revalidate: 300,
   };
 }

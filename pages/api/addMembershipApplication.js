@@ -11,18 +11,9 @@ const addMembershipApplication = async (req, res) => {
       database_id: process.env.NOTION_MEMBERSHIP_APPLICATION,
     });
 
-    const ids = result.results.map((item, index) => {
-      return item.id;
+    const people = result.results.map((item, index) => {
+      return item.properties["Email Address"].email;
     });
-
-    const people = [];
-
-    for (let i = 0; i < ids.length; i++) {
-      let person = await notion.pages.retrieve({
-        page_id: ids[i],
-      });
-      people.push(person.properties[`Email Address`].email);
-    }
 
     if (emailExists(data.email, people)) {
       const error = new Error("Duplicate Application");
@@ -246,12 +237,11 @@ const addMembershipApplication = async (req, res) => {
       ],
     });
 
-    //console.log(response);
-    res.status(201).json(response);
+    res.status(201).json();
   } catch (err) {
-    console.log(err);
+    //console.log(err);
     //console.error(e);
-    res.status(err.code || 500).json(err.msg);
+    res.status(err.code || 500).json(err);
   }
 };
 

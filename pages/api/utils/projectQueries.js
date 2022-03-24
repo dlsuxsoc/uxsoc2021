@@ -5,6 +5,7 @@ query getProjects($offset:Int){
     items {
       title
 			description
+      previewText
       image{
         url
       }
@@ -20,6 +21,7 @@ query getProjects($slug:String){
       items{
         title
         description
+        previewText
         image{
           url
         }
