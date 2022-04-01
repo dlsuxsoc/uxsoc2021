@@ -7,6 +7,7 @@ import Hero from "../sections/About/Hero";
 import MissionVision from "../sections/About/MissionVision";
 import Services from "../sections/About/Services";
 import JoinUs from "../sections/About/JoinUs";
+import Team from "../sections/About/Team";
 
 export default function About() {
   return (
@@ -23,6 +24,7 @@ export default function About() {
       <Hero />
       <MissionVision />
       <Services servicesData={servicesData} />
+      <Team />
       <JoinUs />
     </Layout>
   );
