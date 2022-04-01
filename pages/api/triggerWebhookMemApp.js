@@ -4,7 +4,7 @@ import { emailExists } from "../../helpers/emailExists";
 
 const triggerWebhookMemApp = async (req, res) => {
   try {
-    let { firstName, email, contactnum, interestedDept } = req.body;
+    let { firstName, email, contactnum, interestedDept, lastName } = req.body;
     // trigger webhook
     const [result, calendly_links] = await Promise.all([
       notion.databases.query({
@@ -54,8 +54,9 @@ const triggerWebhookMemApp = async (req, res) => {
 
     let htmlCode = htmlElements.join("");
 
-    await crossAxios.post(process.env.WEBHOOK_MEM_APP, {
+    await crossAxios.post(process.env.WEBHOOK_MEM_APP_ALT, {
       firstName,
+      lastName,
       email,
       contactnum,
       htmlCode,
