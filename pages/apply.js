@@ -4,14 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Apply() {
-  return (
-    <Layout active={4}>
-      <SEO
-        title={"Membership Application"}
-        description="Apply as a core member today and get exclusive mentorship from
+    return (
+        <Layout active={4}>
+            <SEO
+                title={"Membership Application"}
+                description="Apply as a core member today and get exclusive mentorship from
                   professionals of the field. You can also help in organizing
                   UX-related events or workshops for the student community in
                   Taft."
+
         slug="apply"
       />
       <section className="container h-screen w-screen">

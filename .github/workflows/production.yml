@@ -1,37 +1,38 @@
-# Name of Workflow
-name: Production
+# # Name of Workflow
+# name: Production
 
-# 3ggered at
-on:
-  push:
-    branches:
-      - main
+# # 3ggered at
+# on:
+#   push:
+#     branches:
+#       - main
 
-# Jobs to carry out
-jobs:
-  deploy:
-    # OS to be used
-    runs-on: ubuntu-latest
+# # Jobs to carry out
+# jobs:
+#   deploy:
+#     # OS to be used
+#     runs-on: ubuntu-latest
 
-    # Steps
-    steps:
-      # 1. Get code from repository
-      - name: Checkout code
-        uses: actions/checkout@v1
+#     # Steps
+#     steps:
+#       # 1. Get code from repository
+#       - name: Checkout code
+#         uses: actions/checkout@v1
 
-      # 2. Install Node 16
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16.x 
+#       # 2. Install Node 16
+#       - name: Use Node.js 16.x
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: 16.x
 
-      # 3. Run npm install
-      - run: npm install
 
-      # 4. Run npm build to build the Next.js application
-      - run: npm run build
+#       # 3. Run npm install
+#       - run: npm install
 
-      # 5. Build project
-      - name: Trigger Netlify Build & Deploy
-        id: trigger-build
-        run: curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_PROD_HOOK }}
+#       # 4. Run npm build to build the Next.js application
+#       - run: npm run build
+
+#       # 5. Build project
+#       - name: Trigger Netlify Build & Deploy
+#         id: trigger-build
+#         run: curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_PROD_HOOK }}

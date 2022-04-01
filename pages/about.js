@@ -7,8 +7,10 @@ import Hero from "../sections/About/Hero";
 import MissionVision from "../sections/About/MissionVision";
 import Services from "../sections/About/Services";
 import JoinUs from "../sections/About/JoinUs";
+import Team from "../sections/About/Team";
+import getTeam from "../pages/api/getTeam";
 
-export default function About() {
+export default function About({ leads }) {
   return (
     <Layout active={1}>
       <SEO
@@ -23,7 +25,18 @@ export default function About() {
       <Hero />
       <MissionVision />
       <Services servicesData={servicesData} />
+      <Team leads={leads} />
       <JoinUs />
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const leads = await getTeam();
+
+  return {
+    props: {
+      leads
+    }
+  };
 }

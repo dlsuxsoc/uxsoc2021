@@ -161,7 +161,7 @@ const Apply = () => {
 
       {/* APPLICATION WAS SUBMITTED */}
       {router.query.status ? (
-        <section className="px-4 sm:px-8 lg:px-32 pt-32 min-h-screen">
+        <section className="container px-4 sm:px-8 lg:px-32 pt-32 min-h-screen">
           <div className="hidden md:block fixed right-20 top-0 md:w-64 z-0 lg:w-96 h-screen">
             <Image
               src={"/images/membership-sketch.svg"}
@@ -171,7 +171,7 @@ const Apply = () => {
               objectPosition="center"
             />
           </div>
-          <div className="mb-24 w-full grid grid-cols-12 gap-2">
+          <div className="container mb-24 w-full grid grid-cols-12 gap-2">
             <div className="col-start-1 col-end-12">
               <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
                 {router.query.status === "success"
@@ -824,8 +824,8 @@ const Apply = () => {
                     value={"SEND APPLICATION"}
                     disabled={deptTextHelper !== "" || emailFetching}
                     className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green ${deptTextHelper === "" && !emailFetching
-                        ? `cursor-pointer ${styles.btn_container}`
-                        : "cursor-not-allowed opacity-50"
+                      ? `cursor-pointer ${styles.btn_container}`
+                      : "cursor-not-allowed opacity-50"
                       }`}
                   />
                 </div>
