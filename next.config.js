@@ -6,6 +6,7 @@ module.exports = {
       "placeimg.com",
       "images.ctfassets.net",
       "s3.us-west-2.amazonaws.com",
+      "media.istockphoto.com",
     ],
   },
   distDir: "out",
