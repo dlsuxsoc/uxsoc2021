@@ -16,9 +16,8 @@ const Team = ({ leads }) => {
             return (
               <div className="w-40 md:w-44" key={index}>
                 {/* Lead Avatar */}
-                <div className="mx-auto relative w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 xl:w-32 xl:h-32 2xl:w-40 2xl:h-40">
+                <div className="mx-auto relative w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 xl:w-32 xl:h-32 2xl:w-40 2xl:h-40 rounded-full shadow-md overflow-hidden">
                   <Image
-                    className="rounded-full shadow-md"
                     src={lead.avatar.file.url}
                     alt={lead.avatar.name}
                     priority="true"
