@@ -14,7 +14,7 @@ const Team = ({ leads }) => {
         <div className="flex flex-row flex-wrap gap-y-10 gap-x-6 md:gap-x-2 text-center justify-center">
           {leads.map((lead, index) => {
             return (
-              <div className="w-1/3 md:w-2/6 xl:w-2/12" key={index}>
+              <div className="w-1/3 md:w-2/6 xl:w-2/12 gap-x-2" key={index}>
                 {/* Lead Avatar */}
                 <div className="mx-auto relative w-28 h-28 lg:w-40 lg:h-40">
                   <Image
@@ -30,11 +30,15 @@ const Team = ({ leads }) => {
                 </div>
 
                 <div className="mt-2">
-                  <h2 className="truncate text-sm md:text-base mb-2 ">{lead.name}</h2>
-                  <p className="truncate text-xs md:text-sm mb-2">{lead.position}</p>
+                  <h2 className="truncate text-sm md:text-base mb-2 ">
+                    {lead.name}
+                  </h2>
+                  <p className="truncate text-xs md:text-sm mb-2">
+                    {lead.position}
+                  </p>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
