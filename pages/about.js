@@ -31,13 +31,12 @@ export default function About({ leads }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const leads = await getTeam();
 
   return {
     props: {
       leads,
     },
-    revalidate: 300,
   };
 }
