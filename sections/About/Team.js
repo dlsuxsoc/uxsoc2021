@@ -11,14 +11,13 @@ const Team = ({ leads }) => {
         </h1>
 
         {/* Container for Members */}
-        <div className="flex flex-row flex-wrap gap-y-10 gap-x-6 md:gap-x-2 text-center justify-center">
+        <div className="flex flex-row flex-wrap gap-y-10 gap-x-2 md:gap-x-6 lg:gap-x-12 xl:gap-x-6 2xl:gap-x-14 md:px-32 lg:px-60 xl:px-32 2xl:px-40 text-center justify-center w-full">
           {leads.map((lead, index) => {
             return (
-              <div className="w-1/3 md:w-2/6 xl:w-2/12 gap-x-2" key={index}>
+              <div className="w-40 md:w-44" key={index}>
                 {/* Lead Avatar */}
-                <div className="mx-auto relative w-28 h-28 lg:w-40 lg:h-40">
+                <div className="mx-auto relative w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 xl:w-32 xl:h-32 2xl:w-40 2xl:h-40 rounded-full shadow-md overflow-hidden">
                   <Image
-                    className="rounded-full shadow-md"
                     src={lead.avatar.file.url}
                     alt={lead.avatar.name}
                     priority="true"

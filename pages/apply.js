@@ -12,13 +12,13 @@ import { emailExists } from "../helpers/emailExists";
 import { Oval } from "react-loader-spinner";
 import PageLoading from "../components/PageLoading/PageLoading";
 import Image from "next/image";
+import getSettings from "../pages/api/getSettings";
 
-const Apply = () => {
+const Apply = ({ display = "No" }) => {
   const [maxDate, setMaxDate] = useState("");
   const router = useRouter();
   const [emailFetching, setEmailFetching] = useState(false);
   const [applicationSending, setApplicationSending] = useState(false);
-  const emailCheckingController = new AbortController();
 
   const initialStatusTextState = {
     firstName: "",
@@ -103,6 +103,8 @@ const Apply = () => {
     } else {
       setDeptTextHelper("");
     }
+
+    // console.log(applicationData);
   }, [setCheckedDept, checkedDept]);
 
   useEffect(() => {
@@ -154,22 +156,15 @@ const Apply = () => {
                   Taft."
         slug="apply"
       />
-      <section className="container h-screen w-screen">
-        <div className="flex flex-col w-full h-full justify-center items-center">
-          <div className="relative h-28 w-3/6 lg:h-20 lg:w-1/6 2xl:h-40">
-            <Image
-              src={"/images/nav-logo-mobile.png"}
-              alt="Placeholder-Hero"
-              layout="fill"
-              objectFit="contain"
-              objectPosition="center"
-            />
 
+      <>
+        {display === "Yes" ? (
+          <>
             {applicationSending ? <PageLoading /> : null}
 
             {/* APPLICATION WAS SUBMITTED */}
             {router.query.status ? (
-              <section className="container px-4 sm:px-8 lg:px-32 pt-32 min-h-screen">
+              <section className="px-4 sm:px-8 lg:px-32 pt-32 min-h-screen">
                 <div className="hidden md:block fixed right-20 top-0 md:w-64 z-0 lg:w-96 h-screen">
                   <Image
                     src={"/images/membership-sketch.svg"}
@@ -179,7 +174,7 @@ const Apply = () => {
                     objectPosition="center"
                   />
                 </div>
-                <div className="container mb-24 w-full grid grid-cols-12 gap-2">
+                <div className="mb-24 w-full grid grid-cols-12 gap-2">
                   <div className="col-start-1 col-end-12">
                     <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
                       {router.query.status === "success"
@@ -245,7 +240,7 @@ const Apply = () => {
                 {/**Membership Application Form Section*/}
                 <section className="container px-4 sm:px-8 lg:px-32 pt-32 ">
                   {/* Header */}
-                  <div className="hidden md:block fixed right-20 top-0 md:w-64 z-0 lg:w-96 h-screen">
+                  <div className="hidden md:block fixed md:right-0 xl:right-20 2xl:right-60 top-5 md:w-64 z-0 lg:w-96 h-screen">
                     <Image
                       src={"/images/membership-sketch.svg"}
                       alt="Placeholder-Hero"
@@ -539,10 +534,7 @@ const Apply = () => {
                               e.target.setCustomValidity("Still validating.");
 
                               const res = await axios.get(
-                                "/api/getMembershipEmails",
-                                {
-                                  signal: emailCheckingController.signal,
-                                }
+                                "/api/getMembershipEmails"
                               );
                               setEmailFetching(false);
                               // const invalid = res.data.includes(applicationData.email);
@@ -857,11 +849,49 @@ const Apply = () => {
                 </form>
               </>
             )}
-          </div>
-        </div>
-      </section>
+          </>
+        ) : (
+          <section className="container h-screen w-screen">
+            <div className="flex flex-col w-full h-full justify-center items-center">
+              <div className="relative h-28 w-3/6 lg:h-20 lg:w-1/6 2xl:h-40">
+                <Image
+                  src={"/images/nav-logo-mobile.png"}
+                  alt="Placeholder-Hero"
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="center"
+                />
+              </div>
+              <div className="text-center text-xl md:text-xl mt-4 md:mt-5 w-96 lg:w-3/6 2xl:text-2xl">
+                <p>
+                  We will be announcing the date for our membership application.
+                  Please check our{" "}
+                  <span className="text-blue">
+                    <Link
+                      href="https://www.facebook.com/uxsocietydlsu"
+                      passHref
+                    >
+                      <a target={"_blank"}>Facebook</a>
+                    </Link>
+                  </span>{" "}
+                  page for updates.
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
+      </>
     </Layout>
   );
 };
 
 export default Apply;
+
+export async function getServerSideProps() {
+  const settings = await getSettings();
+  return {
+    props: {
+      display: settings.display_application_form,
+    },
+  };
+}
