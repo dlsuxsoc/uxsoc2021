@@ -2,6 +2,11 @@ import { notion } from "../../api/notion";
 
 const getSettings = async (req, res) => {
   try {
+    if (process.env.TESTING)
+      return {
+        display_application_form: "Yes",
+      };
+
     if (process.env.NOTION_SETTINGS === undefined) {
       return {
         display_application_form: "No",
