@@ -54,6 +54,7 @@ const Apply = ({ display = "No" }) => {
   const [statusText, setStatusText] = useState(initialStatusTextState);
 
   const [emailTextHelper, setEmailTextHelper] = useState("");
+  const [numberTextHelper, setNumberTextHelper] = useState("");
   const [deptTextHelper, setDeptTextHelper] = useState("");
 
   const [checkedDept, setCheckedDept] = useState({
@@ -164,7 +165,7 @@ const Apply = ({ display = "No" }) => {
 
             {/* APPLICATION WAS SUBMITTED */}
             {router.query.status ? (
-              <section className="px-4 sm:px-8 lg:px-32 pt-32 min-h-screen">
+              <section className="px-4 sm:px-8 lg:px-32 pt-32 pb-6 min-h-screen">
                 <div className="hidden md:block fixed right-20 top-0 md:w-64 z-0 lg:w-96 h-screen">
                   <Image
                     src={"/images/membership-sketch.svg"}
@@ -197,15 +198,12 @@ const Apply = ({ display = "No" }) => {
                           The application was successfully submitted. Sit tight
                           while the team is reviewing your application. We will
                           be sending instructions for the next step of the
-                          application to your email at{" "}
-                          <span className="text-blue-500">
-                            {statusText?.email}
-                          </span>
-                          . If you haven't received an email from us in 3 days,
-                          you may try contacting us through our email at{" "}
+                          application to your email. If you haven't received an
+                          email from us in 3 days, you may try contacting us
+                          through our email at{" "}
                           <Link href={"mailto:dlsuuxsociety@gmail.com"}>
-                            <a className="text-blue-500">
-                              dlsuuxsociety@gmail.com
+                            <a className="text-blue hover:underline">
+                              dlsu.uxsociety@gmail.com
                             </a>
                           </Link>
                           .
@@ -217,18 +215,28 @@ const Apply = ({ display = "No" }) => {
                           persists, you may try contacting us through our email
                           at{" "}
                           <Link href={"mailto:dlsuuxsociety@gmail.com"}>
-                            <a className="text-blue-500">
-                              dlsuuxsociety@gmail.com
+                            <a className="text-blue hover:underline">
+                              dlsu.uxsociety@gmail.com
                             </a>
                           </Link>
-                          .
+                          . Alternatively, you may use{" "}
+                          <Link href="https://forms.gle/ySsVc44JGFp2j41C9">
+                            <a
+                              target={"_blank"}
+                              className="text-blue hover:underline"
+                            >
+                              this Google Form
+                            </a>
+                          </Link>{" "}
+                          for the application.
                         </>
                       )}
                     </p>
                     <br />
                     <br />
                     <p className="text-base lg:text-2xl leading-loose mb-28">
-                      Sincerely, <br />
+                      Sincerely,
+                      <br />
                       UXSOC - DLSU Team
                     </p>
                     <Button to="/about">LEARN MORE ABOUT US</Button>
@@ -575,6 +583,20 @@ const Apply = ({ display = "No" }) => {
                           value={applicationData.contactnum}
                           className="form-input py-2 px-3 w-full"
                           placeholder="63xxxxxxxxx"
+                          onBlur={async (e) => {
+                            console.log(e.target.value);
+                            if (String(e.target.value).trim() === "") return;
+                            let isMatch = String(e.target.value).match(
+                              /(09|639)\d{9}$/
+                            );
+                            if (isMatch === null) {
+                              setNumberTextHelper(
+                                "Make sure you are inputting a valid mobile number"
+                              );
+                            } else {
+                              setNumberTextHelper("");
+                            }
+                          }}
                           onChange={(e) =>
                             setApplicationData({
                               ...applicationData,
@@ -582,6 +604,9 @@ const Apply = ({ display = "No" }) => {
                             })
                           }
                         />
+                        <span className="text-red-500 text-sm h-16">
+                          {numberTextHelper}
+                        </span>
                       </div>
                     </div>
                   </section>
