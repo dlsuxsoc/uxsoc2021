@@ -5,25 +5,11 @@ import { emailExists } from "../../helpers/emailExists";
 const triggerWebhookMemApp = async (req, res) => {
   try {
     let { firstName, email, contactnum, interestedDept, lastName } = req.body;
-    // trigger webhook
-    const [result, calendly_links] = await Promise.all([
-      notion.databases.query({
-        database_id: process.env.NOTION_MEMBERSHIP_APPLICATION,
-      }),
-      notion.databases.query({
-        database_id: process.env.NOTION_CALENDLINKS,
-      }),
-    ]);
 
-    const people = result.results.map((item, index) => {
-      return item.properties["Email Address"].email;
+    // trigger webhook
+    const calendly_links = await notion.databases.query({
+      database_id: process.env.NOTION_CALENDLINKS,
     });
-    if (emailExists(email, people)) {
-      const error = new Error("Duplicate Application");
-      error.code = 400;
-      error.msg = "An application with this email was already used";
-      throw error;
-    }
 
     let counter = 1;
     let htmlElements = calendly_links.results.map((item) => {
