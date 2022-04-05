@@ -21,7 +21,6 @@ const Team = ({ leads }) => {
                     src={lead.avatar.file.url}
                     alt={lead.avatar.name}
                     priority="true"
-                    unoptimized={true}
                     layout="fill"
                     objectFit="cover"
                     objectPosition="center"
