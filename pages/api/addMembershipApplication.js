@@ -30,7 +30,7 @@ const addMembershipApplication = async (req, res) => {
       properties: {
         StudentID: {
           select: {
-            name: data.studentID,
+            name: data.studentID !== "" ? data.studentID : "N/A",
           },
         },
         Name: {
