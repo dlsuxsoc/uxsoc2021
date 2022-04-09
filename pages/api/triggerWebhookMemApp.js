@@ -11,8 +11,9 @@ const triggerWebhookMemApp = async (req, res) => {
       database_id: process.env.NOTION_CALENDLINKS,
     });
 
+    const sorted = calendly_links.results.sort((a, b) => 0.5 - Math.random());
     let counter = 1;
-    let htmlElements = calendly_links.results.map((item) => {
+    let htmlElements = sorted.map((item) => {
       const depts = item.properties["Department/s"].multi_select.map(
         (item) => item.name
       );
