@@ -90,13 +90,13 @@ export default function Articles({ active, contentfulArticles }) {
   );
 }
 
-/*
+
 export async function getServerSideProps() {
   const { data } = await ContentfulApi.getArticles(0);
   return { props: { contentfulArticles: data.articleCollection.items } };
 }
-*/
 
+/*
 export async function getStaticProps() {
   const { data } = await ContentfulApi.getArticles(0);
   return {
@@ -107,3 +107,4 @@ export async function getStaticProps() {
     revalidate: 300,
   };
 }
+*/

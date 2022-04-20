@@ -26,11 +26,12 @@ export default function Services({ active, contentfulProjects }) {
   );
 }
 
-// export async function getServerSideProps() {
-//   const { data } = await ContentfulApi.getProjects(0);
-//   return { props: { contentfulProjects: data.projectCollection.items } };
-// }
+export async function getServerSideProps() {
+  const { data } = await ContentfulApi.getProjects(0);
+  return { props: { contentfulProjects: data.projectCollection.items } };
+}
 
+/*
 export async function getStaticProps() {
   const { data } = await ContentfulApi.getProjects(0);
   return {
@@ -41,3 +42,4 @@ export async function getStaticProps() {
     revalidate: 300,
   };
 }
+*/
