@@ -60,17 +60,18 @@ export default function ArticlesPost({
   );
 }
 
-// export async function getServerSideProps(context) {
-//   const { data } = await ContentfulApi.getArticles(0);
-//   const { params } = context;
-//   return {
-//     props: {
-//       ...data.articleCollection.items.find((item) => item.slug === params.slug),
-//       slug: params.slug,
-//     },
-//   };
-// }
+export async function getServerSideProps(context) {
+  const { data } = await ContentfulApi.getArticles(0);
+  const { params } = context;
+  return {
+    props: {
+      ...data.articleCollection.items.find((item) => item.slug === params.slug),
+      slug: params.slug,
+    },
+  };
+}
 
+/*
 export async function getStaticProps(context) {
   const { data } = await ContentfulApi.getArticles(0);
   const { params } = context;
@@ -97,3 +98,4 @@ export async function getStaticPaths() {
     fallback: 'blocking'
   };
 }
+*/
