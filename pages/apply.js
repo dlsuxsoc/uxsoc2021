@@ -168,7 +168,7 @@ const Apply = ({ display = "No" }) => {
               <section className="px-4 sm:px-8 lg:px-32 pt-32 pb-6 min-h-screen">
                 <div className="hidden md:block fixed right-20 top-0 md:w-64 z-0 lg:w-96 h-screen">
                   <Image
-                    src={"/images/membership-sketch.svg"}
+                    src={"/images/leni/membership-sketch.png"}
                     alt="Placeholder-Hero"
                     layout="fill"
                     objectFit="contain"
@@ -250,7 +250,7 @@ const Apply = ({ display = "No" }) => {
                   {/* Header */}
                   <div className="hidden md:block fixed md:right-0 xl:right-20 2xl:right-60 top-5 md:w-64 z-0 lg:w-96 h-screen">
                     <Image
-                      src={"/images/membership-sketch.svg"}
+                      src={"/images/leni/membership-sketch.png"}
                       alt="Placeholder-Hero"
                       layout="fill"
                       objectFit="contain"
