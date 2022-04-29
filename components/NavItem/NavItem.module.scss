@@ -11,13 +11,13 @@
     height: 2px;
     left: 0;
     bottom: 0;
-    background-color: #41bc9c;
+    background-color: theme("colors.green");
   }
 }
 
 .active,
 .item:hover {
-  color: #41bc9c;
+  color: theme("colors.green");
 
   &::after {
     content: "";
@@ -26,7 +26,7 @@
     height: 2px;
     left: 0;
     bottom: 0;
-    background-color: #41bc9c;
+    background-color: theme("colors.green");
   }
 }
 
@@ -49,7 +49,7 @@
 
 .active,
 .itemMobile:hover {
-  color: #41bc9c;
+  color: theme("colors.green");
 
   &::after {
     content: "";
@@ -58,6 +58,6 @@
     height: 2px;
     left: 0;
     bottom: 0;
-    background-color: #41bc9c;
+    background-color: theme("colors.green");
   }
 }
