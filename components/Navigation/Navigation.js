@@ -46,7 +46,7 @@ const Navigation = ({ active }) => {
           <a className="hidden md:block">
             <Image
               id="logo"
-              src={"/images/leni/nav-logo.png"}
+              src={"/images/nav-logo.png"}
               alt="UXSOC Navigation Logo"
               width="136px"
               height="52px"
@@ -57,7 +57,7 @@ const Navigation = ({ active }) => {
           <a className="block md:hidden">
             <Image
               id="logo"
-              src={"/images/leni/nav-logo-mobile.png"}
+              src={"/images/nav-logo-mobile.png"}
               className="block md:hidden "
               alt="UXSOC Navigation Logo"
               width="48px"

@@ -28,7 +28,7 @@ const Hero = () => {
         </div> */}
         <div className="w-full lg:w-1/2 relative mb-10 lg:mb-0 h-48 md:h-96">
           <Image
-            src="/images/leni/home-1.png"
+            src="/images/home-1.png"
             alt="Hero Image"
             layout="fill"
             objectFit="contain"
