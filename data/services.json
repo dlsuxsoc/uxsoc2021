@@ -2,16 +2,16 @@
     {
         "Content":"We create custom web designs from scratch and develop these using the best technologies.",
         "Title": "Web Design & Development",
-        "Image":"/images/leni/services-web-design-and-development.png"
+        "Image":"/images/services-web-design-and-development.png"
     },
     {
         "Content":"We teach and apply User Experience, Experience Design, Design Strategy, Design Thinking, and many other UX related terms.",
         "Title": "UX Education & Training",
-        "Image": "/images/leni/services-ux-education-and-training.png"
+        "Image": "/images/services-ux-education-and-training.png"
     },
     {
         "Content":"We participate and volunteer to work for different external events  such as workshops & design conferences hosted by other organizations.",
         "Title": "Community Engagement",
-        "Image": "/images/leni/services-community-engagement.png"
+        "Image": "/images/services-community-engagement.png"
     }
 ]

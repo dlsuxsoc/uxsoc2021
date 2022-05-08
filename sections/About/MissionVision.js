@@ -8,7 +8,7 @@ const MissionVision = () => {
         {/* Image */}
         <div className="w-full lg:w-1/2 relative h-52 md:h-72 lg:h-96 mb-6 lg:mb-0">
           <Image
-            src="/images/leni/mission-vision-1.png"
+            src="/images/mission-vision-1.png"
             alt="Placeholder-About"
             layout="fill"
             objectFit="contain"
