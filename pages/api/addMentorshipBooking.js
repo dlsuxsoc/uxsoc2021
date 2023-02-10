@@ -3,9 +3,6 @@ import mentorshipInstanceExists from "../../helpers/mentorshipInstanceExists";
 const addMentorshipBooking = async (req, res) => {
   try {
     const data = { ...req.body };
-    //console.log(process.env.NOTION_MENTORSHIP_BOOKING);
-    //console.log(data);
-
     // check existing
     const result = await notion.databases.query({
       database_id: process.env.NOTION_MENTORSHIP_BOOKING,
@@ -21,12 +18,12 @@ const addMentorshipBooking = async (req, res) => {
       let mentorship = await notion.pages.retrieve({
         page_id: ids[i],
       });
-    //   console.log(mentorship.properties);
+      //   console.log(mentorship.properties);
       collectionOfMentorships.push({
-          email : mentorship.properties[`Email Address`].email,
-          mentor : mentorship.properties[`Mentor`].rich_text[0].text.content,
-          date : mentorship.properties[`Date`].rich_text[0].text.content,
-        });
+        email: mentorship.properties[`Email Address`].email,
+        mentor: mentorship.properties[`Mentor`].rich_text[0].text.content,
+        date: mentorship.properties[`Date`].rich_text[0].text.content,
+      });
     }
 
     const key = {
@@ -35,17 +32,14 @@ const addMentorshipBooking = async (req, res) => {
       date: data.bookingDate + " " + data.bookingSlot,
     };
 
-    if(mentorshipInstanceExists(collectionOfMentorships, key)){
+    if (mentorshipInstanceExists(collectionOfMentorships, key)) {
       const error = new Error("Duplicate Mentorship");
       console.log("dupe");
       error.code = 400;
-      error.message = "Appointment at current date and time already exists"
+      error.message = "Appointment at current date and time already exists";
 
-      throw error
+      throw error;
     }
-
-    
-
 
     const response = await notion.pages.create({
       parent: {
