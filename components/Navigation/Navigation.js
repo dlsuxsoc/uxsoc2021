@@ -79,11 +79,11 @@ const Navigation = ({ active }) => {
           </ul>
           <Button
             id="navJoin"
-            to="/apply"
+            to="/apply/lead2023"
             size="sm"
             className="whitespace-nowrap -mt-1 hidden md:inline-block"
           >
-            JOIN US
+            APPLY AS LEAD
           </Button>
         </div>
 

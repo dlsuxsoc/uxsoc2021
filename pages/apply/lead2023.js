@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../components/Layout/Layout";
-import SEO from "../components/seo";
-import { restrictRange } from "../helpers/restrictRange";
+import Layout from "../../components/Layout/Layout";
+import SEO from "../../components/seo";
+import { restrictRange } from "../../helpers/restrictRange";
 import { useRouter } from "next/router";
 import axios from "axios";
-import Button from "../components/Button/Button";
+import Button from "../../components/Button/Button";
 import Link from "next/link";
-import styles from "../styles/Apply.module.scss";
-import FormCheckbox from "../components/FormCheckbox/FormCheckbox";
-import { emailExists } from "../helpers/emailExists";
+import styles from "../../styles/Apply.module.scss";
+import FormCheckbox from "../../components/FormCheckbox/FormCheckbox";
+import { emailExists } from "../../helpers/emailExists";
 import { Oval } from "react-loader-spinner";
-import PageLoading from "../components/PageLoading/PageLoading";
+import PageLoading from "../../components/PageLoading/PageLoading";
 import Image from "next/image";
-import getSettings from "../pages/api/getSettings";
+import getSettings from "../../pages/api/getSettings";
 
 const Apply = ({ display = "No" }) => {
   const [maxDate, setMaxDate] = useState("");
@@ -58,12 +58,9 @@ const Apply = ({ display = "No" }) => {
   const [deptTextHelper, setDeptTextHelper] = useState("");
 
   const [checkedDept, setCheckedDept] = useState({
-    Design: false,
-    Development: false,
     Externals: false,
     "Internal Growth": false,
-    Marketing: false,
-    Research: false,
+    "Community Manager": false,
   });
 
   useEffect(() => {
@@ -133,8 +130,8 @@ const Apply = ({ display = "No" }) => {
         });
 
         await Promise.all([
-          axios.post("/api/triggerWebhookMemApp", applicationData),
-          axios.post("/api/addMembershipApplication", applicationData),
+          axios.post("/api/triggerWebhookLeadApp", applicationData),
+          axios.post("/api/addLeadApplication", applicationData),
         ]);
 
         router.push("?status=success", undefined, { shallow: true });
@@ -150,7 +147,7 @@ const Apply = ({ display = "No" }) => {
   return (
     <Layout active={4}>
       <SEO
-        title={"Membership Application"}
+        title={"Leads 2023 Application"}
         description="Apply as a core member today and get exclusive mentorship from
                   professionals of the field. You can also help in organizing
                   UX-related events or workshops for the student community in
@@ -237,7 +234,7 @@ const Apply = ({ display = "No" }) => {
                     <p className="text-base lg:text-2xl leading-loose mb-28">
                       Sincerely,
                       <br />
-                      UXSOC - DLSU Team
+                      UXSOC - Taft Team
                     </p>
                     <Button to="/about">LEARN MORE ABOUT US</Button>
                   </div>
@@ -261,15 +258,15 @@ const Apply = ({ display = "No" }) => {
                   <div className="mb-24 w-full grid grid-cols-12 gap-2">
                     <div className="col-start-1 col-end-12">
                       <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-6 lg:mb-12">
-                        Membership Application
+                        Leads 2023 Application
                       </h1>
                     </div>
                     <div className="col-start-1 col-end-12 md:col-end-8">
                       <p className="text-base lg:text-2xl leading-loose mb-4">
-                        Apply as a core member today and get exclusive
-                        mentorship from professionals of the field. You can also
-                        help in organizing UX-related events or workshops for
-                        the student community in Taft.
+                        Apply as a lead today and help empower User Experience,
+                        Human-Computer Interaction, and Service Design in the
+                        campus. You can also get personally mentored by alumni
+                        of the org.
                       </p>
                     </div>
                   </div>
@@ -541,9 +538,7 @@ const Apply = ({ display = "No" }) => {
                               setEmailFetching(true);
                               e.target.setCustomValidity("Still validating.");
 
-                              const res = await axios.get(
-                                "/api/getMembershipEmails"
-                              );
+                              const res = await axios.get("/api/getLeadEmails");
                               setEmailFetching(false);
                               // const invalid = res.data.includes(applicationData.email);
                               const invalid = emailExists(
@@ -591,7 +586,7 @@ const Apply = ({ display = "No" }) => {
                             );
                             if (isMatch === null) {
                               setNumberTextHelper(
-                                "Make sure you are inputting a valid mobile number"
+                                "Make sure you are filling in a valid mobile number"
                               );
                             } else {
                               setNumberTextHelper("");
@@ -718,7 +713,7 @@ const Apply = ({ display = "No" }) => {
 
                       <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                         <label className="block mb-6">
-                          Why are you interested in joining the organization?
+                          Why are you interested in becoming a lead?
                         </label>
                         <textarea
                           className="w-full p-2"
@@ -753,25 +748,6 @@ const Apply = ({ display = "No" }) => {
                       <div className="col-span-2"></div>
 
                       <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
-                        <label className="block mb-6">
-                          How do you think user experience applies in your
-                          current degree program and interests?
-                        </label>
-                        <textarea
-                          className="w-full p-2"
-                          rows={5}
-                          onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
-                              practicalityUX: e.target.value,
-                            })
-                          }
-                          value={applicationData.practicalityUX}
-                        ></textarea>
-                      </div>
-                      <div className="col-span-2"></div>
-
-                      <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                         <label className="inline-block mb-6">
                           What department/s are you interested in?
                         </label>
@@ -783,24 +759,13 @@ const Apply = ({ display = "No" }) => {
                           onChange={(e) =>
                             setCheckedDept({
                               ...checkedDept,
-                              Design: !checkedDept.Design,
+                              "Community Manager":
+                                !checkedDept["Community Manager"],
                             })
                           }
-                          value={checkedDept.Design}
+                          value={checkedDept["Community Manager"]}
                         >
-                          Design
-                        </FormCheckbox>
-                        <FormCheckbox
-                          type="departments"
-                          onChange={(e) =>
-                            setCheckedDept({
-                              ...checkedDept,
-                              Development: !checkedDept.Development,
-                            })
-                          }
-                          value={checkedDept.Development}
-                        >
-                          Development
+                          Community Manager
                         </FormCheckbox>
                         <FormCheckbox
                           type="departments"
@@ -813,7 +778,7 @@ const Apply = ({ display = "No" }) => {
                           value={checkedDept.Externals}
                         >
                           Externals
-                        </FormCheckbox>
+                        </FormCheckbox>{" "}
                         <FormCheckbox
                           type="departments"
                           onChange={(e) =>
@@ -826,30 +791,6 @@ const Apply = ({ display = "No" }) => {
                           value={checkedDept["Internal Growth"]}
                         >
                           Internal Growth
-                        </FormCheckbox>
-                        <FormCheckbox
-                          type="departments"
-                          onChange={(e) =>
-                            setCheckedDept({
-                              ...checkedDept,
-                              Marketing: !checkedDept.Marketing,
-                            })
-                          }
-                          value={checkedDept.Marketing}
-                        >
-                          Marketing
-                        </FormCheckbox>
-                        <FormCheckbox
-                          type="departments"
-                          onChange={(e) =>
-                            setCheckedDept({
-                              ...checkedDept,
-                              Research: !checkedDept.Research,
-                            })
-                          }
-                          value={checkedDept.Research}
-                        >
-                          Research
                         </FormCheckbox>
                       </div>
                     </div>
@@ -889,7 +830,7 @@ const Apply = ({ display = "No" }) => {
               </div>
               <div className="text-center text-xl md:text-xl mt-4 md:mt-5 w-96 lg:w-3/6 2xl:text-2xl">
                 <p>
-                  We will be announcing the date for our membership application.
+                  We will be announcing the date for our leads application.
                   Please check our{" "}
                   <span className="text-blue">
                     <Link
@@ -916,7 +857,7 @@ export async function getServerSideProps() {
   const settings = await getSettings();
   return {
     props: {
-      display: settings.display_application_form,
+      display: settings.display_lead_form,
     },
   };
 }
