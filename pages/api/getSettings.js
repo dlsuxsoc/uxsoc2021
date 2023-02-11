@@ -5,11 +5,13 @@ const getSettings = async (req, res) => {
     if (process.env.TESTING)
       return {
         display_application_form: "Yes",
+        display_lead_form: "Yes",
       };
 
     if (process.env.NOTION_SETTINGS === undefined) {
       return {
         display_application_form: "No",
+        display_lead_form: "No",
       };
     }
     const { results } = await notion.databases.query({
