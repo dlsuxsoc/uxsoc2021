@@ -58,6 +58,7 @@ const Apply = ({ display = "No" }) => {
   const [deptTextHelper, setDeptTextHelper] = useState("");
 
   const [checkedDept, setCheckedDept] = useState({
+    Development: false,
     Externals: false,
     Development: false,
     "Internal Growth": false,
@@ -764,6 +765,18 @@ const Apply = ({ display = "No" }) => {
                           value={checkedDept["Community Manager"]}
                         >
                           Community Manager
+                        </FormCheckbox>
+                        <FormCheckbox
+                          type="departments"
+                          onChange={(e) =>
+                            setCheckedDept({
+                              ...checkedDept,
+                              Development: !checkedDept["Development"],
+                            })
+                          }
+                          value={checkedDept["Development"]}
+                        >
+                          Development
                         </FormCheckbox>
                         <FormCheckbox
                           type="departments"
