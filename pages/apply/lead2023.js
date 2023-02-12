@@ -215,16 +215,7 @@ const Apply = ({ display = "No" }) => {
                               dlsu.uxsociety@gmail.com
                             </a>
                           </Link>
-                          . Alternatively, you may use{" "}
-                          <Link href="https://forms.gle/ySsVc44JGFp2j41C9">
-                            <a
-                              target={"_blank"}
-                              className="text-blue hover:underline"
-                            >
-                              this Google Form
-                            </a>
-                          </Link>{" "}
-                          for the application.
+                          .
                         </>
                       )}
                     </p>
