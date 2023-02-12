@@ -59,6 +59,7 @@ const Apply = ({ display = "No" }) => {
 
   const [checkedDept, setCheckedDept] = useState({
     Externals: false,
+    Development: false,
     "Internal Growth": false,
     "Community Manager": false,
   });
@@ -148,10 +149,7 @@ const Apply = ({ display = "No" }) => {
     <Layout active={4}>
       <SEO
         title={"Leads 2023 Application"}
-        description="Apply as a core member today and get exclusive mentorship from
-                  professionals of the field. You can also help in organizing
-                  UX-related events or workshops for the student community in
-                  Taft."
+        description="Apply as a lead today and help empower User Experience, Human-Computer Interaction, and Service Design in the campus. You can also get personally mentored by the alumni of the org."
         slug="apply"
       />
 
@@ -265,8 +263,8 @@ const Apply = ({ display = "No" }) => {
                       <p className="text-base lg:text-2xl leading-loose mb-4">
                         Apply as a lead today and help empower User Experience,
                         Human-Computer Interaction, and Service Design in the
-                        campus. You can also get personally mentored by alumni
-                        of the org.
+                        campus. You can also get personally mentored by the
+                        alumni of the org.
                       </p>
                     </div>
                   </div>
