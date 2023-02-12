@@ -773,6 +773,7 @@ const Apply = ({ display = "No" }) => {
                           onChange={(e) =>
                             setCheckedDept({
                               ...checkedDept,
+
                               Development: !checkedDept["Development"],
                             })
                           }
@@ -785,6 +786,7 @@ const Apply = ({ display = "No" }) => {
                           onChange={(e) =>
                             setCheckedDept({
                               ...checkedDept,
+
                               Externals: !checkedDept.Externals,
                             })
                           }
