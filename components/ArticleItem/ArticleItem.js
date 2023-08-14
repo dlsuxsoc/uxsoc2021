@@ -28,7 +28,7 @@ const ArticleItem = ({ item }) => {
   };
 
   return (
-    <Link href={`/blog/${item.slug}`}>
+    <Link href={`/articles/${item.slug}`}>
       <motion.section
         className="mb-8 lg:mb-28 flex flex-col lg:flex-row justify-center align-center items-center cursor-pointer"
         whileHover={cardHover}

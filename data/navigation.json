@@ -1,18 +1,18 @@
 [
-    {
-        "name": "Home",
-        "link": "/"
-    },
-    {
-        "name": "About Us",
-        "link": "/about"
-    },
-    {
-        "name": "Services",
-        "link": "/services"
-    },
-    {
-        "name": "Articles",
-        "link": "/blog"
-    }
+  {
+    "name": "Home",
+    "link": "/"
+  },
+  {
+    "name": "About Us",
+    "link": "/about"
+  },
+  {
+    "name": "Services",
+    "link": "/services"
+  },
+  {
+    "name": "Articles",
+    "link": "/articles"
+  }
 ]
