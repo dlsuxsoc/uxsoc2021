@@ -3,7 +3,7 @@ import Image from "next/image";
 import Layout from "../../components/Layout/Layout";
 import SEO from "../../components/seo";
 import styles from "../../styles/Slug.module.scss";
-import ContentfulApi from "./../api/utils/contentfulApi";
+import ContentfulApi from "../api/utils/contentfulApi";
 import { DateTime } from "luxon";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { useEffect, useState } from "react";
@@ -22,7 +22,7 @@ export default function ArticlesPost({
       <SEO
         title={"Articles Post"}
         description={content.json.content[0].content[0].value}
-        slug={`blog/${slug}`}
+        slug={`articles/${slug}`}
       />
       <div className="container w-full md:w-2/3 mt-32 mb-64 mx-auto min-h-full bg-white shadow-xl relative z-10">
         <div className="pb-3 lg:pb-0">
