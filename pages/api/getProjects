@@ -1,0 +1,60 @@
+import { notion } from "../../api/notion";
+
+const getProjects = async (req, res) => {
+    try {
+        const { results: projects } = await notion.databases.query({
+            database_id: process.env.NOTION_PROJECTS,
+            sorts: [
+                {
+                    "property": "Title",
+                    "direction": "descending"
+                }
+            ]
+        });
+
+        console.log(projects);
+
+        var projects_list = [];
+
+        projects.map((project) => {
+            var data = project.properties;
+            var image = data.imageURL.rich_text.length > 0 ? data.Avatar.rich_text[0].text.content :
+                {
+                    url: "/images/placeholder.png"
+                }
+            projects_list.push({
+                title: data.Title.title[0].text.content,
+                description: data.Description.rich_text[0].text.content,
+                previewText: data.previewText.rich_text[0].text.content,
+                image
+            });
+        });
+        console.log(projects_list);
+        return projects_list;
+
+        // item
+        //     Item.image.url
+        //     item.Image
+        //     item.Title
+        //     item.Content
+        //     item.previewText
+        //     item.description
+        // classNames
+        // id
+    }
+    catch (e) {
+        console.error(e);
+        return e;
+    }
+}
+
+export const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: "1mb",
+            externalResolver: true,
+        },
+    },
+};
+
+export default getProjects;
