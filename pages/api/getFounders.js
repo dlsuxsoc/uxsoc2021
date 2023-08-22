@@ -1,8 +1,8 @@
 import { notion } from "../../api/notion";
 
-const getTeam = async (req, res) => {
+const getFounders = async (req, res) => {
     try {
-        const { results: leads } = await notion.databases.query({
+        const { results: founders } = await notion.databases.query({
             database_id: process.env.NOTION_LEADS,
             sorts: [
                 {
@@ -18,8 +18,8 @@ const getTeam = async (req, res) => {
 
         var team = [];
 
-        leads.map((lead) => {
-            var data = lead.properties;
+        founders.map((founder) => {
+            var data = founder.properties;
             var avatar = data.Avatar.files.length > 0 ? data.Avatar.files[0] :
                 {
                     name: "filler_img",
@@ -28,7 +28,7 @@ const getTeam = async (req, res) => {
                     }
                 }
             
-            if(data.Position.select.name != 'Founder')
+            if(data.Position.select.name == 'Founder')
             team.push({
                 name: data.Name.title[0].text.content,
                 position: data.Position.select.name,
@@ -55,4 +55,4 @@ export const config = {
     },
 };
 
-export default getTeam;
+export default getFounders;
