@@ -18,7 +18,7 @@ const getProjects = async (req, res) => {
 
         projects.map((project) => {
             var data = project.properties;
-            var image = data.imageURL.rich_text.length > 0 ? data.Avatar.rich_text[0].text.content :
+            var image = data.imageURL.rich_text.length > 0 ? data.imageURL.rich_text[0].text.content :
                 {
                     url: "/images/placeholder.png"
                 }
@@ -26,7 +26,8 @@ const getProjects = async (req, res) => {
                 title: data.Title.title[0].text.content,
                 description: data.Description.rich_text[0].text.content,
                 previewText: data.previewText.rich_text[0].text.content,
-                image
+                image,
+                slug: data.Slug.rich_text[0].text.content,
             });
         });
         console.log(projects_list);
@@ -34,9 +35,7 @@ const getProjects = async (req, res) => {
 
         // item
         //     Item.image.url
-        //     item.Image
-        //     item.Title
-        //     item.Content
+        //     item.title
         //     item.previewText
         //     item.description
         // classNames

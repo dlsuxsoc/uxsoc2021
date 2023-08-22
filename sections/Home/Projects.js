@@ -28,12 +28,8 @@ const Projects = ({ projects }) => {
               >
                 <div className="relative h-48 md:h-96 lg:h-44 2xl:h-72 shadow-lg">
                   <Image
-                    src={
-                      item.image === null
-                        ? "/images/placeholder.png"
-                        : item.image.url
-                    }
-                    alt={item.title}
+                    src={ item.image.url }
+                    alt={ item.title }
                     layout="fill"
                     objectFit="cover"
                     objectPosition="center"
