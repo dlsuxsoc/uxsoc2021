@@ -17,8 +17,8 @@ const getTeam = async (req, res) => {
     });
 
     const team = leads.map((lead) => {
-      var data = lead.properties;
-      var avatar =
+      const data = lead.properties;
+      const avatar =
         data.Avatar.files.length > 0
           ? data.Avatar.files[0]
           : {
