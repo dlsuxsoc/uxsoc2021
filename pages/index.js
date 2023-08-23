@@ -6,6 +6,7 @@ import Hero from "../sections/Home/Hero";
 import AboutUs from "./../sections/Home/AboutUs";
 import Articles from "../sections/Home/Articles";
 import Projects from "../sections/Home/Projects";
+import getProjects from "./api/getProjects.js";
 
 export default function Index({ articles, projects, events }) {
   const aboutRef = useRef(null);
@@ -49,7 +50,7 @@ const getEventData = async () => {
 
 export async function getServerSideProps() {
   const articleData = await getArticleData();
-  const projectData = await getProjectData();
+  const projectData = await getProjects();
 
   return {
     props: {

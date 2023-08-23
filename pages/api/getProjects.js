@@ -7,22 +7,21 @@ const getProjects = async (req, res) => {
             sorts: [
                 {
                     "property": "Title",
-                    "direction": "descending"
+                    "direction": "ascending"
                 }
             ]
         });
 
-        console.log(projects);
-
-        var projects_list = [];
-
-        projects.map((project) => {
-            var data = project.properties;
-            var image = data.imageURL.rich_text.length > 0 ? data.imageURL.rich_text[0].text.content :
+        const projects_list = projects.map((project) => {
+            const data = project.properties;
+            const image = data.imageURL.rich_text.length > 0 ? 
+                {
+                    url: data.imageURL.rich_text[0].text.content 
+                } :
                 {
                     url: "/images/placeholder.png"
                 }
-            projects_list.push({
+            return ({
                 title: data.Title.title[0].text.content,
                 description: data.Description.rich_text[0].text.content,
                 previewText: data.previewText.rich_text[0].text.content,
@@ -30,20 +29,11 @@ const getProjects = async (req, res) => {
                 slug: data.Slug.rich_text[0].text.content,
             });
         });
-        console.log(projects_list);
         return projects_list;
-
-        // item
-        //     Item.image.url
-        //     item.title
-        //     item.previewText
-        //     item.description
-        // classNames
-        // id
     }
     catch (e) {
         console.error(e);
-        return e;
+        return null;
     }
 }
 

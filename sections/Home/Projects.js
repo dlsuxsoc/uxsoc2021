@@ -18,35 +18,39 @@ const Projects = ({ projects }) => {
       <section className="container flex flex-col md:flex-row w-full md:justify-between lg:mb-5">
         {/* Project */}
 
-        {projects.slice(0, 3).map((item, index) => {
-          return (
-            <Link href={`/services/#${index}`} key={index} passHref>
-              <motion.div
-                className={`text-center cursor-pointer ${index > 0 ? "hidden lg:block" : "block"
-                  } w-full lg:w-1/3 ${index === 1 ? "mx-16" : ""}`}
-                whileHover={homeProjectHover}
-              >
-                <div className="relative h-48 md:h-96 lg:h-44 2xl:h-72 shadow-lg">
-                  <Image
-                    src={ item.image.url }
-                    alt={ item.title }
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center"
-                  />
-                </div>
+        {projects ? (
+          projects.slice(0, 3).map((item, index) => {
+            return (
+              <Link href={`/services/#${index}`} key={index} passHref>
+                <motion.div
+                  className={`text-center cursor-pointer ${index > 0 ? "hidden lg:block" : "block"
+                    } w-full lg:w-1/3 ${index === 1 ? "mx-16" : ""}`}
+                  whileHover={homeProjectHover}
+                >
+                  <div className="relative h-48 md:h-96 lg:h-44 2xl:h-72 shadow-lg">
+                    <Image
+                      src={ item.image.url }
+                      alt={ item.title }
+                      layout="fill"
+                      objectFit="cover"
+                      objectPosition="center"
+                    />
+                  </div>
 
-                {/* Project Text */}
-                <h2 className=" text-base md:text-xl mb-4 mt-8 line-clamp-2">
-                  <a>{item.title}</a>
-                </h2>
-                <p className="break-words text-sm lg:text-base line-clamp-4">
-                  {item.previewText ? item.previewText : item.description}
-                </p>
-              </motion.div>
-            </Link>
-          );
-        })}
+                  {/* Project Text */}
+                  <h2 className=" text-base md:text-xl mb-4 mt-8 line-clamp-2">
+                    <a>{item.title}</a>
+                  </h2>
+                  <p className="break-words text-sm lg:text-base line-clamp-4">
+                    {item.previewText ? item.previewText : item.description}
+                  </p>
+                </motion.div>
+              </Link>
+            );
+          })
+        ): (
+          <p className="text-center">An error occurred while fetching projects.</p>
+        )}
       </section>
 
       <Button className="mt-10" id="serviceshome" to="/services">
