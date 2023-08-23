@@ -3,7 +3,7 @@ import Button from "../../components/Button/Button";
 
 const JoinUs = () => {
   return (
-    <section className="px-4 sm:px-32 py-14 lg:py-20 h-auto ">
+    <section className="px-4 sm:px-32 py-14 lg:py-20 h-auto bg-offwhite ">
       <div className="flex flex-col justify-center lg:justify-between items-center">
         {/* Header*/}
         <div className="pb-3 text-center">

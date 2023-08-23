@@ -9,8 +9,10 @@ import Services from "../sections/About/Services";
 import JoinUs from "../sections/About/JoinUs";
 import Team from "../sections/About/Team";
 import getTeam from "../pages/api/getTeam";
+import Founders from "../sections/About/Founders"
 
-export default function About({ leads }) {
+
+export default function About({ leads , founders }) {
   return (
     <Layout active={1}>
       <SEO
@@ -26,17 +28,19 @@ export default function About({ leads }) {
       <MissionVision />
       <Services servicesData={servicesData} />
       <Team leads={leads} />
+      <Founders founders={founders}></Founders>
       <JoinUs />
     </Layout>
   );
 }
 
 export async function getServerSideProps() {
-  const leads = await getTeam();
+  const team = await getTeam();
 
   return {
     props: {
-      leads,
+      leads: team.filter((lead) => lead.position !== "Founder"),
+      founders: team.filter((lead) => lead.position === "Founder")
     },
   };
 }
