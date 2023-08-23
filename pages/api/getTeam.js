@@ -27,8 +27,6 @@ const getTeam = async (req, res) => {
                         url: "/images/person_placeholder.jpg"
                     }
                 }
-            
-            if(data.Position.select.name != 'Founder')
             team.push({
                 name: data.Name.title[0].text.content,
                 position: data.Position.select.name,

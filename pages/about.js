@@ -10,7 +10,7 @@ import JoinUs from "../sections/About/JoinUs";
 import Team from "../sections/About/Team";
 import getTeam from "../pages/api/getTeam";
 import Founders from "../sections/About/Founders"
-import getFounders from "./api/getFounders";
+
 
 export default function About({ leads , founders }) {
   return (
@@ -35,12 +35,12 @@ export default function About({ leads , founders }) {
 }
 
 export async function getServerSideProps() {
-  const leads = await getTeam();
-  const founders = await getFounders();
+  const team = await getTeam();
+
   return {
     props: {
-      leads,
-      founders
+      leads: team.filter((lead) => lead.position !== "Founder"),
+      founders: team.filter((lead) => lead.position === "Founder")
     },
   };
 }
