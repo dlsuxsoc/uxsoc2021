@@ -7,7 +7,7 @@ import axios from "axios";
 import Button from "../../components/Button/Button";
 import Link from "next/link";
 import styles from "../../styles/Apply.module.scss";
-import FormCheckbox from "../../components/FormCheckbox/FormCheckbox";
+// import FormCheckbox from "../../components/FormCheckbox/FormCheckbox";
 import { emailExists } from "../../helpers/emailExists";
 import { Oval } from "react-loader-spinner";
 import PageLoading from "../../components/PageLoading/PageLoading";
@@ -746,7 +746,7 @@ const Apply = ({ display = "No" }) => {
                       </div>
                       <div className="col-span-2"></div>
 
-                      <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
+                      {/* <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
                         <label className="inline-block mb-6">
                           What department/s are you interested in?
                         </label>
@@ -826,7 +826,7 @@ const Apply = ({ display = "No" }) => {
                         >
                           Research
                         </FormCheckbox>
-                      </div>
+                      </div> */}
                     </div>
                   </section>
                   <section className="container px-4 sm:px-8 lg:px-32 pt-2 pb-16">
