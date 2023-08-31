@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Personal Information",
+    "fields": [
+      {
+        "name": "firstName",
+        "placeholder": "Criscela",
+        "required": true,
+        "type": "text",
+        "label": "First Name",
+        "size": "half"
+      },
+      {
+        "name": "lastName",
+        "placeholder": "Racelis",
+        "required": true,
+        "type": "text",
+        "label": "Last Name",
+        "size": "half"
+      },
+      {
+        "name": "nickname",
+        "placeholder": "Pi",
+        "type": "text",
+        "required": false,
+        "label": "Nickname"
+      },
+      {
+        "name": "birthdate",
+        "type": "date",
+        "required": true,
+        "label": "Birthdate"
+      },
+      {
+        "name": "pronoun",
+        "label": "Preferred Pronoun",
+        "type": "radio",
+        "options": ["He/ Him", "She/ Her", "They/ Them", "Others"],
+        "followUp": {
+          "condition": "Others",
+          "type": "text",
+          "name": "customPronoun"
+        }
+      }
+    ]
+  }
+]

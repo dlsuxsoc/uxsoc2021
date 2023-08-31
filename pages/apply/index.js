@@ -13,50 +13,21 @@ import { Oval } from "react-loader-spinner";
 import PageLoading from "../../components/PageLoading/PageLoading";
 import Image from "next/image";
 import getSettings from "../api/getSettings";
+import applicationFormState from "../../components/Forms/utils/initialState/applicationFormState";
+import statusTextState from "../../components/Forms/utils/initialState/statusTextState";
+import data from "../../components/Forms/utils/formFields/membershipApplication.json";
+import Field from "../../components/Forms";
 
 const Apply = ({ display = "No" }) => {
   const [maxDate, setMaxDate] = useState("");
   const router = useRouter();
   const [emailFetching, setEmailFetching] = useState(false);
   const [applicationSending, setApplicationSending] = useState(false);
-
-  const initialStatusTextState = {
-    firstName: "",
-    email: "",
-    contactnum: "",
-  };
-  const initialApplicationState = {
-    firstName: "",
-    lastName: "",
-    nickname: "",
-    mOB: "",
-    dOB: "",
-    yOB: "",
-    pronoun: "",
-    customPronoun: "",
-    email: "",
-    contactnum: "",
-    college: "",
-    program: "",
-    hobbies: "",
-    whatIsUX: "",
-    practicalityUX: "",
-    studentID: "",
-    interestedOrg: "",
-    interestedDept: [],
-    emails: [],
-  };
-
-  const [applicationData, setApplicationData] = useState(
-    initialApplicationState
-  );
-
-  const [statusText, setStatusText] = useState(initialStatusTextState);
-
   const [emailTextHelper, setEmailTextHelper] = useState("");
   const [numberTextHelper, setNumberTextHelper] = useState("");
   const [deptTextHelper, setDeptTextHelper] = useState("");
-
+  const [statusText, setStatusText] = useState(statusTextState);
+  const [applicationData, setApplicationData] = useState(applicationFormState);
   const [checkedDept, setCheckedDept] = useState({
     Design: false,
     Development: false,
@@ -125,7 +96,7 @@ const Apply = ({ display = "No" }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       try {
-        setApplicationData(initialStatusTextState);
+        setApplicationData(statusTextState);
         setStatusText({
           firstName: applicationData.firstName,
           email: applicationData.email,
@@ -276,32 +247,39 @@ const Apply = ({ display = "No" }) => {
                 </section>
                 {/** Actual Form */}
                 <form action="POST" onSubmit={handleSubmit}>
+                  {data.map((section, sectionIndex) => {
+                    return (
+                      <section
+                        className="container px-4 sm:px-8 lg:px-32 pt-2 pb-16"
+                        key={sectionIndex}
+                      >
+                        <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
+                          {section.name}
+                        </h2>
+                        <div className="grid grid-cols-8 gap-4">
+                          {section.fields.map((field, fieldIndex) => (
+                            <Field
+                              key={fieldIndex}
+                              type={field.type}
+                              fieldProps={{
+                                ...field,
+                                formData: applicationData,
+                                setFormData: setApplicationData,
+                              }}
+                            />
+                          ))}
+                        </div>
+                      </section>
+                    );
+                  })}
+
                   <section className="container px-4 sm:px-8 lg:px-32 pt-2 pb-16">
                     {/** Personal Information Section */}
                     <h2 className=" text-xl md:text-2xl lg:text-4xl mb-6 lg:mb-12">
                       Personal Information
                     </h2>
-                    <div className="grid grid-cols-12 gap-4">
-                      <div className="col-start-1 col-span-12 sm:col-span-6 md:col-span-4 mb-4">
-                        <label className="block mb-6" htmlFor="firstName">
-                          First Name
-                        </label>
-                        <input
-                          type="text"
-                          name="firstName"
-                          className="form-input py-2 px-3 w-full"
-                          placeholder="Donald Arthur"
-                          value={applicationData.firstName}
-                          onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
-                              firstName: e.target.value,
-                            })
-                          }
-                          required
-                        />
-                      </div>
-                      <div className="col-span-12 sm:col-span-6 md:col-span-4 mb-4">
+                    <div className="grid grid-cols-8 gap-4">
+                      <div className="col-span-12 sm:col-span-6 md:col-span-3 mb-4">
                         <label className="block mb-6" htmlFor="lastName">
                           Last Name
                         </label>
@@ -320,9 +298,7 @@ const Apply = ({ display = "No" }) => {
                           required
                         />
                       </div>
-                    </div>
-                    <div className="grid grid-cols-12 gap-4">
-                      <div className="col-start-1 col-span-12 sm:col-span-6 md:col-span-4 mb-4">
+                      <div className="col-start-1 col-span-12 sm:col-span-6 md:col-span-3 mb-4">
                         <label className="block mb-6">
                           Nickname (Optional)
                         </label>
@@ -339,7 +315,7 @@ const Apply = ({ display = "No" }) => {
                           placeholder="Don"
                         />
                       </div>
-                      <div className=" col-span-12 sm:col-span-6 md:col-span-4 mb-4">
+                      <div className=" col-span-12 sm:col-span-6 md:col-span-3 mb-4">
                         <label className="block mb-6">Birth Date</label>
                         <div className="grid grid-cols-3 gap-4">
                           <div className="col-start-1">
@@ -412,7 +388,6 @@ const Apply = ({ display = "No" }) => {
                         </div>
                       </div>
                     </div>
-
                     <div className="grid grid-cols-12 gap-4">
                       <div className="col-start-1 col-span-12 md:col-span-4 mb-8">
                         <label
