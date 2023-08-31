@@ -15,10 +15,8 @@ const ProjectItem = ({ item, classNames, id }) => {
         </div>
         <div className="w-full lg:w-6/12 px-5 md:px-20 mb:20">
           <Image
-            src={
-              item.image.url === null ? "/images/placeholder.png" : item.image.url
-            }
-            alt="Placeholder"
+            src={ item.image.url }
+            alt={ item.title }
             width={794}
             height={446}
           />

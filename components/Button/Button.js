@@ -11,7 +11,7 @@ import styles from "./Button.module.scss";
  */
 
 // set default variant to greem and link to #
-const Button = ({ children, variant = "green", to = "#", className ="", size="base", id="", eventHandler= ()=>{} }) => {
+const Button = ({ children, variant = "green", to = "#", className ="", size="base", id="", eventHandler= ()=>{}, disabled=false }) => {
   const color = {
     green: "text-white bg-green",
     white: "text-green bg-white",
@@ -27,7 +27,7 @@ const Button = ({ children, variant = "green", to = "#", className ="", size="ba
       <a
         onClick={eventHandler}
         id={id}
-        className={`${styles.container} inline-block text-center h-auto rounded-md w-full sm:w-auto ${scaling[size]} ${color[variant]} ${className}`}
+        className={`${styles.container} inline-block text-center h-auto rounded-md w-full sm:w-auto ${scaling[size]} ${color[variant]}  ${disabled ? "cursor-not-allowed opacity-50" : ""} ${className}`}
       >
         {children}
       </a>
