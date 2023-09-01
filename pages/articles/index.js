@@ -40,7 +40,7 @@ export default function Articles({ active, contentfulArticles }) {
   }, [year]); // will run for every change ng dependency array
 
   return (
-    <Layout active={3}>
+    <Layout active={4}>
       <SEO title={"Articles"} slug="blog" />
 
       <section className="container">
