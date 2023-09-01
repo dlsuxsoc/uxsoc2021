@@ -13,12 +13,12 @@ import { Oval } from "react-loader-spinner";
 import PageLoading from "../../components/PageLoading/PageLoading";
 import Image from "next/image";
 import getSettings from "../../pages/api/getSettings";
-import { applicationDataStore } from "./store/store";
+import { leadApplicationDataStore } from "./store/store";
 
 const Apply = ({ display = "No" }) => {
   const router = useRouter();
 
-  const store = applicationDataStore((state) => state);
+  const store = leadApplicationDataStore((state) => state);
 
   useEffect(() => {
     store.setMaxDate(

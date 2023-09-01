@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import SEO from "../../components/seo";
 import { restrictRange } from "../../helpers/restrictRange";
@@ -26,7 +26,7 @@ const Apply = ({ display = "No" }) => {
   useEffect(() => {
     if (!router.isReady) return;
 
-    if (router.query.status && statusText.firstName === "")
+    if (router.query.status && store.statusText.firstName === "")
       router.push("/apply", undefined, { shallow: true });
 
     return () => {};
@@ -35,8 +35,8 @@ const Apply = ({ display = "No" }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!emailFetching) {
-      setApplicationSending(true);
+    if (!store.emailFetching) {
+      store.setApplicationSending(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       try {
@@ -48,15 +48,15 @@ const Apply = ({ display = "No" }) => {
         });
 
         await Promise.all([
-          axios.post("/api/triggerWebhookMemApp", applicationData),
-          axios.post("/api/addMembershipApplication", applicationData),
+          axios.post("/api/triggerWebhookMemApp", store.applicationData),
+          axios.post("/api/addMembershipApplication", store.applicationData),
         ]);
 
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
         router.push("?status=fail", undefined, { shallow: true });
       } finally {
-        setApplicationSending(false);
+        store.setApplicationSending(false);
       }
     }
   };
@@ -75,7 +75,7 @@ const Apply = ({ display = "No" }) => {
       <>
         {display === "Yes" ? (
           <>
-            {applicationSending ? <PageLoading /> : null}
+            {store.applicationSending ? <PageLoading /> : null}
 
             {/* APPLICATION WAS SUBMITTED */}
             {router.query.status ? (
@@ -104,7 +104,7 @@ const Apply = ({ display = "No" }) => {
                       ) : (
                         <>🥺 Sorry </>
                       )}
-                      {statusText?.firstName.trim()},
+                      {store.statusText?.firstName.trim()},
                     </p>
                     <p className="text-base lg:text-2xl leading-loose mb-4">
                       {router.query.status === "success" ? (
@@ -223,9 +223,11 @@ const Apply = ({ display = "No" }) => {
                           id="send"
                           type={"submit"}
                           value={"SEND APPLICATION"}
-                          disabled={deptTextHelper !== "" || emailFetching}
+                          disabled={
+                            store.deptTextHelper !== "" || store.emailFetching
+                          }
                           className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green ${
-                            deptTextHelper === "" && !emailFetching
+                            store.deptTextHelper === "" && !store.emailFetching
                               ? `cursor-pointer ${styles.btn_container}`
                               : "cursor-not-allowed opacity-50"
                           }`}
