@@ -21,6 +21,13 @@ const getEvents = async (req, res) => {
                         url: "/images/event_placeholder.png"
                     }
                 }
+            var banner = data.Banner.files.length > 0 ? data.Banner.files[0] :
+                {
+                    name: "filler_img",
+                    file: {
+                        url: "/images/event_placeholder.png"
+                    }
+                }
             return{
                 title: data.Title.title[0].text.content,
                 description: data.Description.rich_text[0].text.content,
@@ -30,7 +37,8 @@ const getEvents = async (req, res) => {
                 lumaLink: data.Luma.url,
                 lumaEventID: data.LumaEventID.rich_text[0].text.content,
                 concluded: data.Concluded.checkbox,
-                image
+                image,
+                banner
             }
         })
         return eventList;
