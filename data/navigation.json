@@ -12,6 +12,10 @@
     "link": "/services"
   },
   {
+    "name": "Events",
+    "link": "/events"
+  },
+  {
     "name": "Articles",
     "link": "/articles"
   }
