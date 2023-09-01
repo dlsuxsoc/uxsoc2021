@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import SEO from "../../components/seo";
 import { restrictRange } from "../../helpers/restrictRange";
@@ -13,102 +13,65 @@ import { Oval } from "react-loader-spinner";
 import PageLoading from "../../components/PageLoading/PageLoading";
 import Image from "next/image";
 import getSettings from "../../pages/api/getSettings";
+import { applicationDataStore } from "./store/store";
 
 const Apply = ({ display = "No" }) => {
-  const [maxDate, setMaxDate] = useState("");
   const router = useRouter();
-  const [emailFetching, setEmailFetching] = useState(false);
-  const [applicationSending, setApplicationSending] = useState(false);
 
-  const initialStatusTextState = {
-    firstName: "",
-    email: "",
-    contactnum: "",
-  };
-  const initialApplicationState = {
-    firstName: "",
-    lastName: "",
-    nickname: "",
-    mOB: "",
-    dOB: "",
-    yOB: "",
-    pronoun: "",
-    customPronoun: "",
-    email: "",
-    contactnum: "",
-    college: "",
-    program: "",
-    hobbies: "",
-    whatIsUX: "",
-    practicalityUX: "",
-    studentID: "",
-    interestedOrg: "",
-    interestedDept: [],
-    emails: [],
-  };
-
-  const [applicationData, setApplicationData] = useState(
-    initialApplicationState
-  );
-
-  const [statusText, setStatusText] = useState(initialStatusTextState);
-
-  const [emailTextHelper, setEmailTextHelper] = useState("");
-  const [numberTextHelper, setNumberTextHelper] = useState("");
-  const [deptTextHelper, setDeptTextHelper] = useState("");
-
-  const [checkedDept, setCheckedDept] = useState({
-    Development: false,
-    Externals: false,
-    Development: false,
-    "Internal Growth": false,
-    "Community Manager": false,
-  });
+  const store = applicationDataStore((state) => state);
 
   useEffect(() => {
-    setMaxDate(new Date(applicationData.yOB, applicationData.mOB, 0).getDate());
+    store.setMaxDate(
+      new Date(
+        store.applicationData.yOB,
+        store.applicationData.mOB,
+        0
+      ).getDate()
+    );
 
     let num = restrictRange(
-      applicationData.dOB,
-      applicationData.dOB,
+      store.applicationData.dOB,
+      store.applicationData.dOB,
       1,
-      maxDate
+      store.maxDate
     );
     if (
-      applicationData.mOB !== "" &&
-      applicationData.yOB !== "" &&
-      applicationData.mOB !== ""
+      store.applicationData.mOB !== "" &&
+      store.applicationData.yOB !== "" &&
+      store.applicationData.mOB !== ""
     ) {
-      setApplicationData({
-        ...applicationData,
+      store.setApplicationData({
+        ...store.applicationData,
         dOB: num,
       });
     }
 
     return () => {};
-  }, [applicationData.mOB, applicationData.yOB, maxDate]);
+  }, [store.applicationData.mOB, store.applicationData.yOB, store.maxDate]);
 
   useEffect(() => {
-    const depts = Object.keys(checkedDept).filter(
-      (key) => checkedDept[key] === true
+    const depts = Object.keys(store.checkedDept).filter(
+      (key) => store.checkedDept[key] === true
     );
 
-    setApplicationData({
-      ...applicationData,
+    store.setApplicationData({
+      ...store.applicationData,
       interestedDept: depts,
     });
 
     if (!depts.length) {
-      setDeptTextHelper("(Please choose at least 1)");
+      store.setDeptTextHelper("(Please choose at least 1)");
     } else {
-      setDeptTextHelper("");
+      store.setDeptTextHelper("");
     }
-  }, [setCheckedDept, checkedDept]);
+
+    // console.log(store.applicationData);
+  }, [store.setCheckedDept, store.checkedDept]);
 
   useEffect(() => {
     if (!router.isReady) return;
 
-    if (router.query.status && statusText.firstName === "")
+    if (router.query.status && store.statusText.firstName === "")
       router.push("/apply", undefined, { shallow: true });
 
     return () => {};
@@ -117,28 +80,28 @@ const Apply = ({ display = "No" }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!emailFetching) {
-      setApplicationSending(true);
+    if (!store.emailFetching) {
+      store.setApplicationSending(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       try {
-        setApplicationData(initialStatusTextState);
-        setStatusText({
-          firstName: applicationData.firstName,
-          email: applicationData.email,
-          contactnum: applicationData.contactnum,
+        store.setApplicationData(initialStatusTextState);
+        store.setStatusText({
+          firstName: store.applicationData.firstName,
+          email: store.applicationData.email,
+          contactnum: store.applicationData.contactnum,
         });
 
         await Promise.all([
-          axios.post("/api/triggerWebhookLeadApp", applicationData),
-          axios.post("/api/addLeadApplication", applicationData),
+          axios.post("/api/triggerWebhookLeadApp", store.applicationData),
+          axios.post("/api/addLeadApplication", store.applicationData),
         ]);
 
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
         router.push("?status=fail", undefined, { shallow: true });
       } finally {
-        setApplicationSending(false);
+        store.setApplicationSending(false);
       }
     }
   };
@@ -154,7 +117,7 @@ const Apply = ({ display = "No" }) => {
       <>
         {display === "Yes" ? (
           <>
-            {applicationSending ? <PageLoading /> : null}
+            {store.applicationSending ? <PageLoading /> : null}
 
             {/* APPLICATION WAS SUBMITTED */}
             {router.query.status ? (
@@ -183,7 +146,7 @@ const Apply = ({ display = "No" }) => {
                       ) : (
                         <>🥺 Sorry </>
                       )}
-                      {statusText?.firstName.trim()},
+                      {store.statusText?.firstName.trim()},
                     </p>
                     <p className="text-base lg:text-2xl leading-loose mb-4">
                       {router.query.status === "success" ? (
@@ -275,10 +238,10 @@ const Apply = ({ display = "No" }) => {
                           name="firstName"
                           className="form-input py-2 px-3 w-full"
                           placeholder="Donald Arthur"
-                          value={applicationData.firstName}
+                          value={store.applicationData.firstName}
                           onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
+                            store.setApplicationData({
+                              ...store.applicationData,
                               firstName: e.target.value,
                             })
                           }
@@ -294,10 +257,10 @@ const Apply = ({ display = "No" }) => {
                           name="lastName"
                           className="form-input py-2 px-3 w-full"
                           placeholder="Norman"
-                          value={applicationData.lastName}
+                          value={store.applicationData.lastName}
                           onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
+                            store.setApplicationData({
+                              ...store.applicationData,
                               lastName: e.target.value,
                             })
                           }
@@ -313,10 +276,10 @@ const Apply = ({ display = "No" }) => {
                         <input
                           type="text"
                           className="form-input py-2 px-3 w-full"
-                          value={applicationData.nickname}
+                          value={store.applicationData.nickname}
                           onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
+                            store.setApplicationData({
+                              ...store.applicationData,
                               nickname: e.target.value,
                             })
                           }
@@ -335,14 +298,14 @@ const Apply = ({ display = "No" }) => {
                               className="form-input py-2 px-3 w-full"
                               placeholder="Month"
                               required
-                              value={applicationData.mOB}
+                              value={store.applicationData.mOB}
                               onChange={(e) => {
-                                setApplicationData({
-                                  ...applicationData,
+                                store.setApplicationData({
+                                  ...store.applicationData,
                                   mOB:
                                     restrictRange(
                                       parseInt(e.target.value),
-                                      applicationData.mOB,
+                                      store.applicationData.mOB,
                                       1,
                                       12
                                     ) || "",
@@ -355,20 +318,20 @@ const Apply = ({ display = "No" }) => {
                               name="bDay"
                               type="number"
                               min={1}
-                              max={maxDate}
+                              max={store.maxDate}
                               className="form-input py-2 px-3 w-full"
                               placeholder="Day"
                               required
-                              value={applicationData.dOB}
+                              value={store.applicationData.dOB}
                               onChange={(e) => {
-                                setApplicationData({
-                                  ...applicationData,
+                                store.setApplicationData({
+                                  ...store.applicationData,
                                   dOB:
                                     restrictRange(
                                       parseInt(e.target.value),
-                                      applicationData.dOB,
+                                      store.applicationData.dOB,
                                       1,
-                                      maxDate
+                                      store.maxDate
                                     ) || "",
                                 });
                               }}
@@ -384,10 +347,10 @@ const Apply = ({ display = "No" }) => {
                               required
                               className="form-input py-2 px-3 w-full"
                               placeholder="Year"
-                              value={applicationData.yOB}
+                              value={store.applicationData.yOB}
                               onChange={(e) =>
-                                setApplicationData({
-                                  ...applicationData,
+                                store.setApplicationData({
+                                  ...store.applicationData,
                                   yOB: parseInt(e.target.value) || "",
                                 })
                               }
@@ -411,12 +374,14 @@ const Apply = ({ display = "No" }) => {
                             type="radio"
                             name="pronoun"
                             required
-                            checked={applicationData.pronoun === "He/ Him"}
+                            checked={
+                              store.applicationData.pronoun === "He/ Him"
+                            }
                             className="form-input py-2 px-3"
                             value="He/ Him"
                             onChange={(e) =>
-                              setApplicationData({
-                                ...applicationData,
+                              store.setApplicationData({
+                                ...store.applicationData,
                                 pronoun: e.currentTarget.value,
                                 customPronoun: "",
                               })
@@ -429,12 +394,14 @@ const Apply = ({ display = "No" }) => {
                             type="radio"
                             name="pronoun"
                             required
-                            checked={applicationData.pronoun === "She/ Her"}
+                            checked={
+                              store.applicationData.pronoun === "She/ Her"
+                            }
                             className="form-input py-2 px-3"
                             value="She/ Her"
                             onChange={(e) =>
-                              setApplicationData({
-                                ...applicationData,
+                              store.setApplicationData({
+                                ...store.applicationData,
                                 pronoun: e.currentTarget.value,
                                 customPronoun: "",
                               })
@@ -447,12 +414,14 @@ const Apply = ({ display = "No" }) => {
                             type="radio"
                             name="pronoun"
                             required
-                            checked={applicationData.pronoun === "They/ Them"}
+                            checked={
+                              store.applicationData.pronoun === "They/ Them"
+                            }
                             className="form-input py-2 px-3"
                             value="They/ Them"
                             onChange={(e) =>
-                              setApplicationData({
-                                ...applicationData,
+                              store.setApplicationData({
+                                ...store.applicationData,
                                 pronoun: e.currentTarget.value,
                                 customPronoun: "",
                               })
@@ -466,10 +435,10 @@ const Apply = ({ display = "No" }) => {
                             name="pronoun"
                             required
                             className="form-input py-2 px-3"
-                            checked={applicationData.pronoun === "Others"}
+                            checked={store.applicationData.pronoun === "Others"}
                             onChange={(e) =>
-                              setApplicationData({
-                                ...applicationData,
+                              store.setApplicationData({
+                                ...store.applicationData,
                                 pronoun: e.currentTarget.value,
                               })
                             }
@@ -480,12 +449,14 @@ const Apply = ({ display = "No" }) => {
                             type="text"
                             required
                             className={`form-input  w-full sm:w-auto py-2 px-3`}
-                            value={applicationData.customPronoun}
+                            value={store.applicationData.customPronoun}
                             placeholder="Please specify"
-                            disabled={applicationData.pronoun !== "Others"}
+                            disabled={
+                              store.applicationData.pronoun !== "Others"
+                            }
                             onChange={(e) =>
-                              setApplicationData({
-                                ...applicationData,
+                              store.setApplicationData({
+                                ...store.applicationData,
                                 customPronoun: e.target.value,
                               })
                             }
@@ -509,49 +480,49 @@ const Apply = ({ display = "No" }) => {
                           name="email"
                           required
                           className="form-input py-2 px-3 w-full"
-                          value={applicationData.email}
+                          value={store.applicationData.email}
                           placeholder="don_norman@dlsu.edu.ph"
                           onChange={(e) => {
-                            setEmailFetching(false);
+                            store.setEmailFetching(false);
 
-                            setApplicationData({
-                              ...applicationData,
+                            store.setApplicationData({
+                              ...store.applicationData,
                               email: e.target.value.toLowerCase(),
                             });
-                            setEmailTextHelper("");
+                            store.setEmailTextHelper("");
                           }}
                           onBlur={async (e) => {
-                            if (applicationData.email !== "") {
-                              setEmailFetching(true);
+                            if (store.applicationData.email !== "") {
+                              store.setEmailFetching(true);
                               e.target.setCustomValidity("Still validating.");
 
                               const res = await axios.get("/api/getLeadEmails");
-                              setEmailFetching(false);
-                              // const invalid = res.data.includes(applicationData.email);
+                              store.setEmailFetching(false);
+                              // const invalid = res.data.includes(store.applicationData.email);
                               const invalid = emailExists(
-                                applicationData.email,
+                                store.applicationData.email,
                                 res.data
                               );
 
                               if (invalid) {
-                                setEmailTextHelper(
+                                store.setEmailTextHelper(
                                   "This email was already used for an application."
                                 );
                                 e.target.setCustomValidity(
                                   "This email was already used for an application."
                                 );
                               } else {
-                                setEmailTextHelper("");
+                                store.setEmailTextHelper("");
                                 e.target.setCustomValidity("");
                               }
                             }
                           }}
                         />
-                        {emailFetching ? (
+                        {store.emailFetching ? (
                           <Oval color="gray" height={24} width={24} />
                         ) : (
                           <span className="text-red-500 text-sm h-16">
-                            {emailTextHelper}
+                            {store.emailTextHelper}
                           </span>
                         )}
                       </div>
@@ -562,7 +533,7 @@ const Apply = ({ display = "No" }) => {
                         <input
                           type="text"
                           pattern="^(09|639)\d{9}$"
-                          value={applicationData.contactnum}
+                          value={store.applicationData.contactnum}
                           className="form-input py-2 px-3 w-full"
                           placeholder="63xxxxxxxxx"
                           onBlur={async (e) => {
@@ -571,22 +542,22 @@ const Apply = ({ display = "No" }) => {
                               /(09|639)\d{9}$/
                             );
                             if (isMatch === null) {
-                              setNumberTextHelper(
+                              store.setNumberTextHelper(
                                 "Make sure you are filling in a valid mobile number"
                               );
                             } else {
-                              setNumberTextHelper("");
+                              store.setNumberTextHelper("");
                             }
                           }}
                           onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
+                            store.setApplicationData({
+                              ...store.applicationData,
                               contactnum: e.target.value,
                             })
                           }
                         />
                         <span className="text-red-500 text-sm h-16">
-                          {numberTextHelper}
+                          {store.numberTextHelper}
                         </span>
                       </div>
                     </div>
@@ -603,13 +574,13 @@ const Apply = ({ display = "No" }) => {
                         </label>
                         <select
                           name="college"
-                          value={applicationData.college}
+                          value={store.applicationData.college}
                           className="py-2.5 px-2 w-full"
                           required
                           style={{ backgroundColor: "#ECECEC" }}
                           onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
+                            store.setApplicationData({
+                              ...store.applicationData,
                               college: e.target.value,
                             })
                           }
@@ -632,12 +603,12 @@ const Apply = ({ display = "No" }) => {
                           type="text"
                           name="program"
                           required
-                          value={applicationData.program}
+                          value={store.applicationData.program}
                           className="form-input py-2 px-3 w-full"
                           placeholder="Bachelor of Science in Human-Computer Interaction"
                           onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
+                            store.setApplicationData({
+                              ...store.applicationData,
                               program: e.target.value,
                             })
                           }
@@ -651,12 +622,12 @@ const Apply = ({ display = "No" }) => {
                           Student ID (if applicable)
                         </label>
                         <select
-                          value={applicationData.studentID}
+                          value={store.applicationData.studentID}
                           className="py-2.5 px-2 w-full"
                           style={{ backgroundColor: "#ECECEC" }}
                           onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
+                            store.setApplicationData({
+                              ...store.applicationData,
                               studentID: e.target.value,
                             })
                           }
@@ -687,12 +658,12 @@ const Apply = ({ display = "No" }) => {
                           className="w-full p-2"
                           rows={5}
                           onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
+                            store.setApplicationData({
+                              ...store.applicationData,
                               hobbies: e.target.value,
                             })
                           }
-                          value={applicationData.hobbies}
+                          value={store.applicationData.hobbies}
                         ></textarea>
                       </div>
                       <div className="col-span-2"></div>
@@ -705,12 +676,12 @@ const Apply = ({ display = "No" }) => {
                           className="w-full p-2"
                           rows={5}
                           onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
+                            store.setApplicationData({
+                              ...store.applicationData,
                               interestedOrg: e.target.value,
                             })
                           }
-                          value={applicationData.interestedOrg}
+                          value={store.applicationData.interestedOrg}
                         ></textarea>
                       </div>
                       <div className="col-span-2"></div>
@@ -723,12 +694,12 @@ const Apply = ({ display = "No" }) => {
                           className="w-full p-2"
                           rows={5}
                           onChange={(e) =>
-                            setApplicationData({
-                              ...applicationData,
+                            store.setApplicationData({
+                              ...store.applicationData,
                               whatIsUX: e.target.value,
                             })
                           }
-                          value={applicationData.whatIsUX}
+                          value={store.applicationData.whatIsUX}
                         ></textarea>
                       </div>
                       <div className="col-span-2"></div>
@@ -738,55 +709,55 @@ const Apply = ({ display = "No" }) => {
                           What department/s are you interested in?
                         </label>
                         <span className="ml-2 inline-block text-red-500 text-sm">
-                          {deptTextHelper}
+                          {store.deptTextHelper}
                         </span>{" "}
                         <FormCheckbox
                           type="departments"
                           onChange={(e) =>
-                            setCheckedDept({
-                              ...checkedDept,
+                            store.setCheckedDept({
+                              ...store.checkedDept,
                               "Community Manager":
-                                !checkedDept["Community Manager"],
+                                !store.checkedDept["Community Manager"],
                             })
                           }
-                          value={checkedDept["Community Manager"]}
+                          value={store.checkedDept["Community Manager"]}
                         >
                           Community Manager
                         </FormCheckbox>
                         <FormCheckbox
                           type="departments"
                           onChange={(e) =>
-                            setCheckedDept({
-                              ...checkedDept,
-                              Development: !checkedDept["Development"],
+                            store.setCheckedDept({
+                              ...store.checkedDept,
+                              Development: !store.checkedDept["Development"],
                             })
                           }
-                          value={checkedDept["Development"]}
+                          value={store.checkedDept["Development"]}
                         >
                           Development
                         </FormCheckbox>
                         <FormCheckbox
                           type="departments"
                           onChange={(e) =>
-                            setCheckedDept({
-                              ...checkedDept,
-                              Externals: !checkedDept.Externals,
+                            store.setCheckedDept({
+                              ...store.checkedDept,
+                              Externals: !store.checkedDept.Externals,
                             })
                           }
-                          value={checkedDept.Externals}
+                          value={store.checkedDept.Externals}
                         >
                           Externals
                         </FormCheckbox>{" "}
                         <FormCheckbox
                           type="departments"
                           onChange={(e) =>
-                            setCheckedDept({
-                              ...checkedDept,
+                            store.setCheckedDept({
+                              ...store.checkedDept,
                               "Internal Growth":
-                                !checkedDept["Internal Growth"],
+                                !store.checkedDept["Internal Growth"],
                             })
                           }
-                          value={checkedDept["Internal Growth"]}
+                          value={store.checkedDept["Internal Growth"]}
                         >
                           Internal Growth
                         </FormCheckbox>
@@ -800,9 +771,11 @@ const Apply = ({ display = "No" }) => {
                           id="send"
                           type={"submit"}
                           value={"SEND APPLICATION"}
-                          disabled={deptTextHelper !== "" || emailFetching}
+                          disabled={
+                            store.deptTextHelper !== "" || store.emailFetching
+                          }
                           className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green ${
-                            deptTextHelper === "" && !emailFetching
+                            store.deptTextHelper === "" && !store.emailFetching
                               ? `cursor-pointer ${styles.btn_container}`
                               : "cursor-not-allowed opacity-50"
                           }`}
