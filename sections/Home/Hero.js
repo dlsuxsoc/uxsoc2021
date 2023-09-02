@@ -9,7 +9,7 @@ const Hero = ({ refProp }) => {
       <div className="container flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center h-full">
         <div className="text-center lg:text-left w-full lg:w-1/2 pr-0 lg:pr-28">
           <h1 className="text-4xl lg:text-6xl xl:text-5xl mb-6 lg:mb-12">
-            User Experience Society - DLSU
+            User Experience Society - Taft
           </h1>
           <p className="text-base lg:text-xl 2xl:text-2xl">
             We are a student organization that advocates  User Experience, Experience Design, and 
