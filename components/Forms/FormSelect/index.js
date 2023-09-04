@@ -30,7 +30,7 @@ const FormSelect = ({
             >
                 {options.map((option, optionIndex) => {
                     return(
-                        <option value={option}>
+                        <option value={option} key={optionIndex}>
                             {option === "" ? "Please select your " + prompt : option}
                         </option>
                     )

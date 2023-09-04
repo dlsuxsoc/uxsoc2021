@@ -103,8 +103,6 @@ const Apply = ({ display = "No" }) => {
     } else {
       setDeptTextHelper("");
     }
-
-    // console.log(applicationData);
   }, [setCheckedDept, checkedDept]);
 
   useEffect(() => {
@@ -138,7 +136,6 @@ const Apply = ({ display = "No" }) => {
 
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
-        // console.log(e);
         router.push("?status=fail", undefined, { shallow: true });
       } finally {
         setApplicationSending(false);
@@ -569,7 +566,6 @@ const Apply = ({ display = "No" }) => {
                           className="form-input py-2 px-3 w-full"
                           placeholder="63xxxxxxxxx"
                           onBlur={async (e) => {
-                            console.log(e.target.value);
                             if (String(e.target.value).trim() === "") return;
                             let isMatch = String(e.target.value).match(
                               /(09|639)\d{9}$/
