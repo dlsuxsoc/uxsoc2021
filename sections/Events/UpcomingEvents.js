@@ -160,8 +160,6 @@ const UpcomingEvents = ({ events }) => {
     testFunction().s(); //
   }, [currentEventIndex]);
 
-  const showBanner = useMediaQuery("(min-width: 1280px)");
-
   // If there are no upcoming events, don't render any event cards
   if (upcomingEvents.length === 0) {
     return (
