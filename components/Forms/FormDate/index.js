@@ -38,8 +38,9 @@ const FormDate = ({ label, required, formData, setFormData, name }) => {
             placeholder="Month"
             required
             value={formData[name].month}
-            onChange={(e) => {
+            onChange={(e) =>
               setFormData({
+                //eslint-disable-nextline
                 ...formData,
                 [name["month"]]:
                   restrictRange(
@@ -48,8 +49,8 @@ const FormDate = ({ label, required, formData, setFormData, name }) => {
                     1,
                     12
                   ) || "",
-              });
-            }}
+              })
+            }
           />
         </div>
         <div className="col-start-2">

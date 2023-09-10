@@ -54,6 +54,6 @@ const FormRadio = ({
             })}
         </div>
     )
-  };
+};
 
-  export default FormRadio;
+export default FormRadio;
