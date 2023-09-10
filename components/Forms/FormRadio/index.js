@@ -7,7 +7,7 @@ const FormRadio = ({
     options,
     followUp,
     setFormData,
-    formData,
+    formData
   }) => {
     return (
         <div className="col-span-12 sm:col-span-6 md:col-span-3 mb-4">
@@ -16,7 +16,7 @@ const FormRadio = ({
             </label>
             {options.map((option, optionIndex) => {
                 return(
-                <div>
+                <div key={optionIndex}>
                     <input 
                         type="radio"
                         name={name}

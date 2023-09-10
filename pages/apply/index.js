@@ -54,7 +54,7 @@ const Apply = ({ display = "No" }) => {
 
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
-        // console.log(e);
+        console.log(e);
         router.push("?status=fail", undefined, { shallow: true });
       } finally {
         setApplicationSending(false);
@@ -209,6 +209,8 @@ const Apply = ({ display = "No" }) => {
                                 ...field,
                                 formData: applicationData,
                                 setFormData: setApplicationData,
+                                emailFetching: emailFetching, 
+                                setEmailFetching: setEmailFetching
                               }}
                             />
                           ))}

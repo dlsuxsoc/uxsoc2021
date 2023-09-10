@@ -11,7 +11,6 @@ const FormCheckbox = ({
   const [textHelper, setTextHelper] = useState("");
   const [checked, setChecked] = useState({});
 
-
   useEffect(() => {
     const initialChecked = Object.fromEntries(options.map(option => [option, false]));
     setChecked(initialChecked);
@@ -40,7 +39,7 @@ const FormCheckbox = ({
       </span>{" "}
       {options.map((option, optionIndex) => {
         return (
-          <div className={`${styles.container}`}>
+          <div className={`${styles.container}`} key={optionIndex}>
             <input
               type={"checkbox"}
               name={name}
@@ -48,7 +47,7 @@ const FormCheckbox = ({
               onChange={(e) =>
                 setChecked({
                   ...checked,
-                  [option]: !checked[option],
+                  [option]: !checked[option]
                 })}
             />
             <span></span>
