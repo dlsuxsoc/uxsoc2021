@@ -14,7 +14,6 @@ const triggerWebhookLeadApp = async (req, res) => {
       htmlCode,
     });
 
-    console.log(res);
     return res.status(201).json();
   } catch (e) {
     res.status(500).json(e);
