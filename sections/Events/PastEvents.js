@@ -34,7 +34,7 @@ const PastEvents = ({ events }) => {
                 key={index}
               >
                 <div className="flex md:flex-row flex-col items-center">
-                  <div className="relative md:w-2/5 md:h-full w-48 h-48 rounded-md shadow-md overflow-hidden">
+                  <div className="relative md:w-2/5 md:h-64 w-48 h-48 rounded-md shadow-md overflow-hidden">
                     {/* Event Image */}
                     <Image
                       src={event.image.file.url}
