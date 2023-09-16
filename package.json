@@ -17,6 +17,7 @@
     "axios": "^0.24.0",
     "contentful": "^9.1.4",
     "framer-motion": "^6.2.8",
+    "js-cookie": "^3.0.5",
     "luxon": "^2.3.1",
     "next": "^12.1.4",
     "nprogress": "^0.2.0",
@@ -26,7 +27,8 @@
     "react-icons": "^4.3.1",
     "react-loader-spinner": "^5.1.0",
     "react-promise-tracker": "^2.1.0",
-    "sass": "^1.43.4"
+    "sass": "^1.43.4",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@netlify/build": "^0.1.30",

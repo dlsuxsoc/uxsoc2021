@@ -16,9 +16,7 @@ const FormInput = ({
     if (String(e.target.value).trim() === "") return;
 
     if (validation) {
-      let isMatch = String(e.target.value).match(
-        validation["pattern"]
-      );
+      let isMatch = String(e.target.value).match(validation["pattern"]);
 
       if (isMatch === null) {
         setNumberTextHelper(validation["errorMessage"]);
@@ -29,7 +27,13 @@ const FormInput = ({
   };
 
   return (
-    <div className= {size === "half" ? "col-start-1 col-span-12 sm:col-span-6 md:col-span-3 mb-4" : "col-start-1 col-span-12 md:col-span-5 mb-8"}>
+    <div
+      className={
+        size === "half"
+          ? "col-start-1 col-span-12 sm:col-span-6 md:col-span-3 mb-4"
+          : "col-start-1 col-span-12 md:col-span-5 mb-8"
+      }
+    >
       <label className="block mb-6" htmlFor={name}>
         {label} <span className="italicize">{!required && "(Optional)"}</span>
       </label>
@@ -49,11 +53,8 @@ const FormInput = ({
         required={required}
         onBlur={handleBlur}
       />
-      <span className="text-red-500 text-sm h-16">
-        {numberTextHelper}
-      </span> 
+      <span className="text-red-500 text-sm h-16">{numberTextHelper}</span>
     </div>
-    
   );
 };
 

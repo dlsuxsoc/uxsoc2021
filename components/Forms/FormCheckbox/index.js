@@ -1,35 +1,36 @@
 import React, { useEffect, useState } from "react";
 import styles from "./FormCheckbox.module.scss";
+import { leadApplicationDataStore, memberApplicationDataStore } from "../../../pages/apply/store/store";
 
 const FormCheckbox = ({ name, label, options, setFormData, formData }) => {
-  const [textHelper, setTextHelper] = useState("");
-  const [checked, setChecked] = useState({});
+
+  const store = options.includes('Community Manager') ? leadApplicationDataStore((state) => state) : memberApplicationDataStore((state) => state)
+
 
   useEffect(() => {
-    const initialChecked = Object.fromEntries(
-      options.map((option) => [option, false])
-    );
-    setChecked(initialChecked);
-  }, []);
-
-  useEffect(() => {
-    const checkedOptions = Object.keys(checked).filter(
-      (key) => checked[key] === true
+    const depts = Object.keys(store.checkedDept).filter(
+      (key) => store.checkedDept[key] === true
     );
 
-    setFormData({
-      ...formData,
-      interestedDept: checkedOptions,
+    store.setApplicationData({
+      ...store.applicationData,
+      interestedDept: depts,
     });
 
-    setTextHelper(checkedOptions.length ? "" : "(Please choose at least 1)");
-  }, [setChecked, checked]);
+    if (!depts.length) {
+      store.setDeptTextHelper("(Please choose at least 1)");
+    } else {
+      store.setDeptTextHelper("");
+    }
+
+    // console.log(store.applicationData);
+  }, [store.setCheckedDept, store.checkedDept]);
 
   return (
     <div className="col-start-1 col-span-12 md:col-span-8 mb-8">
       <label className="inline-block mb-6">{label}</label>
       <span className="ml-2 inline-block text-red-500 text-sm">
-        {textHelper}
+        {store.deptTextHelper}
       </span>{" "}
       {options.map((option, optionIndex) => {
         return (
@@ -37,11 +38,11 @@ const FormCheckbox = ({ name, label, options, setFormData, formData }) => {
             <input
               type={"checkbox"}
               name={name}
-              value={checked[option]}
+              checked={store.checkedDept[option]}
               onChange={(e) =>
-                setChecked({
-                  ...checked,
-                  [option]: !checked[option],
+                store.setCheckedDept({
+                  ...store.checkedDept,
+                  [option]: !store.checkedDept[option],
                 })
               }
             />
