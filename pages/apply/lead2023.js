@@ -1,15 +1,11 @@
 import React, { useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import SEO from "../../components/seo";
-import { restrictRange } from "../../helpers/restrictRange";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Button from "../../components/Button/Button";
 import Link from "next/link";
 import styles from "../../styles/Apply.module.scss";
-import FormCheckbox from "../../components/Forms/FormCheckbox/FormCheckbox";
-import { emailExists } from "../../helpers/emailExists";
-import { Oval } from "react-loader-spinner";
 import PageLoading from "../../components/PageLoading/PageLoading";
 import Image from "next/image";
 import getSettings from "../../pages/api/getSettings";
@@ -39,7 +35,7 @@ const Apply = ({ display = "No" }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       try {
-        store.setApplicationData(initialStatusTextState);
+        store.setApplicationData(store.statusText);
         store.setStatusText({
           firstName: store.applicationData.firstName,
           email: store.applicationData.email,
