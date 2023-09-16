@@ -11,16 +11,15 @@ import Image from "next/image";
 import getSettings from "../api/getSettings";
 import data from "../../components/Forms/utils/formFields/membershipApplication.json";
 import Field from "../../components/Forms";
-import { memberApplicationDataStore } from "./store/store"; 
+import { memberApplicationDataStore } from "../api/store";
 
 const Apply = ({ display = "No" }) => {
   const router = useRouter();
 
-  const store = memberApplicationDataStore((state) => state)
+  const store = memberApplicationDataStore((state) => state);
 
   useEffect(() => {
-
-    console.log(store.applicationData)
+    console.log(store.applicationData);
 
     if (!router.isReady) return;
 
@@ -38,7 +37,7 @@ const Apply = ({ display = "No" }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       try {
-       // store.setApplicationData(store.initialApplicationData);
+        // store.setApplicationData(store.initialApplicationData);
         store.setStatusText({
           firstName: store.applicationData.firstName,
           email: store.applicationData.email,
@@ -198,27 +197,29 @@ const Apply = ({ display = "No" }) => {
                           {section.name}
                         </h2>
                         <div className="grid grid-cols-8 gap-4">
-                          {section.fields[0] ? section.fields.map((field, fieldIndex) => (
-                            <Field
-                              key={fieldIndex}
-                              type={field.type}
-                              fieldProps={{
-                                ...field,
-                                formData: store.applicationData,
-                                setFormData: store.setApplicationData,
-                              }}
-                            />
-                          )) : section.fields.member.map((field, fieldIndex) => (
-                            <Field
-                              key={fieldIndex}
-                              type={field.type}
-                              fieldProps={{
-                                ...field,
-                                formData: store.applicationData,
-                                setFormData: store.setApplicationData,
-                              }}
-                            />
-                          )) }
+                          {section.fields[0]
+                            ? section.fields.map((field, fieldIndex) => (
+                                <Field
+                                  key={fieldIndex}
+                                  type={field.type}
+                                  fieldProps={{
+                                    ...field,
+                                    formData: store.applicationData,
+                                    setFormData: store.setApplicationData,
+                                  }}
+                                />
+                              ))
+                            : section.fields.member.map((field, fieldIndex) => (
+                                <Field
+                                  key={fieldIndex}
+                                  type={field.type}
+                                  fieldProps={{
+                                    ...field,
+                                    formData: store.applicationData,
+                                    setFormData: store.setApplicationData,
+                                  }}
+                                />
+                              ))}
                         </div>
                       </section>
                     );
@@ -231,7 +232,9 @@ const Apply = ({ display = "No" }) => {
                           id="send"
                           type={"submit"}
                           value={"SEND APPLICATION"}
-                          disabled={store.deptTextHelper !== "" || store.emailFetching}
+                          disabled={
+                            store.deptTextHelper !== "" || store.emailFetching
+                          }
                           className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green ${
                             store.deptTextHelper === "" && !store.emailFetching
                               ? `cursor-pointer ${styles.btn_container}`

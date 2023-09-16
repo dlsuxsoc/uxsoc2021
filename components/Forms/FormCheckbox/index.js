@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "./FormCheckbox.module.scss";
-import { leadApplicationDataStore, memberApplicationDataStore } from "../../../pages/apply/store/store";
+import {
+  leadApplicationDataStore,
+  memberApplicationDataStore,
+} from "../../../pages/api/store";
 
 const FormCheckbox = ({ name, label, options, setFormData, formData }) => {
-
-  const store = options.includes('Community Manager') ? leadApplicationDataStore((state) => state) : memberApplicationDataStore((state) => state)
-
+  const store = options.includes("Community Manager")
+    ? leadApplicationDataStore((state) => state)
+    : memberApplicationDataStore((state) => state);
 
   useEffect(() => {
     const depts = Object.keys(store.checkedDept).filter(

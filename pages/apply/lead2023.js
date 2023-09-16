@@ -9,7 +9,7 @@ import styles from "../../styles/Apply.module.scss";
 import PageLoading from "../../components/PageLoading/PageLoading";
 import Image from "next/image";
 import getSettings from "../../pages/api/getSettings";
-import { leadApplicationDataStore } from "./store/store";
+import { leadApplicationDataStore } from "../api/store";
 import data from "../../components/Forms/utils/formFields/membershipApplication.json";
 import Field from "../../components/Forms";
 
@@ -35,7 +35,7 @@ const Apply = ({ display = "No" }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       try {
-       // store.setApplicationData(store.initialApplicationData);
+        // store.setApplicationData(store.initialApplicationData);
         store.setStatusText({
           firstName: store.applicationData.firstName,
           lastName: store.applicationData.lastName,
@@ -47,11 +47,9 @@ const Apply = ({ display = "No" }) => {
           axios.post("/api/triggerWebhookLeadApp", store.statusText),
           axios.post("/api/addLeadApplication", store.applicationData),
         ]);
-       
+
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
-       
-
         router.push("?status=fail", undefined, { shallow: true });
       } finally {
         store.setApplicationSending(false);
@@ -186,27 +184,29 @@ const Apply = ({ display = "No" }) => {
                           {section.name}
                         </h2>
                         <div className="grid grid-cols-8 gap-4">
-                          {section.fields[0] ? section.fields.map((field, fieldIndex) => (
-                            <Field
-                              key={fieldIndex}
-                              type={field.type}
-                              fieldProps={{
-                                ...field,
-                                formData: store.applicationData,
-                                setFormData: store.setApplicationData,
-                              }}
-                            />
-                          )) : section.fields.lead.map((field, fieldIndex) => (
-                            <Field
-                              key={fieldIndex}
-                              type={field.type}
-                              fieldProps={{
-                                ...field,
-                                formData: store.applicationData,
-                                setFormData: store.setApplicationData,
-                              }}
-                            />
-                          )) }
+                          {section.fields[0]
+                            ? section.fields.map((field, fieldIndex) => (
+                                <Field
+                                  key={fieldIndex}
+                                  type={field.type}
+                                  fieldProps={{
+                                    ...field,
+                                    formData: store.applicationData,
+                                    setFormData: store.setApplicationData,
+                                  }}
+                                />
+                              ))
+                            : section.fields.lead.map((field, fieldIndex) => (
+                                <Field
+                                  key={fieldIndex}
+                                  type={field.type}
+                                  fieldProps={{
+                                    ...field,
+                                    formData: store.applicationData,
+                                    setFormData: store.setApplicationData,
+                                  }}
+                                />
+                              ))}
                         </div>
                       </section>
                     );
