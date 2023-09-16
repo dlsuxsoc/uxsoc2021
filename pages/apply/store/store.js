@@ -7,6 +7,29 @@ import { persist } from "zustand/middleware";
 export const leadApplicationDataStore = create(
   persist(
     (set) => ({
+      initialApplicationData: {
+        firstName: "",
+        lastName: "",
+        nickname: "",
+        birthdate: {
+          month: null,
+          date: null,
+          year: null,
+        },
+        pronoun: "",
+        customPronoun: "",
+        email: "",
+        contactnum: "",
+        college: "",
+        program: "",
+        hobbies: "",
+        whatIsUX: "",
+        practicalityUX: "",
+        studentID: "",
+        interestedOrg: "",
+        interestedDept: [],
+        emails: [],
+      },
       applicationData: {
         firstName: "",
         lastName: "",
@@ -92,6 +115,29 @@ export const leadApplicationDataStore = create(
 export const memberApplicationDataStore = create(
   persist(
     (set) => ({
+      initialApplicationData: {
+        firstName: "",
+        lastName: "",
+        nickname: "",
+        birthdate: {
+          month: null,
+          date: null,
+          year: null,
+        },
+        pronoun: "",
+        customPronoun: "",
+        email: "",
+        contactnum: "",
+        college: "",
+        program: "",
+        hobbies: "",
+        whatIsUX: "",
+        practicalityUX: "",
+        studentID: "",
+        interestedOrg: "",
+        interestedDept: [],
+        emails: [],
+      },
       applicationData: {
         firstName: "",
         lastName: "",

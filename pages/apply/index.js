@@ -38,7 +38,7 @@ const Apply = ({ display = "No" }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       try {
-        store.setApplicationData(store.statusText);
+       // store.setApplicationData(store.initialApplicationData);
         store.setStatusText({
           firstName: store.applicationData.firstName,
           email: store.applicationData.email,
@@ -71,7 +71,7 @@ const Apply = ({ display = "No" }) => {
       />
 
       <>
-        {display === "Yes" ? (
+        {display === "No" ? (
           <>
             {store.applicationSending ? <PageLoading /> : null}
 

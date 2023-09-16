@@ -35,20 +35,23 @@ const Apply = ({ display = "No" }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       try {
-        store.setApplicationData(store.statusText);
+       // store.setApplicationData(store.initialApplicationData);
         store.setStatusText({
           firstName: store.applicationData.firstName,
+          lastName: store.applicationData.lastName,
           email: store.applicationData.email,
           contactnum: store.applicationData.contactnum,
         });
 
         await Promise.all([
-          axios.post("/api/triggerWebhookLeadApp", store.applicationData),
+          axios.post("/api/triggerWebhookLeadApp", store.statusText),
           axios.post("/api/addLeadApplication", store.applicationData),
         ]);
-
+       
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
+       
+
         router.push("?status=fail", undefined, { shallow: true });
       } finally {
         store.setApplicationSending(false);
