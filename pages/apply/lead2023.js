@@ -108,9 +108,9 @@ const Apply = ({ display = "No" }) => {
                           application to your email. If you haven't received an
                           email from us in 3 days, you may try contacting us
                           through our email at{" "}
-                          <Link href={"mailto:dlsuuxsociety@gmail.com"}>
+                          <Link href={"mailto:info@uxsocietytaft.org"}>
                             <a className="text-blue hover:underline">
-                              dlsu.uxsociety@gmail.com
+                              info@uxsocietytaft.org
                             </a>
                           </Link>
                           .
@@ -121,9 +121,9 @@ const Apply = ({ display = "No" }) => {
                           application. Please try again later. If this problem
                           persists, you may try contacting us through our email
                           at{" "}
-                          <Link href={"mailto:dlsuuxsociety@gmail.com"}>
+                          <Link href={"mailto:info@uxsocietytaft.org"}>
                             <a className="text-blue hover:underline">
-                              dlsu.uxsociety@gmail.com
+                              info@uxsocietytaft.org
                             </a>
                           </Link>
                           .
