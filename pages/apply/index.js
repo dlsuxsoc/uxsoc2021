@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import SEO from "../../components/seo";
-import { restrictRange } from "../../helpers/restrictRange";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Button from "../../components/Button/Button";
@@ -10,23 +9,21 @@ import styles from "../../styles/Apply.module.scss";
 import PageLoading from "../../components/PageLoading/PageLoading";
 import Image from "next/image";
 import getSettings from "../api/getSettings";
-import applicationFormState from "../../components/Forms/utils/initialState/applicationFormState";
-import statusTextState from "../../components/Forms/utils/initialState/statusTextState";
 import data from "../../components/Forms/utils/formFields/membershipApplication.json";
 import Field from "../../components/Forms";
+import { memberApplicationDataStore } from "../api/store";
 
 const Apply = ({ display = "No" }) => {
   const router = useRouter();
-  const [emailFetching, setEmailFetching] = useState(false);
-  const [applicationSending, setApplicationSending] = useState(false);
-  const [deptTextHelper, setDeptTextHelper] = useState("");
-  const [statusText, setStatusText] = useState(statusTextState);
-  const [applicationData, setApplicationData] = useState(applicationFormState);
+
+  const store = memberApplicationDataStore((state) => state);
 
   useEffect(() => {
+    console.log(store.applicationData);
+
     if (!router.isReady) return;
 
-    if (router.query.status && statusText.firstName === "")
+    if (router.query.status && store.statusText.firstName === "")
       router.push("/apply", undefined, { shallow: true });
 
     return () => {};
@@ -35,28 +32,28 @@ const Apply = ({ display = "No" }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!emailFetching) {
-      setApplicationSending(true);
+    if (!store.emailFetching) {
+      store.setApplicationSending(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       try {
-        setApplicationData(statusTextState);
-        setStatusText({
-          firstName: applicationData.firstName,
-          email: applicationData.email,
-          contactnum: applicationData.contactnum,
+        // store.setApplicationData(store.initialApplicationData);
+        store.setStatusText({
+          firstName: store.applicationData.firstName,
+          email: store.applicationData.email,
+          contactnum: store.applicationData.contactnum,
         });
 
         await Promise.all([
-          axios.post("/api/triggerWebhookMemApp", applicationData),
-          axios.post("/api/addMembershipApplication", applicationData),
+          axios.post("/api/triggerWebhookMemApp", store.applicationData),
+          axios.post("/api/addMembershipApplication", store.applicationData),
         ]);
 
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
         router.push("?status=fail", undefined, { shallow: true });
       } finally {
-        setApplicationSending(false);
+        store.setApplicationSending(false);
       }
     }
   };
@@ -75,7 +72,7 @@ const Apply = ({ display = "No" }) => {
       <>
         {display === "Yes" ? (
           <>
-            {applicationSending ? <PageLoading /> : null}
+            {store.applicationSending ? <PageLoading /> : null}
 
             {/* APPLICATION WAS SUBMITTED */}
             {router.query.status ? (
@@ -104,7 +101,7 @@ const Apply = ({ display = "No" }) => {
                       ) : (
                         <>🥺 Sorry </>
                       )}
-                      {statusText?.firstName.trim()},
+                      {store.statusText?.firstName.trim()},
                     </p>
                     <p className="text-base lg:text-2xl leading-loose mb-4">
                       {router.query.status === "success" ? (
@@ -200,17 +197,29 @@ const Apply = ({ display = "No" }) => {
                           {section.name}
                         </h2>
                         <div className="grid grid-cols-8 gap-4">
-                          {section.fields.map((field, fieldIndex) => (
-                            <Field
-                              key={fieldIndex}
-                              type={field.type}
-                              fieldProps={{
-                                ...field,
-                                formData: applicationData,
-                                setFormData: setApplicationData,
-                              }}
-                            />
-                          ))}
+                          {section.fields[0]
+                            ? section.fields.map((field, fieldIndex) => (
+                                <Field
+                                  key={fieldIndex}
+                                  type={field.type}
+                                  fieldProps={{
+                                    ...field,
+                                    formData: store.applicationData,
+                                    setFormData: store.setApplicationData,
+                                  }}
+                                />
+                              ))
+                            : section.fields.member.map((field, fieldIndex) => (
+                                <Field
+                                  key={fieldIndex}
+                                  type={field.type}
+                                  fieldProps={{
+                                    ...field,
+                                    formData: store.applicationData,
+                                    setFormData: store.setApplicationData,
+                                  }}
+                                />
+                              ))}
                         </div>
                       </section>
                     );
@@ -223,9 +232,11 @@ const Apply = ({ display = "No" }) => {
                           id="send"
                           type={"submit"}
                           value={"SEND APPLICATION"}
-                          disabled={deptTextHelper !== "" || emailFetching}
+                          disabled={
+                            store.deptTextHelper !== "" || store.emailFetching
+                          }
                           className={`font-bold inline-block text-center py-4 px-12 h-14 max-h-14 h-auto rounded-md w-full sm:w-auto text-white bg-green ${
-                            deptTextHelper === "" && !emailFetching
+                            store.deptTextHelper === "" && !store.emailFetching
                               ? `cursor-pointer ${styles.btn_container}`
                               : "cursor-not-allowed opacity-50"
                           }`}

@@ -16,7 +16,7 @@ const Field = ({ type, fieldProps }) => {
     case "textarea":
       return <FormTextArea {...fieldProps} />;
     case "checkbox":
-       return <FormCheckbox {...fieldProps} />;
+      return <FormCheckbox {...fieldProps} />;
     case "select":
       return <FormSelect {...fieldProps} />;
     case "email":

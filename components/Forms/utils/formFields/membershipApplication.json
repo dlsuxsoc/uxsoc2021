@@ -62,7 +62,7 @@
         "required": false,
         "size": "full",
         "placeholder": "63xxxxxxxxx",
-        "validation":{
+        "validation": {
           "pattern": "^(09|639)\\d{9}$",
           "errorMessage": "Make sure you are inputting a valid mobile number"
         }
@@ -100,54 +100,90 @@
         "required": false,
         "type": "select",
         "size": "full",
-        "options": [
-          "",
-          "117",
-          "118",
-          "119",
-          "120",
-          "121"
-        ]
+        "options": ["", "119", "120", "121", "122"]
       }
     ]
   },
   {
     "name": "We want to know more about you",
-    "fields": [
-      {
-        "name": "hobbies",
-        "label": "What are your hobbies?",
-        "type": "textarea",
-        "resize": false,
-        "rows": 5
-      },
-      {
-        "name": "interestedOrg",
-        "label": "Why are you interested in joining the organization?",
-        "type": "textarea",
-        "resize": false,
-        "rows": 5
-      },
-      {
-        "name": "whatIsUX",
-        "label": "What is user experience to you?",
-        "type": "textarea",
-        "resize": false,
-        "rows": 5
-      },
-      {
-        "name": "practicalityUX",
-        "label": "How do you think user experience applies in your current degree program and interests?",
-        "type": "textarea",
-        "resize": false,
-        "rows": 5
-      },
-      {
-        "name": "departments",
-        "label": "What department/s are you interested in?",
-        "type": "checkbox",
-        "options": ["Design", "Development", "Externals", "Internal Growth", "Marketing", "Research"]
-      }
-    ]
+    "fields": {
+      "member": [
+        {
+          "name": "hobbies",
+          "label": "What are your hobbies?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "interestedOrg",
+          "label": "Why are you interested in joining the organization?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "whatIsUX",
+          "label": "What is user experience to you?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "practicalityUX",
+          "label": "How do you think user experience applies in your current degree program and interests?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "memberDepartments",
+          "label": "What department/s are you interested in?",
+          "type": "checkbox",
+          "options": [
+            "Design",
+            "Development",
+            "Externals",
+            "Internal Growth",
+            "Marketing",
+            "Research"
+          ]
+        }
+      ],
+      "lead": [
+        {
+          "name": "hobbies",
+          "label": "What are your hobbies?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "interestedOrg",
+          "label": "Why are you interested in joining the organization?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "whatIsUX",
+          "label": "What is user experience to you?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "memberDepartments",
+          "label": "What department/s are you interested in?",
+          "type": "checkbox",
+          "options": [
+            "Community Manager",
+            "Development",
+            "Externals",
+            "Internal Growth"
+          ]
+        }
+      ]
+    }
   }
 ]

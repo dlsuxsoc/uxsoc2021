@@ -210,7 +210,7 @@ const addLeadApplication = async (req, res) => {
 
     res.status(201).json();
   } catch (err) {
-    //console.log(err);
+    console.log(err);
     //console.error(e);
     res.status(err.code || 500).json(err);
   }
