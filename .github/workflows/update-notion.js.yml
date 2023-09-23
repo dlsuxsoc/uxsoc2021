@@ -1,0 +1,37 @@
+name: Notion Update CI
+
+on:
+  push:
+    branches: ["development", "main", "feature/notion-db-automation"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: "NOTION CI"
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    defaults:
+      run:
+        working-directory: ./scripts
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - run: npm ci
+      - run: |
+          touch .env.local
+          echo NOTION_INTEGRATION_SECRET=${{ secrets.NOTION_INTEGRATION_SECRET }} >> .env.local
+          echo NOTION_LEADS_DEVDB=${{ vars.NOTION_LEADS_DEVDB }} >> .env.local
+          echo NOTION_LEADS_PRODDB=${{ vars.NOTION_LEADS_DEVDB }} >> .env.local
+      - name: print variables
+        env:
+          VARS_JSON: ${{ toJson(vars) }}
+        run: echo "$VARS_JSON"
+      - run: npm run build --if-present
+      - run: npm run start
