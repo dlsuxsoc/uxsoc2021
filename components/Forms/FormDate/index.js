@@ -38,19 +38,22 @@ const FormDate = ({ label, required, formData, setFormData, name }) => {
             placeholder="Month"
             required
             value={formData[name].month}
-            onChange={(e) =>
+            onChange={(e) => {
               setFormData({
                 //eslint-disable-nextline
                 ...formData,
-                [name["month"]]:
-                  restrictRange(
-                    parseInt(e.target.value),
-                    formData[name].month,
-                    1,
-                    12
-                  ) || "",
-              })
-            }
+                [name]: {
+                  ...formData[name],
+                  month:
+                    restrictRange(
+                      parseInt(e.target.value),
+                      formData[name].month,
+                      1,
+                      12
+                    ) || "",
+                },
+              });
+            }}
           />
         </div>
         <div className="col-start-2">
@@ -66,13 +69,16 @@ const FormDate = ({ label, required, formData, setFormData, name }) => {
             onChange={(e) => {
               setFormData({
                 ...formData,
-                [name["date"]]:
-                  restrictRange(
-                    parseInt(e.target.value),
-                    formData[name].date,
-                    1,
-                    maxDate
-                  ) || "",
+                [name]: {
+                  ...formData[name],
+                  date:
+                    restrictRange(
+                      parseInt(e.target.value),
+                      formData[name].date,
+                      1,
+                      maxDate
+                    ) || "",
+                },
               });
             }}
           />
@@ -91,7 +97,10 @@ const FormDate = ({ label, required, formData, setFormData, name }) => {
             onChange={(e) =>
               setFormData({
                 ...formData,
-                [name["year"]]: parseInt(e.target.value) || "",
+                [name]: {
+                  ...formData[name],
+                  year: parseInt(e.target.value) || "",
+                },
               })
             }
           />

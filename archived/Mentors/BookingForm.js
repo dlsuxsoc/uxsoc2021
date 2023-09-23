@@ -455,8 +455,8 @@ const BookingForm = () => {
         It looks like we are having issues processing your application. Please
         try again later. If this problem persists, you may try contacting us
         through our email at{" "}
-        <Link href={"mailto:dlsuuxsociety@gmail.com"}>
-          <a className="text-blue-500">dlsuuxsociety@gmail.com</a>
+        <Link href={"mailto:info@uxsocietytaft.org"}>
+          <a className="text-blue-500">info@uxsocietytaft.org</a>
         </Link>
         .
       </Modal>
