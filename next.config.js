@@ -7,6 +7,7 @@ module.exports = {
       "images.ctfassets.net",
       "s3.us-west-2.amazonaws.com",
       "media.istockphoto.com",
+      "lh3.googleusercontent.com",
     ],
   },
   distDir: "out",
