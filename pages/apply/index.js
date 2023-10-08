@@ -204,6 +204,7 @@ const Apply = ({ display = "No" }) => {
                                     ...field,
                                     formData: store.applicationData,
                                     setFormData: store.setApplicationData,
+                                    store
                                   }}
                                 />
                               ))
@@ -215,6 +216,7 @@ const Apply = ({ display = "No" }) => {
                                     ...field,
                                     formData: store.applicationData,
                                     setFormData: store.setApplicationData,
+                                    store
                                   }}
                                 />
                               ))}

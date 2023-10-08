@@ -51,6 +51,9 @@ const Apply = ({ display = "No" }) => {
           axios.post("/api/addLeadApplication", store.applicationData),
         ]);
 
+        //store.reset({});
+        store.setApplicationData(store.initialApplicationData);
+
         router.push("?status=success", undefined, { shallow: true });
       } catch (e) {
         router.push("?status=fail", undefined, { shallow: true });
@@ -207,6 +210,7 @@ const Apply = ({ display = "No" }) => {
                                     ...field,
                                     formData: store.applicationData,
                                     setFormData: store.setApplicationData,
+                                    store
                                   }}
                                 />
                               ))}

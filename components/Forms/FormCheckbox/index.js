@@ -5,10 +5,10 @@ import {
   memberApplicationDataStore,
 } from "../../../pages/api/store";
 
-const FormCheckbox = ({ name, label, options, setFormData, formData }) => {
-  const store = options.includes("Community Manager")
-    ? leadApplicationDataStore((state) => state)
-    : memberApplicationDataStore((state) => state);
+const FormCheckbox = ({ name, label, options, setFormData, formData, store }) => {
+  // const store = options.includes("Community Manager")
+  //   ? leadApplicationDataStore((state) => state)
+  //   : memberApplicationDataStore((state) => state);
 
   useEffect(() => {
     const depts = Object.keys(store.checkedDept).filter(

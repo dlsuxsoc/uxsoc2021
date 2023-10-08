@@ -59,10 +59,11 @@ export const leadApplicationDataStore = create(
         contactnum: "",
       },
       checkedDept: {
+        "Design": false,
         "Development": false,
-        "Externals": false,
-        "Internal Growth": false,
-        "Community Manager": false,
+        "Management": false,
+        "Marketing": false,
+        "Research": false,
       },
 
       emailTextHelper: "",
@@ -96,6 +97,11 @@ export const leadApplicationDataStore = create(
 
       setApplicationSending: (appSending) =>
         set((state) => ({ applicationSending: appSending })),
+
+      // reset: (_) =>
+      // set((state) => ({
+      //     applicationData: initialApplicationData,
+      // })),
     }),
     {
       name: "UXSOC_LEADS",
@@ -169,8 +175,7 @@ export const memberApplicationDataStore = create(
       checkedDept: {
         Design: false,
         Development: false,
-        Externals: false,
-        "Internal Growth": false,
+        Management: false,
         Marketing: false,
         Research: false,
       },

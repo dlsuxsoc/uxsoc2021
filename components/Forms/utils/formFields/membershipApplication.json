@@ -4,7 +4,7 @@
     "fields": [
       {
         "name": "firstName",
-        "placeholder": "Criscela",
+        "placeholder": "Juan",
         "required": true,
         "type": "text",
         "label": "First Name",
@@ -12,7 +12,7 @@
       },
       {
         "name": "lastName",
-        "placeholder": "Racelis",
+        "placeholder": "Dela Cruz",
         "required": true,
         "type": "text",
         "label": "Last Name",
@@ -20,7 +20,7 @@
       },
       {
         "name": "nickname",
-        "placeholder": "Pi",
+        "placeholder": "Juan",
         "type": "text",
         "required": false,
         "label": "Nickname",
@@ -52,7 +52,7 @@
         "name": "email",
         "label": "Email",
         "type": "email",
-        "placeholder": "don_norman@dlsu.edu.ph",
+        "placeholder": "juan_delacruz@dlsu.edu.ph",
         "required": true
       },
       {
@@ -177,12 +177,11 @@
           "label": "What department/s are you interested in?",
           "type": "checkbox",
           "options": [
-            "Community Manager",
             "Design",
             "Development",
-            "Externals",
-            "Internal Growth",
-            "Marketing"
+            "Management",
+            "Marketing",
+            "Research"
           ]
         }
       ]
