@@ -19,8 +19,6 @@ const Apply = ({ display = "No" }) => {
   const store = memberApplicationDataStore((state) => state);
 
   useEffect(() => {
-    console.log(store.applicationData);
-
     if (!router.isReady) return;
 
     if (router.query.status && store.statusText.firstName === "")

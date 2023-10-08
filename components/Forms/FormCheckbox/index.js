@@ -25,8 +25,6 @@ const FormCheckbox = ({ name, label, options, setFormData, formData }) => {
     } else {
       store.setDeptTextHelper("");
     }
-
-    // console.log(store.applicationData);
   }, [store.setCheckedDept, store.checkedDept]);
 
   return (

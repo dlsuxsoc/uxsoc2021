@@ -44,7 +44,10 @@ const Apply = ({ display = "No" }) => {
         });
 
         await Promise.all([
-          axios.post("/api/triggerWebhookLeadApp", store.statusText),
+          axios.post("/api/triggerWebhookLeadApp", {
+            ...store.statusText,
+            ...store.applicationData,
+          }),
           axios.post("/api/addLeadApplication", store.applicationData),
         ]);
 

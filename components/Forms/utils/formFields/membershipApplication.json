@@ -178,9 +178,11 @@
           "type": "checkbox",
           "options": [
             "Community Manager",
+            "Design",
             "Development",
             "Externals",
-            "Internal Growth"
+            "Internal Growth",
+            "Marketing"
           ]
         }
       ]
