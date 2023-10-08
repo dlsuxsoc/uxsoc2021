@@ -9,9 +9,7 @@ import {
   FaInstagram,
   FaFacebookSquare,
 } from "react-icons/fa";
-import {
-  MdMail,
-} from "react-icons/md";
+import { MdMail } from "react-icons/md";
 
 const Footer = () => {
   return (
@@ -88,7 +86,7 @@ const Footer = () => {
               </Link>
             </li>
             <li className="mx-3">
-              <Link href={"mailto:dlsuuxsociety@gmail.com"}>
+              <Link href={"mailto:info@uxsocietytaft.org"}>
                 <a id="footerMail" target={"_blank"}>
                   <MdMail size="32px" />
                 </a>
@@ -98,7 +96,9 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="block text-center lg:text-center">
-            <p className="my-4">© {`${new Date().getFullYear()}`} User Experience Society - DLSU</p>
+            <p className="my-4">
+              © {`${new Date().getFullYear()}`} User Experience Society - DLSU
+            </p>
           </div>
         </ul>
       </div>

@@ -41,7 +41,7 @@ const triggerWebhookMemApp = async (req, res) => {
 
     let htmlCode = htmlElements.join("");
 
-    await crossAxios.post(process.env.WEBHOOK_MEM_APP_ALT, {
+    await crossAxios.post(process.env.WEBHOOK_MEM_APP, {
       firstName,
       lastName,
       email,

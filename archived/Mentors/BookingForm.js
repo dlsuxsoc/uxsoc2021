@@ -49,8 +49,6 @@ const BookingForm = () => {
       setMentorIndex(-1);
       setBookingData(initialBookingDataState);
 
-      //console.log("FORM SUBMITTED");
-      //console.log(e.target[0].value);
       try {
         const res = await axios.post("/api/addMentorshipBooking", bookingData);
         setApplicationSending(false);
@@ -84,7 +82,6 @@ const BookingForm = () => {
 
       setFormData(false);
       setDuplicateFetching(true);
-      console.log("asd");
       try {
         const res = await axios.get("/api/getMentorshipDetails", bookingData);
         setDuplicateFetching(false);
@@ -97,10 +94,6 @@ const BookingForm = () => {
         let invalid = mentorshipInstanceExists(res.data, key);
         setFormValidity(!invalid);
         //   const invalid = res.data.includes(key)
-        // console.log(invalid);
-        // console.log(key.email);
-        console.log(res.data);
-        //console.log(invalid);
         if (invalid) {
           setDuplicateTextHelper(
             `You have already booked ${bookingData.bookingMentor} on ${
@@ -111,7 +104,7 @@ const BookingForm = () => {
           setDuplicateTextHelper("");
         }
       } catch (e) {
-        console.log(e.message);
+        console.error(e.message);
       }
     }
   };
@@ -455,8 +448,8 @@ const BookingForm = () => {
         It looks like we are having issues processing your application. Please
         try again later. If this problem persists, you may try contacting us
         through our email at{" "}
-        <Link href={"mailto:dlsuuxsociety@gmail.com"}>
-          <a className="text-blue-500">dlsuuxsociety@gmail.com</a>
+        <Link href={"mailto:info@uxsocietytaft.org"}>
+          <a className="text-blue-500">info@uxsocietytaft.org</a>
         </Link>
         .
       </Modal>

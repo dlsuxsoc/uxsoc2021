@@ -1,0 +1,190 @@
+[
+  {
+    "name": "Personal Information",
+    "fields": [
+      {
+        "name": "firstName",
+        "placeholder": "Juan",
+        "required": true,
+        "type": "text",
+        "label": "First Name",
+        "size": "half"
+      },
+      {
+        "name": "lastName",
+        "placeholder": "Dela Cruz",
+        "required": true,
+        "type": "text",
+        "label": "Last Name",
+        "size": "half"
+      },
+      {
+        "name": "nickname",
+        "placeholder": "Juan",
+        "type": "text",
+        "required": false,
+        "label": "Nickname",
+        "size": "half"
+      },
+      {
+        "name": "birthdate",
+        "type": "date",
+        "required": true,
+        "label": "Birthdate"
+      },
+      {
+        "name": "pronoun",
+        "label": "Preferred Pronoun",
+        "type": "radio",
+        "options": ["He/ Him", "She/ Her", "They/ Them", "Others"],
+        "followUp": {
+          "condition": "Others",
+          "type": "text",
+          "name": "customPronoun"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Where can we contact you?",
+    "fields": [
+      {
+        "name": "email",
+        "label": "Email",
+        "type": "email",
+        "placeholder": "juan_delacruz@dlsu.edu.ph",
+        "required": true
+      },
+      {
+        "name": "contactnum",
+        "label": "Phone Number",
+        "type": "text",
+        "required": false,
+        "size": "full",
+        "placeholder": "63xxxxxxxxx",
+        "validation": {
+          "pattern": "^(09|639)\\d{9}$",
+          "errorMessage": "Make sure you are inputting a valid mobile number"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Academic Background",
+    "fields": [
+      {
+        "name": "college",
+        "label": "College",
+        "prompt": "college",
+        "required": true,
+        "type": "select",
+        "size": "full",
+        "options": [
+          "",
+          "De La Salle University - Manila",
+          "De La Salle - College of Saint Benilde Manila"
+        ]
+      },
+      {
+        "name": "program",
+        "placeholder": "Bachelor of Science in Human-Computer Interaction",
+        "required": true,
+        "type": "text",
+        "label": "Program",
+        "size": "full"
+      },
+      {
+        "name": "studentID",
+        "label": "Student Number",
+        "prompt": "ID Batch Number",
+        "required": false,
+        "type": "select",
+        "size": "full",
+        "options": ["", "119", "120", "121", "122"]
+      }
+    ]
+  },
+  {
+    "name": "We want to know more about you",
+    "fields": {
+      "member": [
+        {
+          "name": "hobbies",
+          "label": "What are your hobbies?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "interestedOrg",
+          "label": "Why are you interested in joining the organization?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "whatIsUX",
+          "label": "What is user experience to you?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "practicalityUX",
+          "label": "How do you think user experience applies in your current degree program and interests?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "memberDepartments",
+          "label": "What department/s are you interested in?",
+          "type": "checkbox",
+          "options": [
+            "Design",
+            "Development",
+            "Externals",
+            "Internal Growth",
+            "Marketing",
+            "Research"
+          ]
+        }
+      ],
+      "lead": [
+        {
+          "name": "hobbies",
+          "label": "What are your hobbies?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "interestedOrg",
+          "label": "Why are you interested in joining the organization?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "whatIsUX",
+          "label": "What is user experience to you?",
+          "type": "textarea",
+          "resize": false,
+          "rows": 5
+        },
+        {
+          "name": "memberDepartments",
+          "label": "What department/s are you interested in?",
+          "type": "checkbox",
+          "options": [
+            "Design",
+            "Development",
+            "Management",
+            "Marketing",
+            "Research"
+          ]
+        }
+      ]
+    }
+  }
+]

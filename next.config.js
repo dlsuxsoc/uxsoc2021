@@ -10,8 +10,4 @@ module.exports = {
     ],
   },
   distDir: "out",
-  env: {
-    WEBHOOK_MEM_APP: process.env.WEBHOOK_MEM_APP,
-    WEBHOOK_MEM_APP_ALT: process.env.WEBHOOK_MEM_APP_ALT,
-  },
 };

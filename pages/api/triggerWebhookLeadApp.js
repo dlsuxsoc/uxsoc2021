@@ -1,10 +1,44 @@
 import { crossAxios } from "../../config/crossAxios";
+import { notion } from "../../api/notion";
 
 const triggerWebhookLeadApp = async (req, res) => {
   try {
-    let { firstName, email, contactnum, lastName } = req.body;
-    let htmlCode = `<li><a href="https://calendly.com/gavinrainedizon/ux-society-taft-lead-application">Schedule Interview with Gavin</a></li>
-    <li><a href="https://calendly.com/rileyuy/uxsoc-lead-recruitment-2023">Schedule Interview with Riley</a></li>`;
+    let { firstName, email, contactnum, interestedDept, lastName } = req.body;
+
+    // trigger webhook
+    const calendly_links = await notion.databases.query({
+      database_id: process.env.NOTION_CALENDLINKS,
+    });
+
+    const sorted = calendly_links.results.sort((a, b) => 0.5 - Math.random());
+    let counter = 1;
+    let htmlElements = sorted.map((item) => {
+      const depts = item.properties["Department/s"].multi_select.map(
+        (item) => item.name
+      );
+      const url = item.properties.URL.url;
+
+      let isFound = false;
+
+      interestedDept.map((dept) => {
+        if (depts.includes(dept)) {
+          isFound = true;
+          return;
+        }
+      });
+
+      let code = "";
+
+      if (isFound) {
+        code = `<li><a href="${url}">Schedule Interview Link ${counter}</a></li>`;
+        counter++;
+      } else {
+        code = ``;
+      }
+      return code;
+    });
+
+    let htmlCode = htmlElements.join("");
 
     await crossAxios.post(process.env.WEBHOOK_LEAD_APP, {
       firstName,
@@ -14,9 +48,9 @@ const triggerWebhookLeadApp = async (req, res) => {
       htmlCode,
     });
 
-    console.log(res);
     return res.status(201).json();
   } catch (e) {
+    console.error(e);
     res.status(500).json(e);
   }
 };
