@@ -15,7 +15,7 @@ const AboutUs = ({ refProp }) => {
         <div className="relative h-48 md:h-96 lg:h-60 xl:h-72 2xl:h-96 w-full lg:w-1/2 lg:mr-10 xl:mr-20 2xl:pr-2 mx-auto text-center">
           <Image
             src="/images/about-ux-1.png"
-            alt="About UX Society DLSU"
+            alt="About UX Society Taft"
             layout="fill"
             objectFit="cover"
             objectPosition="center"
@@ -27,10 +27,12 @@ const AboutUs = ({ refProp }) => {
             Our Organization
           </h1>
           <p className="text-sm md:text-base lg:text-xl 2xl:text-2xl mb-8">
-            Together with the other UX Society chapters, we are one of the recognized UX Societies for students. 
-            We aid various organizations by creating quality products and services by applying principles, 
-            concepts, and methodologies in such strategies. We also hold workshops, seminars, and conferences 
-            to train members about the essentials skills of proper UX discipline and methodologies.
+            Together with the other UX Society chapters, we are one of the
+            recognized UX Societies for students. We aid various organizations
+            by creating quality products and services by applying principles,
+            concepts, and methodologies in such strategies. We also hold
+            workshops, seminars, and conferences to train members about the
+            essentials skills of proper UX discipline and methodologies.
           </p>
 
           <div className="container text-center lg:text-left mt-10">
@@ -40,8 +42,6 @@ const AboutUs = ({ refProp }) => {
           </div>
         </div>
       </div>
-
-      
     </section>
   );
 };

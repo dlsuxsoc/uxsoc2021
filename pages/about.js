@@ -9,15 +9,14 @@ import Services from "../sections/About/Services";
 import JoinUs from "../sections/About/JoinUs";
 import Team from "../sections/About/Team";
 import getTeam from "../pages/api/getTeam";
-import Founders from "../sections/About/Founders"
+import Founders from "../sections/About/Founders";
 
-
-export default function About({ leads , founders }) {
+export default function About({ leads, founders }) {
   return (
     <Layout active={1}>
       <SEO
         title={"About Us"}
-        description="UX Society envisions to be DLSU's premier consulting and
+        description="UX Society envisions to be Taft's premier consulting and
                 educational body for User Experience Strategy, particularly in
                 technologies that enhance usability, guide human-computer
                 interaction, and showcase effective visual design."
@@ -40,7 +39,7 @@ export async function getServerSideProps() {
   return {
     props: {
       leads: team.filter((lead) => lead.position !== "Founder"),
-      founders: team.filter((lead) => lead.position === "Founder")
+      founders: team.filter((lead) => lead.position === "Founder"),
     },
   };
 }
