@@ -58,7 +58,7 @@ const Footer = () => {
           {/* Socials */}
           <ul className="list-none w-full flex justify-center my-4">
             <li className="mx-3">
-              <Link href={"https://www.facebook.com/uxsocietydlsu"}>
+              <Link href={"https://www.facebook.com/uxsocietytaft"}>
                 <a id="footerFb" target={"_blank"}>
                   <FaFacebookSquare size="32px" />
                 </a>
@@ -97,7 +97,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="block text-center lg:text-center">
             <p className="my-4">
-              © {`${new Date().getFullYear()}`} User Experience Society - DLSU
+              © {`${new Date().getFullYear()}`} User Experience Society - Taft
             </p>
           </div>
         </ul>

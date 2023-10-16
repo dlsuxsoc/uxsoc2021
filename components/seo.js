@@ -2,10 +2,10 @@ import React from "react";
 import Head from "next/head";
 
 const SEO = ({ title, description = "", slug = "" }) => {
-  const URL = "https://dlsu.uxsociety.org";
+  const URL = "https://uxsocietytaft.org";
   return (
     <Head>
-      <title> {title} | User Experience Society - DLSU</title>
+      <title> {title} | User Experience Society - Taft</title>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="icon" href="/images/uxsoc-logo.png" />

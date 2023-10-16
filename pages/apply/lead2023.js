@@ -210,7 +210,7 @@ const Apply = ({ display = "No" }) => {
                                     ...field,
                                     formData: store.applicationData,
                                     setFormData: store.setApplicationData,
-                                    store
+                                    store,
                                   }}
                                 />
                               ))}
@@ -259,7 +259,7 @@ const Apply = ({ display = "No" }) => {
                   Please check our{" "}
                   <span className="text-blue">
                     <Link
-                      href="https://www.facebook.com/uxsocietydlsu"
+                      href="https://www.facebook.com/uxsocietytaft"
                       passHref
                     >
                       <a target={"_blank"}>Facebook</a>

@@ -146,7 +146,7 @@ const Apply = ({ display = "No" }) => {
                     <p className="text-base lg:text-2xl leading-loose mb-28">
                       Sincerely,
                       <br />
-                      UXSOC - DLSU Team
+                      UX Society - Taft Team
                     </p>
                     <Button to="/about">LEARN MORE ABOUT US</Button>
                   </div>
@@ -204,7 +204,7 @@ const Apply = ({ display = "No" }) => {
                                     ...field,
                                     formData: store.applicationData,
                                     setFormData: store.setApplicationData,
-                                    store
+                                    store,
                                   }}
                                 />
                               ))
@@ -216,7 +216,7 @@ const Apply = ({ display = "No" }) => {
                                     ...field,
                                     formData: store.applicationData,
                                     setFormData: store.setApplicationData,
-                                    store
+                                    store,
                                   }}
                                 />
                               ))}
@@ -266,7 +266,7 @@ const Apply = ({ display = "No" }) => {
                   Please check our{" "}
                   <span className="text-blue">
                     <Link
-                      href="https://www.facebook.com/uxsocietydlsu"
+                      href="https://www.facebook.com/uxsocietytaft"
                       passHref
                     >
                       <a target={"_blank"}>Facebook</a>

@@ -15,7 +15,7 @@ export default function Index({ articles, projects, events }) {
     <Layout active={0}>
       <SEO
         title={"Home"}
-        description="UX Society - DLSU aids various organizations by creating quality
+        description="UX Society - Taft aids various organizations by creating quality
             products and services by applying principles, concepts and
             methodologies in such strategies. We hold workshops, seminars and
             conferences to train members about the essentials skills of proper
@@ -47,7 +47,6 @@ const getEventData = async () => {
   return data.eventCollection.items;
 };
 
-
 export async function getServerSideProps() {
   const articleData = await getArticleData();
   const projectData = await getProjects();
@@ -59,20 +58,3 @@ export async function getServerSideProps() {
     },
   };
 }
-
-
-/*
-export async function getStaticProps() {
-  const [articlesData, projectData] = await Promise.all(
-    [getArticleData(), getProjectData()]
-  );
-
-  return {
-    props: {
-      articles: articlesData,
-      projects: projectData
-    },
-    revalidate: 300,
-  };
-}
-*/
