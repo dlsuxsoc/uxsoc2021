@@ -38,3 +38,22 @@ input[type="email"],
 textarea {
   background-color: #ececec;
 }
+
+details > summary::before {
+  content: "\2192";
+  color: #41bc9c !important;
+  margin-right: 1rem;
+}
+
+details[open] > summary::before {
+  content: "\2193";
+  color: #41bc9c !important;
+  margin-right: 1rem;
+}
+details > summary {
+  list-style-type: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}

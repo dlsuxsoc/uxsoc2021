@@ -10,8 +10,10 @@ import JoinUs from "../sections/About/JoinUs";
 import Team from "../sections/About/Team";
 import getTeam from "../pages/api/getTeam";
 import Founders from "../sections/About/Founders";
+import FAQ from "../sections/About/FAQ";
+import getFAQ from "./api/getFAQ";
 
-export default function About({ leads, founders }) {
+export default function About({ leads, founders, faq }) {
   return (
     <Layout active={1}>
       <SEO
@@ -28,6 +30,7 @@ export default function About({ leads, founders }) {
       <Services servicesData={servicesData} />
       <Team leads={leads} />
       <Founders founders={founders}></Founders>
+      <FAQ faq={faq} />
       <JoinUs />
     </Layout>
   );
@@ -35,11 +38,13 @@ export default function About({ leads, founders }) {
 
 export async function getServerSideProps() {
   const team = await getTeam();
+  const faq = await getFAQ();
 
   return {
     props: {
       leads: team.filter((lead) => lead.position !== "Founder"),
       founders: team.filter((lead) => lead.position === "Founder"),
+      faq,
     },
   };
 }
