@@ -14,7 +14,7 @@ import FAQ from "../sections/About/FAQ";
 import getFAQ from "./api/getFAQ";
 
 export default function About({ leads, founders, faq }) {
-  return (
+  return ( 
     <Layout active={1}>
       <SEO
         title={"About Us"}
