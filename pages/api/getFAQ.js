@@ -7,13 +7,23 @@ const getFAQ = async (req, res) => {
       sorts: [{ property: "Order", direction: "ascending" }],
     });
 
-    const faqItems = faq.map((faqItem) => {
-      const data = faqItem.properties;
-      return {
+    // const faqItems = faq.map((faqItem) => {
+    //   const data = faqItem.properties;
+    //   return {
+    //     question: data.Question.title[0].text.content,
+    //     answer: data.Answer.rich_text[0].plain_text,
+    //   };
+    // });
+
+    const faqItems = [];
+
+    for (let i = 0; i < faq.length; i++) {
+      const data = faq[i].properties;
+      faqItems.push({
         question: data.Question.title[0].text.content,
         answer: data.Answer.rich_text[0].plain_text,
-      };
-    });
+      });
+    }
 
     return faqItems;
   } catch (e) {
